@@ -1,0 +1,41 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{schemabloc}
+%\usepackage{vuiprepstandalone}
+%\usepackage{alain2}
+
+\begin{document}
+\footnotesize
+
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbComp{c1}{E}
+    \sbRelier[$E(p)$]{E}{c1}
+
+\sbBloc{b1}{$F(p)$}{c1}
+    \sbRelier{c1}{b1}
+    
+
+%\sbBloc{b2}{$H_2(p)$}{c2}
+  %  \sbRelier{c2}{b2}
+    
+
+\sbSortie[4]{S}{b1}
+    \sbRelier{b1}{S}
+    \sbNomLien[0.8]{S}{$S(p)$}
+
+\sbDecaleNoeudy[4]{S}{n1} 
+\sbDecaleNoeudx[-2]{n1}{n2} 
+\sbBlocr{r}{$G(p)$}{n2} 
+\sbRelieryx{b1-S}{r}
+\sbRelierxy{r}{c1}
+
+%\sbRenvoi{b2-S}{c1}{}
+
+%\draw [latex-] (c2) --++ (0,1) node[left] {$\text{Pert}(p)$};
+
+\end{tikzpicture}
+
+\normalsize
+\end{document}
