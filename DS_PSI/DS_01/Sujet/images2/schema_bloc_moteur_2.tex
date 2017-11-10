@@ -1,0 +1,60 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+\usepackage[locale=FR]{siunitx}
+\begin{document}
+\footnotesize
+
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbComp[8]{c1}{E}
+	\sbRelier[\begin{tabular}{l}Consigne\\ de position en\\ incréments \end{tabular}]{E}{c1}
+
+\sbBloc{b2}{$K$}{c1}
+	\sbRelier[$\varepsilon$]{c1}{b2}
+
+\sbBloc[10]{b3}{$M(p)$}{b2}
+	\sbRelier[\begin{tabular}{l}Tension de \\ commande \\ U en V\end{tabular}]{b2}{b3}
+	
+\sbBloc[10]{b4}{$B(p)$}{b3}
+	\sbRelier[\begin{tabular}{l}Vitesse $\omega$ \\ moteur \\ en $\si{rad. s^{-1}}$\end{tabular}]{b3}{b4}
+
+\sbSortie[8]{S}{b4}
+    \sbRelier[\begin{tabular}{l}Angle $\theta$ \\ moto-réducteur \\ en rad \end{tabular}]{b4}{S}
+    
+\sbDecaleNoeudy[6]{b3}{n1}
+ 
+\sbBlocr{r1}{$C$}{n1}
+\sbRelieryx{b4-S}{r1}
+\sbRelierxy[\begin{tabular}{l}Mesure en \\ incréments\end{tabular}]{r1}{c1}
+
+\draw (3.2,0.5) node[above] {\begin{tabular}{c}Convertisseur \\ amplificateur \end{tabular}};
+\draw (6.6,0.5) node[above] {\begin{tabular}{c}Moteur \\ à courant \\ continu\end{tabular}};
+\draw (5.7,-1.3) node[above] {\begin{tabular}{c}Codeur incrémental \\ et compteur inclus \end{tabular}};
+
+%\sbBloc[3.5]{b3}{$P_3(p)$}{c1}
+%    \sbRelier[$X_{P2}(p)$]{c1}{b3}
+%\sbBloc[3.5]{b4}{$P_4(p)$}{b3}
+%    \sbRelier[$Q_{P}(p)$]{b3}{b4}
+%\sbBloc[3.5]{b5}{$P_5(p)$}{b4}
+%    \sbRelier[$Y_{P5}(p)$]{b4}{b5}
+%
+%\sbSortie{S}{b5}
+%    \sbRelier{b5}{S}
+%    \sbNomLien[0.8]{S}{$\alpha(p)$}
+%
+%\sbDecaleNoeudy[4]{b5}{n1}
+%
+%\sbBlocr{r1}{$P_6(p)$}{n1}
+%    \sbRelieryx{b5-S}{r1}
+%    %\sbRenvoi{b3-n2}{r1}{}
+%
+%\sbBlocr[3.5]{r2}{$P_7(p)$}{r1}
+%    \sbRelier[$X_{P3}(p)$]{r1}{r2}
+%    \sbRelierxy{r2}{c1}
+\end{tikzpicture}
+
+\normalsize
+\end{document}

@@ -1,0 +1,36 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+grid=major,scaled ticks=false,/pgf/number format/1000 sep = {\,},
+ytick={0,5,...,35},
+minor y tick num=1,
+minor x tick num=4,
+xlabel = {Temps (s)},
+ylabel = {Déplacement de l'instrument (mm)},
+%legend entries={Réponse simulée, Réponse mesurée},
+legend style={at={(0.5,0.2)},anchor=south west},
+%legend columns=3,
+axis lines=left,
+xmin=0,xmax=1,
+ymin=0,ymax=35,
+height=5cm,
+width=7cm,
+font=\footnotesize,/pgf/number format/use comma,
+]
+%\draw[cyan!20,fill] (0,105) rectangle (444,95);
+
+\addplot [cyan,thick] table[x index=0,y index =1]{CHAP4/ex_robot_endoscopique/images2/Simu_SansCorr.txt};
+%\addplot [black!50!cyan!70,thick] table[x index=0,y index =2]{CHAP2/ex_Robot_endoscopique/ressources/Simu_Mesure.txt};
+%\draw[dashed] (0,105) -- ++(440,0);
+%\draw[dashed] (0,95) -- ++(440,0);
+
+%\draw[dashed] (112,105) -> (112,0) node[above right] {$t_{5\%}=\num{1.12}< \SI{1.5}{ms}$};
+\end{axis}
+\end{tikzpicture}
+\end{document}
