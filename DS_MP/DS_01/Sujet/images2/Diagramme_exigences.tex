@@ -1,0 +1,496 @@
+\pdfminorversion=3
+\documentclass[tikz,border=1pt]{standalone}
+\usepackage{vuiprepstandalone}	
+\usepackage{alain2}
+\usepackage[locale=FR]{siunitx}
+%\def\pathfig{CHAP1/ex_Poste_de_mise_en_carton/images}
+
+\usepackage{pifont}
+\renewcommand{\cmark}{\ding{51}}%
+\renewcommand{\xmark}{\ding{55}}%
+
+\begin{document}
+
+\definecolor{c424242}{cmyk}{0,0,0,.8}
+\definecolor{c5c9967}{cmyk}{0,0,0,.8}
+\definecolor{cb2b2b2}{cmyk}{0,0,0,.30}
+\definecolor{ce0e0e0}{cmyk}{0,0,0,.16}
+\definecolor{c818181}{cmyk}{0,0,0,.8}
+\definecolor{c003333}{cmyk}{0,0,0,.8}
+\definecolor{cccffff}{cmyk}{0.2,0,0,0}
+
+\definecolor{cffffff}{cmyk}{0,0,0,0.}
+\definecolor{c280000}{cmyk}{0.4,0,0,0}
+\definecolor{c80ffff}{cmyk}{0.2,0,0,0}
+\definecolor{c00ffff}{cmyk}{0.4,0,0,0}
+\definecolor{cb2ffff}{cmyk}{0.7,0,0,0}
+\definecolor{c66ffff}{cmyk}{0.2,0,0,0}
+\definecolor{c99ffff}{cmyk}{0.3,0,0,0}
+\definecolor{c99795c}{cmyk}{0,0,0,.8}
+\definecolor{c998d5c}{cmyk}{0,0,0,.8}
+\definecolor{c6b7599}{cmyk}{0,0,0,.8}
+\definecolor{c666647}{cmyk}{0,0,0,.8}
+\definecolor{cdddddd}{cmyk}{0,0,0,.8}
+\definecolor{white}{cmyk}{0,0,0,0}
+
+
+\definecolor{ccccccc}{cmyk}{0,0,0,.2}
+\definecolor{c72e5e5}{cmyk}{.3,0,0,.4}
+\definecolor{c00b2b2}{cmyk}{.8,0,0,.1}
+\definecolor{blue}{cmyk}{.8,0,0,.1}
+\definecolor{c00cc00}{cmyk}{.5,0,0,.5}
+
+
+%
+%\definecolor{white}{RGB}{255,255,255}
+%\definecolor{cdddddd}{RGB}{221,221,221}
+%\definecolor{c424242}{RGB}{66,66,66}
+%\definecolor{cb2b2b2}{RGB}{178,178,178}
+%\definecolor{c00ffff}{RGB}{0,255,255}
+%\definecolor{c99795c}{RGB}{153,121,92}
+
+
+\begin{tikzpicture}[y=0.80pt, x=0.8pt,yscale=-1, inner sep=0pt, outer sep=0pt,
+draw=black,fill=black,line join=miter,line cap=rect,miter limit=10.00,line width=0.800pt]
+  \begin{scope}[draw=c424242,fill=c424242,line join=round,line cap=butt]
+    \path[draw,rounded corners=0.0000cm] (5.0000,5.0000) rectangle
+      (986.0000,1312.0000);
+  \end{scope}
+  \begin{scope}[line join=round,line cap=butt]
+    \path[fill] (12,23) node[above right] (text179) {req [Paquet] Cahier des charges [Exigences prototype]};
+    \path[draw=c424242] (5.0000,27.0000) -- (391.0000,27.0000);
+    \path[draw=c424242] (400.0000,5.0000) -- (400.0000,20.0000);
+    \path[draw=c424242] (391.0000,27.0000) -- (400.0000,20.0000);
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,612.0000) rectangle
+      (969.0000,717.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,609.0000) rectangle
+      (966.0000,714.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,609.0000) rectangle
+      (966.0000,714.0000);
+    \path[draw=c99795c] (693.0000,642.0000) -- (966.0000,642.0000);
+    \path[fill] (696,657) node[above right] (text203) {Id = "1.2.1.3"};
+    \path[fill] (696,672) node[above right] (text205) {Text = "La relation entre les
+      déplacements du};
+    \path[fill] (696,687) node[above right] (text211) {bouton de commande et du
+      corps d'épreuve du};
+    \path[fill] (696,702) node[above right] (text213) {capteur de position doit être
+      linéaire à 99 \%"};
+    \path[fill] (795.5,622.1379) node[above right] (text215) {«requirement»};
+    \path[fill] (768,637.1379) node[above right] (text217) {Linéarité déplacement};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,479.0000) rectangle
+      (969.0000,596.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,476.0000) rectangle
+      (966.0000,593.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,476.0000) rectangle
+      (966.0000,593.0000);
+    \path[draw=c99795c] (693.0000,509.0000) -- (966.0000,509.0000);
+    \path[fill] (696,524) node[above right] (text227) {Id = "1.2.1.2"};
+    \path[fill] (696,539) node[above right] (text229) {Text = "Le mouvement du bouton de
+      commande};
+    \path[fill] (696,554) node[above right] (text235) {doit être rectiligne :};
+    \path[fill] (696,569) node[above right] (text237) {amplitude $Y_{\textrm{max}}-Y_{\textrm{min}} = \SI{0,5}{mm}$
+      maxi};
+    \path[fill] (696,584) node[above right] (text239) {taux de variation $dY/dX < 2
+      \%$"};
+    \path[fill] (795.5,489.1379) node[above right] (text241) {«requirement»};
+    \path[fill] (770,504.1379) node[above right] (text243) {Mouvement rectiligne};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,248.0000) rectangle
+      (969.0000,367.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,245.0000) rectangle
+      (966.0000,364.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,245.0000) rectangle
+      (966.0000,364.0000);
+    \path[draw=c99795c] (693.0000,278.0000) -- (966.0000,278.0000);
+    \path[fill] (696,293) node[above right] (text253) {Id = "1.1.3.1"};
+    \path[fill] (696,308) node[above right] (text255) {Text = "Erreur statique consécutive à un
+      échelon};
+    \path[fill] (696,323) node[above right] (text261) {de consigne = 1 \% max};
+    \path[fill] (696,338) node[above right] (text263) {L'effet d'une perturbation
+      sinusoïdale doit être};
+    \path[fill] (696,353) node[above right] (text265) {divisé au minimum par 100"};
+    \path[fill] (795.5,258.1379) node[above right] (text267) {«requirement»};
+    \path[fill] (812.5,273.1379) node[above right] (text269) {Erreur};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,1193.0000) rectangle
+      (969.0000,1295.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,1190.0000) rectangle
+      (966.0000,1292.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,1190.0000) rectangle
+      (966.0000,1292.0000);
+    \path[draw=c99795c] (693.0000,1223.0000) -- (966.0000,1223.0000);
+    \path[fill] (696,1238) node[above right] (text279) {Id = "1.3.2.2"};
+    \path[fill] (696,1253) node[above right] (text281) {Text = "L'effort ressenti par le chirurgien
+      doit être};
+    \path[fill] (696,1268) node[above right] (text287) {indépendant de la position
+      de l'organe de};
+    \path[fill] (696,1283) node[above right] (text289) {commande : couple/effort =
+      constante $\pm 1 \%$"};
+    \path[fill] (795.5,1203.1379) node[above right] (text291) {«requirement»};
+    \path[fill] (768.5,1218.1379) node[above right] (text293) {Linéarité
+      couple/effort};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,864.0000) rectangle
+      (969.0000,955.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,861.0000) rectangle
+      (966.0000,952.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,861.0000) rectangle
+      (966.0000,952.0000);
+    \path[draw=c99795c] (693.0000,894.0000) -- (966.0000,894.0000);
+    \path[fill] (696,909) node[above right] (text303) {Id = "1.3.1.1"};
+    \path[fill] (696,924) node[above right] (text305) {Text = "Le capteur doit être capable de
+      détecter};
+    \path[fill] (696,939) node[above right] (text311) {des efforts de \SI{0,05}{N}"};
+    \path[fill] (795.5,874.1379) node[above right] (text313) {«requirement»};
+    \path[fill] (760,889.1379) node[above right] (text315) {Résolution mesure
+      effort};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,738.0000) rectangle
+      (969.0000,843.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,735.0000) rectangle
+      (966.0000,840.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,735.0000) rectangle
+      (966.0000,840.0000);
+    \path[draw=c99795c] (693.0000,768.0000) -- (966.0000,768.0000);
+    \path[fill] (696,783) node[above right] (text325) {Id = "1.2.2.1"};
+    \path[fill] (696,798) node[above right] (text327) {Text = "Le capteur de position doit être
+      capable};
+    \path[fill] (696,813) node[above right] (text333) {de détecter un déplacement de
+      \SI{0,1}{mm} de};
+    \path[fill] (696,828) node[above right] (text335) {l'organe de commande"};
+    \path[fill] (795.5,748.1379) node[above right] (text337) {«requirement»};
+    \path[fill] (750.5,763.1379) node[above right] (text339) {Résolution mesure
+      consigne};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,976.0000) rectangle
+      (969.0000,1063.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,973.0000) rectangle
+      (966.0000,1060.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,973.0000) rectangle
+      (966.0000,1060.0000);
+    \path[draw=c99795c] (693.0000,1006.0000) -- (966.0000,1006.0000);
+    \path[fill] (696,1021) node[above right] (text349) {Id = "1.3.1.2"};
+    \path[fill] (696,1036) node[above right] (text351) {Text = "Le capteur doit être capable de
+      mesurer};
+    \path[fill] (696,1051) node[above right] (text357) {des efforts allant de 0 N à
+      5 N"};
+    \path[fill] (795.5,986.1379) node[above right] (text359) {«requirement»};
+    \path[fill] (784,1001.1379) node[above right] (text361) {Amplitude effort};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,381.0000) rectangle
+      (969.0000,468.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,378.0000) rectangle
+      (966.0000,465.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,378.0000) rectangle
+      (966.0000,465.0000);
+    \path[draw=c99795c] (693.0000,411.0000) -- (966.0000,411.0000);
+    \path[fill] (696,426) node[above right] (text371) {Id = "1.2.1.1"};
+    \path[fill] (696,441) node[above right] (text373) {Text = "L'amplitude de déplacement du bouton};
+    \path[fill] (696,456) node[above right] (text379) {de commande doit être au
+      minimum de 50 mm"};
+    \path[fill] (795.5,391.1379) node[above right] (text381) {«requirement»};
+    \path[fill] (763.5,406.1379) node[above right] (text383) {Amplitude
+      déplacement};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,17.0000) rectangle
+      (969.0000,134.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,14.0000) rectangle
+      (966.0000,131.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,14.0000) rectangle
+      (966.0000,131.0000);
+    \path[draw=c99795c] (693.0000,47.0000) -- (966.0000,47.0000);
+    \path[fill] (696,62) node[above right] (text393) {Id = "1.1.1.1"};
+    \path[fill] (696,77) node[above right] (text395) {Text = "Marge de gain = \SI{7,5}{dB} mini};
+    \path[fill] (696,92) node[above right] (text401) {Marge de phase = \SI{45}{\degree} mini};
+    \path[fill] (696,107) node[above right] (text403) {Aucun dépassement transitoire
+      pour un échelon};
+    \path[fill] (696,122) node[above right] (text405) {de consigne"};
+    \path[fill] (795.5,27.1379) node[above right] (text407) {«requirement»};
+    \path[fill] (725.5,42.1379) node[above right] (text409) {Marges de stabilité et
+      amortissement};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,1081.0000) rectangle
+      (969.0000,1172.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,1078.0000) rectangle
+      (966.0000,1169.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,1078.0000) rectangle
+      (966.0000,1169.0000);
+    \path[draw=c99795c] (693.0000,1111.0000) -- (966.0000,1111.0000);
+    \path[fill] (696,1126) node[above right] (text419) {Id = "1.3.2.1"};
+    \path[fill] (696,1141) node[above right] (text421) {Text = "Le chirurgien doit pouvoir
+      ressentir un};
+    \path[fill] (696,1156) node[above right] (text427) {effort de 5 N au niveau de
+      la commande"};
+    \path[fill] (795.5,1091.1379) node[above right] (text429) {«requirement»};
+    \path[fill] (790,1106.1379) node[above right] (text431) {Effort ressenti};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (696.0000,150.0000) rectangle
+      (967.0000,237.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (693.0000,147.0000) rectangle
+      (964.0000,234.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (693.0000,147.0000) rectangle
+      (964.0000,234.0000);
+    \path[draw=c99795c] (693.0000,180.0000) -- (964.0000,180.0000);
+    \path[fill] (696,195) node[above right] (text441) {Id = "1.1.2.1"};
+    \path[fill] (696,210) node[above right] (text443) {Text = "Temps de réponse à 5 \% consécutif
+      à};
+    \path[fill] (696,225) node[above right] (text449) {un échelon de consigne = \SI{0,8}{s}
+      maxi"};
+    \path[fill] (794.5,160.1379) node[above right] (text451) {«requirement»};
+    \path[fill] (776.5,175.1379) node[above right] (text453) {Temps de réponse};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,143.0000) rectangle
+      (633.0000,234.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,140.0000) rectangle
+      (630.0000,231.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,140.0000) rectangle
+      (630.0000,231.0000);
+    \path[draw=c99795c] (448.0000,173.0000) -- (630.0000,173.0000);
+    \path[fill] (451,188) node[above right] (text463) {Id = "1.1.2"};
+    \path[fill] (451,203) node[above right] (text465) {Text = "Garantir un temps de};
+    \path[fill] (451,218) node[above right] (text471) {réponse minimum"};
+    \path[fill] (505,153.1379) node[above right] (text473) {«requirement»};
+    \path[fill] (518,168.1379) node[above right] (text475) {Rapidité};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,493.0000) rectangle
+      (633.0000,584.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,490.0000) rectangle
+      (630.0000,581.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,490.0000) rectangle
+      (630.0000,581.0000);
+    \path[draw=c99795c] (448.0000,523.0000) -- (630.0000,523.0000);
+    \path[fill] (451,538) node[above right] (text485) {Id = "1.2.1"};
+    \path[fill] (451,553) node[above right] (text487) {Text = "Acquérir la consigne de};
+    \path[fill] (451,568) node[above right] (text493) {position"};
+    \path[fill] (505,503.1379) node[above right] (text495) {«requirement»};
+    \path[fill] (481.5,518.1379) node[above right] (text497) {Acquisition consigne};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,1151.0000) rectangle
+      (633.0000,1238.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,1148.0000) rectangle
+      (630.0000,1235.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,1148.0000) rectangle
+      (630.0000,1235.0000);
+    \path[draw=c99795c] (448.0000,1181.0000) -- (630.0000,1181.0000);
+    \path[fill] (451,1196) node[above right] (text507) {Id = "1.3.2"};
+    \path[fill] (451,1211) node[above right] (text509) {Text = "Restituer un effort sur};
+    \path[fill] (451,1226) node[above right] (text515) {l'organe de commande"};
+    \path[fill] (505,1161.1379) node[above right] (text517) {«requirement»};
+    \path[fill] (514,1176.1379) node[above right] (text519) {Restituer};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,255.0000) rectangle
+      (633.0000,357.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,252.0000) rectangle
+      (630.0000,354.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,252.0000) rectangle
+      (630.0000,354.0000);
+    \path[draw=c99795c] (448.0000,285.0000) -- (630.0000,285.0000);
+    \path[fill] (451,300) node[above right] (text529) {Id = "1.1.3"};
+    \path[fill] (451,315) node[above right] (text531) {Text = "Garantir que la};
+    \path[fill] (451,330) node[above right] (text537) {consigne du chirurgien sera};
+    \path[fill] (451,345) node[above right] (text539) {exécutée avec précision"};
+    \path[fill] (505,265.1379) node[above right] (text541) {«requirement»};
+    \path[fill] (514,280.1379) node[above right] (text543) {Précision};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,38.0000) rectangle
+      (633.0000,125.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,35.0000) rectangle
+      (630.0000,122.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,35.0000) rectangle
+      (630.0000,122.0000);
+    \path[draw=c99795c] (448.0000,68.0000) -- (630.0000,68.0000);
+    \path[fill] (451,83) node[above right] (text553) {Id = "1.1.1"};
+    \path[fill] (451,98) node[above right] (text555) {Text = "Assurer la stabilité de};
+    \path[fill] (451,113) node[above right] (text561) {l'asservissement"};
+    \path[fill] (505,48.1379) node[above right] (text563) {«requirement»};
+    \path[fill] (518,63.1379) node[above right] (text565) {Stabilité};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,927.0000) rectangle
+      (633.0000,1014.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,924.0000) rectangle
+      (630.0000,1011.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,924.0000) rectangle
+      (630.0000,1011.0000);
+    \path[draw=c99795c] (448.0000,957.0000) -- (630.0000,957.0000);
+    \path[fill] (451,972) node[above right] (text575) {Id = "1.3.1"};
+    \path[fill] (451,987) node[above right] (text577) {Text = "Mesurer l'effort exercé};
+    \path[fill] (451,1002) node[above right] (text583) {sur l'environnement"};
+    \path[fill] (505,937.1379) node[above right] (text585) {«requirement»};
+    \path[fill] (518.5,952.1379) node[above right] (text587) {Mesure};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (451.0000,745.0000) rectangle
+      (626.0000,832.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (448.0000,742.0000) rectangle
+      (623.0000,829.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (448.0000,742.0000) rectangle
+      (623.0000,829.0000);
+    \path[draw=c99795c] (448.0000,775.0000) -- (623.0000,775.0000);
+    \path[fill] (451,790) node[above right] (text597) {Id = "1.2.2"};
+    \path[fill] (451,805) node[above right] (text599) {Text = "Mesurer la consigne};
+    \path[fill] (451,820) node[above right] (text605) {de position"};
+    \path[fill] (501.5,755.1379) node[above right] (text607) {«requirement»};
+    \path[fill] (488,770.1379) node[above right] (text609) {Mesure consigne};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (45.0000,598.0000) rectangle
+      (207.0000,715.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (42.0000,595.0000) rectangle
+      (204.0000,712.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (42.0000,595.0000) rectangle
+      (204.0000,712.0000);
+    \path[draw=c99795c] (42.0000,628.0000) -- (204.0000,628.0000);
+    \path[fill] (45,643) node[above right] (text619) {Id = "1"};
+    \path[fill] (45,658) node[above right] (text621) {Text = "Positionner l'outil en};
+    \path[fill] (45,673) node[above right] (text627) {minimisant l'effet d'une};
+    \path[fill] (45,688) node[above right] (text629) {perturbation périodique"};
+    \path[fill] (89,608.1379) node[above right] (text631) {«requirement»};
+    \path[fill] (62.5,623.1379) node[above right] (text633) {Déplacement de
+      l'outil};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (248.0000,598.0000) rectangle
+      (410.0000,718.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (245.0000,595.0000) rectangle
+      (407.0000,715.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (245.0000,595.0000) rectangle
+      (407.0000,715.0000);
+    \path[draw=c99795c] (245.0000,628.0000) -- (407.0000,628.0000);
+    \path[fill] (248,643) node[above right] (text643) {Id = "1.2"};
+    \path[fill] (248,658) node[above right] (text645) {Text = "Permettre au};
+    \path[fill] (248,673) node[above right] (text651) {chirurgien de donner une};
+    \path[fill] (248,688) node[above right] (text653) {consigne de position"};
+    \path[fill] (292,608.1379) node[above right] (text655) {«requirement»};
+    \path[fill] (268,623.1379) node[above right] (text657) {Consigne de position};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (248.0000,136.0000) rectangle
+      (410.0000,253.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (245.0000,133.0000) rectangle
+      (407.0000,250.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (245.0000,133.0000) rectangle
+      (407.0000,250.0000);
+    \path[draw=c99795c] (245.0000,166.0000) -- (407.0000,166.0000);
+    \path[fill] (248,181) node[above right] (text667) {Id = "1.1"};
+    \path[fill] (248,196) node[above right] (text669) {Text = "Commander le};
+    \path[fill] (248,211) node[above right] (text675) {système "};
+    \path[fill] (292,146.1379) node[above right] (text677) {«requirement»};
+    \path[fill] (295,161.1379) node[above right] (text679) {Commande};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (248.0000,1018.0000) rectangle
+      (410.0000,1135.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (245.0000,1015.0000) rectangle
+      (407.0000,1132.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (245.0000,1015.0000) rectangle
+      (407.0000,1132.0000);
+    \path[draw=c99795c] (245.0000,1048.0000) -- (407.0000,1048.0000);
+    \path[fill] (248,1063) node[above right] (text689) {Id = "1.3"};
+    \path[fill] (248,1078) node[above right] (text691) {Text = "Permettre au};
+    \path[fill] (248,1093) node[above right] (text697) {chirurgien de ressentir};
+    \path[fill] (248,1108) node[above right] (text699) {l'effort appliqué sur};
+    \path[fill] (248,1123) node[above right] (text701) {l'environnement"};
+    \path[fill] (292,1028.1379) node[above right] (text703) {«requirement»};
+    \path[fill] (268,1043.1379) node[above right] (text705) {Restitution de
+      l'effort};
+    \path[fill=cb2b2b2,rounded corners=0.0000cm] (45.0000,1018.0000) rectangle
+      (207.0000,1127.0000);
+    \path[fill=c00ffff,rounded corners=0.0000cm] (42.0000,1015.0000) rectangle
+      (204.0000,1124.0000);
+    \path[draw=c99795c,rounded corners=0.0000cm] (42.0000,1015.0000) rectangle
+      (204.0000,1124.0000);
+    \path[draw=c99795c] (42.0000,1048.0000) -- (204.0000,1048.0000);
+    \path[fill] (45,1063) node[above right] (text715) {Id = "1.4"};
+    \path[fill] (45,1078) node[above right] (text717) {Text = "Imposer un};
+    \path[fill] (45,1093) node[above right] (text723) {mouvement de translation à};
+    \path[fill] (45,1108) node[above right] (text725) {l'outil"};
+    \path[fill] (89,1028.1379) node[above right] (text727) {«requirement»};
+    \path[fill] (87.5,1043.1379) node[above right] (text729) {Déplacement};
+    \path[draw=c424242] (148.3894,594.6614) -- (151.6106,587.3386);
+    \path[draw=c424242] (146.3386,589.3894) -- (153.6614,592.6106);
+    \path[draw=c424242] (150.0000,591.0000) circle (0.1129cm);
+    \path[draw=c424242] (152.0000,587.0000) -- (300.0000,250.0000);
+    \path[draw=c424242] (123.0000,712.0000) -- (123.0000,720.0000);
+    \path[draw=c424242] (127.0000,716.0000) -- (119.0000,716.0000);
+    \path[draw=c424242] (123.0000,716.0000) circle (0.1129cm);
+    \path[draw=c424242] (123.0000,720.0000) -- (123.0000,1015.0000);
+    \path[draw=c424242] (152.2644,712.3962) -- (155.7356,719.6038);
+    \path[draw=c424242] (157.6038,714.2644) -- (150.3962,717.7356);
+    \path[draw=c424242] (154.0000,716.0000) circle (0.1129cm);
+    \path[draw=c424242] (156.0000,720.0000) -- (298.0000,1015.0000);
+    \path[draw=c424242] (635.0000,493.0000) -- (630.0000,499.0000) --
+      (638.0000,500.0000);
+  \end{scope}
+  \begin{scope}[draw=c424242,fill=c424242,dash pattern=on 8.00pt,line join=round,line cap=butt]
+    \path[draw] (630.0000,499.0000) -- (717.0000,465.0000);
+  \end{scope}
+  \begin{scope}[line join=round,line cap=butt]
+    \path[fill] (637,477.1379) node[above right] (text763) {«refine»};
+    \path[draw=c424242] (638.0000,574.0000) -- (630.0000,575.0000) --
+      (635.0000,581.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,575.0000) --
+      (709.0000,609.0000);
+    \path[fill] (637,608.1379) node[above right] (text769) {«refine»};
+    \path[draw=c424242] (630.0000,782.0000) -- (623.0000,786.0000) --
+      (630.0000,790.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (623.0000,786.0000) --
+      (693.0000,786.0000);
+    \path[fill] (639,781.1379) node[above right] (text775) {«refine»};
+    \path[draw=c424242] (637.0000,72.0000) -- (630.0000,76.0000) --
+      (637.0000,80.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,76.0000) --
+      (693.0000,75.0000);
+    \path[fill] (642,70.1379) node[above right] (text781) {«refine»};
+    \path[draw=c424242] (637.0000,183.0000) -- (630.0000,187.0000) --
+      (637.0000,191.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,187.0000) --
+      (693.0000,188.0000);
+    \path[fill] (642,182.1379) node[above right] (text787) {«refine»};
+    \path[draw=c424242] (637.0000,299.0000) -- (630.0000,303.0000) --
+      (637.0000,307.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,303.0000) --
+      (693.0000,304.0000);
+    \path[fill] (642,298.1379) node[above right] (text793) {«refine»};
+    \path[draw=c424242] (636.0000,943.0000) -- (630.0000,948.0000) --
+      (638.0000,951.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,948.0000) --
+      (693.0000,935.0000);
+    \path[fill] (632,936.1379) node[above right] (text799) {«refine»};
+    \path[draw=c424242] (637.0000,531.0000) -- (630.0000,535.0000) --
+      (637.0000,539.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,535.0000) --
+      (693.0000,534.0000);
+    \path[fill] (642,529.1379) node[above right] (text805) {«refine»};
+    \path[draw=c424242] (638.0000,979.0000) -- (630.0000,982.0000) --
+      (636.0000,987.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,982.0000) --
+      (693.0000,993.0000);
+    \path[fill] (647,982.1379) node[above right] (text811) {«refine»};
+    \path[draw=c424242] (636.0000,1165.0000) -- (630.0000,1170.0000) --
+      (638.0000,1172.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,1170.0000) --
+      (693.0000,1155.0000);
+    \path[fill] (630,1157.1379) node[above right] (text817) {«refine»};
+    \path[draw=c424242] (638.0000,1204.0000) -- (630.0000,1207.0000) --
+      (636.0000,1212.0000);
+    \path[draw=c424242,dash pattern=on 8.00pt] (630.0000,1207.0000) --
+      (693.0000,1218.0000);
+    \path[fill] (647,1207.1379) node[above right] (text823) {«refine»};
+    \path[draw=c424242] (407.5976,705.8967) -- (414.4024,710.1033);
+    \path[draw=c424242] (413.1033,704.5976) -- (408.8967,711.4024);
+    \path[draw=c424242] (411.0000,708.0000) circle (0.1129cm);
+    \path[draw=c424242] (414.0000,710.0000) -- (466.0000,742.0000);
+    \path[draw=c424242] (407.5100,1118.0456) -- (414.4900,1121.9544);
+    \path[draw=c424242] (412.9544,1116.5100) -- (409.0456,1123.4900);
+    \path[draw=c424242] (411.0000,1120.0000) circle (0.1129cm);
+    \path[draw=c424242] (414.0000,1122.0000) -- (461.0000,1148.0000);
+    \path[draw=c424242] (407.5177,608.9682) -- (414.4823,605.0318);
+    \path[draw=c424242] (409.0318,603.5177) -- (412.9682,610.4823);
+    \path[draw=c424242] (411.0000,607.0000) circle (0.1129cm);
+    \path[draw=c424242] (414.0000,605.0000) -- (457.0000,581.0000);
+    \path[draw=c424242] (407.4706,147.8824) -- (414.5294,144.1176);
+    \path[draw=c424242] (409.1176,142.4706) -- (412.8824,149.5294);
+    \path[draw=c424242] (411.0000,146.0000) circle (0.1129cm);
+    \path[draw=c424242] (415.0000,144.0000) -- (456.0000,122.0000);
+    \path[draw=c424242] (407.4223,1032.7889) -- (414.5777,1029.2111);
+    \path[draw=c424242] (409.2111,1027.4223) -- (412.7889,1034.5777);
+    \path[draw=c424242] (411.0000,1031.0000) circle (0.1129cm);
+    \path[draw=c424242] (415.0000,1029.0000) -- (451.0000,1011.0000);
+    \path[draw=c424242] (204.0000,654.0000) -- (212.0000,654.0000);
+    \path[draw=c424242] (208.0000,650.0000) -- (208.0000,658.0000);
+    \path[draw=c424242] (208.0000,654.0000) circle (0.1129cm);
+    \path[draw=c424242] (212.0000,654.0000) -- (245.0000,654.0000);
+    \path[draw=c424242] (407.0015,189.1081) -- (414.9985,188.8919);
+    \path[draw=c424242] (410.8919,185.0015) -- (411.1081,192.9985);
+    \path[draw=c424242] (411.0000,189.0000) circle (0.1129cm);
+    \path[draw=c424242] (415.0000,189.0000) -- (448.0000,188.0000);
+    \path[draw=c424242] (407.4417,234.1728) -- (414.5583,237.8272);
+    \path[draw=c424242] (412.8272,232.4417) -- (409.1728,239.5583);
+    \path[draw=c424242] (411.0000,236.0000) circle (0.1129cm);
+    \path[draw=c424242] (415.0000,238.0000) -- (448.0000,255.0000);
+    
+
+  \end{scope}
+    \node[scale=2,draw,circle,fill=cyan!80,inner sep=2pt] at (1000,420) {\cmark};
+    \node[scale=2,draw,circle,fill=cyan!80,inner sep=2pt] at (1000,530) {\cmark};
+    \node[scale=2,draw,circle,fill=cyan!80,inner sep=2pt] at (1000,660) {\cmark};
+    \node[scale=2,draw,circle,fill=cyan!80,inner sep=2pt] at (1000,1240) {\cmark};
+
+
+\end{tikzpicture}
+\end{document}

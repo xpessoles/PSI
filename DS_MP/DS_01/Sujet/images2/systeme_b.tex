@@ -1,0 +1,58 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+\usepackage[locale=FR]{siunitx}
+\begin{document}
+
+\begin{tikzpicture}
+
+\node {\begin{tikzpicture}
+\begin{axis}[
+xmode=log,
+grid=both,tick label style={/pgf/number format/fixed},scaled ticks=false,/pgf/number format/1000 sep = {\,},/pgf/number format/use comma,
+%ytick={0,0.1,...,0.6},
+%minor y tick num=4,
+%minor x tick num=4,
+%xlabel = {Pulsation (\si{rad.s^{-1}})},
+ylabel = {Gain (dB)},
+%legend entries={Consigne,Déphasage},
+%legend style={at={(0.65,0.75)},anchor=south west},
+%legend columns=3,
+%axis lines=left,
+xmin=.1,xmax=10,
+ymin=-15,ymax=5,
+height=4cm,
+width=8cm,
+font=\footnotesize,
+]
+\addplot [cyan,thick] table[x index=0,y index =2]{02PerformancesSLCI/ex_Telechirurgie2/images/modele/bode_B.txt};
+\end{axis}
+\end{tikzpicture}};
+
+\node[yshift=-3.2cm,xshift=1mm] {
+\begin{tikzpicture}
+\begin{axis}[
+xmode=log,
+grid=both,tick label style={/pgf/number format/fixed},scaled ticks=false,/pgf/number format/1000 sep = {\,},/pgf/number format/use comma,
+ytick={0,15,30,45,60,75,90},
+%minor y tick num=3,
+%minor x tick num=0,
+xlabel = {Pulsation (\si{rad.s^{-1}})},
+ylabel = {Phase (\si{\degree})},
+%legend entries={Consigne,Déphasage},
+%legend style={at={(0.65,0.75)},anchor=south west},
+%legend columns=3,
+%axis lines=left,
+xmin=.1,xmax=10,
+ymin=0,ymax=90,
+height=4cm,
+width=8cm,
+font=\footnotesize,
+]
+\addplot [cyan,thick] table[x index=0,y index =1]{02PerformancesSLCI/ex_Telechirurgie2/images/modele/bode_B.txt};
+\end{axis}
+\end{tikzpicture}};
+\end{tikzpicture}
+
+\end{document}
