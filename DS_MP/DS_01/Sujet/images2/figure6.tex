@@ -1,0 +1,34 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+\usepackage[locale=FR]{siunitx}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+\foreach \x in {0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1} {
+\draw[dashed,gray!50] ({log10(\x)*5},-6.1) -- ({log10(\x)*5},0);
+}
+\foreach \x in {0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1} {
+\draw[dashed,gray!50] (-10.1,{log10(\x)*3}) -- (0,{log10(\x)*3});
+}
+\node[below] at (-10,-6.1) {\numprint{0,01}};
+\node[below] at (-5,-6.1) {\numprint{0,1}};
+\node[below] at (0,-6.1) {\numprint{1}};
+\node[left] at (-10.1,0) {\numprint{1}};
+\node[left] at (-10.1,-3) {\numprint{0,1}};
+\node[left] at (-10.1,-6) {\numprint{0,01}};
+\node[below,scale=1.2] at (-5,-6.5) {Amortissement $z$};
+\node[below,rotate=90,scale=1.2] at (-12,-3) {Dépassement relatif $D_n^\%$};
+\draw[cyan,very thick,prefix=generated/, id=depassement_1, samples=100,domain=-2:-0.0829,xscale=5,yscale=3] plot function {log10(exp(-3.14*10**x/sqrt(1-(10**x)**2)))};
+\draw[cyan,very thick,dashed,prefix=generated/, id=depassement_2, samples=100,domain=-2:-0.229,xscale=5,yscale=3] plot function {log10(exp(-3.14*2*10**x/sqrt(1-(10**x)**2)))};
+\draw[cyan,very thick,dotted,prefix=generated/, id=depassement_3, samples=100,domain=-2:-0.358,xscale=5,yscale=3] plot function {log10(exp(-3.14*3*10**x/sqrt(1-(10**x)**2)))};
+\draw[very thick] (-10,-6) rectangle (0,0);
+\draw[very thick,fill=white] (-2.1,-1.5) rectangle (-0.1,-0.1);
+\draw[very thick,cyan ] (-2.0,-0.4) -- ++(1,0) node[right, color=black,scale=.7] {$D_1^\%$};
+\draw[very thick,dashed,cyan] (-2.0,-0.8) -- ++(1,0) node[right, color=black,scale=.7] {$D_2^\%$};
+\draw[very thick, dotted,cyan] (-2.0,-1.2) -- ++(1,0) node[right, color=black,scale=.7] {$D_3^\%$};
+
+\end{tikzpicture}
+\end{document}

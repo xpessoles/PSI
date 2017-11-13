@@ -1,0 +1,1145 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Modélisation systèmes multiphysiques : Modélisation linéaire et non linéaire},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+    
+\input{style/new_style}
+\input{style/macros_SII}
+\usepackage{multicol}
+\usepackage{standalone}
+\standaloneconfig{mode=buildnew}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\fichetrue
+
+%\fichefalse
+
+%\proftrue
+%\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PSI$\star$}
+\def\xxnumpartie{Cycle 01}
+\def\xxpartie{Modéliser le comportement linéaire et non linéaire des systèmes multiphysiques}
+
+
+\def\xxnumchapitre{Chapitre 1 \vspace{.2cm}}
+\def\xxchapitre{\hspace{.12cm} Modélisation multiphysique}
+
+
+\def\xxtitreexo{\noindent Micromanipulateur compact pour la chirurgie endoscopique \\ Direction Automobile Découplée}%Motorisation du moteur Haibike}
+\def\xxsourceexo{\hspace{.2cm} \footnotesize{Mines Ponts 2016 -- Banque PT SI A 2017 }}
+
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+%\def\xxonglet{Part. 1 -- Ch. 3}
+\def\xxonglet{Cycle 01}
+
+\def\xxactivite{DS 1}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+%Les sources sont associées par un \emph{hacheur série}. La détermination des grandeurs électriques associées à ce montage permet de conclure vis à vis du cahier des charges.
+%\noindent \textbf{Résoudre :} à partir des modèles retenus :
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item choisir une méthode de résolution analytique, graphique, numérique;
+%\item mettre en \oe{}uvre une méthode de résolution.
+%\end{itemize}
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item \textit{Rés -- C1.1 :} Loi entrée sortie géométrique et cinématique -- Fermeture géométrique.
+%\end{itemize}
+%
+%\noindent \textit{Mod2 -- C4.1 :} Représentation par schéma-blocs.
+}}
+
+\def\xxfigures{
+%\includegraphics[width=.9\linewidth]{images/fig_01}
+}%figues de la page de garde
+
+
+\def\xxpied{%
+Cycle 01 -- Modéliser le comportement des systèmes multiphysiques\\
+\xxactivite%
+}
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+\usepackage{pgfplots}
+\begin{document}
+%\defimages{images}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{7cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+%\defimages2{images}
+
+%\begin{multicols}{2}
+\section{Micromanipulateur compact pour la chirurgie endoscopique ($\text{MC}^2\text{E}$)}
+\subsection{Présentation générale}
+L’objet de cette étude est un robot appelé $\text{MC}^2\text{E}$ utilisé en chirurgie endoscopique. Ce type de
+robots médico-chirurgicaux est équipé de capteurs (caméra, capteur d’efforts…) permettant de maîtriser
+les interactions avec des environnements souvent déformables et difficilement modélisables comme le
+corps humain.
+
+\begin{center}
+\begin{minipage}[c]{.1\linewidth}
+\begin{center}
+\includegraphics[height=4cm]{images/fig_01}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.65\linewidth}
+\begin{center}
+\includegraphics[height=3.5cm]{images/fig_02}
+%Figure 1 : Modèle de la commande en effort
+\end{center}
+\end{minipage}
+\end{center}
+
+Le mode opératoire se décompose en quatre phases :
+\begin{itemize}
+\item phase 1 : après avoir introduit le trocart, l’abdomen du patient est gonflé avec du $\text{CO}_2$. Celui-ci se montrera alors aussi stable et rigide que possible pour la réussite de l’opération ;
+\item phase 2 : le $\text{MC}^2\text{E}$ est positionné sur l’abdomen du patient. Celui-ci est maintenu en position grâce à des sangles. Les trois axes en rotation sont alors asservis en position constante ;
+\item phase 3 : la pince est introduite dans le trocart au travers d’un guide (étanche). Une phase de calibration du robot utile à la compensation de pesanteur analysée par la suite, démarre ;
+\item phase 4 : le chirurgien amène la pince du $\text{MC}^2\text{E}$ qui doit tirer la vésicule lors de l’opération. 
+\end{itemize}
+L’axe en translation du $\text{MC}^2\text{E}$ entre alors en fonctionnement : il est asservi en effort constant pour tirer (ou pousser) la vésicule au fur et à mesure que le chirurgien utilise son bistouri pour détacher la vésicule du foie. La figure suivante décrit les principales exigences auxquelles est soumis le $\text{MC}^2\text{E}$.
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_05}
+%Figure 1 : Modèle de la commande en effort
+\end{center}
+
+%L’objectif de ce sujet est d’analyser, de comprendre et de justifier les choix structurels faits par les
+%ingénieurs. Pour cela, on se basera sur la démarche de l’ingénieur :
+%\begin{itemize}
+%\item les exigences et/ou performances souhaitées sont spécifiées tout au long du sujet;
+%\item des modèles et résultats analytiques ou simulés sont mis en place;
+%\item des résultats expérimentaux sont proposés.
+%\end{itemize}
+%À chaque fois, on cherchera à quantifier les écarts entre les différents résultats obtenus par simulation et/ou
+%expérimentation et les exigences et/ou performances souhaitées. Les réponses apportées aux questions
+%devront donc être rédigées dans cet esprit.
+
+\subsection{Validation des performances de l’asservissement d’effort}
+On s’intéresse ici à la phase 4. Lors de l’opération envisagée, il est nécessaire de maintenir un effort
+constant au bout de la pince (4). Pour cela, on réalise un asservissement d’effort de l’axe en translation que
+l’on se propose d’étudier.
+Le système est alimenté par un transformateur alternatif/continu. Un variateur permet de piloter le moteur
+M4. Une interface de communication entrée/sortie permet de coder les consignes d’effort et acquérir des
+grandeurs physiques. D’autre part, elle communique à la chaîne d’énergie, après traitement, des ordres
+définis par un calculateur.
+La description par diagramme partiel de définition de blocs de l’axe en translation est donnée ci-dessous. %Des modèles géométriques de cet axe sont donnés en annexe 5.
+
+
+\begin{center}
+%\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[height=9cm]{images/fig_03}
+\end{center}
+%\end{minipage} \hfill
+%\begin{minipage}[c]{.45\linewidth}
+%\begin{center}
+%\includegraphics[height=4cm]{images/fig_04}
+%%Figure 1 : Modèle de la commande en effort
+%\end{center}
+%\end{minipage}
+\end{center}
+
+\subparagraph{}
+\textit{Compléter le schéma représentant les chaînes d’énergie et d’information de cette chaîne
+fonctionnelle asservie en indiquant le nom des composants réalisant chacune des fonctions.}
+
+%
+%
+%Lors de l’opération, il est essentiel de contrôler et réguler l’effort appliqué sur l’organe et donc
+%indirectement l’effort fourni par le moteur M4. Le schéma-blocs fonctionnel retenu pour la structure
+%d’asservissement est donné figure 1. 
+%
+%\begin{center}
+%%\includegraphics[width=\linewidth]{images/}
+%Figure 1 : Modèle de la commande en effort
+%\end{center}
+%
+%A un effort de consigne va correspondre un effort appliqué sur l’organe
+%pour l’extraire. C’est ce même effort qui est mesuré par le capteur
+%d’effort. Celui-ci va alors générer un couple rapporté sur l’arbre du
+%moteur M4.
+%On souhaite ici s’intéresser à la structure de commande retenue pour
+%cette boucle d’asservissement. Les interactions avec l’organe étant par
+%définition inconnues et complexes, on va régler le calculateur en se
+%basant sur un montage d’essai mettant en interaction la pince (4) avec
+%un ressort simulant la vésicule biliaire (raideur du ressort similaire à la
+%raideur de la vésicule).
+%
+%Le schéma-blocs fonctionnel retenu pour cette étude est donc le
+%suivant :
+%
+%\begin{center}
+%%\includegraphics[width=\linewidth]{images/}
+%Figure 2 : Modèle de la commande en effort
+%\end{center}
+
+
+\subsubsection*{Modèle de connaissance de l'asservissement}
+
+\begin{obj}
+Modéliser l’asservissement en effort.
+\end{obj}
+
+L’équation de mouvement est définie par l’équation différentielle suivante : 
+$J\dfrac{\text{d}^2\theta_m(t)}{\text{d}t^2}=C_m(t)-C_e(t)$  avec :
+\begin{itemize}
+\item $J$, inertie équivalente à l’ensemble en mouvement, ramenée sur l’arbre moteur;
+\item $C_e(t)$, couple regroupant l’ensemble des couples extérieurs ramenés à l’arbre moteur, notamment fonction de la raideur du ressort.
+\end{itemize}
+
+
+On notera $\theta_m(p)$, $\Omega_m(p)$, $C_m(p)$ et $C_e(p)$ les transformées de Laplace des grandeurs de l’équation de mouvement.
+On pose $C_e(t)=K_{C\theta}\theta_m(t)$ où  $K_{C\theta}$ est une constante positive. On a de plus $\dfrac{\text{d}\theta_m(t)}{\text{d}t}=\omega_m(t)$. La régulation se met alors sous la forme du schéma-blocs à retour unitaire simplifié que l’on
+admettra :
+
+\begin{center}
+\includegraphics[width=.8\linewidth]{images/fig_06}
+
+\textit{Modèle simplifié du montage du capteur d’effort.}
+\end{center}
+%\end{multicols}
+
+Avec :
+\begin{itemize}
+\item $C_e(p)$, couple de sortie mesuré par le capteur d’effort situé sur le $\text{MC}^2\text{E}$ ;
+\item $C_c(p)$, couple de consigne ;
+\item $C_m(p)$, couple moteur ;
+\item $H_{\text{cor}}(p)$, fonction de transfert du correcteur.
+\end{itemize}
+Dans un premier temps, on prendra $H_{\text{cor}}(p)=1$.
+
+\subparagraph{}
+\textit{Déterminer les expressions des fonctions de transfert $H_1(p)$, $H_2(p)$ et $H_3(p)$.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Donner l’expression de la fonction de transfert en boucle fermée $H_{BF}(p)$ de l’asservissement
+d’effort.}
+
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Quel sera le comportement de cet asservissement en réponse à un échelon d'amplitude $C_0$?
+Conclure.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\vspace{.25cm}
+
+Pour remédier au problème ainsi mis en évidence, le concepteur a choisi de mettre en place une boucle
+interne numérique, dite tachymétrique, de gain $B$. On s’intéresse ici à la définition analytique de $B$.
+Le schéma-blocs modifié est donné figure suivante.
+
+
+\begin{center}
+\includegraphics[width=.7\linewidth]{images/fig_07}
+
+\textit{Régulation avec retour tachymétrique}
+\end{center}
+
+
+On règle B de telle façon que, pour $H_{\text{cor}}(p)=1$, la fonction de transfert en boucle ouverte, notée $H_{\text{BO}}(p)$, puisse être mise sous la forme suivante : 
+$H_{\text{BO}}(p)=\dfrac{1}{\left(1+\tau p\right)^2}$.
+
+
+
+\subparagraph{}
+\textit{Donner l’expression analytique du gain $B$, en fonction de $J$ et $K_{C\theta}$, permettant d’obtenir cette
+forme de fonction de transfert. En déduire l’expression analytique de la constante de temps $\tau$.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\vspace{.25cm}
+
+Les exigences du cahier des charges sont données plus haut (exigences 1.2.2.1 à 1.2.2.4).
+
+Afin de répondre à ces exigences, on choisit un correcteur proportionnel-intégral de gain $K_i$ et de constante de temps $T_i$. Le schéma-blocs de la régulation se met sous la forme de la figure qui suit.
+
+\begin{center}
+\includegraphics[width=.55\linewidth]{images/fig_08}
+
+\textit{Régulation avec correcteur PI.}
+\end{center}
+
+
+\subparagraph{}
+\textit{Donner l’expression de l’erreur statique en réponse à un échelon d'amplitude $C_0$. Conclure vis-à-vis du cahier des charges.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\vspace{.25cm}
+
+On souhaite régler le correcteur pour que le système asservi ait une fonction de transfert en boucle fermée
+d’ordre 2 de la forme :
+$\dfrac{K_{\text{BF}}}{1+\dfrac{2\xi_{BF}}{\omega_{0\text{BF}}}p+\dfrac{p^2}{\omega_{0\text{BF}}^2}}$.
+
+
+\subparagraph{}
+\textit{Proposer une expression simple pour la constante de temps $T_i$.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+Sur le document réponse sont tracées les courbes de la réponse fréquentielle en boucle ouverte pour
+$K_i=1$ et les réponses fréquentielles en boucle fermée pour différentes valeurs de $K_i$.
+
+
+\subparagraph{}
+\textit{En reportant les tracés nécessaires sur le document réponse et en utilisant les abaques 1 et 2 du
+document réponse, proposer un choix de réglage pour $K_i$ permettant de vérifier toutes les
+performances.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{Remplir le tableau du document réponse et conclure sur la validation des critères de performance.
+Tracer l’allure de la réponse temporelle à un échelon $C_{c0}$ en indiquant toutes les valeurs caractéristiques
+nécessaires.}
+
+\ifprof
+\begin{corrige}
+
+\end{corrige}
+\else
+\fi
+
+
+\section{Direction automobile découplée}
+
+\subsection{Mise en situation}
+
+\noindent\begin{minipage}[c]{.67\linewidth}
+\indent Le principe de la direction découplée est de substituer à la liaison mécanique entre le volant et les roues une architecture de type télémanipulateur à un degré de liberté qui consiste à coupler un robot maître manipulé par un opérateur, avec un robot esclave distant, qui effectue la tâche. 
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=4cm]{images/img_01}
+\end{center}
+\end{minipage}
+
+\subsection{Analyse et modélisation du système}
+\begin{obj}
+Cette partie a pour objectif d'analyser la structure et d'élaborer une modélisation du système
+de direction découplée.
+\end{obj}
+Le diagramme de bloc interne précise la structure interne et les flux échangés
+entre les différents composants de la direction découplée dont l'architecture est fournie par le
+diagramme de définition de blocs.
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_10}
+
+\textit{Figure 1 -- Diagramme de blocs de la direction découplée.}
+\end{center}
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_11}
+
+\textit{Figure 2 -- Diagramme de blocs interne de la direction découplée.}
+\end{center}
+
+\subparagraph{}
+\textit{Les unités de pilotage et de braquage comportent une interface de puissance (I.P.). Préciser la
+fonction et le nom génériques de ce constituant au sein d'une chaîne fonctionnelle.}
+
+\subparagraph{}
+\textit{Préciser la nature (énergie ou information) des flux repérés 1, 2, 3, 4 et 5 sur le diagramme de bloc
+interne.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+On donne dans le cahier réponses un schéma-blocs du modèle de la direction découplée.
+
+%\subparagraph{}
+%\textit{Les unités de pilotage et de braquage comportent une interface de puissance (I.P.). Préciser la
+%fonction et le nom génériques de ce constituant au sein d'une chaîne fonctionnelle.}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+
+
+
+\subparagraph{}
+\textit{Encadrer et nommer, sur le schéma-blocs du cahier réponses, les trois zones correspondant aux
+unités de commande, de pilotage et de braquage définies sur le diagramme de blocs internes.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subsection{Modélisation et optimisation du comportement de l'unité de pilotage}
+
+\begin{obj}
+Cette partie a pour objectif de modéliser la structure de l'unité de pilotage, de simuler son
+comportement et de corriger celui-ci afin d'obtenir les performances attendues et décrites
+dans le cahier des charges.
+\end{obj}
+
+\subsubsection*{Cahier des charges}
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_12}
+
+%\textit{Diagramme de blocs interne de la direction découplée.}
+\end{center}
+
+On considère que l'évolution de référence du couple conducteur est une loi en trapèze donnée
+figure suivante.
+
+
+\begin{center}
+\includegraphics[width=.5\linewidth]{images/fig_13}
+
+\textit{Figure 3 -- Loi de référence en trapèze d'évolution du couple conducteur.}
+\end{center}
+
+La figure suivante donne une vue de cette unité sous la forme d'une maquette numérique à laquelle est
+associé le schéma cinématique qui servira de base à l'étude mécanique.
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_14}
+
+\textit{Figure 4 -- Unité de pilotage (chaîne d'énergie) et schéma cinématique.}
+\end{center}
+
+
+L'unité de pilotage est constituée d'une chaîne d'énergie chargée de solliciter le volant par un
+couple $C_{mv}\vect{x_v}$ qui résiste à l'action du conducteur $C_{c}\vect{x_v}$
+quand celui-ci cherche à tourner le volant.
+
+En effet, la simple dynamique du système mécanique de l'unité de pilotage ne donnerait pas au
+conducteur la sensation de manier la direction d'une automobile. La composante $C_{mv}$ est donc élaborée
+pour que la dynamique du volant en termes d'inertie et de raideur soit équivalente à celle d'une direction
+conventionnelle optimisée selon le type de conduite visée.
+
+La composante $C_{mv}$ est élaborée à partir de la consigne d'angle du volant $\theta_{v\_ref}$, transmise par le
+générateur de consigne intégré au contrôleur de modèles, et de la composante $C_c$ du couple
+conducteur.
+Le modèle de la structure sous la forme d'un schéma-blocs décrivant le comportement asservi de cette
+unité est donné figure suivante. On précise que la variable d'entrée est $\theta_{v\_ref}(p)$, que la variable de sortie est $\theta_{v}(p)$ et que la variable $C_c(p)$ est considérée comme une perturbation. Un signal de commande
+$U_{mv}(p)$ pilote la motorisation.
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_15}
+
+\textit{Figure 5 -- Schéma-blocs de l'unité de pilotage.}
+\end{center}
+
+Un modèle acausal de cette structure dont certains composants ne sont pas reliés aux autres, est
+donné sur le cahier réponses.
+
+\subparagraph{}
+\textit{Compléter ce modèle en traçant les liens manquants qui donneraient un modèle équivalent au
+schéma-blocs précédent.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\vspace{.25cm}
+Le modèle cinématique utilisé pour la structure est celui donné en figure 4.
+
+Notations :
+\begin{itemize}
+\item arbre-volant \textbf{v} : le solide constitué du rotor du moteur, de l'arbre volant et du volant ;
+%\item Gv : centre d'inertie de l'arbre-volant v ;
+%\item I(v,Gv) : opérateur d'inertie de v au point Gv ;
+\item $J_v$ : le moment d'inertie de \textbf{v} autour de l'axe $\left( G_v,\vect{x_v}\right)$;
+\item $f_v$ : le coefficient de frottement visqueux de la liaison pivot ;
+\item $\theta_v(t)$ : l'angle de rotation de l'arbre-volant \textbf{v} par rapport au châssis 1 (noté $\theta_v(p)$ dans le domaine de Laplace);
+\item $\omega_v(t)$ : la vitesse de rotation de l'arbre-volant \textbf{v} par rapport au châssis 1 (noté $\Omega_v(p)$ dans le
+domaine de Laplace).
+\end{itemize}
+
+Le théorème du moment dynamique suivant l’axe $\left(G_v,\vect{x_v}\right)$ permet d’écrire :
+$$
+C_c(t)+C_{mv}(t)-f_v\dot{\theta_v}(t)=J_v\ddot{\theta_v}(t).
+$$
+
+On a par ailleurs $\dfrac{\text{d}\theta_v(t)}{\text{d} t}=\omega_v(t)$
+
+\subparagraph{}
+\textit{En supposant les conditions initiales nulles, donner la traduction du théorème du moment dynamique dans le
+domaine de Laplace en fonction de $\Omega_v(p)$, $C_c(p)$ et $C_{mv}(p)$.  Exprimer alors la fonction de transfert $T_v(p)$ telle que 
+$\Omega_v(p)=T_v(p)\left( C_c(p)+C_{mv}(p)\right)$ sous la forme $T_v(p)=\dfrac{g_v}{1+\tau_vp}$ dont on donnera l'expression de $g_v$ et $\tau_v$ en fonction de $f_v$ et $J_v$.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subsection{Analyse et optimisation du comportement de l'unité de pilotage}
+Le schéma-blocs dont la structure est donnée figure 5 devient, pour l'étude du comportement, celui de
+la figure 6 où le retour est unitaire. On note $\varepsilon_{\theta v}(t)$ l'écart entre la consigne et l'angle obtenu, et $\varepsilon_{c v}(t)$ le couple résultant des couples $C_c$ et $C_{mv}$.
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_16}
+
+\textit{Figure 6 -- Schéma-blocs de l'unité de pilotage.}
+\end{center}
+
+En considérant que la dynamique électromécanique du moteur seul est négligeable devant celle de
+l'arbre-volant, on adopte pour la motorisation constituée du moteur à courant continu et de son
+électronique de commande, comportant notamment une boucle de courant, un modèle sous la forme
+d'un gain pur. On lui associe le gain $K_{mv}$.
+
+Pour les applications numériques, on prendra les valeurs suivantes : 
+$g_v = \SI{5}{rad.s^{-1}.N^{-1}.m^{-1}}$; $\tau_v=\SI{0,1}{s}$ et $K_{mv} = \SI{0,4}{N.m.V^{-1}}$.
+
+
+\subsubsection*{Correction proportionnelle intégrale}
+On choisit un correcteur proportionnel intégral (PI) tel que $K_v(p)=K_i\dfrac{1+\tau_i p}{\tau_i p}$ avec $\tau_i=\alpha \tau_v$.
+
+
+
+
+\textbf{On considère pour cette question (15) uniquement que $C_c(p)=0$.}
+\subparagraph{}
+\textit{Exprimer la fonction de transfert en boucle ouverte $\text{FTBO}_{v1}(p)$ du système corrigé, avec le
+correcteur PI, telle que $\theta_v(p)=\text{FTBO}_{v1}(p) \varepsilon_{\theta v}(p)$ sous la forme
+$\text{FTBO}_{v1}(p)=K_{BOv1}\dfrac{1}{p^2}H(p)$ pour laquelle on précisera les expressions de $K_{BOv1}$ et de $H(p)$ de gain statique unitaire.}
+
+
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+\vspace{.25cm}
+
+On admet que $\alpha$ doit être supérieur à 1 pour que le système puisse être stabilisé. On commence par choisir $\tau_i$ en prenant $\alpha=10$ et on cherche à optimiser $K_i$.
+
+\subparagraph{}
+\textit{Exprimer $\varepsilon_{\theta v}(p)$ en fonction de $\theta_{v\_ref}(p)$ et $C_c(p)$ et $\text{FTBO}_{v1}(p)$ (liste non exhaustive de paramètres).}
+
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{Quelle doit être la valeur minimale de $K_i$ pour que les critères de précision soient satisfaits ? (On détaillera donc la valeur minimale que doit prendre $K_i$ pour les critères 3 et 4 de l'exigence 1-3.3.)}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+On donne sur le cahier réponses le tracé du lieu de transfert de la $\text{FTBO}_{v1}(p)$ dans le plan de Bode,
+pour $K_i = \SI{0,5}{V.rad^{-1}}$.
+
+
+\subparagraph{}
+\textit{Tracer sur le lieu de transfert de la $\text{FTBO}_{v1}(p)$ du cahier réponses, les diagrammes asymptotiques
+dans le plan de Bode. On justifiera les valeurs particulières de pentes, de pulsations,
+de gains et de phases.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+On choisit finalement $K_i=\SI{5}{V.rad^{-1}}$.
+%
+%On note :
+%\begin{itemize}
+%\item $\varphi(\omega)$ la phase de $H(p)$, soit $\arg[H(j\omega)]$ ;
+%\item $\omega_{\ell}$ la plus grande pulsation qui vérifie $ \varphi(\omega=\omega_{\ell})=45\degres$.
+%\end{itemize}
+%On donne (figures suivantes) l'évolution de cette pulsation $\omega_{\ell}$ en fonction de $\alpha$ et un abaque qui représente la valeur maximale $\varphi_m$ de $\varphi(\omega)$ en fonction de $\alpha$.
+%
+%
+%\subparagraph{}
+%\textit{Peut-on obtenir la valeur minimale de la pulsation de coupure à $\SI{0}{dB}$ en boucle ouverte, $\omega_0$, fixée au cahier des charges en modifiant la valeur de $\alpha$ et/ou $K_i$ ? On pourra s'aider des abaques suivants pour justifier la réponse.}
+%
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+%
+%
+%
+%\begin{center}
+%\includegraphics[width=\linewidth]{images/fig_17}
+%%B1
+%\textit{Abaques de réglage de $H(p)$ en fréquentiel.}
+%\end{center}
+%
+On donne figure suivante, en réponse à un échelon en boucle fermée, les abaques du temps de
+réponse à 5\% et du 1\ier dépassement en \% de la valeur finale, en fonction de $K_i$ et pour $\alpha = 10$.
+
+
+\begin{center}
+\includegraphics[width=.8\linewidth]{images/fig_18}
+%B2
+
+\textit{Figure 7 --  Abaques de réglage en temporel de l'unité de pilotage corrigée.}
+\end{center}
+
+
+\subparagraph{}
+\textit{Conclure sur les capacités de cette correction à satisfaire les critères de l'exigence Id 1-3.3 en
+reprenant chaque critère.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+
+\subsubsection*{Correction proportionnelle intégrale et retour tachymétrique}
+
+On ajoute à la correction précédente, une correction par retour tachymétrique tel que le décrit le
+schéma-blocs suivant. On note $K_{rt}$ le gain statique du retour tachymétrique.
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_20}
+
+\textit{Figure 8 -- Schéma-blocs de l'unité de pilotage avec retour tachymétrique.}
+\end{center}
+
+
+
+\subparagraph{}
+\textit{Au vu des conclusions de la question précédente, donner des arguments qui précisent l'objectif
+poursuivi par la mise en \oe{}uvre d'une telle correction.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{Exprimer la fonction de transfert en boucle fermée $T_{vrt}(p)$ définie par $\Omega_v(p)=T_{vrt}(p)\varepsilon_{cv}(p)$ en fonction de $T_v (p)$ et $K_{rt}$. Mettre alors $T_{vrt}(p)$ sous la forme $T_{vrt}(p)=T_v(p)\beta\dfrac{1+\tau_v p}{1+\beta \tau_v p}$, pour laquelle, on précisera l'expression de $\beta$ en fonction de $K_{rt}$ et du gain statique $g_v$ défini précédemment.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{Montrer que la nouvelle fonction de transfert en boucle ouverte $\text{FTBO}_{v2}(p)$, telle que
+$\theta_v(p)=\text{FTBO}_{v2}(p)\varepsilon_{\theta v}(p)$, peut ainsi se mettre sous la forme $\text{FTBO}_{v2}(p)=K_{\text{BOv2}}\dfrac{1}{p^2}\dfrac{1+\alpha \tau_v p}{1+\beta \tau_v p}$,  pour laquelle on donnera l'expression de $K_{\text{BOv2}}$ en fonction de $K_{mv}$, $g_v$, $\tau_v$, $K_f$, $\alpha$ et $\beta$.}
+
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\vspace{1cm}
+
+\textit{Il resterait les mêmes calculs que précédemment à réaliser afin de vérifier si le cahier des charges est satisfait...}
+%On donne sur le cahier réponses le tracé du lieu de transfert de la $\text{FTBO}_{v2}(p)$ dans le plan de Bode,
+%pour $K_i = \SI{1,2}{V.rad^{-1}}$ (valeur évitant des calculs trop longs), réglé avec $\beta=1/ 6$ (non justifié) et pour $\alpha = 10$ (valeur choisie précédemment).
+%
+
+
+%
+%\subparagraph{}
+%\textit{Justifier que $\beta$ doit être inférieur à 1 pour que la correction par retour tachymétrique soit efficace vis-à-vis du critère de pulsation de coupure à \SI{0}{dB}.}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+
+%On donne, pour le système en boucle fermée et non perturbé (couple conducteur
+%nul), les abaques du temps de réponse à 5\% et du premier dépassement en réponse à un échelon d'angle $\theta_{v\_\text{ref}}$, en fonction de la marge de phase du système, réglé avec $\beta=1/ 6$.
+%
+%\begin{center}
+%\includegraphics[width=\linewidth]{images/fig_19}
+%%B^''?
+%\textit{Abaques de réglage en temporel de l'unité de pilotage corrigée avec retour tachymétrique.}
+%\end{center}
+%
+%
+%\subparagraph{}
+%\textit{Faire une synthèse argumentée de la démarche proposée dans cette partie, pour optimiser le
+%comportement de l'unité de pilotage.
+%Conclure, en reprenant chaque critère de l'exigence Id 1-3.3, sur la satisfaction du cahier des
+%charges.}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+
+%\subparagraph{}
+%\textit{Avec le réglage établi par le modèle, quel phénomène pourrait endommager certains composants
+%du système réel ?
+%Quelle disposition technologique permettrait d'éviter ce phénomène ? Quelles en seraient les
+%conséquences sur les performances du système ?}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+%
+%\subparagraph{}
+%\textit{}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+%
+%\subparagraph{}
+%\textit{}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+
+\section{Robot endoscopique}% \footnote{D'après concours Banque PT.}]
+
+\subsection{Analyser le besoin du robot endoscopique\\}
+Les avancées technologiques dans le domaine de la chirurgie permettent actuellement
+de réaliser des opérations de très grande complexité (chirurgie cardiaque,
+digestive, urologique...) avec des avantages pour le patient qui proviennent de la limitation
+des zones de dissection, ce qui réduit considérablement le traumatisme
+opératoire.
+
+La chirurgie endoscopique consiste à réaliser des opérations à
+l’aide d’outils chirurgicaux de très petite taille, placés à l’extrémité
+de tiges tubulaires tenues par le chirurgien. La partie inférieure des
+tiges est insérée dans la zone à traiter, à travers trois petits orifices
+réalisés dans le corps du patient (entre les côtes, par exemple, pour
+une chirurgie cardiaque).
+La chirurgie endoscopique robotisée utilise des robots à actionneurs
+électriques pour positionner et commander les instruments.
+
+Les trois robots appelés « robots esclaves » portent les instruments,
+dont l’endoscope.
+Le « robot esclave » étudié est constitué de 3 axes permettant de déplacer l’instrument
+chirurgical positionné sur la plaque support en translation selon les trois directions
+de l’espace X , Y et Z .
+
+\begin{center}%[!ht]
+%\centering
+	\includegraphics[width=\linewidth]{images/img_02}
+	%\includegraphics[width=.8\linewidth]{images2/schema_bloc}
+	\textit{Présentation du matériel de téléchirurgie.}
+%	\label{p04_robot_endo:fig1}}
+\end{center}
+
+ On considère à nouveau l'axe d'élévation du dispositif de commande de l'instrument chirurgical décrit par le schéma-blocs suivant.
+
+\begin{center}%[!ht]
+%\centering
+	\includegraphics[width=\linewidth]{images2/schema_bloc}
+	%\includegraphics[width=.8\linewidth]{images2/schema_bloc}
+	\textit{Schéma-blocs de l'axe d'élévation.}
+%	\label{p04_robot_endo:fig1}}
+\end{center}
+
+La console permet de capter le déplacement de la main, de le coder, de le corriger éventuellement afin d'élaborer la consigne de position angulaire du moteur. La position angulaire est ensuite transformée en position linéaire de l'instrument par un mécanisme de transformation de mouvement à crémaillère.
+
+\begin{obj}
+Compte tenu de la chaîne cinématique et de l'asservissement mis en place, la raideur des transmetteurs peut jouer sur le critère de précision de l'axe. L'objectif de l'étude est de montrer par une étude fréquentielle que le système respecte le critère de bande passante du cahier des charges.
+\end{obj}
+
+Le cahier des charges est décrit par le diagramme des exigences suivant.
+
+
+\begin{center}%[!htb]
+\centering
+%\includegraphics[width=.9\textwidth]{images2/C1.png}
+%\includegraphics{images2/C1.pdf}
+
+\includegraphics[width=\linewidth]{images2/Diagramme_exigences}
+
+\textit{Diagramme des exigences partiel.}
+%\label{p04_fig_exigences}
+\end{center}
+
+\subsection{Déterminer la fonction de transfert de l'asservissement de position angulaire}
+
+
+\subsubsection*{Modéliser le comportement du moteur\\}
+		
+On cherche dans un premier temps à déterminer la fonction de transfert de l'asservissement de position angulaire. Une identification temporelle a permis de proposer un modèle du premier ordre pour l'ensemble moto-réducteur.  La fonction de transfert est alors la suivante : $M(p)=\frac{\num{0.44}}{1+\num{0.015} p}$.
+
+
+Une identification fréquentielle du moto-réducteur est alors mise en place pour valider le modèle. On obtient les diagrammes de Bode suivant.
+
+\begin{center}
+\includegraphics[width=.6\linewidth]{images2/bode_1}
+
+\textit{Identification fréquentielle du moto-réducteur.}
+\end{center}
+
+\subparagraph{}\textit{\label{p02_robot_endo:qdr2} Justifier au regard de la courbe que le modèle est pertinent dans une certaine bande de pulsations à préciser. Vérifier que les coefficients obtenus pour la fonction de transfert du moto-réducteur par l'identification temporelle sont cohérents avec ceux obtenus par identification fréquentielle.}
+
+%\interenum{
+%\begin{methode}
+%Pour justifier un modèle à partir des diagrammes de Bode, il faut décrire les asymptotes sur les \textbf{deux} diagrammes et les comparer aux modèles élémentaires du premier et du second ordre.
+%L'identification de paramètres se fait sur la valeur initiale de gain et à partir de pulsations pour des valeurs particulières du déphasage.
+%\end{methode}
+
+
+
+
+%\begin{center}%[!ht]
+%%\centering
+%\begin{tikzpicture}[xscale=16/10,yscale=1/40]
+%\UnitedB
+%\OrdBode{20}
+%\semilog{0}{5}{-100}{0}
+%\BodeAmp[cyan,thick]{0:5}{\SOAmp{0.436}{4.12}{568}}
+%\end{tikzpicture}
+%
+%\begin{tikzpicture}[xscale=16/10,yscale=1/70]
+%\UniteDegre
+%\OrdBode{30}
+%\semilog{0}{5}{-180}{0}
+%\BodeArg[cyan,thick]{0:5}{\SOArg{0.436}{4.12}{568}}
+%\end{tikzpicture}
+%
+%	%\includegraphics[width=.6\linewidth]{images2/identification_temp_moteur}
+%	\textit{Identification fréquentielle du moto-réducteur.}
+%	%\label{p04_robot_endo:fig3}
+%	%\textcolor{red}{ DI *** A TRACE DIAG BODE de $\frac{0.436}{1+14,5.10^{-3}.p+3,1.10^{-6}.p^2}$}
+%	
+%\end{center}
+%
+%\vspace{-1em}
+\subsubsection*{Modéliser l'asservissement du moteur\\}
+
+Le convertisseur-amplificateur de gain K élabore la commande du moteur. Le codeur incrémental \textbf{placé sur le rotor du moteur} a une résolution de 360 incréments par tour. Il est associé à un compteur -- décompteur qui élabore la mesure de position en incréments. Le système est discret (non continu), mais étant donnée la rapidité du comptage, on l’assimile à un système continu. Le réducteur a un rapport de réduction $r=1/50$.
+
+Le schéma-blocs de la figure \ref{SB_asservmoteur} correspond à une représentation de l'asservissement du moteur après déplacement de jonction.
+
+\begin{center}%[!ht]
+%\centering
+\includegraphics[width=\linewidth]{images2/schema_bloc_moteur_2}
+%\includegraphics[width=.9\textwidth]{images2/schema_bloc_moteur}
+\textit{Schéma-blocs de l'asservissement du moto-réducteur.}
+\label{SB_asservmoteur}
+%
+%\textcolor{red}{ DV : à refaire propre}
+
+\end{center}
+
+
+
+\subparagraph{}\textit{Donner la fonction de transfert du bloc $B(p)$ et la valeur du coefficient du bloc $C$ en incr./rad.} 
+
+\subsubsection*{Régler le gain d'amplification}
+
+\subparagraph{}\textit{Déterminer la fonction de transfert en boucle ouverte.}% est donnée par l'expression suivante : $\text{FTBO}(p)=\frac{25 K}{(1+0,015 p)p}$.}
+
+
+\subparagraph{}\textit{Tracer sur le document réponse, les diagrammes de Bode asymptotiques du système en boucle ouverte pour $K=1$ et l'allure des diagrammes de Bode réels. Vous justifierez l’allure des diagrammes de Bode asymptotique et vous préciserez sur la courbe toute information qui vous semblera utile.}
+
+%%%%% 
+%\begin{figure}[!ht]
+%\centering
+%\begin{tikzpicture}[xscale=30/10,yscale=1/40]
+%\UnitedB
+%\OrdBode{20}
+%\semilog{0}{3}{-40}{80}
+%\end{tikzpicture}
+%
+%\begin{tikzpicture}[xscale=30/10,yscale=1/70]
+%\UniteDegre
+%\OrdBode{30}
+%\semilog{0}{3}{-180}{0}
+%\end{tikzpicture}
+%%	\includegraphics[width=.6\linewidth]{images2/diag_bode}
+%	\captionof{figure}{Diagrammes semi-logarithmiques.
+%	\label{p04_robot_endo:fig4}}
+%\end{figure}
+
+%
+%
+%\begin{methode}
+%Les diagrammes de Bode asymptotiques se construisent de la manière suivante:
+%\begin{itemize}
+%\item factoriser la fonction de transfert de façon à faire apparaître les fonctions élémentaires sous forme canonique;
+%\item déterminer les variations en gain et phase de chaque fonction élémentaire en spécifiant les caractéristiques (pente, pulsations de cassure);
+%\item tracer l'allure du diagramme asymptotique de gain final à basse fréquence (avant toutes les pulsations de cassure);
+%\item poursuivre le tracé en tenant compte progressivement de chaque cassure pour le gain et chaque valeur pour le déphasage, dans l'ordre croissant des pulsations.
+%\end{itemize}
+%\end{methode}
+
+
+
+\subsubsection*{Choix d'un gain d'amplification adapté aux exigences du cahier des charges\\}
+
+On définit la marge de phase par l'expression suivante : $M_{\varphi}=\SI{180}{\degree}+\varphi(\omega_{0\text{dB}})$ où $\omega_{0\text{dB}}$ est la pulsation pour laquelle le gain est égal à 0 dB.
+
+\subparagraph{}\textit{Quelle est l'influence d'une augmentation du gain K sur le diagramme de phase et sur le diagramme de gain ? Déterminer la pulsation pour laquelle la phase est égale à $\SI{-135}{\degree}$. Déterminer alors le gain pour cette pulsation (pour K=1). En déduire la valeur de K pour laquelle la marge de phase du cahier des charges sera respectée.}
+
+
+
+\subsection{Modéliser le déplacement en translation de la crémaillère\\}
+
+Le système complet est schématisé sur la figure suivante. 
+Lorsque la boucle d'asservissement est bien réglée, la fonction de transfert est $H_1(p)=\dfrac{\num{0,00035}}{1+\num{0,014} p + \num{0,00017} p^2}$.
+Le gain $H_2$ est égal à $\SI{19,2e-3}{m.rad^{-1}}$. 
+
+\begin{center}%[!ht]
+%\centering
+	\includegraphics{images2/chaine_entiere}
+	%\includegraphics[width=.9\linewidth]{images2/chaine_entiere}
+	\textit{Schématisation de la chaîne complète.}
+%	\label{p04_robot_endo:fig5}}
+\end{center}
+
+Pour augmenter la précision de l'opération chirurgicale, on désire que la crémaillère se déplace 10 fois moins que la main. Ainsi $C_1=\frac{1}{\num{19,2e-2}\times\num{0,00035}}$.
+%%
+%%%\piccaption{{Modélisation de la liaison entre la crémaillère et l'instrument chirurgical
+%%	\label{p04_robot_endo:fig6}}
+
+
+
+
+%%%% 
+%\parpic[r]{\footnotesize
+%\begin{tikzpicture}[scale=.8]
+%% Ressort
+%\draw[decorate,decoration={zigzag,segment length=0.36em,amplitude=0.2cm}] (1,1) -- ++(0,1) node[midway, left,xshift=-2mm] {$k_0$};
+%\draw [thick] (1,1) -- ++(0,-0.5);
+%\draw [thick] (1,2) -- ++(0,0.5);
+%% Amortisseur
+%\draw [cyan,thick] (1.7,2) -- (1.7,1) -- (2.3,1) -- (2.3,2);
+%\draw [cyan,thick] (2,1) -- (2,.5);
+%\draw [thick] (1.8,1.5) -- (2.2,1.5);
+%\draw [thick] (2,1.5) -- (2,2.5);
+%\draw (2.2,1.5) node [right] {$f_0$};
+%\draw [latex-] (3.25,1.5) -- ++ (0.25,0) node [right] {\begin{tabular}{l} Ressort et \\ amortisseur \end{tabular}};
+%\draw (3,2.25) -- ++(.25,0) -- ++ (0,-1.5) -- ++ (-0.25,0);  %accoalde
+%% Solide 0
+%\draw (0.5,2.5) rectangle (2.5,3.5);
+%\draw (0.5,3) -- ++ (-0.5,0) -- ++ (0,-2.5);
+%\draw [latex-] (2.5,3) -- ++ (1,0) node [right] {\begin{tabular}{l} Solide $S_0$ lié \\ à la crémaillère \end{tabular}};
+%% Solide 1
+%\draw [cyan,thick] (0.5,0.5) rectangle (2.5,-0.5);
+%\draw [cyan,thick,fill = white] (-.2,1) rectangle (.2,1.8);
+%\draw [cyan,thick](-.2,1.4) --++ (-.2,0) --++ (0,-1.4) -- ++ (.9,0);
+%\draw [latex-] (2.5,0) -- ++ (1,0) node [right] {\begin{tabular}{l} Solide $S_1$ lié \\ à l'instrument \end{tabular}};
+%\draw [dashed] (2.5,0.5) -- ++ (0.5,0);
+%\draw [dashed] (2.5,2.5) -- ++ (0.5,0);
+%\draw [-latex]   (2.75,0.5) -- (2.75,2.5) node [midway,right] {$\ell$};
+%\draw [-latex]   (-.75,0) -- ++ (0,1) node [above] {$\vv{z}$} ;
+%\end{tikzpicture}
+%\normalsize
+%%}
+
+\noindent\begin{minipage}[c]{.6\linewidth}
+La partie supérieure du robot est obtenue par assemblage de tubes minces en fibres de carbone. On modélise cette partie par deux solides en translation l'un par rapport à l'autre : $S_0$ représentant la crémaillère et les solides qui y sont liés et $S_1$ représentant l'instrument chirurgical. Ces solides sont reliés par un ressort de raideur $k_0$ et un amortisseur de coefficient $f_0$, montés en parallèle comme le montre le schéma de la figure ci-contre.%\ref{p04_robot_endo:fig6}.
+\end{minipage}\hfill
+\begin{minipage}[c]{.36\linewidth}
+\begin{center}
+	\includegraphics[width=6cm]{images2/schema_1}
+\textit{Modélisation de la liaison entre la crémaillère et l'instrument chirurgical.\label{p04_robot_endo:fig6}}
+\end{center}
+\end{minipage}
+
+Pour identifier la fonction de transfert $H_3(p)=\frac{D_{\text{instrum}}(p)}{D_{\text{crem}}(p)}$, on impose à la crémaillère un échelon de déplacement $d_{\text{crem}}(t) = \SI{20e-3}{m}$ à partir de la position d'équilibre. La courbe de déplacement $d_{\text{instrum}}(t)$ de l'instrument en fonction du temps est donnée sur la figure suivante.
+
+
+\begin{center}%[!ht]
+%\centering
+	\includegraphics[width=10cm]{images2/identification_BF}
+	%\includegraphics[width=.6\linewidth]{images2/identification_BF}
+
+	\textit{Déplacement de l'instrument en mm.}
+	%\label{identification_BF}}
+\end{center}
+Les abaques des dépassements relatifs et des temps de réponse réduits d’un système du second ordre sont donnés ci-dessous.
+
+
+
+\begin{center}%[!ht]
+%\centering
+	\includegraphics[width=\linewidth]{images/img_03}
+	%\includegraphics[width=.6\linewidth]{images2/identification_BF}
+
+%	\textit{Déplacement de l'instrument en mm.}
+	%\label{identification_BF}}
+\end{center}
+
+
+%
+%\begin{methode}
+%Afin de modéliser le comportement d'un système par une fonction de transfert du deuxième ordre il faut identifier les paramètres $K$, $z$ et $\omega_0$ du modèle $\frac{K}{1+ \frac{2 z}{\omega_0} p + \frac{1}{\omega_0^2} p^2}$:
+%\begin{itemize}
+%\item $K$: par l'intermédiaire de la valeur finale qui vaut $K e_0$, sachant que $e_0$ est connu;
+%
+%\item $z$ par le pourcentage de dépassement, grâce à l'abaque des dépassements ou la relation $z=\left( 1+ \frac{k^2 \pi^2}{\ln^2(D_k)} \right)^{-\frac{1}{2}}$;
+%\item $\omega_0$ par deux méthodes possibles:
+%\begin{itemize}
+%\item par le temps de réponse à $5\,\%$ en utilisant les abaques;
+%\item par l'instant du premier dépassement, en utilisant l'expression \linebreak $\omega_0=\frac{\pi}{t_1 \sqrt{1-z^2}}$ avec $k=1$.
+%\end{itemize}
+%\end{itemize}
+%
+%\end{methode}
+
+
+
+\subparagraph{}\textit{Établir, à partir de la courbe de déplacement de l'instrument, l'expression de la fonction de transfert $H_3(p)$ ; déterminer les valeurs caractéristiques : gain statique, coefficient d'amortissement et pulsation propre.}
+
+
+\subparagraph{}\textit{Déterminer analytiquement la pulsation de coupure à \SI{-3}{dB} pour cette fonction et vérifier si le critère du cahier des charges est respecté.}
+
+\subsection{Analyser le déplacement de l'instrument \\}
+
+La fonction de transfert du système complet est 
+$$\frac{1}{(1+\num{0,014} p+\num{0,00017} p^2)(1+\num{0,015} p+\num{0,0014} p^2)}.$$
+
+On donne la courbe d'amplitude (gain) de $H(p)$ pour
+$p = j\omega$ dans le plan de Bode.
+
+
+%%%%% 
+\begin{center}
+	\includegraphics[width=10cm]{images2/bode_2}
+
+\textit{Diagramme de gain de $H(p)$.}
+\end{center}
+%\begin{figure}[!h]
+%\centering
+%\begin{tikzpicture}[xscale=2.8,yscale=1/12]
+%\UnitedB
+%\OrdBode{10}
+%\semilog{-1}{3}{-40}{10}
+%\BodeAmp[cyan,thick,samples=100]{-1:2.17}{\SOAmp{1.0}{0.5368754921931593}{76.69649888473704}+\SOAmp{1.0}{0.2004459314343183}{26.72612419124244}}
+%\end{tikzpicture}
+%\textit{Diagramme de gain de $H(p)$. \label{p04_robot_endo:fig8}}
+%\end{figure}
+%
+
+La main du chirurgien est prise d'un tremblement sensiblement sinusoïdal dont la période est de \SI{0,25}{s} et l'amplitude \SI{1}{mm}.
+
+
+\subparagraph{}\textit{Déterminer à partir de cette courbe, l'amplitude du mouvement pris par l'instrument. Quelle est la conséquence de ce mouvement sur la plaie chirurgicale ?}
+
+
+On souhaite limiter l'amplitude du mouvement de l'outil lors du tremblement de la main en filtrant le signal traité par le capteur -- codeur $C_1$ de sorte que les tremblements n'apparaissent plus sur le soustracteur. On propose trois filtres du premier ordre, de gains statiques égaux à 1 et de constantes de temps : $T_1 =\SI{0,04}{s}$ ; $T_2 = \SI{0,1}{s}$ ; $T_3 = \SI{0,5}{s}$.
+
+\subparagraph{}\textit{Tracer sur le document réponse, les trois diagrammes de gain de ces filtres avec des couleurs différentes.}
+
+\subparagraph{}\textit{Sachant que les mouvements dont la période est inférieure à une seconde ne doivent pas être atténués de plus de \SI{1}{dB},
+	indiquer le (ou les) filtre(s) qui ne convient (conviennent) pas.}
+
+Pour filter correctement un tremblement de période \SI{0,25}{s}, il faut compenser le pic de \SI{8,5}{dB}.
+
+\subparagraph{}\textit{Quel est le filtre qui convient le mieux ?}
+
+
+
+
+
+\subsubsection*{Conclusion  -- Retour sur le cahier des charges}
+On donne la courbe d'amplitude corrigée par le filtre le mieux adapté.
+
+\begin{center}
+	\includegraphics[width=14cm]{images2/bode_3}
+
+\textit{Diagramme de Bode (gain uniquement) du système corrigé.}
+\end{center}
+
+%\begin{figure}[!ht]
+%\centering
+%{\centering
+%%%%% 
+%\begin{center}
+%\begin{tikzpicture}[xscale=2.8,yscale=1/14]
+%\UnitedB
+%\OrdBode{10}
+%\semilog{-1}{2}{-50}{10}
+%\BodeAmp[cyan,thick,samples=100]{-1:2}{\SOAmp{1.0}{0.5368754921931593}{76.69649888473704}+\SOAmp{1.0}{0.2004459314343183}{26.72612419124244}+\POAmp{1.0}{0.1}}
+%\end{tikzpicture}
+%%\captionof{figure}{Diagramme de Bode (gain uniquement) du système corrigé.  \label{p04_robot_endo:cor3}}\par}
+%%\end{figure}
+%\textit{Diagramme de Bode (gain uniquement) du système corrigé. }
+%\end{center}
+
+\subparagraph{}
+\textit{Le critère de bande passante à \SI{-3}{dB} du cahier des charges est-il toujours respecté ?}
+
+
+
+\end{document}
+
+
+\subparagraph{}
+\textit{}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi

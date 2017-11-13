@@ -1,0 +1,50 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+\usepackage[locale=FR]{siunitx}
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+grid=major,scaled ticks=false,/pgf/number format/1000 sep = {\,},
+/pgf/number format/use comma,
+ytick={0,5,...,35},
+minor y tick num=1,
+minor x tick num=4,
+xlabel = {Temps (s)},
+ylabel = {Déplacement de l'instrument (mm)},
+%legend entries={Réponse simulée, Réponse mesurée},
+legend style={at={(0.5,0.2)},anchor=south west},
+%legend columns=3,
+axis lines=left,
+xmin=0,xmax=1,
+ymin=0,ymax=35,
+height=5cm,
+width=7cm,
+font=\footnotesize,/pgf/number format/use comma,
+]
+\draw[cyan!20,fill] (axis cs:0,19) rectangle (axis cs:1,21);
+\draw [dashed]  (axis cs:0,19) -- (axis cs:1,19);
+\draw [dashed]  (axis cs:0,21) -- (axis cs:1,21);
+\draw (axis cs:0,0) -- (axis cs:0,30);
+
+\draw [dashed]  (axis cs:0,20) -- ++ (axis cs:1,0);
+
+\draw [latex-](axis cs:0.8,19) -- ++ (0,-40) node [below] {$0,95\cdot s_{\infty}=\SI{19}{mm}$};
+\draw [latex-](axis cs:0.85,20) -- ++ (0,40) node [above] {$s_{\infty}=\SI{20}{mm}$};
+\draw [latex-](axis cs:0.5,21) -- ++ (0,70) node [above] {$1,05\cdot s_{\infty}=\SI{21}{mm}$};
+
+\draw [-latex,dashed] (axis cs:0.15,30) node [above]{$D_1$}-- (axis cs:0,30);
+\draw [-latex,dashed] (axis cs:0.25,15) node [below]{$D_2$}-- (axis cs:0,15);
+\draw [-latex,dashed] (axis cs:0.5,19) -- (axis cs:0.5,0) node [above right]{$T_{r5\%}=\SI{0,5}{s}$};
+
+\addplot [cyan,thick] table[x index=0,y index =1]{CHAP4/ex_robot_endoscopique/images2/Simu_SansCorr.txt};
+%\addplot [black!50!cyan!70,thick] table[x index=0,y index =2]{CHAP2/ex_Robot_endoscopique/ressources/Simu_Mesure.txt};
+%\draw[dashed] (0,105) -- ++(440,0);
+%\draw[dashed] (0,95) -- ++(440,0);
+
+%\draw[dashed] (112,105) -> (112,0) node[above right] {$t_{5\%}=\num{1.12}< \SI{1.5}{ms}$};
+\end{axis}
+\end{tikzpicture}
+\end{document}

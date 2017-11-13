@@ -1,0 +1,34 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+
+\begin{document}
+\footnotesize
+
+\begin{tikzpicture}
+\sbEntree{E}
+\sbBloc[8]{b1}{$C_1$}{E}
+	\sbRelier[\begin{tabular}{l}Déplacement en\\ translation  \\de la main \\ du chirurgien\end{tabular}]{E}{b1}
+
+\sbBloc[9]{b2}{$H_1(p)$}{b1}
+	\sbRelier[\begin{tabular}{l}Consigne de \\ position angulaire  \\ (en incréments) \end{tabular}]{b1}{b2}
+
+\sbBloc[10]{b3}{$H_2$}{b2}
+	\sbRelier[\begin{tabular}{l}Position angulaire \\de l'arbre de sortie \\ du réducteur (en rad) \end{tabular}]{b2}{b3}
+
+\sbBloc[9]{b4}{$H_3(p)$}{b3}
+	\sbRelier[\begin{tabular}{l}Déplacement en \\ translation de la \\ crémaillère (en m) \end{tabular}]{b3}{b4}
+
+\sbSortie[8]{S}{b4}
+	\sbRelier[\begin{tabular}{l}Déplacement en \\ translation de \\ l'instrument \end{tabular}]{b4}{S}
+
+\node[below of = b1, node distance = 2.5 em]{Capteur -- Codeur};
+\node[below of = b2, node distance = 3 em]{\begin{tabular}{c}Boucle \\ d'asservissement \end{tabular}};
+\node[below of = b3, node distance = 3 em]{\begin{tabular}{c}Transformation \\ de mouvement \end{tabular}};
+\node[below of = b4, node distance = 3 em]{\begin{tabular}{c} Élasticité de la \\ partie supérieure\end{tabular}};
+
+\end{tikzpicture}
+
+\normalsize
+\end{document}

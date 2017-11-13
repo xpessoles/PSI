@@ -1,0 +1,32 @@
+\pdfminorversion=3
+\documentclass[tikz]{standalone}
+\usepackage{vuiprepstandalone}
+\usepackage{alain2}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+grid=both,tick label style={/pgf/number format/fixed},scaled ticks=false,/pgf/number format/1000 sep = {\,},/pgf/number format/use comma,
+%ytick={0,0.1,...,0.6},
+minor y tick num=3,
+minor x tick num=3,
+xlabel = {Temps (s)},
+ylabel = {Angle $x_v$ (m)},
+%legend entries={Consigne,Déphasage},
+%legend style={at={(0.65,0.75)},anchor=south west},
+%legend columns=3,
+axis lines=left,
+xmin=0,xmax=10,
+ymin=0,ymax=0.1,
+height=5cm,
+width=8cm,
+font=\footnotesize,
+]
+%\draw[cyan!20,fill] (0,105) rectangle (444,95);
+
+\addplot [cyan,thick] table[x index=0,y index =2]{02PerformancesSLCI/ex_Telechirurgie2/images/modele/resu_systeme_corrige.txt};
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
