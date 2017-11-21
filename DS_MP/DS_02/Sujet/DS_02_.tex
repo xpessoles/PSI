@@ -221,9 +221,8 @@ En effet, afin de respecter les consignes de vitesse pour un trajet entre «~Les
 
 
 \subsection{Modélisation du moteur à courant continu}
-\begin{multicols}{2}
-
 Hypothèses et données :
+\begin{multicols}{2}
 \begin{itemize}
 \item on suppose les conditions initiales nulles;
 \item les deux moteurs sont et fonctionnent de manière parfaitement identique;
@@ -233,7 +232,8 @@ Hypothèses et données :
 \item $J=\SI{800}{kg.m^2}$ moment d’inertie total des pièces en rotation, ramené sur l’axe des moteurs; 
 \item $c_m(t)=k_Ti(t)$ avec $k_T=\SI{5.67}{Nm/A}$ (constante de couple d’un moteur);
 \item $e(t)=k_E\omega_m(t)$ avec $k_T=\SI{5.77}{Vs/rad}$   (constante électrique d’un moteur)
-\item équations de la dynamique : $2c_m(t)-c_r(t)=K\omega_m(t)+f\omega_m(t)$.
+\item équations de la dynamique : $2c_m(t)-c_r(t)=J\dot{\omega}_m(t)+f\omega_m(t)$;
+\item loi des mailles : $u(t)-e(t)=Ri(t)+L\dfrac{d i(t)}{dt}$.
 \end{itemize}
 
 \vspace{1.7cm}
@@ -325,7 +325,7 @@ Par transformation du schéma bloc, le système est mis en retour unitaire. On o
 	\includegraphics[width=\linewidth]{images2/fig_05}
 \end{center}
 
-	Les coefficients $E$ et $F$ calculés précédemment sont intégrés dans les nouveaux coefficients $A’$ et $G$. Pour la suite, on continuera avec les valeurs suivantes : $A'\cdot B=3\cdot 10^{-4}\;\text{sN}$; $G=6\cdot 10^{-5}\;\text{m/(sNm)}$ et $T=\SI{0,47}{s}$.
+	Les coefficients $E$ et $F$ calculés précédemment sont intégrés dans les nouveaux coefficients $A’$ et $G$. Pour la suite, on continuera avec les valeurs suivantes : $A'\cdot B=3\cdot 10^{4}\;\text{sN}$; $G=6\cdot 10^{-5}\;\text{m/(sNm)}$ et $T=\SI{0,47}{s}$.
 	
 	
 On se propose de tester successivement 3 correcteurs, et de retenir celui qui permet de respecter le cahier des charges.
