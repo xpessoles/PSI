@@ -1,0 +1,30 @@
+Statique
+ * PFS
+ * Stratégie
+ * Lois E/S en effort
+ * Modèle de Coulomb
+ * Efforts répartis (couple transmis dans dans un embrayage).
+
+Cinématique :
+ * Trains d'engrenages
+ * Cinématique du solide
+
+Dynamique 
+ * PFD
+ * Stratégie
+ * Equations de mouvement
+
+Energétique
+ * TEC 
+ * Rendement
+ * Analyse des systèmes récepteurs et générateurs
+
+
+SLCI
+ * Ordre 1 - 2 - Schémas blocs
+ * Analyse des performances (stabilité, rapidité, précision)
+ * Correcteurs
+
+SED
+ * Diagramme d'états
+ 
