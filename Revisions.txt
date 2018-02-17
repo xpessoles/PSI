@@ -5,8 +5,7 @@ Statique
  * Modèle de Coulomb
  * Efforts répartis (couple transmis dans dans un embrayage).
 
-Cinématique :
- * Trains d'engrenages
+Cinématique
  * Cinématique du solide
 
 Dynamique 
@@ -19,12 +18,13 @@ Energétique
  * Rendement
  * Analyse des systèmes récepteurs et générateurs
 
-
 SLCI
  * Ordre 1 - 2 - Schémas blocs
  * Analyse des performances (stabilité, rapidité, précision)
+ * Analyse fréquentielle
  * Correcteurs
 
 SED
  * Diagramme d'états
+
  
