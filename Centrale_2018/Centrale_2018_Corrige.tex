@@ -106,30 +106,128 @@ Vérifier que la modélisation et les hypothèses retenues permettent de déterm
 \end{obj}
 
 \subparagraph{}
-
 À partir des informations données, on peut réaliser le graphe de structure suivant. 
 
 \begin{center}
-\includegraphics[width=.7\linewidth]{images/fig_01}
+\includegraphics[width=.7\linewidth]{images/fig_02}
 %\textit{}
 \end{center}
 \begin{multicols}{2}
 \textbf{Méthode cinématique}
 \begin{itemize}
-\item Nombre cyclomatique $\gamma = L-S+1 $ avec $L=9$ liaisons et $S=7$ solides, on a donc $\gamma = 9-7+1=3$.
+\item Nombre cyclomatique $\gamma = L-S+1 $ avec $L=5$ liaisons et $S=4$ solides, on a donc $\gamma = 5-4+1=2$ et $E_c=12$ équations cinématiques.
 \item Nombre d'inconnues cinématiques : 
 \begin{itemize}
-\item 2 liaisons sphériques : $3\times 2=6$ inconnues;
-\item 4 liaisons pivot : $1\times 4=4$ inconnues;
-\item 1 liaison pivot glissant : 2 inconnues;
+\item 3 liaisons pivot : $1\times 3=3$ inconnues;
 \item 2 liaisons sphère-plan : $5\times 2=10$ inconnues;
-\item \textbf{au total : 22 inconnues cinématiques}.
+\item \textbf{au total : $I_c=13$ inconnues cinématiques}.
 \end{itemize}
+\item Mobilités : 
+\begin{itemize}
+\item mobilités utiles : $m_u=2$ : entrainement des deux moteurs;
+\item mobiltés internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, ainsi que $re_1$ et $re_2$ les rouleaux peuvent tourner librement. On a donc : $m_i =3$. %Dans le cas du roulement sans glissement, $m_i=3$;
+\item au final, selon les hypothèses, $m=m_i+m_u=5$.
 \end{itemize}
-\textbf{Méthode statique}
+\item On a donc $h=m-I_c+E_c =5-13+12=4$.
+\end{itemize}
 
+\vfill\null
+\columnbreak
+
+\textbf{Méthode statique}
+\begin{itemize}
+\item 3 solides peuvent être isolés, $E_s=3\times 6 =18$ équations statiques.
+\item Nombre d'inconnues statiques : 
+\begin{itemize}
+\item 3 liaisons pivot : $5\times 3=15$ inconnues;
+\item 2 liaisons sphère-plan : $1\times 2=2$ inconnues;
+\item \textbf{au total : $I_s=17$ inconnues statiques}.
+\end{itemize}
+\item Mobilités : $m=m_i+m_u=5$.
+\item On a donc $h=m-E_S+I_s =5-18+17=4$.
+\end{itemize}
 \end{multicols}
 
+
+
+
+%\textbf{Sans tenir compte que les solides 1, 2 et sre sont encastrés au bâti, on est dans les conditions suivantes.}
+%
+%\begin{center}
+%\includegraphics[width=.7\linewidth]{images/fig_01}
+%%\textit{}
+%\end{center}
+%\begin{multicols}{2}
+%\textbf{Méthode cinématique}
+%\begin{itemize}
+%\item Nombre cyclomatique $\gamma = L-S+1 $ avec $L=9$ liaisons et $S=7$ solides, on a donc $\gamma = 9-7+1=3$ et $E_c=18$ équations cinématiques.
+%\item Nombre d'inconnues cinématiques : 
+%\begin{itemize}
+%\item 2 liaisons sphériques : $3\times 2=6$ inconnues;
+%\item 4 liaisons pivot : $1\times 4=4$ inconnues;
+%\item 1 liaison pivot glissant : 2 inconnues;
+%\item 2 liaisons sphère-plan : $5\times 2=10$ inconnues;
+%\item \textbf{au total : $I_c=22$ inconnues cinématiques}.
+%\end{itemize}
+%\item Mobilités : 
+%\begin{itemize}
+%\item mobilités utiles : $m_u=3$ : entrainement des deux moteurs ainsi que le déploiement du vérin;
+%\item mobiltés internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, ainsi que $re_1$ et $re_2$ les rouleaux peuvent tourner librement, rotation propre de la pièce 1 et de la pièce 2 autour du vecteur $\vect{AB}$. On a donc : $m_i =5$. %Dans le cas du roulement sans glissement, $m_i=3$;
+%\item au final, selon les hypothèses, $m=m_i+m_u=8$.
+%\end{itemize}
+%\item On a donc $h=m-I_c+E_c =8-22+18=4$.
+%\end{itemize}
+%
+%\vfill\null
+%\columnbreak
+%
+%\textbf{Méthode statique}
+%\begin{itemize}
+%\item 6 solides peuvent être isolés, $E_s=6\times 6 =36$ équations statiques.
+%\item Nombre d'inconnues statiques : 
+%\begin{itemize}
+%\item 2 liaisons sphériques : $3\times 2=6$ inconnues;
+%\item 4 liaisons pivot : $5\times 4=20$ inconnues;
+%\item 1 liaison pivot glissant : 4 inconnues;
+%\item 2 liaisons sphère-plan : $1\times 2=2$ inconnues;
+%\item \textbf{au total : $I_s=32$ inconnues statiques}.
+%\end{itemize}
+%\item Mobilités : $m=m_i+m_u=9$.
+%\item On a donc $h=m-E_S+I_s =8-36+32=4$.
+%\end{itemize}
+%\end{multicols}
+%
+%En utilisant la condition de roulement sans glissement et la méthode cinématique, on ajoute 2 équations cinématiques et $h=3$.
+
+\subparagraph{}
+%\begin{multicols}{2}
+Condition de roulement sans glissement en $I_1$ : $\vectv{I_1}{3}{re_1} = \vect{0} \Leftrightarrow \vectv{I_1}{3}{0}-\vectv{I_1}{re_1}{0} = \vect{0}$. Par suite, 
+\begin{itemize}
+\item $\vectv{I_1}{3}{0}=\vectv{O_3}{3}{0}+\vect{I_1 O_3}\wedge \vecto{3}{0} = R\vect{z_1} \wedge \omega_3\vect{y_0}=-R\omega_3 \vect{x_1}$;
+\item $\vectv{I_1}{re_1}{0}=\vectv{O_1}{3}{0}+\vect{I_1 O_1}\wedge \vecto{3}{0} = -R_{re}\vect{z_1} \wedge \omega_{re_1}\vect{y_0}=R_{re}\omega_{re_1} \vect{x_1}$.
+\end{itemize}
+On a donc $-R\omega_3 -R_{re}\omega_{re_1} =0 \Leftrightarrow\dfrac{\omega_3}{\omega_{re_1}}=-\dfrac{R_{re}}{R} $.
+%\end{multicols}
+
+De même en exploitant le roulement sans glissement en $I_2$, $\dfrac{\omega_3}{\omega_{re_2}}=-\dfrac{R_{re}}{R} $. 
+
+La condition de roulement sans glissement supprime les 3 mobilités internes; donc $m'=2$ et $h'=1$. 
+
+\subparagraph{}
+Dans les conditions précédentes, les couples $\mathcal{C}_{mi}$ ne peuvent pas être déterminés. Il faudrait imposer un taux de rotation rigoureusement identique pour $\omega_{re_1}$ et $\omega_{re_2}$. 
+
+
+\subsection{Motorisation du dispositif de mise en rotation d'une roue}
+\begin{obj}
+Analyser la chaine d’entrainement en rotation d’une roue et vérifier le choix de la machine électrique.
+\end{obj}
+
+\subparagraph{}
+On conserve l'hypothèse que $sre$ est supposé fixe par rapport au bâti. 
+On a $E_1=M_1+R_1+re_1$. Ces 3 solides sont en liaison pivot par rappor tau bâti. En conséquence, 
+$T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) = \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2 \right) \omega_m$.
+
+On a donc $J_{eq}=J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2$.
 \end{document}
 
 \subparagraph{}\textit{}
