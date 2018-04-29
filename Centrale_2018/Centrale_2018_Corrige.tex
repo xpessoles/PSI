@@ -39,7 +39,7 @@
 \def\xxposonglettext{1.45}
 \def\xxposonglety{16}%16
 
-\def\xxonglet{\textsf{Rév -- Stat}}
+\def\xxonglet{\textsf{CCS 2018}}
 
 \def\xxactivite{TD 01}
 \def\xxauteur{\textsl{UPSTI}}
@@ -261,7 +261,7 @@ On isole la roue \textbf{3}.
 
 On réalise le bilan des actions mécaniques extérieures : 
 \begin{itemize}
-\item action de la pivot en $O_3$;
+\item action de la pivot en $O_3$ (pas de moment en $O_3$ en projection sur $\vect{y_0}$);
 \item action des liaisons sphères plans : 
 \begin{itemize}
 \item $\vectm{O_3}{re_1}{3}\cdot \vect{y_0} = \left(\vect{O_3 I_1} \wedge \left(  F_{x1}\vect{x_1}+F_{z1}\vect{z_1}\right) \right) \cdot \vect{y_0}
@@ -275,21 +275,40 @@ On réalise le bilan des actions mécaniques extérieures :
 \item action de l'outil :
 $\vectm{O_3}{\text{outil}}{3}\cdot \vect{y_0} 
 = \left(\vect{O_3 C} \wedge \vectf{\text{outil}}{3} \right) \cdot \vect{y_0}
-= \left( \vectf{\text{outil}}{3} \wedge \vect{y_0}\right) \cdot \vect{O_3 C}
-= \left( \vectf{\text{outil}}{3} \wedge \vect{y_0}\right) \cdot \vect{O_3 C}
+= \left(\left( -\lambda(t) \vect{y_0}-R_C(t) \vect{z_0}\right) \wedge \vectf{\text{outil}}{3} \right) \cdot \vect{y_0}
+= \left( -\lambda(t) \vect{y_0}\wedge \vectf{\text{outil}}{3}-R_C(t) \vect{z_0} \wedge \vectf{\text{outil}}{3}\right)   \cdot \vect{y_0}
+= \left(-R_C(t) \vect{z_0} \wedge \vectf{\text{outil}}{3} \right) \cdot \vect{y_0}
+= -R_C(t)\left( \vect{y_0} \wedge \vect{z_0} \right) \cdot \vectf{\text{outil}}{3}
+= -R_C(t) \vect{x_0}  \cdot \vectf{\text{outil}}{3}=R_C(t) f_{ex}
+%= \left( \vectf{\text{outil}}{3} \wedge \vect{y_0}\right) \cdot \vect{O_3 C}
+%= \left( \vectf{\text{outil}}{3} \wedge \vect{y_0}\right) \cdot \vect{O_3 C}
 $.
 \end{itemize}
-En faisant l'hypothèse que le moteur tourne dans le sens direct, la roue tourne dans le sens horaire. On peut alors déduire les signes des efforts normaux et tangentiels. Ainis, $F_{x1}=-f F_{z1}$. 
-\begin{center}
-\includegraphics[width=.5\linewidth]{images/fig_04}
-%\textit{}
-\end{center}
 
- 
-Ainsi :
-\begin{itemize}
-\item $\torseurstat{T}{re_1}{3} = \torseurl{F_{z1}\vect{z_1}+F_{x1}\vect{x_1}}{\vect{0}}{I_1}$. 
-\end{itemize}
+Enfin, la roue étant supposée équilibrée, on a $\vectmd{O_3}{3}{0}\cdot\vect{y_0}=J_3\ddot{\omega}_3$.
+
+
+Le TMD appliqué en 3 en projection sur $\vect{y_0}$  est donné par 
+$J_3\ddot{\omega}_3=-2RF_{x1}+R_C(t) f_{ex}$. De plus, 
+$\omega_3= -k\dfrac{R_{re}}{R}\omega_m$ et 
+$\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} \Leftrightarrow F_{x1}= \dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}$.
+
+Au final :
+$$-J_3k\dfrac{R_{re}}{R}\dot{\omega}_m=-2R\dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}+R_C(t) f_{ex}.$$
+
+%En faisant l'hypothèse que le moteur tourne dans le sens direct, la roue tourne dans le sens horaire. On peut alors déduire les signes des efforts normaux et tangentiels. Ainis, $F_{x1}=-f F_{z1}$. 
+%
+%
+%\begin{center}
+%\includegraphics[width=.5\linewidth]{images/fig_04}
+%%\textit{}
+%\end{center}
+%
+% 
+%Ainsi :
+%\begin{itemize}
+%\item $\torseurstat{T}{re_1}{3} = \torseurl{F_{z1}\vect{z_1}+F_{x1}\vect{x_1}}{\vect{0}}{I_1}$. 
+%\end{itemize}
 \end{document}
 
 \subparagraph{}\textit{}
