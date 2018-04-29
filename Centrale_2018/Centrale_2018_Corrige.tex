@@ -96,7 +96,7 @@ Le gain de temps $\Delta t_i = t_{i1}-t_{i2}=\SI{295}{min}$ soit \SI{4}{h} et \S
 
 .
 
-\section{Analyse de l’entrainement en rotation d’une roue}
+\section{Analyse de l’entraînement en rotation d’une roue}
 \subsection{Description fonctionnelle et structurelle du tour en fosse}
 \subsection{Modélisation du dispositif de mise en rotation d’une roue}
 
@@ -124,8 +124,8 @@ Vérifier que la modélisation et les hypothèses retenues permettent de déterm
 \end{itemize}
 \item Mobilités : 
 \begin{itemize}
-\item mobilités utiles : $m_u=2$ : entrainement des deux moteurs;
-\item mobiltés internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, ainsi que $re_1$ et $re_2$ les rouleaux peuvent tourner librement. On a donc : $m_i =3$. %Dans le cas du roulement sans glissement, $m_i=3$;
+\item mobilités utiles : $m_u=2$ : entraînement des deux moteurs;
+\item mobilités internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, ainsi que $re_1$ et $re_2$ les rouleaux peuvent tourner librement. On a donc : $m_i =3$. %Dans le cas du roulement sans glissement, $m_i=3$;
 \item au final, selon les hypothèses, $m=m_i+m_u=5$.
 \end{itemize}
 \item On a donc $h=m-I_c+E_c =5-13+12=4$.
@@ -219,12 +219,12 @@ Dans les conditions précédentes, les couples $\mathcal{C}_{mi}$ ne peuvent pas
 
 \subsection{Motorisation du dispositif de mise en rotation d'une roue}
 \begin{obj}
-Analyser la chaine d’entrainement en rotation d’une roue et vérifier le choix de la machine électrique.
+Analyser la chaîne d’entraînement en rotation d’une roue et vérifier le choix de la machine électrique.
 \end{obj}
 
 \subparagraph{}
 On conserve l'hypothèse que $sre$ est supposé fixe par rapport au bâti. 
-On a $E_1=M_1+R_1+re_1$. Ces 3 solides sont en liaison pivot par rappor tau bâti. En conséquence, 
+On a $E_1=M_1+R_1+re_1$. Ces 3 solides sont en liaison pivot par rapport au bâti. En conséquence, 
 $T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) = \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2 \right) \omega_m^2$.
 
 On a donc $J_{eq}=J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2$.
@@ -248,14 +248,14 @@ Bilan des puissances externes :
 On applique le théorème de l'énergie cinétique et $\dfrac{\dd T\left(E_1/0\right)}{\dd t}= C_m\omega_m-kR_{re}F_{x1}\omega_m \Rightarrow \dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} $.
 
 \subparagraph{}
-En isolant l'ensemble $E_2=\left\{M_2+R_2+re_2\right\}$ et en appliquant le théorème de l'énergie cinétique : $\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x2}$. Comme les caractéristiques des deux chaînes d'entrainement sont les mêmes, on a donc nécessairement $F_{x1}=F_{x2}$.
+En isolant l'ensemble $E_2=\left\{M_2+R_2+re_2\right\}$ et en appliquant le théorème de l'énergie cinétique : $\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x2}$. Comme les caractéristiques des deux chaînes d’entraînement sont les mêmes, on a donc nécessairement $F_{x1}=F_{x2}$.
 
 \subparagraph{}
 On a vu que $\dfrac{\omega_3}{\omega_{re_1}}=-\dfrac{R_{re}}{R}$ de plus $\omega_{re_1}=k\omega_m$; donc $\omega_3= -k\dfrac{R_{re}}{R}\omega_m$. En dérivant, on a $\dot{\omega_3}= -k\dfrac{R_{re}}{R}\dot{\omega}_m$.
 
 
 \subparagraph{}
-\textbf{Stratégie :} on cherche à exrimer le couple moteur en fonction des grandeurs du géométriques, inertielles, ... pour cela, la roue étant en pivot d'axe $\axe{O}{y_0}$ on va réaliser un théorème du moment dynamique en $O_3$ en projection sur $\vect{y_0}$. 
+\textbf{Stratégie :} on cherche à exprimer le couple moteur en fonction des grandeurs du géométriques, inertielles, ... pour cela, la roue étant en pivot d'axe $\axe{O}{y_0}$ on va réaliser un théorème du moment dynamique en $O_3$ en projection sur $\vect{y_0}$. 
 
 On isole la roue \textbf{3}.
 
@@ -294,7 +294,9 @@ $\omega_3= -k\dfrac{R_{re}}{R}\omega_m$ et
 $\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} \Leftrightarrow F_{x1}= \dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}$.
 
 Au final :
-$$-J_3k\dfrac{R_{re}}{R}\dot{\omega}_m=-2R\dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}+R_C(t) f_{ex}.$$
+$$-J_3k\dfrac{R_{re}}{R}\dot{\omega}_m=-2R\dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}+R_C(t) f_{ex} \Leftrightarrow
+C_m=\dot{\omega}_m J_{eq}
++J_3k^2\dfrac{R_{re}^2}{2R^2}\dot{\omega}_m+ \dfrac{R_C(t) kR_{re} f_{ex}}{2R}.$$
 
 %En faisant l'hypothèse que le moteur tourne dans le sens direct, la roue tourne dans le sens horaire. On peut alors déduire les signes des efforts normaux et tangentiels. Ainis, $F_{x1}=-f F_{z1}$. 
 %
@@ -309,6 +311,120 @@ $$-J_3k\dfrac{R_{re}}{R}\dot{\omega}_m=-2R\dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{
 %\begin{itemize}
 %\item $\torseurstat{T}{re_1}{3} = \torseurl{F_{z1}\vect{z_1}+F_{x1}\vect{x_1}}{\vect{0}}{I_1}$. 
 %\end{itemize}
+
+\subparagraph{}
+En utilisant l'expression précédente, le couple est maximum lorsque $R_C(t)=R_M$.
+
+\subparagraph{}
+En utilisant la décomposition du vecteur vitesse, 
+$\vectv{C}{\text{outil}}{3}=\vectv{C}{\text{outil}}{0}-\vectv{C}{\text{3}}{0}$. 
+D'après le document réponse, $\vectv{C}{\text{outil}}{0}=V_f(t)\vect{u}=-b\omega_3\vect{u}$. Par ailleurs, $\vectv{C}{\text{3}}{0}=R_C(t)\omega_3\vect{x_0}$.
+
+Au final, $\vectv{C}{\text{outil}}{3}=V_f(t)\vect{u}-R_C(t)\omega_3\vect{x_0}$.
+
+$\vectv{C}{\text{outil}}{3} \cdot \vect{x_0} = -V_C =  V_f(t)\vec t{u}\cdot \vect{x_0}-R_C(t)\omega_3 = -R_C(t)\omega_3$. On a donc $V_C=R_C(t)\omega_3$. Ainsi : 
+\begin{itemize}
+\item $V_C=R_C(t)\omega_3(t)=R_M \omega_{C_0}\Rightarrow \omega_{C_0}=\dfrac{V_C}{R_M}$.
+\item $V_C=R_C(t)\omega_3(t)=R_m \omega_{C_1}\Rightarrow \omega_{C_1}=\dfrac{V_C}{R_m}$.
+\end{itemize}
+ 
+ \subparagraph{}
+ 
+ \begin{center}
+\includegraphics[width=.5\linewidth]{images/fig_05}
+%\textit{}
+\end{center}
+
+Dans ces conditions, on a $\omega_3(t)=\dfrac{\omega_{C_1}-\omega_{C_0}}{t_1}t+\omega_{C_0}$.
+
+\subparagraph{}
+
+\subparagraph{}
+\subparagraph{}
+\subparagraph{}
+\subparagraph{}
+
+
+
+\section{Analyse de la commande du dispositif de mise en translation de l’outil}
+\begin{obj}
+Analyser la chaîne d’asservissement en position et en vitesse du porte-outil afin de proposer puis de régler un correcteur permettant d’assurer le niveau de précision attendu pour le profil de la roue.
+\end{obj}
+
+\subsection{Effet de la déformation de l’outil sur la forme de la roue reprofilée}
+
+\subsection{Analyse d’une solution avec un porte-outil fixé au bâti}
+\begin{obj}
+Déterminer les variations de position du point de contact $C$ entre la roue et l’outil pour une variation
+sinusoïdale de l’effort perturbateur $f_c(t)$.
+\end{obj}
+
+\subparagraph{}
+\subsection{Analyse des asservissements du porte-outil}
+\subsubsection{Modélisation du mouvement pour la commande}
+
+\begin{obj}
+Modéliser le comportement dynamique de l’outil et du porte-outil, puis étudier une commande  en position $z_1(t)$ comprenant un correcteur proportionnel.
+\end{obj}
+
+\subparagraph{}
+
+D'après le schéma-blocs $Z_1(p)=H_2(p)\left(F_m(p)+H_1(p)Z_2(p)\right)$. 
+D'après la première équation différentielle, on a : $m_1p^2 Z_1(p) + \lambda pZ_1(p)+KZ_1(p)=\lambda pZ_2(p)+KZ_2(p)+F_m(p)\Leftrightarrow 
+Z_1(p)\left(m_1p^2  + \lambda p+K \right)=Z_2(p)\left(\lambda p+K\right)+F_m(p)
+\Leftrightarrow 
+Z_1(p)= \dfrac{Z_2(p)\left(\lambda p+K\right)+F_m(p)}{m_1p^2  + \lambda p+K}$.
+On a donc par identification $H_2(p)=\dfrac{1}{m_1p^2  + \lambda p+K}$ et $H_1(p)=\lambda p+K$.
+
+D'après le schéma-blocs $Z_2(p)=H_4(p)\left(F_c(p)+H_3(p)Z_1(p)\right)$. D'après la seconde équation différentielle,  $m_2p^2 Z_2(p) + \lambda pZ_2(p)+KZ_2(p)=\lambda pZ_1(p)+KZ_1(p)+F_C(p)\Leftrightarrow Z_2(p)\left( m_2p^2  + \lambda p+K \right)=Z_1(p)\left(\lambda p+K\right)+F_C(p)\Leftrightarrow Z_2(p)=\dfrac{Z_1(p)\left(\lambda p+K\right)+F_C(p)}{ m_2p^2  + \lambda p+K}$.
+On a donc par identification $H_4(p)=\dfrac{1}{m_2p^2  + \lambda p+K}$ et $H_3(p)=\lambda p+K$.
+
+
+
+\subparagraph{}
+En utilisant le premier modèle, on avait :
+$
+\left\{\begin{array}{l}
+Z_1(p)=H_2(p)\left(F_m(p)+H_1(p)Z_2(p)\right) \\
+Z_2(p)=H_4(p)\left(F_c(p)+H_3(p)Z_1(p)\right)
+\end{array}
+\right.
+$. 
+
+Ainsi, $Z_1(p)=H_2(p)\left(F_m(p)+H_1(p)\left( H_4(p)\left(F_c(p)+H_3(p)Z_1(p)\right)\right)\right) $
+
+$=H_2(p)F_m(p)+H_1(p)H_2(p) H_4(p)F_c(p)+H_1(p)H_2(p) H_3(p)H_4(p)Z_1(p) $
+
+$\Leftrightarrow Z_1(p)\left( 1-H_1(p)H_2(p) H_3(p)H_4(p)\right)=H_2(p)\left(F_m(p)+H_1(p)H_4(p)F_c(p)\right) $. 
+
+En utilisant le schéma-blocs, $Z_1(p)=\left(F_c(p)N_1(p)+F_m(p)\right)N_2(p)$. 
+Par identification, on obtient $N_1(p)=H_1(p)H_4(p)$ et $N_2(p)=\dfrac{H_2(p)}{1-H_1(p)H_2(p) H_3(p)H_4(p)}$.
+
+
+\subparagraph{}
+$N_2(p)=\dfrac{H_2(p)}{1-H_1(p)H_2(p) H_3(p)H_4(p)}$ 
+$= \dfrac{\dfrac{1}{m_1p^2  + \lambda p+K}}{1-\left(\lambda p+K\right)\dfrac{1}{m_1p^2  + \lambda p+K} \left(\lambda p+K\right)\dfrac{1}{m_2p^2  + \lambda p+K}}$
+
+$= \dfrac{1}{\left(m_1p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2\dfrac{m_1p^2  + \lambda p+K}{m_2p^2  + \lambda p+K}}$
+
+$= \dfrac{m_2p^2  + \lambda p+K}{\left(m_1p^2  + \lambda p+K\right)\left(m_2p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2 \left(m_1p^2  + \lambda p+K\right)}$.
+
+$\left(m_1p^2  + \lambda p+K\right)\left(m_2p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2 \left(m_1p^2  + \lambda p+K\right)$
+
+$=  m_1p^2\left(m_2p^2  + \lambda p+K\right)+\lambda p\left(m_2p^2  + \lambda p+K\right)+K\left(m_2p^2  + \lambda p+K\right)-\lambda^2 p^2 \left(m_1p^2  + \lambda p+K\right)-K^2 \left(m_1p^2  + \lambda p+K\right)-2\lambda p K\left(m_1p^2  + \lambda p+K\right)$
+
+
+
+$=  \left(m_1m_2p^4  + m_1p^3\lambda +Km_1p^2\right)+\left(\lambda m_2p^3  + \lambda^2 p^2+K\lambda p\right)+\left(Km_2p^2  + K\lambda p+K^2\right)- \left(\lambda^2 m_1p^4  + \lambda^2 p^3\lambda +\lambda^2 p^2K\right)- \left(K^2m_1p^2  + K^2\lambda p+K^3\right)-\left(2\lambda  Km_1p^3  + 2\lambda  K\lambda p^2+2\lambda p K^2\right)$
+
+\vspace{1cm}
+
+$=  m_1m_2p^4  + m_1p^3\lambda +Km_1p^2
++\lambda m_2p^3  + \lambda^2 p^2+2K\lambda p
++Km_2p^2  +K^2$
+
+$- \lambda^2 m_1p^4  - \lambda^3 p^3 -\lambda^2 p^2K- K^2m_1p^2  - K^2\lambda p-K^3-2\lambda  Km_1p^3  - 2  K\lambda^2 p^2-2\lambda p K^2$
+
 \end{document}
 
 \subparagraph{}\textit{}
@@ -318,4 +434,6 @@ $$-J_3k\dfrac{R_{re}}{R}\dot{\omega}_m=-2R\dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{
 \includegraphics[width=\linewidth]{images/img_04}
 %\textit{}
 \end{center}
+
+
 
