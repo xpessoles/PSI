@@ -225,9 +225,27 @@ Analyser la chaine d’entrainement en rotation d’une roue et vérifier le cho
 \subparagraph{}
 On conserve l'hypothèse que $sre$ est supposé fixe par rapport au bâti. 
 On a $E_1=M_1+R_1+re_1$. Ces 3 solides sont en liaison pivot par rappor tau bâti. En conséquence, 
-$T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) = \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2 \right) \omega_m$.
+$T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) = \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2 \right) \omega_m^2$.
 
 On a donc $J_{eq}=J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2$.
+
+\subparagraph{}
+On prend le graphe de structure suivant :
+\begin{center}
+\includegraphics[width=.5\linewidth]{images/fig_03}
+%\textit{}
+\end{center}
+
+On isole $E_1$. Bilan des puissances internes : les liaisons internes au système considrée sont considérées sans frottement. On a donc : $\mathcal{P}_{\text{int}}\left(E_1\right)=0$.
+
+Bilan des puissances externes : 
+\begin{itemize}
+\item la puissance développée par le moteur peut s'exprimer par $\mathcal{P}\left(\text{sre}\to M_1/0\right)=C_m\omega_m$;
+\item puissance développée par l'action de 3 sur $\text{re}_1$ : $\mathcal{P}\left(3\to \text{re}_1/0\right)=\torseurcin{V}{\text{re}_1}{0}\otimes\torseurstat{T}{3}{\text{re}_1}=\torseurl{k\omega_m \vect{y_0}}{kR_{re}\omega_m\vect{x_1}}{I_1}\otimes
+\torseurl{-F_{z1}\vect{z_1}-F_{x1}\vect{x_1}}{\vect{0}}{I_1}= -kR_{re}F_{x1}\omega_m$.
+\end{itemize}
+
+On applique le théorème de l'énergie cinétique et $\dfrac{\dd T\left(E_1/0\right)}{\dd t}= C_m\omega_m-kR_{re}F_{x1}\omega_m \Rightarrow \dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} $.
 \end{document}
 
 \subparagraph{}\textit{}
