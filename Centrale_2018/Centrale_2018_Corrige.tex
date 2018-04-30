@@ -402,6 +402,7 @@ Par identification, on obtient $N_1(p)=H_1(p)H_4(p)$ et $N_2(p)=\dfrac{H_2(p)}{1
 
 
 \subparagraph{}
+
 $N_2(p)=\dfrac{H_2(p)}{1-H_1(p)H_2(p) H_3(p)H_4(p)}$ 
 $= \dfrac{\dfrac{1}{m_1p^2  + \lambda p+K}}{1-\left(\lambda p+K\right)\dfrac{1}{m_1p^2  + \lambda p+K} \left(\lambda p+K\right)\dfrac{1}{m_2p^2  + \lambda p+K}}$
 
@@ -425,7 +426,75 @@ $=  m_1m_2p^4  + m_1p^3\lambda +Km_1p^2
 
 $- \lambda^2 m_1p^4  - \lambda^3 p^3 -\lambda^2 p^2K- K^2m_1p^2  - K^2\lambda p-K^3-2\lambda  Km_1p^3  - 2  K\lambda^2 p^2-2\lambda p K^2$
 
+
+\subparagraph{}
+
+
+\subparagraph{}
+
+\subparagraph{}
+
+\subparagraph{}
+
+\begin{itemize}
+\item \textbf{req 1.1} : $M\varphi = 60\degres$.
+\item \textbf{req 1.2} : $\omega_{\SI{0}{dB}}=\SI{200}{rad.s^{-1}}$.
+\item \textbf{req 1.4} : erreur en régime permanent : $\Delta c < \SI{40}{\mu m}$ pour un échelon d'amplitude $f_{c0}=\SI{1}{kN}$.
+\item \textbf{req 1.5} : défaut de la roue $\Delta u < \SI{30}{\mu m}$ lorsque la perturbation est sinusoïdale.
+\end{itemize}
+\subsubsection{Calcul des paramètres des correcteurs de la loi de commande}
+
+\begin{obj}
+Déterminer les paramètres d’une loi de commande afin de valider les performances statiques et dynamiques du cahier des charges.
+\end{obj}
+
+\subparagraph{}
+On a $\arg \left(H_{\text{BO}}(j\omega)\right)=\arg\left(AK_v \right) + \arg\left(p+\dfrac{1}{T_i}\right) + \arg\left(p+K_p\right)-3 \arg(p)$
+$ =\arctan T_i\omega +\arctan\omega/K_P -270$.
+
+On souhaite que la marge de phase soit de 60\degres soit 
+$\arg \left(H_{\text{BO}}(j\omega_{\SI{0}{dB}})\right)=-120\degres$. 
+On a donc 
+$-120=\arctan T_i\omega_{\SI{0}{dB}} +\arctan\omega_{\SI{0}{dB}}/K_P -270 \Leftrightarrow \arctan T_i\omega_{\SI{0}{dB}} +\arctan\omega_{\SI{0}{dB}}/K_P = 150$.
+
+Or $\tan(a+b)=\dfrac{\tan a + \tan b}{1-\tan a\tan b}$. 
+
+On a donc $\tan 150 = \dfrac{T_i\omega_{\SI{0}{dB}} + \omega_{\SI{0}{dB}}/K_P}{1-T_i\omega_{\SI{0}{dB}}^2/K_P}$
+$ \Leftrightarrow \tan 150 -\tan 150 T_i\omega_{\SI{0}{dB}}^2/K_P= T_i\omega_{\SI{0}{dB}} + \omega_{\SI{0}{dB}}/K_P $
+
+$ \Leftrightarrow  T_i  = \dfrac{K_P\tan 150 - \omega_{\SI{0}{dB}}}{K_P\omega_{\SI{0}{dB}}+\tan 150 \omega_{\SI{0}{dB}}^2}$
+
+
+\subparagraph{}
+%$\log\left|H_{\text{BO}}(j\omega)\right|=\log\left| AK_v \right| + \log\left|p+\dfrac{1}{T_i}\right| + \log\left|p+K_p\right|-3 \log|p|$
+
+$H_{\text{BO}}(j\omega)=AK_v\dfrac{-\omega^2 + K_Pj\omega + \dfrac{j\omega}{T_i}+\dfrac{K_p}{T_i }}{-\omega^3}
+=-\dfrac{AK_v}{\omega^3}  \left(\left(\dfrac{K_p}{T_i }-\omega^2 \right)+\left(\dfrac{1}{T_i}+ K_P\right)j\omega \right)$
+
+On a donc 
+$\log\left|H_{\text{BO}}(j\omega)\right|=\dfrac{AK_v}{\omega^3}  \sqrt{\left(\dfrac{K_p}{T_i }-\omega^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega^2}$. 
+
+Pour $\omega=\omega_{\SI{0}{dB}}$, $\log\left|H_{\text{BO}}(j\omega)\right|=1$. En conséquence, 
+$\dfrac{AK_v}{\omega^3}  \sqrt{\left(\dfrac{K_p}{T_i }-\omega^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega^2}=1 $
+
+$\Leftrightarrow 
+K_v  =\dfrac{\omega_{\SI{0}{dB}}^3}{A\sqrt{\left(\dfrac{K_p}{T_i }-\omega_{\SI{0}{dB}}^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega_{\SI{0}{dB}}^2}}$
+
+
+\subsection{Analyse de l’influence du paramètre $b$}
+\begin{obj}
+Déterminer la valeur maximale de $b$ permettant de conserver la stabilité de l’asservissement.
+\end{obj}
+
+
+
+\subparagraph{}
+
+D'après le schéma-blocs, $Q(p)=Q_c(p)-Z_2(p)H_r(p)$. 
 \end{document}
+
+
+
 
 \subparagraph{}\textit{}
 
