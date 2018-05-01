@@ -405,43 +405,52 @@ Par identification, on obtient $N_1(p)=H_1(p)H_4(p)$ et $N_2(p)=\dfrac{H_2(p)}{1
 
 $N_2(p)=\dfrac{H_2(p)}{1-H_1(p)H_2(p) H_3(p)H_4(p)}$ 
 $= \dfrac{\dfrac{1}{m_1p^2  + \lambda p+K}}{1-\left(\lambda p+K\right)\dfrac{1}{m_1p^2  + \lambda p+K} \left(\lambda p+K\right)\dfrac{1}{m_2p^2  + \lambda p+K}}$
+$= \dfrac{1}{\left(m_1p^2  + \lambda p+K\right)- \dfrac{\left(\lambda p+K\right)^2}{m_2p^2  + \lambda p+K}}$
 
-$= \dfrac{1}{\left(m_1p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2\dfrac{m_1p^2  + \lambda p+K}{m_2p^2  + \lambda p+K}}$
+$= \dfrac{m_2p^2  + \lambda p+K}{\left(m_1p^2  + \lambda p+K\right)\left(m_2p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2}$
+$= \dfrac{m_2p^2  + \lambda p+K}{
+m_2m_1p^4  + \lambda m_1p^3+Km_1p^2+\lambda m_2p^3  + \lambda^2 p^2 +\lambda pK+Km_2p^2  + K\lambda p+K^2 - \lambda^2 p^2 -K^2 - 2\lambda p K}$
 
-$= \dfrac{m_2p^2  + \lambda p+K}{\left(m_1p^2  + \lambda p+K\right)\left(m_2p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2 \left(m_1p^2  + \lambda p+K\right)}$.
+$= \dfrac{m_2p^2  + \lambda p+K}{
+m_2m_1p^4  + \lambda m_1p^3+Km_1p^2+\lambda m_2p^3   +Km_2p^2 }$
+$= \dfrac{m_2p^2  + \lambda p+K}{
+p^2\left( m_1m_2p^2  + \left(m_1+ m_2\right) \lambda p  +K\left(m_1+m_2\right)\right) }$
 
-$\left(m_1p^2  + \lambda p+K\right)\left(m_2p^2  + \lambda p+K\right)- \left(\lambda p+K\right)^2 \left(m_1p^2  + \lambda p+K\right)$
+$= \dfrac{m_2\left(p^2  + \dfrac{\lambda}{m_2}p+\dfrac{K}{m_2}\right)}{
+p^2 m_1m_2 \left(p^2  + \dfrac{m_1+ m_2}{m_1m_2} \lambda p  +K\dfrac{m_1+m_2}{m_1m_2}\right) }$
 
-$=  m_1p^2\left(m_2p^2  + \lambda p+K\right)+\lambda p\left(m_2p^2  + \lambda p+K\right)+K\left(m_2p^2  + \lambda p+K\right)-\lambda^2 p^2 \left(m_1p^2  + \lambda p+K\right)-K^2 \left(m_1p^2  + \lambda p+K\right)-2\lambda p K\left(m_1p^2  + \lambda p+K\right)$
+Par identification, on a : $A=\dfrac{1}{m_1}$, $\omega_1^2=\dfrac{K}{m_2}$, $2\xi_1\omega_1=\dfrac{\lambda}{m_2}$, $\omega_2^2=K\dfrac{m_1+m_2}{m_1m_2}$, $2\xi_2\omega_2=\lambda\dfrac{m_1+ m_2}{m_1m_2}$. 
 
+On a donc $\xi_1=\dfrac{\lambda}{2  \sqrt{m_2K}}$ et 
+$\xi_2=\lambda\dfrac{\sqrt{m_1+ m_2}}{2\sqrt{Km_1m_2}}$.
 
-
-$=  \left(m_1m_2p^4  + m_1p^3\lambda +Km_1p^2\right)+\left(\lambda m_2p^3  + \lambda^2 p^2+K\lambda p\right)+\left(Km_2p^2  + K\lambda p+K^2\right)- \left(\lambda^2 m_1p^4  + \lambda^2 p^3\lambda +\lambda^2 p^2K\right)- \left(K^2m_1p^2  + K^2\lambda p+K^3\right)-\left(2\lambda  Km_1p^3  + 2\lambda  K\lambda p^2+2\lambda p K^2\right)$
-
-\vspace{1cm}
-
-$=  m_1m_2p^4  + m_1p^3\lambda +Km_1p^2
-+\lambda m_2p^3  + \lambda^2 p^2+2K\lambda p
-+Km_2p^2  +K^2$
-
-$- \lambda^2 m_1p^4  - \lambda^3 p^3 -\lambda^2 p^2K- K^2m_1p^2  - K^2\lambda p-K^3-2\lambda  Km_1p^3  - 2  K\lambda^2 p^2-2\lambda p K^2$
-
-
-\subparagraph{}
 
 
 \subparagraph{}
+D'après le diagramme asymptotique donné, on a nécessairement $\omega_1<\omega_2$. On peut dresser un tableau des variations à partir de la fonction de transfert $N_2(p)$. 
+\begin{center}
+\includegraphics[width=.7\linewidth]{images/fig_06}
+
+\includegraphics[width=.7\linewidth]{images/fig_07}
+%\textit{}
+\end{center}
 
 \subparagraph{}
-
+Si le système n'est pas sollicité par des pulsations comprises entre 150 et \SI{250}{rad.s^{-1}}, on peut modéliser $N_2(p)$ par un double intégrateur. 
+Le gain dB est donc  $20\log A - 20 \log \omega^2$.  Pour $\omega=\SI{500}{rad.s^{-1}}$ on a $20\log A - 20 \log 500^2=-182,5 \Rightarrow \log A = \dfrac{20 \log 500^2-182,5}{20}$ et $A=1,87\cdot 10^{-4}$.
 \subparagraph{}
 
+%\subparagraph{}
+Dans le cas, la FTBO est de classe 2.
 \begin{itemize}
-\item \textbf{req 1.1} : $M\varphi = 60\degres$.
-\item \textbf{req 1.2} : $\omega_{\SI{0}{dB}}=\SI{200}{rad.s^{-1}}$.
-\item \textbf{req 1.4} : erreur en régime permanent : $\Delta c < \SI{40}{\mu m}$ pour un échelon d'amplitude $f_{c0}=\SI{1}{kN}$.
+\item \textbf{req 1.1} : $M\varphi = 60\degres$ : impossible à respecter la phase sera toujours de $\SI{-180}{\degres}$.
+\item \textbf{req 1.2} : $\omega_{\SI{0}{dB}}=\SI{200}{rad.s^{-1}}$ : critère non respecté (cf diagramme de Bode).
+\item \textbf{req 1.4} : erreur en régime permanent : $\Delta c < \SI{40}{\mu m}$ pour un échelon d'amplitude $f_{c0}=\SI{1}{kN}$ : critère non respecté (pas d'intégrateur avant la perturbation).
 \item \textbf{req 1.5} : défaut de la roue $\Delta u < \SI{30}{\mu m}$ lorsque la perturbation est sinusoïdale.
 \end{itemize}
+
+La correctioin proportionnelle ne permet donc pas de respecter tous les critères du cahier des charges.
+
 \subsubsection{Calcul des paramètres des correcteurs de la loi de commande}
 
 \begin{obj}
