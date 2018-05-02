@@ -396,7 +396,8 @@ sinusoïdale de l’effort perturbateur $f_c(t)$.
 \end{obj}
 
 
-\subparagraph{} %Q18
+\subparagraph{VALEURS A REVOIR} %Q18
+~\\
 
 On isole l'outil. Celui-ci est soumis :
 \begin{itemize}
@@ -417,6 +418,22 @@ $\omega_{0S}^2 = \dfrac{K}{m_2} \Rightarrow \omega_{0S}\simeq \SI{35533}{rad.s^{
 $\dfrac{2\xi_S}{\omega_{0S}} = \dfrac{\lambda}{K} \Leftrightarrow \xi_S = \dfrac{\lambda }{2\sqrt{Km_2}} \simeq 0,1$.
 
 L'amplitude maximale est donnée par : $A_{\text{max}}=\dfrac{K_S}{2\xi_S\sqrt{1-\xi_S^2}}\simeq \dfrac{3,57\cdot 10^{-8}}{0,2\sqrt{1-0,01}}=1,8\cdot 10^{-7}$.
+<<<<<<< HEAD
+=======
+
+La pulsation de résonance est donnée par $\omega_r = \omega_{0S} \sqrt{1-2\xi^2} = 35533\sqrt{1-2\times 0,1^2}=\SI{3,5176e4}{rad.s^{-1}}$.
+
+
+
+Pour une entrée valant $f_c(t)=\left(f_{c0}+f_{c1}\sin \left(\omega t\right)\right) \mathcal{H}(t)$, en utilisant le théorème de superposition, on obtient en régime permanent le signal suivant : 
+$z_2(t)=K_S f_{c0}  + f_{c1} A_{\text{max}} \sin \left(\omega_r t+\varphi\right)$ avec $\varphi=90\degres$.
+
+Dans ces conditions on a donc $\Delta z_2 = 2 f_{c1} A_{\text{max}}\simeq \SI{3.6000e-05}{m} \simeq {36}{\mu m} $. Le cahier des charges n'est donc pas respecté ($\Delta u$ doit être inférieur à $\SI{30}{\mu m}$).
+\begin{center}
+\includegraphics[width=.8\linewidth]{images/fig_08}
+\end{center}
+
+>>>>>>> a67712ce21440b340ba6bc731e97b873a885f38e
 
 \subsection{Analyse des asservissements du porte-outil}
 \subsubsection{Modélisation du mouvement pour la commande}
@@ -496,6 +513,8 @@ D'après le diagramme asymptotique donné, on a nécessairement $\omega_1<\omega
 \subparagraph{}
 Si le système n'est pas sollicité par des pulsations comprises entre 150 et \SI{250}{rad.s^{-1}}, on peut modéliser $N_2(p)$ par un double intégrateur. 
 Le gain dB est donc  $20\log A - 20 \log \omega^2$.  Pour $\omega=\SI{500}{rad.s^{-1}}$ on a $20\log A - 20 \log 500^2=-182,5 \Rightarrow \log A = \dfrac{20 \log 500^2-182,5}{20}$ et $A=1,87\cdot 10^{-4}$.
+
+
 \subparagraph{}
 
 %\subparagraph{}
@@ -529,7 +548,7 @@ Or $\tan(a+b)=\dfrac{\tan a + \tan b}{1-\tan a\tan b}$.
 On a donc $\tan 150 = \dfrac{T_i\omega_{\SI{0}{dB}} + \omega_{\SI{0}{dB}}/K_P}{1-T_i\omega_{\SI{0}{dB}}^2/K_P}$
 $ \Leftrightarrow \tan 150 -\tan 150 T_i\omega_{\SI{0}{dB}}^2/K_P= T_i\omega_{\SI{0}{dB}} + \omega_{\SI{0}{dB}}/K_P $
 
-$ \Leftrightarrow  T_i  = \dfrac{K_P\tan 150 - \omega_{\SI{0}{dB}}}{K_P\omega_{\SI{0}{dB}}+\tan 150 \omega_{\SI{0}{dB}}^2}$
+$ \Leftrightarrow  T_i  = \dfrac{K_P\tan 150 - \omega_{\SI{0}{dB}}}{K_P\omega_{\SI{0}{dB}}+\tan 150 \omega_{\SI{0}{dB}}^2}$.
 
 
 \subparagraph{}
@@ -545,7 +564,7 @@ Pour $\omega=\omega_{\SI{0}{dB}}$, $\log\left|H_{\text{BO}}(j\omega)\right|=1$. 
 $\dfrac{AK_v}{\omega^3}  \sqrt{\left(\dfrac{K_p}{T_i }-\omega^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega^2}=1 $
 
 $\Leftrightarrow 
-K_v  =\dfrac{\omega_{\SI{0}{dB}}^3}{A\sqrt{\left(\dfrac{K_p}{T_i }-\omega_{\SI{0}{dB}}^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega_{\SI{0}{dB}}^2}}$
+K_v  =\dfrac{\omega_{\SI{0}{dB}}^3}{A\sqrt{\left(\dfrac{K_p}{T_i }-\omega_{\SI{0}{dB}}^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega_{\SI{0}{dB}}^2}}$.
 
 
 \subparagraph{}
