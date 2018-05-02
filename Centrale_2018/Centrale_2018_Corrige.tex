@@ -32,8 +32,8 @@
 \def\xxnumpartie{CCS 2018}
 \def\xxpartie{Modéliser le comportement statique des systèmes mécaniques}
 
-\def\xxnumchapitre{}%Révision 1 \vspace{.2cm}}
-\def\xxchapitre{Concours Centrale Supelec PSI 2018}
+\def\xxnumchapitre{Concours Centrale Supelec}%Révision 1 \vspace{.2cm}}
+\def\xxchapitre{PSI 2018}
 
 \def\xxposongletx{2}
 \def\xxposonglettext{1.45}
@@ -337,14 +337,40 @@ $\vectv{C}{\text{outil}}{3} \cdot \vect{x_0} = -V_C =  V_f(t)\vec t{u}\cdot \vec
 
 Dans ces conditions, on a $\omega_3(t)=\dfrac{\omega_{C_1}-\omega_{C_0}}{t_1}t+\omega_{C_0}$.
 
-\subparagraph{}
+\subparagraph{} %Q13
+On a $l(t)=||\vect{C_0C}||=||\int\limits_0^t V_f(t)\vect{u} \dd t||=||\int\limits_0^t -b\omega_3(t) \vect{u} \dd t||$ 
+$=||\int\limits_0^t -b\left( \dfrac{\omega_{C_1}-\omega_{C_0}}{t_1}t+\omega_{C_0}\right) \vect{u} \dd t||$
 
-\subparagraph{}
-\subparagraph{}
-\subparagraph{}
+$=b|| \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t^2+\omega_{C_0}t\right) \vect{u} ||$.
+
+Au final, 
+$l(t)=b \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t^2+\omega_{C_0}t\right) $.
 
 
+\subparagraph{} %Q14
+D'après la figure, on a  $l(t_1)=||\vect{C_0C_1}||=\sqrt{\left(R_M-R_m \right)^2+e^2}$.
 
+On a donc $l(t_1)=b \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t_1^2+\omega_{C_0}t_1\right) =\sqrt{\left(R_M-R_m \right)^2+e^2}$ 
+$\Leftrightarrow 
+  t_1 \left(\dfrac{\omega_{C_1}-\omega_{C_0}}{2}+\omega_{C_0}\right) =\dfrac{\sqrt{\left(R_M-R_m \right)^2+e^2}}{b}$.
+
+$\Leftrightarrow 
+  t_1  =\dfrac{\sqrt{\left(R_M-R_m \right)^2+e^2}}{b} \dfrac{2}{\omega_{C_1}+\omega_{C_0}}$.
+
+
+\subparagraph{} %Q15
+
+En dérivant l'expression obtenue à la question 12, on a 
+$\dot{\omega}_3(t)=\dfrac{\omega_{C_1}-\omega_{C_0}}{t_1} =  \dfrac{b\left( \omega_{C_1}+\omega_{C_0}\right)\left( \omega_{C_1}-\omega_{C_0}\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}  $. 
+
+Au final, $\dot{\omega}_3(t) =\dfrac{b\left( \omega_{C_1}^2-\omega_{C_0}^2\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}  $. 
+
+\subparagraph{} %Q16
+
+D'après les annexes, on a $R_m=\SI{0,4}{m}$ et $V_C=\SI{400}{m.min^{-1}}$. On a donc $N_3=\dfrac{V_c}{\pi \cdot 2 R_m} = \dfrac{400}{0,8\pi} = \SI{159}{tr.min^{-1}}$. On a donc $N_m = N_3 \dfrac{R}{kR_e}=159 \dfrac{0,47}{0,1\cdot 0,175} = \SI{4275}{tr.min^{-1}}$. Le moteur doit donc pouvoir tourner au moins à cette vitesse.
+
+On ne sait pas si le couple moteur maximum calculé (\SI{22}{Nm}) tient compte du rendement. 
+S'il tient compte du rendement, le moteur ME\_10\_10 convient. Sinon, il faudra utiliser le ME\_5\_15. 
 
 \section{Analyse de la commande du dispositif de mise en translation de l’outil}
 \begin{obj}
@@ -353,13 +379,45 @@ Analyser la chaîne d’asservissement en position et en vitesse du porte-outil 
 
 \subsection{Effet de la déformation de l’outil sur la forme de la roue reprofilée}
 
+\subparagraph{} %Q17. 
+
+Graphiquement on a :
+\begin{itemize}
+\item $\Delta u_1 = \Delta z_2 \simeq \SI{5}{\mu m}$;
+\item $R^2 + \Delta x_2^2 = \left(R + \Delta u_2\right)^2$ soit $\Delta u_2 = \sqrt{R^2 + \Delta x_2^2} - R = \sqrt{0,47^2 + 0,0005^2} - 0,47 \simeq \SI{0,27}{\mu m}$.%\simeq R\left(1+\dfrac{\Delta x_2^2}{2R^2}\right) - R \simeq \dfrac{\Delta x_2^2}{2R}$.
+\end{itemize}
+Il y a un rapport de 18,8 entre le défaut dû à la compression et celui dû à la flexion. On néglige donc ce dernier. 
+ 
+
 \subsection{Analyse d’une solution avec un porte-outil fixé au bâti}
 \begin{obj}
 Déterminer les variations de position du point de contact $C$ entre la roue et l’outil pour une variation
 sinusoïdale de l’effort perturbateur $f_c(t)$.
 \end{obj}
 
-\subparagraph{}
+
+\subparagraph{} %Q18
+
+On isole l'outil. Celui-ci est soumis :
+\begin{itemize}
+\item à l'action du ressort suivant $\vect{z_0}$ : $-Kz_2(t)$;
+\item à l'action de l'amortisseur $\vect{z_0}$ : $-\lambda \dot{z}_2(t)$;
+\item à l'action de l'effort perturbateur $\vect{z_0}$ : $f_c(t)$. 
+\end{itemize}
+
+En appliquant le théorème de la résultante dynamique suivant $\vect{z_0}$ on obtient : $-Kz_2(t)-\lambda \dot{z}_2(t)+f_c(t)=m_2\ddot{z}_2(t)$.
+
+En utilisant la transformée de Laplace, on obtient alors 
+$-KZ_2(p)-\lambda p{Z}_2(p)+F_c(p)=m_2p^2{Z}_2(p) \Leftrightarrow S(p)=\dfrac{Z_2(p)}{F_c(p)}=\dfrac{1}{K+\lambda p  + m_2 p^2}
+$.
+
+En mettant cette fonction de transfert sous forme canonique, on a 
+$K_S =1/K \simeq \SI{3,57e-8}{m.N^{-1}}$, 
+$\omega_{0S}^2 = \dfrac{K}{m_2} \Rightarrow \omega_{0S}\simeq \SI{35533}{rad.s^{-1}}$ et 
+$\dfrac{2\xi_S}{\omega_{0S}} = \dfrac{\lambda}{K} \Leftrightarrow \xi_S = \dfrac{\lambda }{2\sqrt{Km_2}} \simeq 0,1$.
+
+L'amplitude maximale est donnée par : $A_{\text{max}}=\dfrac{K_S}{2\xi_S\sqrt{1-\xi_S^2}}\simeq \dfrac{3,57\cdot 10^{-8}}{0,2\sqrt{1-0,01}}=1,8\cdot 10^{-7}$
+
 \subsection{Analyse des asservissements du porte-outil}
 \subsubsection{Modélisation du mouvement pour la commande}
 
