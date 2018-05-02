@@ -414,14 +414,16 @@ $.
 
 En mettant cette fonction de transfert sous forme canonique, on a 
 $K_S =1/K \simeq \SI{3,57e-8}{m.N^{-1}}$, 
-$\omega_{0S}^2 = \dfrac{K}{m_2} \Rightarrow \omega_{0S}\simeq \SI{35533}{rad.s^{-1}}$ et 
+$\omega_{0S}^2 = \dfrac{K}{m_2} \Rightarrow \omega_{0S}\simeq \SI{188,5}{rad.s^{-1}}$ et 
 $\dfrac{2\xi_S}{\omega_{0S}} = \dfrac{\lambda}{K} \Leftrightarrow \xi_S = \dfrac{\lambda }{2\sqrt{Km_2}} \simeq 0,1$.
 
 L'amplitude maximale est donnée par : $A_{\text{max}}=\dfrac{K_S}{2\xi_S\sqrt{1-\xi_S^2}}\simeq \dfrac{3,57\cdot 10^{-8}}{0,2\sqrt{1-0,01}}=1,8\cdot 10^{-7}$.
-<<<<<<< HEAD
-=======
 
-La pulsation de résonance est donnée par $\omega_r = \omega_{0S} \sqrt{1-2\xi^2} = 35533\sqrt{1-2\times 0,1^2}=\SI{3,5176e4}{rad.s^{-1}}$.
+
+%%<<<<<<< HEAD
+%%=======
+
+La pulsation de résonance est donnée par $\omega_r = \omega_{0S} \sqrt{1-2\xi^2} = 188,5\sqrt{1-2\times 0,1^2}=\SI{186,6}{rad.s^{-1}}$.
 
 
 
@@ -433,7 +435,7 @@ Dans ces conditions on a donc $\Delta z_2 = 2 f_{c1} A_{\text{max}}\simeq \SI{3.
 \includegraphics[width=.8\linewidth]{images/fig_08}
 \end{center}
 
->>>>>>> a67712ce21440b340ba6bc731e97b873a885f38e
+%%>>>>>>> a67712ce21440b340ba6bc731e97b873a885f38e
 
 \subsection{Analyse des asservissements du porte-outil}
 \subsubsection{Modélisation du mouvement pour la commande}
@@ -492,7 +494,7 @@ $= \dfrac{m_2p^2  + \lambda p+K}{
 p^2\left( m_1m_2p^2  + \left(m_1+ m_2\right) \lambda p  +K\left(m_1+m_2\right)\right) }$
 
 $= \dfrac{m_2\left(p^2  + \dfrac{\lambda}{m_2}p+\dfrac{K}{m_2}\right)}{
-p^2 m_1m_2 \left(p^2  + \dfrac{m_1+ m_2}{m_1m_2} \lambda p  +K\dfrac{m_1+m_2}{m_1m_2}\right) }$
+p^2 m_1m_2 \left(p^2  + \dfrac{m_1+ m_2}{m_1m_2} \lambda p  +K\dfrac{m_1+m_2}{m_1m_2}\right) }$.
 
 Par identification, on a : $A=\dfrac{1}{m_1}$, $\omega_1^2=\dfrac{K}{m_2}$, $2\xi_1\omega_1=\dfrac{\lambda}{m_2}$, $\omega_2^2=K\dfrac{m_1+m_2}{m_1m_2}$, $2\xi_2\omega_2=\lambda\dfrac{m_1+ m_2}{m_1m_2}$. 
 
@@ -567,8 +569,47 @@ $\Leftrightarrow
 K_v  =\dfrac{\omega_{\SI{0}{dB}}^3}{A\sqrt{\left(\dfrac{K_p}{T_i }-\omega_{\SI{0}{dB}}^2 \right)^2+\left(\dfrac{1}{T_i}+ K_P\right)^2\omega_{\SI{0}{dB}}^2}}$.
 
 
+\subparagraph{} %27
+~\\
+
+\noindent \hspace{.4cm} $|$ Pour $i$ allant de 0 à $N_{K_P}$ :  
+
+\noindent \hspace{.8cm} $|$ Calcul de $K_P=i\times \Delta K_P$ 
+
+\noindent \hspace{.8cm} $|$ Calcul de $T_i \left( K_P\right)$ 
+
+\noindent \hspace{.8cm} $|$ Calcul de $K_v\left( K_P\right)$ 
+
+\noindent \hspace{.8cm} $|$ Calcul de $\left| S_{K_P} \right|_{\text{max}}=\left| S\left( j \times 0\right) \right|$
+
+\noindent \hspace{.8cm} $|$ Pour $j$ allant de 0 à $N_{\omega}$ :  
+
+\noindent \hspace{1.2cm} $|$ Calcul de $\omega=j\times \Delta \omega$ 
+
+\noindent \hspace{1.2cm} $|$ Calcul de $\left| S_{K_P} \right|_{\text{tmp}}=\left| S\left( j \times \omega \right) \right|$
+
+\noindent \hspace{1.2cm} $|$ Si $\left| S_{K_P} \right|_{\text{max}}< \left| S_{K_P} \right|_{\text{tmp}}$ :
+
+\noindent \hspace{1.6cm} $|$ $\left| S_{K_P} \right|_{\text{max}}= \left| S_{K_P} \right|_{\text{tmp}}$.
+
+\noindent \hspace{.8cm} $|$ On stocke $\left| S_{K_P} \right|_{\text{max}}$, $K_P$, $K_v$, $T_i$ dans un liste
 \subparagraph{}
-\subparagraph{}
+~\\
+
+
+\noindent \hspace{.4cm} $|$ On initialise $i_{\text{min}}$ et   $S_{\text{min}}$
+
+\noindent \hspace{.4cm} $|$ Pour $i$ allant de 0 à $N_{K_P}$ :  
+
+\noindent \hspace{.8cm} $|$ Si $S[i]<S_{\text{min}}$ :
+
+\noindent \hspace{1.2cm} $|$ $i_{\text{min}}\leftarrow i$
+
+\noindent \hspace{1.2cm} $|$ $S_{\text{min}}\leftarrow S[i]$
+
+\noindent \hspace{.4cm} $|$ On retourne  $K_P$, $K_v$, $T_i$ associés à $i_{\text{min}}$.
+
+
 
 \subsection{Analyse de l’influence du paramètre $b$}
 \begin{obj}
@@ -590,8 +631,14 @@ $\text{FTBO}(p)=bK_f S(p)H_r(p)$.
 
 \section{Synthèse}
 
-\subparagraph{}
-Synthèse ?
+\subparagraph{}%32
+\begin{itemize}
+\item Graphiquement on mesure $\Delta z_2 = \SI{0,02}{mm}=\SI{20}{\mu m}<\SI{30}{\mu m}$. CDC OK. 
+\item $\Delta e = \SI{40}{\mu m}$. CDC juste OK. 
+\item La marge de phase du CDC est respectée pour $N_2(p)$ uniquement. 
+\end{itemize}
+
+Le tour permet d générer un profil de roue satisfaisant. 
 \end{document}
 
 
