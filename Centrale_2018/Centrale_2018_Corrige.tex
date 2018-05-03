@@ -536,7 +536,7 @@ La correctioin proportionnelle ne permet donc pas de respecter tous les critère
 Déterminer les paramètres d’une loi de commande afin de valider les performances statiques et dynamiques du cahier des charges.
 \end{obj}
 
-\subparagraph{}
+\subparagraph{} %
 On a $\arg \left(H_{\text{BO}}(j\omega)\right)=\arg\left(AK_v \right) + \arg\left(p+\dfrac{1}{T_i}\right) + \arg\left(p+K_p\right)-3 \arg(p)$
 $ =\arctan T_i\omega +\arctan\omega/K_P -270$.
 
@@ -553,7 +553,24 @@ $ \Leftrightarrow \tan 150 -\tan 150 T_i\omega_{\SI{0}{dB}}^2/K_P= T_i\omega_{\S
 $ \Leftrightarrow  T_i  = \dfrac{K_P\tan 150 - \omega_{\SI{0}{dB}}}{K_P\omega_{\SI{0}{dB}}+\tan 150 \omega_{\SI{0}{dB}}^2}$.
 
 
-\subparagraph{}
+\begin{rem} D'une part, en utilisant le schéma-blocs, on a :
+
+$H_{\text{BO}}(p)=\dfrac{K_P}{p}\dfrac{H_{\text{PI}(p)}pN_{\text{2app}}(p)}{1+H_{\text{PI}(p)}pN_{\text{2app}}(p)}$
+$=\dfrac{K_P}{p}\dfrac{K_v\left(1+\dfrac{1}{Ti_ p} \right)p\dfrac{A}{p^2}}{1+K_v\left(1+\dfrac{1}{Ti_ p} \right)p\dfrac{A}{p^2}}$
+$=\dfrac{K_P}{p}\dfrac{K_v\left(T_i p+1 \right){A}}{T_i p^2+K_v\left(T_i p+1 \right){A}}$.
+$=\dfrac{K_P}{p}\dfrac{T_i p+1}{\dfrac{T_i}{AK_v} p^2+ T_i p+1 }$.
+
+D'autre part, en prenant la FTBO proposée, on a : 
+
+$H_{\text{BO}}(p)=\dfrac{AK_v\left(p+\dfrac{1}{T_i} \right)\left(p+K_p\right)}{p^3}$
+$=\dfrac{AK_v}{T_i}\dfrac{T_ip^2+T_iK_pp+p+K_p }{p^3}$
+$=\dfrac{AK_v}{T_iK_p}\dfrac{\dfrac{T_i}{K_p}p^2+T_ip+p+1 }{p^3}$.
+
+La forme proposée par le sujet et la forme déterminée à parti du schéma-blocs sont donc différentes. 
+
+\end{rem}
+
+\subparagraph{} %Q26
 %$\log\left|H_{\text{BO}}(j\omega)\right|=\log\left| AK_v \right| + \log\left|p+\dfrac{1}{T_i}\right| + \log\left|p+K_p\right|-3 \log|p|$
 
 $H_{\text{BO}}(j\omega)=AK_v\dfrac{-\omega^2 + K_Pj\omega + \dfrac{j\omega}{T_i}+\dfrac{K_p}{T_i }}{-\omega^3}
