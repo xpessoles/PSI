@@ -125,10 +125,10 @@ Vérifier que la modélisation et les hypothèses retenues permettent de déterm
 \item Mobilités : 
 \begin{itemize}
 \item mobilités utiles : $m_u=2$ : entraînement des deux moteurs;
-\item mobilités internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, ainsi que $re_1$ et $re_2$ les rouleaux peuvent tourner librement. On a donc : $m_i =3$. %Dans le cas du roulement sans glissement, $m_i=3$;
-\item au final, selon les hypothèses, $m=m_i+m_u=5$.
+\item mobilités internes : en considérant le glissement entre la roue et les rouleaux, la roue 3, peut tourner librement. On a donc : $m_i =1$. %Dans le cas du roulement sans glissement, $m_i=3$;
+\item au final, selon les hypothèses, $m=m_i+m_u=3$.
 \end{itemize}
-\item On a donc $h=m-I_c+E_c =5-13+12=4$.
+\item On a donc $h=m-I_c+E_c =3-13+12=2$.
 \end{itemize}
 
 \vfill\null
@@ -143,8 +143,8 @@ Vérifier que la modélisation et les hypothèses retenues permettent de déterm
 \item 2 liaisons sphère-plan : $1\times 2=2$ inconnues;
 \item \textbf{au total : $I_s=17$ inconnues statiques}.
 \end{itemize}
-\item Mobilités : $m=m_i+m_u=5$.
-\item On a donc $h=m-E_S+I_s =5-18+17=4$.
+\item Mobilités : $m=m_i+m_u=3$.
+\item On a donc $h=m-E_S+I_s =3-18+17=2$.
 \end{itemize}
 \end{multicols}
 
@@ -211,10 +211,13 @@ On a donc $-R\omega_3 -R_{re}\omega_{re_1} =0 \Leftrightarrow\dfrac{\omega_3}{\o
 
 De même en exploitant le roulement sans glissement en $I_2$, $\dfrac{\omega_3}{\omega_{re_2}}=-\dfrac{R_{re}}{R} $. 
 
-La condition de roulement sans glissement supprime les 3 mobilités internes; donc $m'=2$ et $h'=1$. 
+La condition de roulement sans glissement ajoute deux équations cinématiques. Cela supprime la mobilité de la roue 3 et impose $\omega_{re_1}=\omega_{re_2}$. 
+On peut donc dire que $m'=1$ et $E_c=14$; donc $h'=1-15+14=0$. 
 
 \subparagraph{}
-Dans les conditions précédentes, les couples $\mathcal{C}_{mi}$ ne peuvent pas être déterminés. Il faudrait imposer un taux de rotation rigoureusement identique pour $\omega_{re_1}$ et $\omega_{re_2}$. 
+Dans les conditions précédentes, on aura $\mathcal{C}_{m1}=\mathcal{C}_{m2}$ et pourront être calculés. 
+
+%couples $\mathcal{C}_{mi}$ ne peuvent pas être déterminés. Il faudrait imposer un taux de rotation rigoureusement identique pour $\omega_{re_1}$ et $\omega_{re_2}$. 
 
 
 \subsection{Motorisation du dispositif de mise en rotation d'une roue}
