@@ -215,7 +215,7 @@ La condition de roulement sans glissement ajoute deux équations cinématiques. 
 On peut donc dire que $m'=1$ et $E_c=14$; donc $h'=1-13+14=2$. 
 
 \subparagraph{}
-Dans ces conditions précédentes, on ne peut donc pas calculer $\mathcal{C}_{m1}$ et $\mathcal{C}_{m2}$. 
+Dans ces conditions précédentes, on ne peut donc pas calculer $\mathcal{C}_{m1}$ et $\mathcal{C}_{m2}$. Il faudrait donc ajouter des hypothèses complémentaires pour évaluer les couples moteurs (symétrie du problème par exemple). 
 
 %couples $\mathcal{C}_{mi}$ ne peuvent pas être déterminés. Il faudrait imposer un taux de rotation rigoureusement identique pour $\omega_{re_1}$ et $\omega_{re_2}$. 
 
@@ -228,9 +228,11 @@ Analyser la chaîne d’entraînement en rotation d’une roue et vérifier le c
 \subparagraph{}
 On conserve l'hypothèse que $sre$ est supposé fixe par rapport au bâti. 
 On a $E_1=M_1+R_1+re_1$. Ces 3 solides sont en liaison pivot par rapport au bâti. En conséquence, 
-$T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) = \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2 \right) \omega_m^2$.
+$T\left(E_1/0\right)=T\left(M_1/0\right)+T\left(R_1/0\right)+T\left(re_1/0\right) 
+= \dfrac{1}{2}J_m\omega_m^2+\dfrac{1}{2}J_{re}\omega_{re}^2+\dfrac{1}{2}J_{re}\omega_{re}^2
+=\dfrac{1}{2}\left(J_m+J_{red}k^2+J_{re}k^2 \right) \omega_m^2$.
 
-On a donc $J_{eq}=J_m+J_{red}k^2+J_{re}k^2\left( \dfrac{R_{re}}{R}\right)^2$.
+On a donc $J_{eq}=J_m+\left(J_{red}+J_{re}\right)k^2$.
 
 \subparagraph{}
 On prend le graphe de structure suivant :
@@ -239,7 +241,7 @@ On prend le graphe de structure suivant :
 %\textit{}
 \end{center}
 
-On isole $E_1$. Bilan des puissances internes : les liaisons internes au système considrée sont considérées sans frottement. On a donc : $\mathcal{P}_{\text{int}}\left(E_1\right)=0$.
+On isole $E_1$. Bilan des puissances internes : les liaisons internes au système considérée sont considérées sans frottement. On a donc : $\mathcal{P}_{\text{int}}\left(E_1\right)=0$.
 
 Bilan des puissances externes : 
 \begin{itemize}
@@ -288,11 +290,11 @@ $\vectm{O_3}{\text{outil}}{3}\cdot \vect{y_0}
 $.
 \end{itemize}
 
-Enfin, la roue étant supposée équilibrée, on a $\vectmd{O_3}{3}{0}\cdot\vect{y_0}=J_3\ddot{\omega}_3$.
+Enfin, la roue étant supposée équilibrée, on a $\vectmd{O_3}{3}{0}\cdot\vect{y_0}=J_3\dot{\omega}_3$.
 
 
 Le TMD appliqué en 3 en projection sur $\vect{y_0}$  est donné par 
-$J_3\ddot{\omega}_3=-2RF_{x1}+R_C(t) f_{ex}$. De plus, 
+$J_3\dot{\omega}_3=-2RF_{x1}+R_C(t) f_{ex}$. De plus, 
 $\omega_3= -k\dfrac{R_{re}}{R}\omega_m$ et 
 $\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} \Leftrightarrow F_{x1}= \dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}}$.
 
@@ -327,14 +329,16 @@ En utilisant l'expression précédente, le couple est maximum lorsque $R_C(t)=R_
 \subparagraph{}
 En utilisant la décomposition du vecteur vitesse, 
 $\vectv{C}{\text{outil}}{3}=\vectv{C}{\text{outil}}{0}-\vectv{C}{\text{3}}{0}$. 
-D'après le document réponse, $\vectv{C}{\text{outil}}{0}=V_f(t)\vect{u}=-b\omega_3\vect{u}$. Par ailleurs, $\vectv{C}{\text{3}}{0}=R_C(t)\omega_3\vect{x_0}$.
+D'après le document réponse, $\vectv{C}{\text{outil}}{0}=V_f(t)\vect{u}=-b\omega_3\vect{u}$. 
 
-Au final, $\vectv{C}{\text{outil}}{3}=V_f(t)\vect{u}-R_C(t)\omega_3\vect{x_0}$.
+Par ailleurs, $\vectv{C}{\text{3}}{0}=\vectv{O}{\text{3}}{0}+\vect{CO_3}\wedge \vecto{3}{0}=\left( R_C \vect{z_0}+ \star \vect{y_0}\right)\wedge \omega_3\vect{y_0}=-R_C(t)\omega_3\vect{x_0}$.
 
-$\vectv{C}{\text{outil}}{3} \cdot \vect{x_0} = -V_C =  V_f(t)\vec t{u}\cdot \vect{x_0}-R_C(t)\omega_3 = -R_C(t)\omega_3$. On a donc $V_C=R_C(t)\omega_3$. Ainsi : 
+Au final, $\vectv{C}{\text{outil}}{3}=V_f(t)\vect{u}+R_C(t)\omega_3\vect{x_0}$.
+
+$\vectv{C}{\text{outil}}{3} \cdot \vect{x_0} = -V_C =  V_f(t)\vec t{u}\cdot \vect{x_0}+R_C(t)\omega_3 = R_C(t)\omega_3$. On a donc $V_C=-R_C(t)\omega_3$. Ainsi : 
 \begin{itemize}
-\item $V_C=R_C(t)\omega_3(t)=R_M \omega_{C_0}\Rightarrow \omega_{C_0}=\dfrac{V_C}{R_M}$.
-\item $V_C=R_C(t)\omega_3(t)=R_m \omega_{C_1}\Rightarrow \omega_{C_1}=\dfrac{V_C}{R_m}$.
+\item $V_C=-R_C(t)\omega_3(t)=-R_M \omega_{C_0}\Rightarrow \omega_{C_0}=-\dfrac{V_C}{R_M}$.
+\item $V_C=-R_C(t)\omega_3(t)=-R_m \omega_{C_1}\Rightarrow \omega_{C_1}=-\dfrac{V_C}{R_m}$.
 \end{itemize}
  
  \subparagraph{}
