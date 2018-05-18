@@ -657,8 +657,20 @@ D'après les équations données et en utilisant le théorème du retard, on a $
 
 
 \subparagraph{}
-$\text{FTBO}(p)=bK_f S(p)H_r(p)$.
+$\text{FTBO}(p)=bK_f S(p)H_r(p)= \dfrac{bK_f}{K+\lambda p +m_2 p^2}\left(1-e^{-\tau p}\right) = H_2(p)\cdot H_r(p)$.
 
+On a $G_{\text{dB}}(\omega)=G_{\text{dB2}}(\omega) + G_{\text{dBr}}(\omega)$.
+
+$G_{\text{dBr}}(\omega) = 20\log \left|1-e^{-j\tau \omega} \right|=20\log 
+\sqrt{\left( 1-\cos \left(-\tau \omega \right)\right)^2 + \left( \sin \left(-\tau \omega \right)\right)^2 } = 20\log \sqrt{2-2\cos \left( \tau \omega \right)}$.
+
+On a donc :
+\begin{itemize}
+\item pour $\omega=\dfrac{k2\pi }{\tau}$ avec $k\in \mathbb{Z}^*$ et $G_{\text{dBr}}(\omega) \to \infty $;
+\item pour $\omega=\dfrac{\pi + k2\pi }{\tau}$ avec $k\in \mathbb{Z}^*$ et $G_{\text{dBr}}(\omega) = 20 \log 2$.
+\end{itemize}
+
+Le diagramme en gain montre alors l'addition d'un gain du second ordre et d'un gain périodique. (***)
 \subparagraph{}
 
 \section{Synthèse}
