@@ -1,0 +1,220 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Hyperstatisme},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+    
+\input{style/new_style}
+\input{style/macros_SII}
+\usepackage{multicol}
+\usepackage{siunitx}
+%\usepackage{picins}
+\fichetrue
+%\fichefalse
+
+\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+
+\def\classe{\textsf{PSI$\star$}}
+\def\xxnumpartie{Cycle xx}
+\def\xxpartie{Préparation aux épreuves orales}
+
+\def\xxnumchapitre{Filière PSI \vspace{.2cm}}
+\def\xxchapitre{\hspace{.12cm} }
+
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+
+\def\xxactivite{TD}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+
+\def\xxtitreexo{Systèmes de TP}
+\def\xxsourceexo{\hspace{.2cm} \footnotesize{Laboratoire de PSI}}
+
+
+  
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+%\def\xxonglet{Part. 1 -- Ch. 3}
+\def\xxonglet{\textsf{Cycle xx}}
+
+\def\xxactivite{TD}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+\def\xxcompetences{%
+\vspace{-.5cm}
+\footnotesize{
+\textsl{%
+%\textbf{Savoirs et compétences :}\\
+%\vspace{-.2cm}
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item \textit{Mod2.C34} : chaînes de solides;
+%\item \textit{Mod2.C34} : degré de mobilité du modèle;
+%\item \textit{Mod2.C34} : degré d’hyperstatisme du modèle;
+%\item \textit{Mod2.C34.SF1} : déterminer les conditions géométriques associées à l’hyperstatisme;
+%\item \textit{Mod2.C34} : résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme.
+%\end{itemize}
+}}}
+
+
+\def\xxfigures{
+%\includegraphics[width=.8\textwidth]{images/fig_01}
+}%figues de la page de garde
+
+
+\def\xxpied{%
+Préparation aux oraux\\%dans le but de déterminer les contraintes géométriques dans les mécanismes\\% afin de valider leurs performances.\\
+%Chapitre 2 -- \xxactivite%
+}
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{4.5cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\begin{multicols}{2}
+\subsection*{BGR}
+\setcounter{exo}{0}
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/bgr_01}
+%\textit{}
+\end{center}
+
+\subparagraph{}
+\textit{Proposer un schéma cinématique 2D puis 3D.}
+
+\subparagraph{}
+\textit{Paramétrer le mécanisme.}
+
+
+
+
+
+\subsection*{Direction Assistée Électrique}
+\setcounter{exo}{0}
+\begin{center}
+\includegraphics[width=\linewidth]{images/dae_02}
+%\textit{}
+\end{center}
+
+\subparagraph{}
+\textit{Réaliser les schémas cinématiques 2D puis 3D associés à la DAE.}
+
+\subparagraph{}
+\textit{En réalisant les hypothèses adéquates, proposer une relation entre le couple au volant et le couple de rotation des roues.}
+
+
+\subparagraph{}
+\textit{En réalisant les hypothèses adéquates, proposer une relation entre le couple moteur et le couple de rotation des roues (le moteur est relié à la colonne de direction via un réducteur roue et vis sans fin.}
+
+
+
+\subsection*{Barrière Sympact}
+\setcounter{exo}{0}
+\begin{center}
+\includegraphics[width=\linewidth]{images/sympact_01}
+%\textit{}
+\end{center}
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique 2D.}
+
+\subparagraph{}
+\textit{Réaliser le paramétrage.}
+
+
+\subparagraph{}
+\textit{Déterminer la loi entrée -- sortie.}
+
+
+
+\subparagraph{}
+\textit{Déterminer la relation entre le couple moteur, les caractéristiques du ressort, le poids de la barrière et les caractéristiques géométriques. }
+
+
+\subsection*{MaxPID}
+
+
+\setcounter{exo}{0}
+\begin{center}
+\includegraphics[width=\linewidth]{images/maxpid_01}
+%\textit{}
+\end{center}
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique 2D.}
+
+\subparagraph{}
+\textit{Réaliser le paramétrage.}
+
+
+\subparagraph{}
+\textit{Déterminer la loi entrée -- sortie.}
+
+\subparagraph{}
+\textit{Déterminer la relation entre le couple moteur, les caractéristiques géométriques et massiques. }
+
+
+
+\subsection*{Cheville du robot NAO}
+
+
+\setcounter{exo}{0}
+\begin{center}
+\includegraphics[width=\linewidth]{images/nao_02}
+%\textit{}
+\end{center}
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/nao_01}
+%\textit{}
+\end{center}
+
+
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique 3D permettant d'illustrer le roulis et le tangage.}
+
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique de la chaîne de transmission.}
+
+
+\end{multicols}
+
+\end{document}
+
+\subparagraph{}\textit{}
+\ifprof
+\begin{corrige}~\\
+\end{corrige}
+\else
+\fi
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/img_04}
+%\textit{}
+\end{center}
+
