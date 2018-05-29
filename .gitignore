@@ -8,6 +8,9 @@
 *.ptc
 _*
 
+*.db
+
+Evaluation/BDD_Evaluation.db
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
