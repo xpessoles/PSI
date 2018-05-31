@@ -15,58 +15,66 @@ num_ds = 1
 annee = 2018
 
 def lire_fichier(file):
-    fid = open(file,'r'):
+    fid = open(file,'r', encoding='utf-8-sig')
     
     # Premiere ligne numéro de questions
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     nb_questions = int(ligne[0])
     
     # Seconde ligne : bareme
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     ligne = ligne[1:nb_questions+1]
-    bareme = [int(i) for i in ligne]
+    bareme = [float(i.replace(",",".")) for i in ligne]
     
     # Troisième ligne : poids 
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     ligne = ligne[1:nb_questions+1]
-    poids = [int(i) for i in ligne]
+    poids = [float(i.replace(",",".")) for i in ligne]
     
     
     # Quatrième ligne poids/20 de la question ; on saute. 
     ligne = fid.readline()
+    
+    # Cinquième ligne compétences
+    ligne = fid.readline()
+    ligne = ligne.split(";")
+    competences = ligne[1:nb_questions+1]
+    
     
     # Ensuite, on récupère les notes
     data = fid.readlines()
     fid.close()
     notes = []
     for ligne in data : 
-        ligne = ligne.split(",")
-        commentaire = ligne[-1]
+        ligne = ligne.split(";")
+        commentaire = ligne[nb_questions+1]
         ligne = ligne[:nb_questions+1]
-        ligne = [int(i) for i in ligne]
+        ligne = [(i.replace(",",".")) for i in ligne]
         ligne.append(commentaire)
         notes.append(ligne)
     
-    return nb_questions, bareme, poids, notes
+    return nb_questions, bareme, poids, notes, competences
 
-def remplir_bdd(nb_questions, bareme, poids, notes,bdd):
-    conn = sqlite3.connect(bdd)
-    c = conn.cursor()
+def remplir_bdd(competences,nb_questions, bareme, poids, notes,bdd):
+    #conn = sqlite3.connect(bdd)
+    #c = conn.cursor()
     for eleve in notes : 
         data = ""
         for item in eleve : 
             data = data+str(item)+","
         data = data[:-1]
         req = 'INSERT INTO ds VALUES ('+data+')'
-        c.execute(req)
-    conn.commit()
+        print(req)
+        #c.execute(req)
+    #conn.commit()
 
+#REMPLISSAGE BDD A FAIRE
+nb_questions, bareme, poids, notes, competences = lire_fichier("Classeur1.csv")    
 
-    
-
+remplir_bdd(competences,nb_questions, bareme, poids, notes,"bdd")
 
 """
 (
