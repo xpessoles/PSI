@@ -22,7 +22,10 @@ Rm=0.4
 k=0.1
 Rre=0.175
 
-dwm=-(R*Vc**2*b*(RM**2-Rm**2))/(2*RM*Rm*k*Rre*np.sqrt(e**2+(RM-Rm)**2))
+#ED dwm=-(R*Vc**2*b*(RM**2-Rm**2))/(2*RM*Rm*k*Rre*np.sqrt(e**2+(RM-Rm)**2))
+
+#XP 
+dwm=-(R*Vc**2*b*(RM**2-Rm**2))/(2*(RM**2)*(Rm**2)*k*Rre*np.sqrt(e**2+(RM-Rm)**2))
 wmmax=R*Vc/(k*Rre*Rm)
 
 #Partie 3

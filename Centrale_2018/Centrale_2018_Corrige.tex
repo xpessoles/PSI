@@ -87,14 +87,33 @@ des roues ferroviaires.
 \subparagraph{}
 
 \begin{itemize}
-\item Pour la méthode $a$, $t_{i1} =2t_1+2t_2+ 2t_3 +t_4 = $ %\SI{840}{min}$.
-\item Pour la méthode $b$, $t_{i2} =2t_1+2t_2+ \left( 6\times 3 \times 2 \right)t_5 +\left( 6 \times 2 \right)t_6 =$% \SI{545}{min}$.
+\item Pour la méthode $a$ :
+\begin{itemize}
+\item aller retour exploitation -- maintenance : $2t_1 = \SI{30}{min}$;
+\item séparation -- assemblage des voitures : $2t_2 = \SI{60}{min}$;
+\item montage -- démontage des roues : $2t_3 = \SI{480}{min}$  (le sujet est un peu ambigu);
+\item reprofilage des roues : $t_3 = \SI{600}{min}$;
 \end{itemize}
+\item Pour la méthode $b$ :
+\begin{itemize}
+\item aller retour exploitation -- maintenance : $2t_1 = \SI{30}{min}$;
+\item séparation -- assemblage des voitures : $2t_2 = \SI{60}{min}$;
+\item reprofilage des $6 \times 3 \times 2 = 36 roues $ : $36 t_5 = \SI{540}{min} $;
+\item retournement  des 6 voitures (2 retournements) : $6\times2\times t_6 =\SI{60}{min}$.
+\end{itemize}
+\end{itemize}
+Au final : 
+\begin{itemize}
+\item méthode a : $t_{i1} = 2t_1 +2t_2+2t_3+t_4 = \SI{1170}{min}$;
+\item méthode b : $t_{i2} = 2t_1 +2t_2+36 t_5+12 t_6 = \SI{690}{min}$;
+\end{itemize}
+%\end{itemize}
+% $t_{i1} =2t_1+2t_2+ 2t_3 +t_4 = $ %\SI{840}{min}$.
+%\item Pour la méthode $b$, $t_{i2} =2t_1+2t_2+ \left( 6\times 3 \times 2 \right)t_5 +\left( 6 \times 2 \right)t_6 =$% \SI{545}{min}$.
+%\end{itemize}
 
-Le gain de temps $\Delta t_i = t_{i1}-t_{i2}=\SI{295}{min}$ soit \SI{4}{h} et \SI{55}{min}. C'est autant de temps gagner sur l'exploitation de la rame. 
+Le gain de temps $\Delta t_i = t_{i1}-t_{i2}=\SI{480}{min}$ soient \SI{8}{h}. C'est autant de temps gagner sur l'exploitation de la rame. 
 
-
-.
 
 \section{Analyse de l’entraînement en rotation d’une roue}
 \subsection{Description fonctionnelle et structurelle du tour en fosse}
@@ -241,17 +260,18 @@ On prend le graphe de structure suivant :
 %\textit{}
 \end{center}
 
-On isole $E_1$. Bilan des puissances internes : les liaisons internes au système considérée sont considérées sans frottement. On a donc : $\mathcal{P}_{\text{int}}\left(E_1\right)=0$.
+On isole $E_1$. 
 
-Bilan des puissances externes : 
+\textbf{Bilan des puissances internes :} les liaisons internes au système considérée sont considérées sans frottement. On a donc : $\mathcal{P}_{\text{int}}\left(E_1\right)=0$.
+
+\textbf{Bilan des puissances externes :} 
 \begin{itemize}
 \item la puissance développée par le moteur peut s'exprimer par $\mathcal{P}\left(\text{sre}\to M_1/0\right)=C_m\omega_m$;
 \item puissance développée par l'action de 3 sur $\text{re}_1$ : $\mathcal{P}\left(3\to \text{re}_1/0\right)=\torseurcin{V}{\text{re}_1}{0}\otimes\torseurstat{T}{3}{\text{re}_1}=\torseurl{k\omega_m \vect{y_0}}{kR_{re}\omega_m\vect{x_1}}{I_1}\otimes
 \torseurl{-F_{z1}\vect{z_1}-F_{x1}\vect{x_1}}{\vect{0}}{I_1}= -kR_{re}F_{x1}\omega_m$.
 \end{itemize}
 
-On applique le théorème de l'énergie cinétique et $\dfrac{\dd T\left(E_1/0\right)}{\dd t}= C_m\omega_m-kR_{re}F_{x1}\omega_m \Rightarrow \dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} $.
-
+On applique le théorème de l'énergie cinétique et $\dfrac{\dd T\left(E_1/0\right)}{\dd t}= C_m\omega_m-kR_{re}F_{x1}\omega_m \Rightarrow \dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x1} \Leftrightarrow F_{x1} = \dfrac{C_m-\dot{\omega}_m J_{eq}}{kR_{re}} $.
 \subparagraph{}
 En isolant l'ensemble $E_2=\left\{M_2+R_2+re_2\right\}$ et en appliquant le théorème de l'énergie cinétique : $\dot{\omega}_m J_{eq}= C_m-kR_{re}F_{x2}$. Comme les caractéristiques des deux chaînes d’entraînement sont les mêmes, on a donc nécessairement $F_{x1}=F_{x2}$.
 
@@ -357,7 +377,7 @@ $=||\int\limits_0^t -b\left( \dfrac{\omega_{C_1}-\omega_{C_0}}{t_1}t+\omega_{C_0
 $=b|| \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t^2+\omega_{C_0}t\right) \vect{u} ||$.
 
 Au final, 
-$l(t)=b \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t^2+\omega_{C_0}t\right) $.
+$l(t)=bt \left(  \dfrac{\omega_{C_1}-\omega_{C_0}}{2t_1}t+\omega_{C_0}\right) $.
 
 
 \subparagraph{} %Q14
@@ -376,7 +396,18 @@ $\Leftrightarrow
 En dérivant l'expression obtenue à la question 12, on a 
 $\dot{\omega}_3(t)=\dfrac{\omega_{C_1}-\omega_{C_0}}{t_1} =  \dfrac{b\left( \omega_{C_1}+\omega_{C_0}\right)\left( \omega_{C_1}-\omega_{C_0}\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}  $. 
 
-Au final, $\dot{\omega}_3(t) =\dfrac{b\left( \omega_{C_1}^2-\omega_{C_0}^2\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}  $. 
+Par suite, $\dot{\omega}_3(t) =\dfrac{b\left( \omega_{C_1}^2-\omega_{C_0}^2\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}
+=\dfrac{b\left( \dfrac{V_C^2}{R_m^2}-\dfrac{V_C^2}{R_M^2}\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}  $. 
+Au final, 
+$\dot{\omega}_3(t) 
+= \dfrac{b V_C^2\left( \dfrac{1}{R_m^2}-\dfrac{1}{R_M^2}\right)}{2\sqrt{\left(R_M-R_m \right)^2+e^2}}
+= \dfrac{b V_C^2\left(  R_M^2 - R_m^2 \right)}{2R_m^2R_M^2\sqrt{\left(R_M-R_m \right)^2+e^2}}
+  $. 
+
+Par ailleurs, $\dot{\omega}_m = -\dot{\omega_3} \dfrac{R}{ kR_{re}} =- \dfrac{R}{ kR_{re}}  \dfrac{b V_C^2\left(  R_M^2 - R_m^2 \right)}{2R_m^2R_M^2\sqrt{\left(R_M-R_m \right)^2+e^2}} $. 
+
+
+\textit{Application numérique : } $\dot{\omega}_ m = -\SI{0.845}{rad.s^{-2}}$.
 
 \subparagraph{} %Q16
 
@@ -409,7 +440,7 @@ sinusoïdale de l’effort perturbateur $f_c(t)$.
 \end{obj}
 
 
-\subparagraph{VALEURS A REVOIR} %Q18
+\subparagraph{} %Q18
 ~\\
 
 On isole l'outil. Celui-ci est soumis :
@@ -428,7 +459,7 @@ $.
 En mettant cette fonction de transfert sous forme canonique, on a 
 $K_S =1/K \simeq \SI{3,57e-8}{m.N^{-1}}$, 
 $\omega_{0S}^2 = \dfrac{K}{m_2} \Rightarrow \omega_{0S}\simeq \SI{188,5}{rad.s^{-1}}$ et 
-$\dfrac{2\xi_S}{\omega_{0S}} = \dfrac{\lambda}{K} \Leftrightarrow \xi_S = \dfrac{\lambda }{2\sqrt{Km_2}} \simeq 0,1$.
+$\dfrac{2\xi_S}{\omega_{0S}} = \dfrac{\lambda}{K} \Leftrightarrow \xi_S = \dfrac{\lambda }{2\sqrt{Km_2}} \simeq 0,05$.
 
 L'amplitude maximale est donnée par : $A_{\text{max}}=\dfrac{K_S}{2\xi_S\sqrt{1-\xi_S^2}}\simeq \dfrac{3,57\cdot 10^{-8}}{0,2\sqrt{1-0,01}}=1,8\cdot 10^{-7}$.
 
@@ -436,7 +467,7 @@ L'amplitude maximale est donnée par : $A_{\text{max}}=\dfrac{K_S}{2\xi_S\sqrt{1
 %%<<<<<<< HEAD
 %%=======
 
-La pulsation de résonance est donnée par $\omega_r = \omega_{0S} \sqrt{1-2\xi^2} = 188,5\sqrt{1-2\times 0,1^2}=\SI{186,6}{rad.s^{-1}}$.
+La pulsation de résonance est donnée par $\omega_r = \omega_{0S} \sqrt{1-2\xi^2} = 188,5\sqrt{1-2\times 0,1^2}=\SI{188}{rad.s^{-1}}$.
 
 
 
@@ -469,7 +500,13 @@ On a donc par identification $H_2(p)=\dfrac{1}{m_1p^2  + \lambda p+K}$ et $H_1(p
 D'après le schéma-blocs $Z_2(p)=H_4(p)\left(F_c(p)+H_3(p)Z_1(p)\right)$. D'après la seconde équation différentielle,  $m_2p^2 Z_2(p) + \lambda pZ_2(p)+KZ_2(p)=\lambda pZ_1(p)+KZ_1(p)+F_C(p)\Leftrightarrow Z_2(p)\left( m_2p^2  + \lambda p+K \right)=Z_1(p)\left(\lambda p+K\right)+F_C(p)\Leftrightarrow Z_2(p)=\dfrac{Z_1(p)\left(\lambda p+K\right)+F_C(p)}{ m_2p^2  + \lambda p+K}$.
 On a donc par identification $H_4(p)=\dfrac{1}{m_2p^2  + \lambda p+K}$ et $H_3(p)=\lambda p+K$.
 
-
+Au final, 
+$$
+H_1(p)=\lambda p+K \quad 
+H_2(p)=\dfrac{1}{m_1p^2  + \lambda p+K} \quad 
+H_3(p)=\lambda p+K  \quad 
+H_4(p)=\dfrac{1}{m_2p^2  + \lambda p+K} 
+$$
 
 \subparagraph{}
 En utilisant le premier modèle, on avait :
@@ -511,7 +548,7 @@ p^2\left( m_1m_2p^2  + \left(m_1+ m_2\right) \lambda p  +K\left(m_1+m_2\right)\r
 $= \dfrac{m_2\left(p^2  + \dfrac{\lambda}{m_2}p+\dfrac{K}{m_2}\right)}{
 p^2 m_1m_2 \left(p^2  + \dfrac{m_1+ m_2}{m_1m_2} \lambda p  +K\dfrac{m_1+m_2}{m_1m_2}\right) }$.
 
-Par identification, on a : $A=\dfrac{1}{m_1}$, $\omega_1^2=\dfrac{K}{m_2}$, $2\xi_1\omega_1=\dfrac{\lambda}{m_2}$, $\omega_2^2=K\dfrac{m_1+m_2}{m_1m_2}$, $2\xi_2\omega_2=\lambda\dfrac{m_1+ m_2}{m_1m_2}$. 
+Par identification, on a : $A=\dfrac{1}{m_1}$, $\omega_1^2=\dfrac{K}{m_2}$, $2\xi_1\omega_1=\dfrac{\lambda}{m_2}$ et $\xi_1 = \dfrac{\lambda}{2 \omega_1 m_2}=\dfrac{\lambda}{2 \sqrt{Km_2}  } = $, $\omega_2^2=K\dfrac{m_1+m_2}{m_1m_2}$, $2\xi_2\omega_2=\lambda\dfrac{m_1+ m_2}{m_1m_2}$ et $\xi_2 = \dfrac{\lambda}{2}\sqrt{\dfrac{m_1+m_2}{m_1m_2 K}}$. 
 
 On a donc $\xi_1=\dfrac{\lambda}{2  \sqrt{m_2K}}$ et 
 $\xi_2=\lambda\dfrac{\sqrt{m_1+ m_2}}{2\sqrt{Km_1m_2}}$.
@@ -666,11 +703,14 @@ $G_{\text{dBr}}(\omega) = 20\log \left|1-e^{-j\tau \omega} \right|=20\log
 
 On a donc :
 \begin{itemize}
-\item pour $\omega=\dfrac{k2\pi }{\tau}$ avec $k\in \mathbb{Z}^*$ et $G_{\text{dBr}}(\omega) \to \infty $;
+\item pour $\omega=\dfrac{k2\pi }{\tau}$ avec $k\in \mathbb{Z}^*$ et $G_{\text{dBr}}(\omega) \to -\infty $;
 \item pour $\omega=\dfrac{\pi + k2\pi }{\tau}$ avec $k\in \mathbb{Z}^*$ et $G_{\text{dBr}}(\omega) = 20 \log 2$.
 \end{itemize}
 
-Le diagramme en gain montre alors l'addition d'un gain du second ordre et d'un gain périodique. (***)
+Le diagramme en gain montre alors l'addition d'un gain du second ordre et d'un gain périodique. Les << zéros de transmission >> correspondent aux pulsations $\omega=\dfrac{k2\pi }{\tau}$.
+
+Pour la phase, $\varphi_{\text{BO}}\left( \omega\right)=\varphi_2\left( \omega\right)+\arg\left( 1-\cos\left( -\tau\omega\right) - j\sin\left(-\tau\omega\right)\right)$. Or $1-\cos\left( -\tau\omega\right) = 1-\cos\left( \tau \omega \right) \geq 0$. On a donc 
+ $\varphi_{\text{BO}}=\varphi_2\left( \omega\right)+\arctan \left(\dfrac{\sin\left( \tau\omega\right)}{1-\cos\left( \tau\omega\right)} \right)$.
 \subparagraph{}
 
 \section{Synthèse}
