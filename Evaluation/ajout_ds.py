@@ -49,11 +49,13 @@ def lire_fichier(file):
     fid.close()
     notes = []
     for ligne in data : 
+        print(ligne)
         ligne = ligne.split(";")
         commentaire = ligne[nb_questions+1]
         ligne = ligne[:nb_questions+1]
         ligne = [(i.replace(",",".")) for i in ligne]
         ligne.append(commentaire)
+        print(ligne)
         notes.append(ligne)
     
     return nb_questions, bareme, poids, notes, competences
@@ -62,12 +64,13 @@ def remplir_bdd(competences,nb_questions, bareme, poids, notes,bdd):
     #conn = sqlite3.connect(bdd)
     #c = conn.cursor()
     for eleve in notes : 
+        #print(eleve)
         data = ""
         for item in eleve : 
             data = data+str(item)+","
         data = data[:-1]
         req = 'INSERT INTO ds VALUES ('+data+')'
-        print(req)
+        #print(req)
         #c.execute(req)
     #conn.commit()
 
