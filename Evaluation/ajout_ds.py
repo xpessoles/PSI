@@ -10,7 +10,7 @@ Ajout des notes d'un DS à partir d'un fichier CSV.
 import sqlite3
 
 file_csv = ".csv"
-bdd = "BDD_evaluation.db"
+bdd = "BDD.db"
 num_ds = 1
 annee = 2018
 
@@ -46,38 +46,47 @@ def lire_fichier(file):
     
     # Ensuite, on récupère les notes
     data = fid.readlines()
+    #print(data)
     fid.close()
     notes = []
     for ligne in data : 
-        print(ligne)
+        #print(ligne)
         ligne = ligne.split(";")
         commentaire = ligne[nb_questions+1]
         ligne = ligne[:nb_questions+1]
         ligne = [(i.replace(",",".")) for i in ligne]
         ligne.append(commentaire)
-        print(ligne)
         notes.append(ligne)
     
     return nb_questions, bareme, poids, notes, competences
 
-def remplir_bdd(competences,nb_questions, bareme, poids, notes,bdd):
-    #conn = sqlite3.connect(bdd)
-    #c = conn.cursor()
+def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
+    conn = sqlite3.connect(bdd)
+    c = conn.cursor()
     for eleve in notes : 
         #print(eleve)
         data = ""
-        for item in eleve : 
-            data = data+str(item)+","
-        data = data[:-1]
-        req = 'INSERT INTO ds VALUES ('+data+')'
-        #print(req)
-        #c.execute(req)
-    #conn.commit()
+        id_eleve = int(eleve[0])
+        print(id_eleve)
+        for i in range (1,nb_questions+1):
+            data = str(id_eleve)+','+str(num_ds)+','
+            data = data + str(annee)+','
+            data = data + str(nb_questions)+','
+            data = data + str(i)+','
+            data = data + str(poids[i-1])+','
+            data = data + str(bareme[i-1])+','
+            data = data + str(eleve[i])+',"'
+            data = data + str(competences[i-1])+'","'
+            data = data + str(eleve[nb_questions+1])+'"'
+            req = 'INSERT INTO ds VALUES ('+data+')'
+            print(req)
+            c.execute(req)
+    conn.commit()
 
 #REMPLISSAGE BDD A FAIRE
 nb_questions, bareme, poids, notes, competences = lire_fichier("Classeur1.csv")    
 
-remplir_bdd(competences,nb_questions, bareme, poids, notes,"bdd")
+remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,"bdd")
 
 """
 (
