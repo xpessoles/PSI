@@ -42,6 +42,7 @@ xi1=lamb/(2*w1*m2)
 w2=np.sqrt((K*(m1+m2))/(m1*m2))
 xi2=0.5*lamb*np.sqrt((m1+m2)/(m1*m2*K))
 
+wr = w0*np.sqrt(1-2*xi**2)
 
 b=5*1e-2/(np.pi)
 bl=b*10**(45/20)
