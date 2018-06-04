@@ -10,63 +10,83 @@ Ajout des notes d'un DS à partir d'un fichier CSV.
 import sqlite3
 
 file_csv = ".csv"
-bdd = "BDD_evaluation.db"
+bdd = "BDD.db"
 num_ds = 1
 annee = 2018
 
 def lire_fichier(file):
-    fid = open(file,'r'):
+    fid = open(file,'r', encoding='utf-8-sig')
     
     # Premiere ligne numéro de questions
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     nb_questions = int(ligne[0])
     
     # Seconde ligne : bareme
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     ligne = ligne[1:nb_questions+1]
-    bareme = [int(i) for i in ligne]
+    bareme = [float(i.replace(",",".")) for i in ligne]
     
     # Troisième ligne : poids 
     ligne = fid.readline()
-    ligne = ligne.split(",")
+    ligne = ligne.split(";")
     ligne = ligne[1:nb_questions+1]
-    poids = [int(i) for i in ligne]
+    poids = [float(i.replace(",",".")) for i in ligne]
     
     
     # Quatrième ligne poids/20 de la question ; on saute. 
     ligne = fid.readline()
     
+    # Cinquième ligne compétences
+    ligne = fid.readline()
+    ligne = ligne.split(";")
+    competences = ligne[1:nb_questions+1]
+    
+    
     # Ensuite, on récupère les notes
     data = fid.readlines()
+    #print(data)
     fid.close()
     notes = []
     for ligne in data : 
-        ligne = ligne.split(",")
-        commentaire = ligne[-1]
+        #print(ligne)
+        ligne = ligne.split(";")
+        commentaire = ligne[nb_questions+1]
         ligne = ligne[:nb_questions+1]
-        ligne = [int(i) for i in ligne]
+        ligne = [(i.replace(",",".")) for i in ligne]
         ligne.append(commentaire)
         notes.append(ligne)
     
-    return nb_questions, bareme, poids, notes
+    return nb_questions, bareme, poids, notes, competences
 
-def remplir_bdd(nb_questions, bareme, poids, notes,bdd):
+def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
     conn = sqlite3.connect(bdd)
     c = conn.cursor()
     for eleve in notes : 
+        #print(eleve)
         data = ""
-        for item in eleve : 
-            data = data+str(item)+","
-        data = data[:-1]
-        req = 'INSERT INTO ds VALUES ('+data+')'
-        c.execute(req)
+        id_eleve = int(eleve[0])
+        print(id_eleve)
+        for i in range (1,nb_questions+1):
+            data = str(id_eleve)+','+str(num_ds)+','
+            data = data + str(annee)+','
+            data = data + str(nb_questions)+','
+            data = data + str(i)+','
+            data = data + str(poids[i-1])+','
+            data = data + str(bareme[i-1])+','
+            data = data + str(eleve[i])+',"'
+            data = data + str(competences[i-1])+'","'
+            data = data + str(eleve[nb_questions+1])+'"'
+            req = 'INSERT INTO ds VALUES ('+data+')'
+            print(req)
+            c.execute(req)
     conn.commit()
 
+#REMPLISSAGE BDD A FAIRE
+nb_questions, bareme, poids, notes, competences = lire_fichier("Classeur1.csv")    
 
-    
-
+remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,"bdd")
 
 """
 (
