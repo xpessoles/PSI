@@ -4,12 +4,11 @@
 __author__ = "Xavier Pessoles"
 
 """
-Ajout des notes d'un DS à partir d'un fichier CSV.
-
+Creation de la base données
 """
 import sqlite3
 
-bdd = "BDD.db"
+bdd = "BDD_Evaluation.db"
 conn = sqlite3.connect(bdd)
 c = conn.cursor()
 
@@ -52,7 +51,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS `ds` (
 	`id_competence`	INTEGER,
 	`commentaire`	TEXT
 )''')
-
+c.execute('INSERT INTO ds VALUES (1,1,2018,33,1,5.0,1.0,5,"Mod2.C1","c1")')
 
 conn.commit()
 conn.close()
