@@ -65,16 +65,6 @@ def lire_fichier(file):
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
     #print(os.getcwd())
     #print(os.listdir())
-    
-    """
-    conn = sqlite3.connect("BDD_Evaluation.db")
-    c = conn.cursor()
-    c.execute('INSERT INTO ds VALUES (5,1,2018,33,1,5.0,1.0,5,"Mod2.C1","c1")')
-    conn.commit()
-    conn.close()
-    print("Fin")
-    print(bdd)
-    """
     #bdd="BDD_Evaluation.db"
    
     conn = sqlite3.connect(bdd)
@@ -84,7 +74,7 @@ def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
         #print(eleve)
         data = ""
         id_eleve = int(eleve[0])
-        print(id_eleve)
+        print("EleveID", id_eleve)
         
         for i in range (1,nb_questions+1):
             data = str(id_eleve)+','+str(num_ds)+','
@@ -104,11 +94,16 @@ def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
     conn.commit()
     conn.close()
 
+def bilan_ds(num_ds):
+    # On récupère pour chaque eleve : num_question, poids, bareme, note, id_competence
+        
+    
 
-#REMPLISSAGE BDD A FAIRE
-nb_questions, bareme, poids, notes, competences = lire_fichier("Classeur1.csv")    
 
+nb_questions, bareme, poids, notes, competences = lire_fichier("file_csv")    
 remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
+bilan_ds(num_ds)
+
 
 """
 (
