@@ -96,6 +96,8 @@ def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
 
 def bilan_ds(num_ds):
     # On récupère pour chaque eleve : num_question, poids, bareme, note, id_competence
+    
+    # On calcule la note
         
     
 
