@@ -9,10 +9,12 @@ Ajout des notes d'un DS à partir d'un fichier CSV.
 """
 import sqlite3
 
-file_csv = ".csv"
-bdd = "BDD.db"
+file_csv = "Classeur1.csv"
+bdd = "BDD_Evaluation.db"
 num_ds = 1
 annee = 2018
+
+import os
 
 def lire_fichier(file):
     fid = open(file,'r', encoding='utf-8-sig')
@@ -61,32 +63,47 @@ def lire_fichier(file):
     return nb_questions, bareme, poids, notes, competences
 
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
+    #print(os.getcwd())
+    #print(os.listdir())
+    #bdd="BDD_Evaluation.db"
+   
     conn = sqlite3.connect(bdd)
     c = conn.cursor()
+    
     for eleve in notes : 
         #print(eleve)
         data = ""
         id_eleve = int(eleve[0])
-        print(id_eleve)
+        print("EleveID", id_eleve)
+        
         for i in range (1,nb_questions+1):
             data = str(id_eleve)+','+str(num_ds)+','
             data = data + str(annee)+','
             data = data + str(nb_questions)+','
             data = data + str(i)+','
             data = data + str(poids[i-1])+','
-            data = data + str(bareme[i-1])+','
-            data = data + str(eleve[i])+',"'
+            data = data + str(bareme[i-1])+',"'
+            data = data + str(eleve[i])+'","'
             data = data + str(competences[i-1])+'","'
             data = data + str(eleve[nb_questions+1])+'"'
             req = 'INSERT INTO ds VALUES ('+data+')'
-            print(req)
+            #print(req)
+            
+            
             c.execute(req)
     conn.commit()
+    conn.close()
 
-#REMPLISSAGE BDD A FAIRE
-nb_questions, bareme, poids, notes, competences = lire_fichier("Classeur1.csv")    
+def bilan_ds(num_ds):
+    # On récupère pour chaque eleve : num_question, poids, bareme, note, id_competence
+        
+    
 
-remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,"bdd")
+
+nb_questions, bareme, poids, notes, competences = lire_fichier("file_csv")    
+remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
+bilan_ds(num_ds)
+
 
 """
 (
