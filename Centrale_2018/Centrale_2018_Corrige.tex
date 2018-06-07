@@ -98,7 +98,7 @@ des roues ferroviaires.
 \begin{itemize}
 \item aller retour exploitation -- maintenance : $2t_1 = \SI{30}{min}$;
 \item séparation -- assemblage des voitures : $2t_2 = \SI{60}{min}$;
-\item reprofilage des $6 \times 3 \times 2 = 36 roues $ : $36 t_5 = \SI{540}{min} $;
+\item reprofilage des $6 \times 3 \times 2 = 36$ roues  : $36 t_5 = \SI{540}{min} $;
 \item retournement  des 6 voitures (2 retournements) : $6\times2\times t_6 =\SI{60}{min}$.
 \end{itemize}
 \end{itemize}
@@ -413,8 +413,10 @@ Par ailleurs, $\dot{\omega}_m = -\dot{\omega_3} \dfrac{R}{ kR_{re}} =- \dfrac{R}
 
 D'après les annexes, on a $R_m=\SI{0,4}{m}$ et $V_C=\SI{400}{m.min^{-1}}$. On a donc $N_3=\dfrac{V_c}{\pi \cdot 2 R_m} = \dfrac{400}{0,8\pi} = \SI{159}{tr.min^{-1}}$. On a donc $N_m = N_3 \dfrac{R}{kR_e}=159 \dfrac{0,47}{0,1\cdot 0,175} = \SI{4275}{tr.min^{-1}}$. Le moteur doit donc pouvoir tourner au moins à cette vitesse.
 
+Le couple moteur maximal étant de \SI{22}{Nm}, on a donc une puissane développée $P_{\text{max}}=22\times 4275 \simeq \SI{9848}{W}$.
+
 On ne sait pas si le couple moteur maximum calculé (\SI{22}{Nm}) tient compte du rendement. 
-S'il tient compte du rendement, le moteur ME\_10\_10 convient. Sinon, il faudra utiliser le ME\_5\_15. 
+S'il tient compte du rendement, le moteur ME\_10\_10 convient (juste). Sinon, il faudra utiliser le ME\_5\_15. 
 
 \section{Analyse de la commande du dispositif de mise en translation de l’outil}
 \begin{obj}
