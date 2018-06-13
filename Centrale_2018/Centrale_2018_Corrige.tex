@@ -714,11 +714,12 @@ Le diagramme en gain montre alors l'addition d'un gain du second ordre et d'un g
 Pour la phase, $\varphi_{\text{BO}}\left( \omega\right)=\varphi_2\left( \omega\right)+\arg\left( 1-\cos\left( -\tau\omega\right) - j\sin\left(-\tau\omega\right)\right)$. Or $1-\cos\left( -\tau\omega\right) = 1-\cos\left( \tau \omega \right) \geq 0$. On a donc 
  $\varphi_{\text{BO}}=\varphi_2\left( \omega\right)+\arctan \left(\dfrac{\sin\left( \tau\omega\right)}{1-\cos\left( \tau\omega\right)} \right)$.
 
+Le diagramme de  phase est la somme d'une phase d'un système du second ordre et d'un signal $\dfrac{2\pi}{\tau}$ périodique. 
 \subparagraph{}
 Pour garantir la stabilité en BF, il faut assurer un gain négatif en BO. D'après le diagramme de gain, le gain maximal relevé est de \SI{45}{dB}. Il faudrait donc ajouter un gain supplémentaire $b'$ tel que $20\log b' = 45$ soit $b'=10^{45/20}=177$. Au bilan, on aurait donc $b_{\text{lim}}=b' b = 177\times \dfrac{5\cdot 10^{-2}}{\pi}=
 \SI{2,83}{mm.rad^{-1}}$.
 
-Une augmentation de $b$ doit probablement réduire l'amortissement de l'asservissement. 
+Il faudrait déterminer si ine augmentation de $b$ réduit l'amortissement de l'asservissement. 
 \section{Synthèse}
 
 \subparagraph{}%32
