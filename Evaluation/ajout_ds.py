@@ -120,6 +120,19 @@ def bilan_ds(num_ds,bdd,promo):
         
         # On ajoute la compétence courte et longue.
         for question in tab:
+            conn = sqlite3.connect(bdd)
+            c = conn.cursor()
+            code_comp = question[-1]
+            req = 'SELECT nom_long,nom_court FROM table_competences WHERE id_competence="'+code_comp+'"'
+            print(req)
+            c.execute(req)
+            res = c.fetchall()
+            print(req)
+            print(res)
+            conn.commit()
+            conn.close()
+            question=question + res[0][0]
+            question=question + res[0][1]
             
         res.append(tab)
         

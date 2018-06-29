@@ -1,143 +1,134 @@
+An3.C1;4;Architectures fonctionnelle et structurelle ;Architectures fonctionnelle et structurelle 
+An3.C1.SF7;4;Justifier le choix des constituants dédiés aux fonctions d’un système;Justifier le choix des constituants dédiés aux fonctions d’un système
+An3.C12;3;Réversibilité de la chaîne d’énergie :;Réversibilité de la chaîne d’énergie :
+An3.C12.SF1;3;Analyser la réversibilité d’un constituant dans une chaîne d’énergie;Analyser la réversibilité d’un constituant dans une chaîne d’énergie
+An3.C13;3;source;source
+An3.C14;3;modulateur;modulateur
+An3.C15;3;actionneur;actionneur
+An3.C16;3;chaîne de transmission;chaîne de transmission
+An3.C6;1;Chaîne d’information et d'énergie;Chaîne d’information et d'énergie
+An3.C6.SF5;4;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants
+An3.C6.SF6;4;Identifier la nature et les caractéristiques des flux échangés;Identifier la nature et les caractéristiques des flux échangés
+An3.C6.SF7;4;Identifier et interpréter les modèles des constituants du système;Identifier et interpréter les modèles des constituants du système
+An4.C1;4;Identification des écarts;Identification des écarts
+An4.C1.SF1;4;Extraire du cahier des charges les grandeurs pertinentes;Extraire du cahier des charges les grandeurs pertinentes
+An4.C1.SF2;4;Traiter des données de mesures et en extraire les caractéristiques statistiques;Traiter des données de mesures et en extraire les caractéristiques statistiques
+An4.C1.SF3;4;Exploiter et interpréter les résultats d’un calcul ou d’une simulation;Exploiter et interpréter les résultats d’un calcul ou d’une simulation
+An4.C2;4;Quantification des écarts;Quantification des écarts
+An4.C2.SF1;4;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées
+An4.C2.SF2;4;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation
+An4.C2.SF3;4;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation
+An4.C3;4;Interprétation des écarts obtenus;Interprétation des écarts obtenus
+An4.C3.SF1;4;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges
+An4.C3.SF2;4;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation
+An4.C3.SF3;4;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges
+An4.C3.SF4;4;Rechercher et proposer des causes aux écarts constatés;Rechercher et proposer des causes aux écarts constatés
+An5.C2;4;Ordres de grandeur;Ordres de grandeur
+An5.C2.SF1;4;Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation
+Com1.C2;4;Schémas cinématique, électrique, hydraulique et pneumatique;Schémas cinématique, électrique, hydraulique et pneumatique
+Com1.C2.SF1;4;Lire et décoder un schéma;Lire et décoder un schéma
+Com2.C2;4;Langage technique;Langage technique
+Com2.C2.SF1;4;Choisir l'outil de description adapté à l'objectif de la communication;Choisir l'outil de description adapté à l'objectif de la communication
+Com2.C2.SF2;4;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat
+Con.C1;4;Architecture fonctionnelle et structurelle;Architecture fonctionnelle et structurelle
+Con.C1.SF1;4;Proposer une architecture fonctionnelle et les constituants associés;Proposer une architecture fonctionnelle et les constituants associés
+Con.C2;4;Correction d’un système asservi;Correction d’un système asservi
+Con.C2.SF1;4;Choisir un type de correcteur adapté;Choisir un type de correcteur adapté
+Exp1.C3;4;Paramètres influents;Paramètres influents
+Exp1.C3.SF1;4;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système
+Exp1.C3.SF2;4;Mettre en évidence l’influence des paramètres sur les performances du système;Mettre en évidence l’influence des paramètres sur les performances du système
+Exp2.C2;4;Protocoles expérimentaux;Protocoles expérimentaux
+Exp2.C2.SF1;4;Choisir les configurations matérielles du système en fonction de l’objectif visé;Choisir les configurations matérielles du système en fonction de l’objectif visé
+Exp2.C2.SF2;4;Choisir la grandeur physique à mesurer ou justifier son choix;Choisir la grandeur physique à mesurer ou justifier son choix
+Exp2.C2.SF3;4;Choisir les entrées à imposer pour identifier un modèle de comportement;Choisir les entrées à imposer pour identifier un modèle de comportement
+Exp2.C3;4;Chaîne d’acquisition;Chaîne d’acquisition
+Exp2.C3.SF1;4;Justifier la chaîne d’acquisition utilisée;Justifier la chaîne d’acquisition utilisée
+Exp2.C4;4;Filtrage;Filtrage
+Exp2.C5;4;Échantillonnage;Échantillonnage
+Exp2.C6;4;Quantification;Quantification
+Exp2.C6.SF1;4;Prévoir la quantification nécessaire à la précision souhaitée;Prévoir la quantification nécessaire à la précision souhaitée
+Exp3.C1;4;Règles de sécurité élémentaires;Règles de sécurité élémentaires
+Exp3.C1.SF1;4;Mettre en oeuvre un système complexe en respectant les règles de sécurité;Mettre en oeuvre un système complexe en respectant les règles de sécurité
+Exp3.C2;4;Chaîne d'acquisition;Chaîne d'acquisition
+Exp3.C2.SF1;4;Mettre en oeuvre la chaîne d'acquisition;Mettre en oeuvre la chaîne d'acquisition
+Exp3.C3;4;Fréquence d’échantillonnage;Fréquence d’échantillonnage
+Exp3.C3.SF1;4;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées
+Exp3.C4;4;Paramètres de configuration du système;Paramètres de configuration du système
+Exp3.C4.SF1;4;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système
+Exp3.C5;4;Réversibilité de la chaîne d’énergie;Réversibilité de la chaîne d’énergie
+Exp3.C5.SF1;4;Mesurer les grandeurs d’effort et de flux;Mesurer les grandeurs d’effort et de flux
+Exp3.C6;4;Source, modulateur, actionneur, chaîne de transmission;Source, modulateur, actionneur, chaîne de transmission
+Exp3.C6.SF1;4;Quantifier les pertes dans les constituants d'une chaîne d'énergie;Quantifier les pertes dans les constituants d'une chaîne d'énergie
+Exp3.C7;4;Routines, procédures ;Routines, procédures 
+Exp3.C7.SF1;4;Générer un programme et l’implanter dans le système cible;Générer un programme et l’implanter dans le système cible
+Exp3.C7.SF2;4;Réaliser une intégration et une dérivation sous une forme numérique (somme et différence);Réaliser une intégration et une dérivation sous une forme numérique (somme et différence)
+Exp3.C8;4;Systèmes logiques à événements discrets;Systèmes logiques à événements discrets
+Mod1.C4;3;Énergie;Énergie
+Mod1.C4.SF1;3;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance
+Mod1.C5;3;Puissance;Puissance
+Mod1.C5.SF1;3;Identifier les pertes d’énergie ;Identifier les pertes d’énergie 
+Mod1.C5.SF2;3;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide
+Mod1.C5.SF3;3;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides
+Mod1.C6;3;Rendement;Rendement
+Mod1.C6.SF1;3;Évaluer le rendement d’une chaîne d’énergie en régime permanent;Évaluer le rendement d’une chaîne d’énergie en régime permanent
 Mod2.C1;4;Chaîne d’énergie et d'information;Chaîne d’énergie et d'information
-Mod2.C8;3;Linéarisation des systèmes non linéaires;Linéarisation des systèmes non linéaires
-Mod3.C1;3;Point de fonctionnement : Non-linéarités (hystérésis, saturation, seuil);Point de fonctionnement : Non-linéarités (hystérésis, saturation, seuil)
+Mod2.C1;4;Chaîne d’énergie et d'information;Chaîne d’énergie et d'information
+Mod2.C1.SF1;4;Choisir un modèle adapté à l’objectif;Choisir un modèle adapté à l’objectif
 Mod2.C1.SF4;3;Associer un modèle à une source d’énergie;Associer un modèle à une source d’énergie
 Mod2.C1.SF5;3;Associer un modèle aux composants d’une chaîne d’énergie;Associer un modèle aux composants d’une chaîne d’énergie
 Mod2.C1.SF6;3;Associer un modèle aux composants d’une chaîne d’information;Associer un modèle aux composants d’une chaîne d’information
-Mod2.C8.SF1;3;Linéariser le modèle autour d’un point de fonctionnement;Linéariser le modèle autour d’un point de fonctionnement
-Mod3.C1.SF1;3;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation
-Mod3.C2;3;Pôles dominants et réduction de l’ordre du modèle : principe,  justification;Pôles dominants et réduction de l’ordre du modèle : principe,  justification
-Res2.C4;3;Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB);Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB)
-Res2.C5;3;Stabilité des SLCI : équation caractéristique;Stabilité des SLCI : équation caractéristique
-Res2.C6;3;Stabilité des SLCI : position des pôles dans le plan complexe;Stabilité des SLCI : position des pôles dans le plan complexe
-Res2.C7;3;Stabilité des SLCI : marges de stabilité (de gain et de phase);Stabilité des SLCI : marges de stabilité (de gain et de phase)
-Res2.C10;3;Précision des SLCI : erreur en régime permanent;Précision des SLCI : erreur en régime permanent
-Res2.C11;3;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte
-Mod3.C2.SF1;3;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système
-Res2.C5.SF1;3;Analyser la stabilité d’un système à partir de l’équation caractéristique;Analyser la stabilité d’un système à partir de l’équation caractéristique
-Res2.C6.SF1;3;Déterminer les paramètres permettant d’assurer la stabilité du système;Déterminer les paramètres permettant d’assurer la stabilité du système
-Res2.C7.SF1;3;Relier la stabilité aux caractéristiques fréquentielles;Relier la stabilité aux caractéristiques fréquentielles
-Res2.C10.SF1;3;Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation);Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation)
-Res2.C11.SF1;3;Relier la précision aux caractéristiques fréquentielles;Relier la précision aux caractéristiques fréquentielles
-Res1.C4;3;Correction;Correction
-Con.C2;4;Correction d’un système asservi;Correction d’un système asservi
-Res1.C4.SF1;3;Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase;Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase
-Con.C2.SF1;4;Choisir un type de correcteur adapté;Choisir un type de correcteur adapté
 Mod2.C13;3;Centre d'inertie;Centre d'inertie
 Mod2.C14;3;Opérateur d'inertie;Opérateur d'inertie
 Mod2.C15;3;Matrice d'inertie;Matrice d'inertie
 Mod2.C16;3;Torseur cinétique;Torseur cinétique
 Mod2.C17;3;Torseur dynamique;Torseur dynamique
-Res1.C1;3;Chaînes de solides :;Chaînes de solides :
-Res1.C2;3;Principe fondamental de la dynamique;Principe fondamental de la dynamique
 Mod2.C17.SF1;3;Déterminer le torseur dynamique d’un solide, ou d’un ensemble de solides, par rapport à un autre solide;Déterminer le torseur dynamique d’un solide, ou d’un ensemble de solides, par rapport à un autre solide
-Res1.C1.SF1;3;Proposer une démarche permettant la détermination de la loi de mouvement;Proposer une démarche permettant la détermination de la loi de mouvement
-Res1.C2.SF1;3;Proposer une méthode permettant la détermination d’une inconnue de liaison;Proposer une méthode permettant la détermination d’une inconnue de liaison
 Mod2.C18;3;Énergie cinétique;Énergie cinétique
-Res1.C1;3;Chaînes de solides :;Chaînes de solides :
-Res1.C3;3;théorème de l’énergie cinétique;théorème de l’énergie cinétique
-Mod1.C4;3;Énergie;Énergie
-Mod1.C5;3;Puissance;Puissance
-Mod1.C6;3;Rendement;Rendement
 Mod2.C18.SF1;3;Déterminer l’énergie cinétique d’un solide, ou d’un ensemble de solides, dans son mouvement par rapport à un autre solide;Déterminer l’énergie cinétique d’un solide, ou d’un ensemble de solides, dans son mouvement par rapport à un autre solide
+Mod2.C34;4;Chaînes de solides :;Chaînes de solides :
+Mod2.C34.SF1;4;Déterminer les conditions géométriques associées à l’hyperstatisme;Déterminer les conditions géométriques associées à l’hyperstatisme
+Mod2.C35;4;degré de mobilité du modèle;degré de mobilité du modèle
+Mod2.C36;4;degré d’hyperstatisme du modèle;degré d’hyperstatisme du modèle
+Mod2.C8;3;Linéarisation des systèmes non linéaires;Linéarisation des systèmes non linéaires
+Mod2.C8.SF1;3;Linéariser le modèle autour d’un point de fonctionnement;Linéariser le modèle autour d’un point de fonctionnement
+Mod3.C1;3;Point de fonctionnement : Non-linéarités (hystérésis, saturation, seuil);Point de fonctionnement : Non-linéarités (hystérésis, saturation, seuil)
+Mod3.C1.SF1;3;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation
+Mod3.C2;3;Pôles dominants et réduction de l’ordre du modèle : principe,  justification;Pôles dominants et réduction de l’ordre du modèle : principe,  justification
+Mod3.C2.SF1;3;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système
+Mod3.C3;4;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle
+Mod3.C3.SF1;4;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes 
+Mod3.C3.SF2;4;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées
+Mod3.C4;4;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle
+Mod3.C4.SF1;4;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes 
+Mod3.C4.SF2;4;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées
+Res1.C1;3;Chaînes de solides :;Chaînes de solides :
 Res1.C1.SF1;3;Proposer une démarche permettant la détermination de la loi de mouvement;Proposer une démarche permettant la détermination de la loi de mouvement
-Res1.C3.SF1;3;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre
-Mod1.C4.SF1;3;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance
-Mod1.C5.SF1;3;Identifier les pertes d’énergie ;Identifier les pertes d’énergie 
-Mod1.C6.SF1;3;Évaluer le rendement d’une chaîne d’énergie en régime permanent;Évaluer le rendement d’une chaîne d’énergie en régime permanent
-Mod1.C5.SF2;3;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide
-Mod1.C5.SF3;3;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides
+Res1.C2;3;Principe fondamental de la dynamique;Principe fondamental de la dynamique
+Res1.C2.SF1;3;Proposer une méthode permettant la détermination d’une inconnue de liaison;Proposer une méthode permettant la détermination d’une inconnue de liaison
 Res1.C3;3;théorème de l’énergie cinétique;théorème de l’énergie cinétique
+Res1.C3;3;théorème de l’énergie cinétique;théorème de l’énergie cinétique
+Res1.C3.SF1;3;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre
+Res1.C4;3;Correction;Correction
+Res1.C4.SF1;3;Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase;Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase
+Res2.C10;3;Précision des SLCI : erreur en régime permanent;Précision des SLCI : erreur en régime permanent
+Res2.C10.SF1;3;Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation);Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation)
+Res2.C11;3;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte
+Res2.C11.SF1;3;Relier la précision aux caractéristiques fréquentielles;Relier la précision aux caractéristiques fréquentielles
+Res2.C15.SF3;4;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme
 Res2.C22;3;Principe fondamental de la dynamique;Principe fondamental de la dynamique
+Res2.C22.SF1;3;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé
+Res2.C22.SF2;3;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus
 Res2.C23;3;Conditions d’équilibrage statique et dynamique;Conditions d’équilibrage statique et dynamique
 Res2.C24;4;Inertie équivalente;Inertie équivalente
 Res2.C25;4;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance
-Res1.C3.SF1;3;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre
-Res2.C22.SF1;3;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé
-Res2.C22.SF2;3;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus
 Res2.C25.SF1;4;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus
-Mod2.C34;4;Chaînes de solides :;Chaînes de solides :
-Mod2.C35;4;degré de mobilité du modèle;degré de mobilité du modèle
-Mod2.C36;4;degré d’hyperstatisme du modèle;degré d’hyperstatisme du modèle
-Mod2.C34.SF1;4;Déterminer les conditions géométriques associées à l’hyperstatisme;Déterminer les conditions géométriques associées à l’hyperstatisme
-Res2.C15.SF3;4;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme
-Exp2.C3;4;Chaîne d’acquisition;Chaîne d’acquisition
-Exp2.C4;4;Filtrage;Filtrage
-Exp2.C5;4;Échantillonnage;Échantillonnage
-Exp2.C6;4;Quantification;Quantification
-Exp3.C7;4;Routines, procédures ;Routines, procédures 
-Exp3.C8;4;Systèmes logiques à événements discrets;Systèmes logiques à événements discrets
-Exp3.C2;4;Chaîne d'acquisition;Chaîne d'acquisition
-Exp3.C3;4;Fréquence d’échantillonnage;Fréquence d’échantillonnage
-Exp2.C3.SF1;4;Justifier la chaîne d’acquisition utilisée;Justifier la chaîne d’acquisition utilisée
-Exp2.C6.SF1;4;Prévoir la quantification nécessaire à la précision souhaitée;Prévoir la quantification nécessaire à la précision souhaitée
-Exp3.C7.SF1;4;Générer un programme et l’implanter dans le système cible;Générer un programme et l’implanter dans le système cible
-Exp3.C7.SF2;4;Réaliser une intégration et une dérivation sous une forme numérique (somme et différence);Réaliser une intégration et une dérivation sous une forme numérique (somme et différence)
-Exp3.C2.SF1;4;Mettre en oeuvre la chaîne d'acquisition;Mettre en oeuvre la chaîne d'acquisition
-Exp3.C3.SF1;4;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées
-Mod2.C1;4;Chaîne d’énergie et d'information;Chaîne d’énergie et d'information
-An3.C12;3;Réversibilité de la chaîne d’énergie :;Réversibilité de la chaîne d’énergie :
-An3.C13;3;source;source
-An3.C14;3;modulateur;modulateur
-An3.C15;3;actionneur;actionneur
-An3.C16;3;chaîne de transmission;chaîne de transmission
-Con.C1;4;Architecture fonctionnelle et structurelle;Architecture fonctionnelle et structurelle
-An3.C1;4;Architectures fonctionnelle et structurelle ;Architectures fonctionnelle et structurelle 
-An3.C6;1;Chaîne d’information et d'énergie;Chaîne d’information et d'énergie
-An4.C1;4;Identification des écarts;Identification des écarts
-An4.C2;4;Quantification des écarts;Quantification des écarts
-An4.C3;4;Interprétation des écarts obtenus;Interprétation des écarts obtenus
-An5.C2;4;Ordres de grandeur;Ordres de grandeur
-Mod3.C3;4;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle
-Mod3.C4;4;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle
-Mod2.C1.SF1;4;Choisir un modèle adapté à l’objectif;Choisir un modèle adapté à l’objectif
-An3.C12.SF1;3;Analyser la réversibilité d’un constituant dans une chaîne d’énergie;Analyser la réversibilité d’un constituant dans une chaîne d’énergie
-Con.C1.SF1;4;Proposer une architecture fonctionnelle et les constituants associés;Proposer une architecture fonctionnelle et les constituants associés
-An3.C1.SF7;4;Justifier le choix des constituants dédiés aux fonctions d’un système;Justifier le choix des constituants dédiés aux fonctions d’un système
-An3.C6.SF5;4;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants
-An3.C6.SF6;4;Identifier la nature et les caractéristiques des flux échangés;Identifier la nature et les caractéristiques des flux échangés
-An3.C6.SF7;4;Identifier et interpréter les modèles des constituants du système;Identifier et interpréter les modèles des constituants du système
-An4.C1.SF1;4;Extraire du cahier des charges les grandeurs pertinentes;Extraire du cahier des charges les grandeurs pertinentes
-An4.C1.SF2;4;Traiter des données de mesures et en extraire les caractéristiques statistiques;Traiter des données de mesures et en extraire les caractéristiques statistiques
-An4.C1.SF3;4;Exploiter et interpréter les résultats d’un calcul ou d’une simulation;Exploiter et interpréter les résultats d’un calcul ou d’une simulation
-An4.C2.SF1;4;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées
-An4.C2.SF2;4;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation
-An4.C2.SF3;4;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation
-An4.C3.SF1;4;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges
-An4.C3.SF2;4;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation
-An4.C3.SF3;4;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges
-An4.C3.SF4;4;Rechercher et proposer des causes aux écarts constatés;Rechercher et proposer des causes aux écarts constatés
-An5.C2.SF1;4;"Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation
-Critiquer les résultats issus d’une mesure ou d’une simulation
-Identifier des valeurs erronées
-Valider ou proposer une hypothèse";"Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation
-Critiquer les résultats issus d’une mesure ou d’une simulation
-Identifier des valeurs erronées
-Valider ou proposer une hypothèse"
-Mod3.C3.SF1;4;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes 
-Mod3.C3.SF2;4;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées
-Mod3.C4.SF1;4;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes 
-Mod3.C4.SF2;4;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées
+Res2.C4;3;Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB);Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB)
+Res2.C5;3;Stabilité des SLCI : équation caractéristique;Stabilité des SLCI : équation caractéristique
+Res2.C5.SF1;3;Analyser la stabilité d’un système à partir de l’équation caractéristique;Analyser la stabilité d’un système à partir de l’équation caractéristique
+Res2.C6;3;Stabilité des SLCI : position des pôles dans le plan complexe;Stabilité des SLCI : position des pôles dans le plan complexe
+Res2.C6.SF1;3;Déterminer les paramètres permettant d’assurer la stabilité du système;Déterminer les paramètres permettant d’assurer la stabilité du système
+Res2.C7;3;Stabilité des SLCI : marges de stabilité (de gain et de phase);Stabilité des SLCI : marges de stabilité (de gain et de phase)
+Res2.C7.SF1;3;Relier la stabilité aux caractéristiques fréquentielles;Relier la stabilité aux caractéristiques fréquentielles
 Res3.C3;4;Variabilité des paramètres du modèle de simulation;Variabilité des paramètres du modèle de simulation
-Exp1.C3;4;Paramètres influents;Paramètres influents
-Exp2.C2;4;Protocoles expérimentaux;Protocoles expérimentaux
-Exp3.C1;4;Règles de sécurité élémentaires;Règles de sécurité élémentaires
-Exp3.C4;4;Paramètres de configuration du système;Paramètres de configuration du système
-Exp3.C5;4;Réversibilité de la chaîne d’énergie;Réversibilité de la chaîne d’énergie
-Exp3.C6;4;Source, modulateur, actionneur, chaîne de transmission;Source, modulateur, actionneur, chaîne de transmission
-Com1.C2;4;Schémas cinématique, électrique, hydraulique et pneumatique;Schémas cinématique, électrique, hydraulique et pneumatique
-Com2.C2;4;Langage technique;Langage technique
 Res3.C3.SF1;4;Choisir les paramètres de simulation;Choisir les paramètres de simulation
 Res3.C3.SF2;4;Faire varier un paramètre et comparer les courbes obtenues;Faire varier un paramètre et comparer les courbes obtenues
-Exp1.C3.SF1;4;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système
-Exp1.C3.SF2;4;Mettre en évidence l’influence des paramètres sur les performances du système;Mettre en évidence l’influence des paramètres sur les performances du système
-Exp2.C2.SF1;4;Choisir les configurations matérielles du système en fonction de l’objectif visé;Choisir les configurations matérielles du système en fonction de l’objectif visé
-Exp2.C2.SF2;4;Choisir la grandeur physique à mesurer ou justifier son choix;Choisir la grandeur physique à mesurer ou justifier son choix
-Exp2.C2.SF3;4;Choisir les entrées à imposer pour identifier un modèle de comportement;Choisir les entrées à imposer pour identifier un modèle de comportement
-Exp3.C1.SF1;4;Mettre en oeuvre un système complexe en respectant les règles de sécurité;Mettre en oeuvre un système complexe en respectant les règles de sécurité
-Exp3.C4.SF1;4;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système
-Exp3.C5.SF1;4;Mesurer les grandeurs d’effort et de flux;Mesurer les grandeurs d’effort et de flux
-Exp3.C6.SF1;4;Quantifier les pertes dans les constituants d'une chaîne d'énergie;Quantifier les pertes dans les constituants d'une chaîne d'énergie
-Com1.C2.SF1;4;Lire et décoder un schéma;Lire et décoder un schéma
-Com2.C2.SF1;4;Choisir l'outil de description adapté à l'objectif de la communication;Choisir l'outil de description adapté à l'objectif de la communication
-Com2.C2.SF2;4;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat
