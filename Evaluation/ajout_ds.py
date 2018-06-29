@@ -105,9 +105,10 @@ def bilan_ds(num_ds,bdd,promo):
     conn.commit()
     conn.close()
     
-    # On récupère pour chaque eleve : num_question, poids, bareme, note, id_competence
-    notes=[]
+    res=[]
     for id in id_eleves :
+        # On récupère pour chaque eleve : num_question, poids, bareme, note, id_competence
+
         conn = sqlite3.connect(bdd)
         c = conn.cursor()
         req = "SELECT num_question, poids, bareme, note, id_competence FROM ds WHERE id_eleve="+str(id)+" AND num_ds="+str(num_ds)
@@ -115,6 +116,15 @@ def bilan_ds(num_ds,bdd,promo):
         tab = c.fetchall()
         conn.commit()
         conn.close()
+        
+        
+        # On ajoute la compétence courte et longue.
+        for question in tab:
+            
+        res.append(tab)
+        
+        
+        """
         # On calcule la note :
         note_gl = 0
         note_el = 0 
@@ -126,12 +136,11 @@ def bilan_ds(num_ds,bdd,promo):
                 note = 0
             #print(note_el,type(q[2]),type(note),note)
             note_el = note_el+ q[2]*note
-        notes.append([id,note_el,note_gl,note_el*20/note_gl])
+        notes.append([id,note_el,note_gl,note_el*20/note_gl])"""
 
     
     
-    return notes
-    # On calcule la note
+    return res
         
     
 promo = 2018
@@ -140,8 +149,7 @@ num_ds = 1
 #nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
 #remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
 tt = bilan_ds(1,bdd,promo)
-for i in tt:
-    print(tt)
+
 
 """
 (
