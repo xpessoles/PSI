@@ -171,19 +171,42 @@ def stat_classe(notes):
     bilan = []
     for eleve in notes :
         id = eleve[0][0]
-        print(id)
         note_gl = 0
         note_el = 0
         for note in eleve :
-            note_gl += note[1]*note[2]
-            n = note[3]
-            if note[3]=="n" or note[3]=="":
+            note_gl += note[2]*note[3]
+            n = note[4]
+            if note[4]=="n" or note[4]=="":
                 n = 0
             #print(note_el,type(q[2]),type(note),note)
-            note_el = note_el+ note[2]*n
-        bilan.append([id,note_el,note_gl])
+            note_el = note_el+ note[3]*n
+        bilan.append([note_el,id,note_gl])
         
-        #sorted(bilan,key=lambda x: x[1])
+    bilan.sort()
+    i=1
+    # On ajoute le classement
+    for b in bilan:
+        b.append(i)
+        i+=1
+    
+    #On retrie dans l'ordre des identifiants
+    for b in bilan:
+        b[0],b[1]=b[1],b[0]
+    bilan.sort()
+    
+    # On rajoute le nom et le prénom
+    for b in bilan : 
+        id = b[0]
+        conn = sqlite3.connect(bdd)
+        c = conn.cursor()
+        req = 'SELECT nom,prenom FROM eleves WHERE id_eleve="'+str(id)+'"'
+        #print(req)
+        c.execute(req)
+        res = c.fetchall()
+        conn.commit()
+        conn.close()
+        b.append(res[0][0])
+        b.append(res[0][1])
 
 
     return bilan
@@ -196,8 +219,6 @@ num_ds = 1
 #remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
-for e in bilan :
-    print(e[1])
     
 """
 (
