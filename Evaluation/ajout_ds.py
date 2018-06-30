@@ -119,12 +119,13 @@ def bilan_ds(num_ds,bdd,promo):
         
     notes = []
     
-    
-    #On convertit les tuples en liste. 
+    i=0 
+    #On convertit les tuples en liste et on ajoute les id eleves.
     for el in res :
         eleve = []
         for qq in el :
             questions = []
+            questions.append(id_eleves[i])
             for q in qq :
                 questions.append(q)
                 # On ajoute la compétence courte et longue.
@@ -142,7 +143,7 @@ def bilan_ds(num_ds,bdd,promo):
                 
             eleve.append(questions)
         notes.append(eleve)
-        
+        i+=1
     
         
         """
@@ -170,9 +171,10 @@ def stat_classe(notes):
     bilan = []
     for eleve in notes :
         id = eleve[0][0]
+        print(id)
         note_gl = 0
         note_el = 0
-        for note in eleve : 
+        for note in eleve :
             note_gl += note[1]*note[2]
             n = note[3]
             if note[3]=="n" or note[3]=="":
@@ -180,6 +182,10 @@ def stat_classe(notes):
             #print(note_el,type(q[2]),type(note),note)
             note_el = note_el+ note[2]*n
         bilan.append([id,note_el,note_gl])
+        
+        #sorted(bilan,key=lambda x: x[1])
+
+
     return bilan
     
     
@@ -190,11 +196,9 @@ num_ds = 1
 #remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
-
-for note in bilan : 
-    print(note[1])
+for e in bilan :
+    print(e[1])
     
-
 """
 (
 	`id_eleve`	INTEGER,tt
