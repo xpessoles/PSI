@@ -215,11 +215,75 @@ def stat_classe(notes):
 promo = 2018
 num_ds = 1
 
+def ecriture_notes_tex(notes,bilan,file):
+    el = notes[0][0]
+    # On compte le nombre de lignes de notes :
+    nb_ques = len(notes)
+    nb_lignes = nb_ques//4+1
+
+    file_el = file+str(el)+".tex"
+    fid = open(file_el,'w')
+    
+    
+    # ===== NOTES PAR QUESTIONS =====
+    # On ajoute les notes par questions
+    fid.write("\\footnotesize \n")
+    fid.write("\\begin{center} \n")
+    fid.write("\\begin{tabular}{|c|c|c|c||c|c|c|c||c|c|c|c||c|c|c|c|} \n")
+    for i in range (0,nb_lignes):
+        c1 = i
+        c2 = nb_lignes+i
+        c3 = 2*nb_lignes+i
+        c4 = 3*nb_lignes+i
+        ligne = ""
+        
+        # 1 : num, 3 : note, 6 : comp, 4 : note/5
+        ligne = ligne+str(notes[c1][1])+" & "+str(notes[c1][3])+" & "+str(notes[c1][6])+" & "+str(notes[c1][4])
+        ligne = ligne+" & "+str(notes[c2][1])+" & "+str(notes[c2][3])+" & "+str(notes[c2][6])+" & "+str(notes[c2][4])
+        ligne = ligne+" & "+str(notes[c3][1])+" & "+str(notes[c3][3])+" & "+str(notes[c3][6])+" & "+str(notes[c3][4])
+        if c4 < nb_ques :
+            ligne = ligne+" & "+str(notes[c4][1])+" & "+str(notes[c4][3])+" & "+str(notes[c4][6])+" & "+str(notes[c4][4])+" \\\ "
+        else : 
+            ligne = ligne+" & "+" & "+" & "+" & "+" \\\ "
+        fid.write(ligne)
+        fid.write('\n')
+    
+    fid.write("\\end{tabular} \n")
+    fid.write("\\end{center} \n")
+    fid.write("\\normalsize \n")
+    # ===== FIN NOTES PAR QUESTIONS =====
+    
+    # ===== NOTES PAR COMPETECNES =====
+    
+    
+    
+    
+    
+    fid.close()    
+            
+"""
+    1    10    19    28
+    2    11    20    29
+    3    12    21    30
+    4    13    22    31
+    5    14    23    32
+    6    15    24    33
+    7    16    25
+    8    17    26
+    9    18    27
+"""    
+    
+    
 #nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
 #remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
+file  = "f"
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
-    
+ecriture_notes_tex(notes[0],bilan,file)
+
+
+
+
 """
 (
 	`id_eleve`	INTEGER,tt
