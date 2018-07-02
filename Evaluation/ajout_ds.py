@@ -230,6 +230,9 @@ def ecriture_notes_tex(notes,bilan,file):
     fid.write("\\footnotesize \n")
     fid.write("\\begin{center} \n")
     fid.write("\\begin{tabular}{|c|c|c|c||c|c|c|c||c|c|c|c||c|c|c|c|} \n")
+    fid.write("\\hline \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} \\\ \n")
+    fid.write("\\hline \n")
+    fid.write("\\hline \n")
     for i in range (0,nb_lignes):
         c1 = i
         c2 = nb_lignes+i
@@ -247,7 +250,8 @@ def ecriture_notes_tex(notes,bilan,file):
             ligne = ligne+" & "+" & "+" & "+" & "+" \\\ "
         fid.write(ligne)
         fid.write('\n')
-    
+        
+    fid.write("\\hline \n")
     fid.write("\\end{tabular} \n")
     fid.write("\\end{center} \n")
     fid.write("\\normalsize \n")
