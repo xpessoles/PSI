@@ -212,9 +212,6 @@ def stat_classe(notes):
     return bilan
     
     
-promo = 2018
-num_ds = 1
-
 def ecriture_notes_tex(notes,bilan,file):
     el = notes[0][0]
     # On compte le nombre de lignes de notes :
@@ -245,22 +242,19 @@ def ecriture_notes_tex(notes,bilan,file):
         ligne = ligne+" & "+str(notes[c2][1])+" & "+str(notes[c2][3])+" & "+str(notes[c2][6])+" & "+str(notes[c2][4])
         ligne = ligne+" & "+str(notes[c3][1])+" & "+str(notes[c3][3])+" & "+str(notes[c3][6])+" & "+str(notes[c3][4])
         if c4 < nb_ques :
-            ligne = ligne+" & "+str(notes[c4][1])+" & "+str(notes[c4][3])+" & "+str(notes[c4][6])+" & "+str(notes[c4][4])+" \\\ "
+            ligne = ligne+" & "+str(notes[c4][1])+" & "+str(notes[c4][3])+" & "+str(notes[c4][6])+" & "+str(notes[c4][4])+" \\\ \\hline "
         else : 
-            ligne = ligne+" & "+" & "+" & "+" & "+" \\\ "
+            ligne = ligne+" & "+" & "+" & "+" & "+" \\\ \\hline \n"
         fid.write(ligne)
         fid.write('\n')
         
-    fid.write("\\hline \n")
+    #fid.write("\\hline \n")
     fid.write("\\end{tabular} \n")
     fid.write("\\end{center} \n")
     fid.write("\\normalsize \n")
     # ===== FIN NOTES PAR QUESTIONS =====
     
-    # ===== NOTES PAR COMPETECNES =====
-    
-    
-    
+    # ===== NOTES PAR COMPETENCES =====
     
     
     fid.close()    
@@ -280,6 +274,10 @@ def ecriture_notes_tex(notes,bilan,file):
     
 #nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
 #remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
+    
+promo = 2018
+num_ds = 1
+
 file  = "f"
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
