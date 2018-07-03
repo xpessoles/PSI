@@ -258,7 +258,30 @@ def ecriture_notes_tex(notes,bilan,file):
     
     
     fid.close()    
-            
+
+def bilan_competences_ds(notes_el):
+    # Rappel : pour une question, une note éleve est composée :
+    # Id éleve[0], Numero question[1], poids(5)[2], bareme[3], note/5[4], commentaire[5], id_competence[6], comp longue[7], com courte[8].
+    bilan_el=[] # Liste compsée d'une liste de  code comp, note eleve, note maxi
+    for note in notes_el :
+        comp = note[6]
+        pts_el = note[4]*note[3]
+        pts_total = note[2]*note[3]
+        comp_lg = note[7]
+        comp_courte = note[8]
+        bilan_q = [comp,pts_el,pts_total,comp_lg,comp_courte]
+        flag = True
+        for i in range(len(bilan_el)):
+            if comp == bilan_el[i][0] :
+                bilan_el[i][1]+=pts_el
+                bilan_el[i][2]+=pts_total
+                flag = False
+        if flag :
+            bilan_el.append(bilan_q)
+    
+    return bilan_el
+    
+    
 """
     1    10    19    28
     2    11    20    29
@@ -281,11 +304,14 @@ num_ds = 1
 file  = "f"
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
-ecriture_notes_tex(notes[0],bilan,file)
+#ecriture_notes_tex(notes[0],bilan,file)
 
+bilan_el  = bilan_competences_ds(notes[0])
 
-
-
+for n in bilan_el:
+    print(n)
+    
+    
 """
 (
 	`id_eleve`	INTEGER,tt
