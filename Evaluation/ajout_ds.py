@@ -308,7 +308,7 @@ def ecriture_notes_tex(notes,comp_el,file):
         print(comp_el[i][1],comp_el[i][2])
         taux =  comp_el[i][1]/comp_el[i][2]*100
         taux = int(taux)
-        ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " % \\\ \\hline \n"
+        ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " \\% \\\ \\hline \n"
         fid.write(ligne)
     
     fid.write("\\end{tabular} \n")
