@@ -8,6 +8,7 @@ Ajout des notes d'un DS à partir d'un fichier CSV.
 
 """
 import sqlite3
+import codecs
 
 file_csv = "Classeur1.csv"
 bdd = "BDD_Evaluation.db"
@@ -212,14 +213,48 @@ def stat_classe(notes):
     return bilan
     
     
-def ecriture_notes_tex(notes,bilan,file):
+
+    
+    
+def bilan_competences_ds(notes_el):
+    # Rappel : pour une question, une note éleve est composée :
+    # Id éleve[0], Numero question[1], poids(5)[2], bareme[3], note/5[4], commentaire[5], id_competence[6], comp longue[7], com courte[8].
+    bilan_el=[] # Liste compsée d'une liste de  code comp, note eleve, note maxi
+    
+    # Recherche des compétences et incrémentation de la note et du barème. 
+    for note in notes_el :
+        comp = note[6]
+        pts_el = note[4]*note[3]
+        pts_total = note[2]*note[3]
+        comp_lg = note[7]
+        comp_courte = note[8]
+        bilan_q = [comp,pts_el,pts_total,comp_lg,comp_courte]
+        flag = True
+        for i in range(len(bilan_el)):
+            if comp == bilan_el[i][0] :
+                bilan_el[i][1]+=pts_el
+                bilan_el[i][2]+=pts_total
+                flag = False
+        if flag :
+            bilan_el.append(bilan_q)
+
+    
+    return bilan_el
+    
+    
+    
+def ecriture_notes_tex(notes,comp_el,file):
+    """
+    Ecriture des notes  pour un seul élève.
+    """
     el = notes[0][0]
     # On compte le nombre de lignes de notes :
     nb_ques = len(notes)
     nb_lignes = nb_ques//4+1
 
     file_el = file+str(el)+".tex"
-    fid = open(file_el,'w')
+    # fid = open(file_el,'w')
+    fid = codecs.open(file_el, "w", "utf-8")
     
     
     # ===== NOTES PAR QUESTIONS =====
@@ -251,48 +286,40 @@ def ecriture_notes_tex(notes,bilan,file):
     #fid.write("\\hline \n")
     fid.write("\\end{tabular} \n")
     fid.write("\\end{center} \n")
-    fid.write("\\normalsize \n")
+    fid.write("\\normalsize \n \n")
     # ===== FIN NOTES PAR QUESTIONS =====
     
     # ===== NOTES PAR COMPETENCES =====
+    fid.write("\\footnotesize \n")
+    fid.write("\\begin{center} \n")
+    fid.write("\\begin{tabular}{|p{.7\linewidth}|c|} \n")
+    fid.write("\\hline \n")
+    ch = "Compétences  & Taux \\\ \\hline \\hline \n"
+    # print(type(ch))
+    # ch = ch.encode('utf8')
+    # print(type(ch))
+    fid.write(ch)
+    
+    
+    for i in range(len(comp_el)):
+        code_comp = comp_el[i][0]
+        nom_comp  = comp_el[i][3]
+        print(comp_el)
+        print(comp_el[i][1],comp_el[i][2])
+        taux =  comp_el[i][1]/comp_el[i][2]*100
+        taux = int(taux)
+        ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " % \\\ \\hline \n"
+        fid.write(ligne)
+    
+    fid.write("\\end{tabular} \n")
+    fid.write("\\end{center} \n")
+    fid.write("\\normalsize \n \n")
     
     
     fid.close()    
 
-def bilan_competences_ds(notes_el):
-    # Rappel : pour une question, une note éleve est composée :
-    # Id éleve[0], Numero question[1], poids(5)[2], bareme[3], note/5[4], commentaire[5], id_competence[6], comp longue[7], com courte[8].
-    bilan_el=[] # Liste compsée d'une liste de  code comp, note eleve, note maxi
-    for note in notes_el :
-        comp = note[6]
-        pts_el = note[4]*note[3]
-        pts_total = note[2]*note[3]
-        comp_lg = note[7]
-        comp_courte = note[8]
-        bilan_q = [comp,pts_el,pts_total,comp_lg,comp_courte]
-        flag = True
-        for i in range(len(bilan_el)):
-            if comp == bilan_el[i][0] :
-                bilan_el[i][1]+=pts_el
-                bilan_el[i][2]+=pts_total
-                flag = False
-        if flag :
-            bilan_el.append(bilan_q)
-    
-    return bilan_el
-    
-    
-"""
-    1    10    19    28
-    2    11    20    29
-    3    12    21    30
-    4    13    22    31
-    5    14    23    32
-    6    15    24    33
-    7    16    25
-    8    17    26
-    9    18    27
-"""    
+
+
     
     
 #nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
@@ -304,9 +331,11 @@ num_ds = 1
 file  = "f"
 notes = bilan_ds(1,bdd,promo)
 bilan = stat_classe(notes)
-#ecriture_notes_tex(notes[0],bilan,file)
+
 
 bilan_el  = bilan_competences_ds(notes[0])
+
+ecriture_notes_tex(notes[0],bilan_el,file)
 
 for n in bilan_el:
     print(n)
@@ -325,7 +354,7 @@ for n in bilan_el:
 	`id_competence`	INTEGER,
 	`commentaire`	INTEGER
 );
-"""
+ """
 
 """
 conn = sqlite3.connect('example.db')
