@@ -11,6 +11,9 @@ import sqlite3
 import codecs
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+import shutil
+from PyPDF2 import PdfFileReader, PdfFileWriter
 
 file_csv = "Classeur1.csv"
 bdd = "BDD_Evaluation.db"
@@ -254,7 +257,7 @@ def creation_hsitogramme(bilan):
         histo.append(bilan[i][-1])
     histo.sort()
     
-    plt.hist(histo, range = (0, 20), bins = 20,edgecolor = 'black', histtype='bar', rwidth=0.8)
+    plt.hist(histo, range = (0, 20), bins = 2, color = 'gray',edgecolor = 'black', histtype='bar', rwidth=0.8)
     #, color = 'yellow',edgecolor = 'red')
     
     plt.xlabel('Notes')
@@ -288,7 +291,8 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     nb_ques = len(notes)
     nb_lignes = nb_ques//4+1
 
-    file_el = file+str(el)+".tex"
+    #file_el = file+str(el)+".tex"
+    file_el = file+str(1)+".tex"
     # fid = open(file_el,'w')
     fid = codecs.open(file_el, "w", "utf-8")
     
@@ -298,13 +302,13 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     
     fid.write("\\begin{minipage}[c]{.45\\linewidth} \n")
     
-    fid.write("Nom "+bilan_el[4]+"\n \n")
-    fid.write("Prénom "+bilan_el[5]+"\n \n")
-    fid.write("Moyenne harmonisée "+str(round(bilan_el[7],2))+"\n \n")
-    fid.write("Rang "+str(bilan_el[3])+"\n \n")
-    fid.write("Moyenne brute "+str(round(bilan_el[6],2))+"\n \n")
+    fid.write("\\Large \\textbf{\\textsf{"+bilan_el[4].upper()+" "+bilan_el[5]+"}} \n \n")  
     
-    fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"\n \n")
+    fid.write(" \\normalsize Note harmonisée "+str(round(bilan_el[7],2))+"/20 \n \n")
+    fid.write("Rang "+str(bilan_el[3])+"\n \n")
+    fid.write("Note brute "+str(round(bilan_el[6],2))+"/20 \n \n")
+    
+    fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"/20 \n \n")
     
     fid.write("\\end{minipage}\\hfill \n")
     fid.write("\\begin{minipage}[c]{.45\\linewidth}  \n")
@@ -375,7 +379,40 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     fid.close()    
 
 
+def generation_bilan(notes,bilan_el,bilan_classe,moy,file):
+    os.chdir("FicheDS")
+    for i in range(len(notes)):
+        ecriture_notes_tex(notes[i],bilan_el,bilan_classe[i],moy,file)
+        os.system("pdflatex FicheDS.tex")
+        ff = i
+        if ff<10 :
+            ff = str(0)+str(ff)
+        fichier = ""+str(ff)+".pdf"
+        shutil.copyfile("FicheDS.pdf",fichier)
+    
+    os.chdir("..")
 
+def concatenation_pdf():
+    os.chdir("FicheDS")
+    liste_pdf = []
+    liste = os.listdir()
+    for f in liste : 
+        if "pdf" in f :
+            liste_pdf.append(f)
+    liste_pdf=liste_pdf[0:-1]
+    
+    input_streams = []
+    for input_file in liste_pdf:
+        input_streams.append(open(input_file, 'rb'))
+    writer = PdfFileWriter()
+    for reader in map(PdfFileReader, input_streams):
+        for n in range(reader.getNumPages()):
+                writer.addPage(reader.getPage(n))
+    
+    with open("BILAN.pdf", 'wb') as fileobj:
+        writer.write(fileobj)
+    
+    
     
     
 #nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
@@ -398,7 +435,11 @@ creation_hsitogramme(bilan_classe)
 
 moy = moyenne_classe(bilan_classe)
 
-ecriture_notes_tex(notes[0],bilan_el,bilan_classe[0],moy,file)
+#ecriture_notes_tex(notes[0],bilan_el,bilan_classe[0],moy,file)
+generation_bilan(notes,bilan_el,bilan_classe,moy,file)
+
+concatenation_pdf()
+
 
 """
 (
