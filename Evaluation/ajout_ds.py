@@ -282,7 +282,7 @@ def harmonisation(bilan,a=1,b=0):
     
     
     
-def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
+def ecriture_notes_tex(notes,comp_el,bilan_el,moy):
     """
     Ecriture des notes  pour un seul élève.
     """
@@ -292,7 +292,7 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     nb_lignes = nb_ques//4+1
 
     #file_el = file+str(el)+".tex"
-    file_el = file+str(1)+".tex"
+    file_el = "f1.tex"
     # fid = open(file_el,'w')
     fid = codecs.open(file_el, "w", "utf-8")
     
@@ -310,6 +310,8 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     
     fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"/20 \n \n")
     
+    fid.write("Commentaires : \n")
+    fid.write(note[0][5]+" \n")
     fid.write("\\end{minipage}\\hfill \n")
     fid.write("\\begin{minipage}[c]{.45\\linewidth}  \n")
     fid.write("\\begin{center}\n")
@@ -318,7 +320,7 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     
     fid.write("\\end{minipage}\n")
     
-    fid.write("\\vspace{.cm}\n")
+    
 
     
     # ===== NOTES PAR QUESTIONS =====
@@ -379,10 +381,10 @@ def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     fid.close()    
 
 
-def generation_bilan(notes,bilan_el,bilan_classe,moy,file):
+def generation_bilan(notes,bilan_el,bilan_classe,moy):
     os.chdir("FicheDS")
     for i in range(len(notes)):
-        ecriture_notes_tex(notes[i],bilan_el,bilan_classe[i],moy,file)
+        ecriture_notes_tex(notes[i],bilan_el,bilan_classe[i],moy)
         os.system("pdflatex FicheDS.tex")
         ff = i
         if ff<10 :
@@ -435,8 +437,7 @@ creation_hsitogramme(bilan_classe)
 
 moy = moyenne_classe(bilan_classe)
 
-#ecriture_notes_tex(notes[0],bilan_el,bilan_classe[0],moy,file)
-generation_bilan(notes,bilan_el,bilan_classe,moy,file)
+generation_bilan(notes,bilan_el,bilan_classe,moy)
 
 concatenation_pdf()
 
