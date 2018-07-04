@@ -9,6 +9,8 @@ Ajout des notes d'un DS à partir d'un fichier CSV.
 """
 import sqlite3
 import codecs
+import numpy as np
+import matplotlib.pyplot as plt
 
 file_csv = "Classeur1.csv"
 bdd = "BDD_Evaluation.db"
@@ -49,11 +51,9 @@ def lire_fichier(file):
     
     # Ensuite, on récupère les notes
     data = fid.readlines()
-    #print(data)
     fid.close()
     notes = []
     for ligne in data : 
-        #print(ligne)
         ligne = ligne.split(";")
         commentaire = ligne[nb_questions+1]
         ligne = ligne[:nb_questions+1]
@@ -64,15 +64,11 @@ def lire_fichier(file):
     return nb_questions, bareme, poids, notes, competences
 
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
-    #print(os.getcwd())
-    #print(os.listdir())
-    #bdd="BDD_Evaluation.db"
-   
+
     conn = sqlite3.connect(bdd)
     c = conn.cursor()
     
     for eleve in notes : 
-        #print(eleve)
         data = ""
         id_eleve = int(eleve[0])
         print("EleveID", id_eleve)
@@ -88,7 +84,7 @@ def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
             data = data + str(competences[i-1])+'","'
             data = data + str(eleve[nb_questions+1])+'"'
             req = 'INSERT INTO ds VALUES ('+data+')'
-            print(req)
+            
             
             
             c.execute(req)
@@ -134,7 +130,7 @@ def bilan_ds(num_ds,bdd,promo):
             c = conn.cursor()
             code_comp = questions[-1]
             req = 'SELECT nom_long,nom_court FROM table_competences WHERE id_competence="'+code_comp+'"'
-            #print(req)
+            
             c.execute(req)
             res = c.fetchall()
             conn.commit()
@@ -184,6 +180,9 @@ def stat_classe(notes):
         bilan.append([note_el,id,note_gl])
         
     bilan.sort()
+    bilan.reverse()
+    #print(bilan)
+    
     i=1
     # On ajoute le classement
     for b in bilan:
@@ -212,9 +211,16 @@ def stat_classe(notes):
 
     return bilan
     
-    
-
-    
+def moyenne_classe(bilan_cl) :
+    # Moyenne harmonisée et non harmonisée
+    m = 0
+    mh = 0
+    for i in range(len(bilan_cl)):
+        m = m+bilan_cl[i][6]        
+        mh = mh+bilan_cl[i][7]
+    m = m/len(bilan_cl)
+    mh = mh/len(bilan_cl)
+    return [m,mh]
     
 def bilan_competences_ds(notes_el):
     # Rappel : pour une question, une note éleve est composée :
@@ -241,9 +247,39 @@ def bilan_competences_ds(notes_el):
     
     return bilan_el
     
+def creation_hsitogramme(bilan):
+    # il faut que la derniere valeur de chaque élément du bilan soit la moyenne harmonisée
+    histo = []
+    for i in range(len(bilan)):
+        histo.append(bilan[i][-1])
+    histo.sort()
+    
+    plt.hist(histo, range = (0, 20), bins = 20,edgecolor = 'black', histtype='bar', rwidth=0.8)
+    #, color = 'yellow',edgecolor = 'red')
+    
+    plt.xlabel('Notes')
+    plt.ylabel('Nombre')
+    plt.title('Histogramme des notes')
+    plt.savefig("histo.pdf")
     
     
-def ecriture_notes_tex(notes,comp_el,file):
+    
+    
+def harmonisation(bilan,a=1,b=0):
+    """
+    Calcul de la moyenne de chaque éleve et harmonisation de
+     la forme ax+b
+    """
+    for i in range(len(bilan)):
+        note = 20* bilan[i][1]/bilan[i][2]
+        note_h = a*note+b
+        bilan[i].append(note)
+        bilan[i].append(note_h)
+    
+    
+    
+    
+def ecriture_notes_tex(notes,comp_el,bilan_el,moy,file):
     """
     Ecriture des notes  pour un seul élève.
     """
@@ -256,6 +292,30 @@ def ecriture_notes_tex(notes,comp_el,file):
     # fid = open(file_el,'w')
     fid = codecs.open(file_el, "w", "utf-8")
     
+    
+    
+    # ===== EN TETE ELEVE ====
+    
+    fid.write("\\begin{minipage}[c]{.45\\linewidth} \n")
+    
+    fid.write("Nom "+bilan_el[4]+"\n \n")
+    fid.write("Prénom "+bilan_el[5]+"\n \n")
+    fid.write("Moyenne harmonisée "+str(round(bilan_el[7],2))+"\n \n")
+    fid.write("Rang "+str(bilan_el[3])+"\n \n")
+    fid.write("Moyenne brute "+str(round(bilan_el[6],2))+"\n \n")
+    
+    fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"\n \n")
+    
+    fid.write("\\end{minipage}\\hfill \n")
+    fid.write("\\begin{minipage}[c]{.45\\linewidth}  \n")
+    fid.write("\\begin{center}\n")
+    fid.write("\\includegraphics[width=.8\\linewidth]{../histo.pdf} \n")
+    fid.write("\\end{center}\n")
+    
+    fid.write("\\end{minipage}\n")
+    
+    fid.write("\\vspace{.cm}\n")
+
     
     # ===== NOTES PAR QUESTIONS =====
     # On ajoute les notes par questions
@@ -295,17 +355,13 @@ def ecriture_notes_tex(notes,comp_el,file):
     fid.write("\\begin{tabular}{|p{.7\linewidth}|c|} \n")
     fid.write("\\hline \n")
     ch = "Compétences  & Taux \\\ \\hline \\hline \n"
-    # print(type(ch))
-    # ch = ch.encode('utf8')
-    # print(type(ch))
+    
     fid.write(ch)
     
     
     for i in range(len(comp_el)):
         code_comp = comp_el[i][0]
         nom_comp  = comp_el[i][3]
-        print(comp_el)
-        print(comp_el[i][1],comp_el[i][2])
         taux =  comp_el[i][1]/comp_el[i][2]*100
         taux = int(taux)
         ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " \\% \\\ \\hline \n"
@@ -330,17 +386,20 @@ num_ds = 1
 
 file  = "f"
 notes = bilan_ds(1,bdd,promo)
-bilan = stat_classe(notes)
+bilan_classe = stat_classe(notes)
 
 
 bilan_el  = bilan_competences_ds(notes[0])
 
-ecriture_notes_tex(notes[0],bilan_el,file)
 
-for n in bilan_el:
-    print(n)
-    
-    
+
+harmonisation(bilan_classe,a=1,b=0)
+creation_hsitogramme(bilan_classe)
+
+moy = moyenne_classe(bilan_classe)
+
+ecriture_notes_tex(notes[0],bilan_el,bilan_classe[0],moy,file)
+
 """
 (
 	`id_eleve`	INTEGER,tt
