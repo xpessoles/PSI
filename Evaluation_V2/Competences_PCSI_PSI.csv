@@ -1,300 +1,143 @@
-﻿PCSI;An1.C1;Cahier des charges (diagramme des exigences, diagramme des cas d’utilisation);CdC (req, uc);1
-PCSI;An1.C1.SF1;Décrire le besoin;Décrire le besoin;1
-PCSI;An1.C1.SF2;Traduire un besoin fonctionnel en exigences;Traduire un besoin fonctionnel en exigences;1
-PCSI;An1.C1.SF3;Présenter la fonction globale;Présenter la fonction globale;1
-PCSI;An1.C1.SF4;Définir les domaines d’application, les critères technico-économiques;Définir les domaines d’application, les critères technico-économiques;1
-PCSI;An1.C1.SF5;Identifier les contraintes;Identifier les contraintes;1
-PCSI;An1.C1.SF6;Identifier et caractériser les fonctions;Identifier et caractériser les fonctions;1
-PCSI;An1.C1.SF7;Qualifier et quantifier les exigences (critère, niveau);Qualifier et quantifier les exigences;1
-PCSI;An1.C2;Impact environnemental;Impact environnemental;1
-PCSI;An1.C2.SF1;Évaluer l’impact environnemental (matériaux, énergies, nuisances);Évaluer l’impact environnemental;1
-PCSI;An2.C3;Frontière de l’étude;Frontière de l’étude;2
-PCSI;An2.C3.SF1;Isoler un système et justifier l’isolement;Isoler un système et justifier l’isolement;2
-PCSI;An2.C4;Milieu extérieur;Milieu extérieur;2
-PCSI;An2.C4.SF1;Définir les éléments influents du milieu extérieur;Définir les éléments influents du milieu extérieur;2
-PCSI;An2.C5;Flux échangés;Flux échangés;2
-PCSI;An2.C5.SF1;Identifier la nature des flux échangés (matière, énergie, information) traversant la frontière d’étude;Identifier la nature des flux échangés;2
-PSI;An3.C1;Architectures fonctionnelle et structurelle;Architectures fonctionnelle et structurelle;1
-PSI;An3.C1.SF1;Analyser les architectures fonctionnelle et structurelle;Analyser les architectures fonctionnelle et structurelle;1
-PSI;An3.C1.SF2;Identifier les fonctions des différents constituants;Identifier les fonctions des différents constituants;1
-PSI;An3.C1.SF3;Repérer les constituants dédiés aux fonctions d’un système;Repérer les constituants dédiés aux fonctions d’un système;1
-PSI;An3.C1.SF4;Identifier la structure d'un système asservi : chaîne directe, capteur, commande, consigne, comparateur, correcteur;Identifier la structure d'un système asservi;1
-PSI;An3.C1.SF5;Identifier et positionner les perturbations;Identifier et positionner les perturbations;1
-PCSI;An3.C1.SF6;Différencier régulation et poursuite;Différencier régulation et poursuite;1
-PSI;An3.C1.SF7;Justifier le choix des constituants dédiés aux fonctions d’un système;Justifier le choix des constituants dédiés aux fonctions d’un système;4
-PCSI;An3.C10;Diagramme de séquences;Diagramme de séquences;2
-PCSI;An3.C11;Diagramme d’états;Diagramme d’états;2
-PSI;An3.C12;Réversibilité de la chaîne d’énergie;Réversibilité de la chaîne d’énergie;3
-PSI;An3.C12.SF1;Analyser la réversibilité d’un constituant dans une chaîne d’énergie;Analyser la réversibilité d’un constituant dans une chaîne d’énergie;3
-PSI;An3.C13;Source;Source;3
-PSI;An3.C14;Modulateur;Modulateur;3
-PSI;An3.C15;Actionneur;Actionneur;3
-PSI;An3.C16;Chaîne de transmission;Chaîne de transmission;3
-PSI;An3.C2;Diagrammes de définition de blocs;Diagrammes de définition de blocs;1
-PSI;An3.C3;Chaîne directe;Chaîne directe;1
-PSI;An3.C4;Dystème asservi;Dystème asservi;1
-PSI;An3.C5;Commande;Commande;1
-PCSI;An3.C6;Chaîne d’information et d'énergie;Chaîne d’information et d'énergie;1
-PCSI;An3.C6.SF1;Identifier et décrire la chaîne d’information et la chaîne d'énergie du système;Identifier et décrire la chaîne d’information et la chaîne d'énergie du système;1
-PCSI;An3.C6.SF2;Identifier les liens entre la chaîne d’énergie et la chaîne d'information;Identifier les liens entre la chaîne d’énergie et la chaîne d'information;1
-PCSI;An3.C6.SF3;Identifier les constituants de la chaîne d'information réalisant les fonctions acquérir, coder, communiquer, mémoriser, restituer, traiter;Identifier les constituants de la chaîne d'information;1
-PCSI;An3.C6.SF4;Identifier les constituants de la chaîne d'énergie réalisant les fonctions agir, alimenter, convertir, oduler, transmettre, stocker;Identifier les constituants de la chaîne d'énergie;1
-PSI;An3.C6.SF5;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants;Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants;4
-PSI;An3.C6.SF6;Identifier la nature et les caractéristiques des flux échangés;Identifier la nature et les caractéristiques des flux échangés;4
-PSI;An3.C6.SF7;Identifier et interpréter les modèles des constituants du système;Identifier et interpréter les modèles des constituants du système;4
-PCSI;An3.C7;Diagramme de blocs internes;Diagramme de blocs internes;1
-PCSI;An3.C8;Diagramme paramétrique;Diagramme paramétrique;1
-PCSI;An3.C9;Systèmes à événements discrets;Systèmes à événements discrets;2
-PCSI;An3.C9.SF1;Interpréter tout ou partie de l’évolution temporelle d’un système;Interpréter tout ou partie de l’évolution temporelle d’un système;2
-PSI;An4.C1;Identification des écarts;Identification des écarts;4
-PSI;An4.C1.SF1;Extraire du cahier des charges les grandeurs pertinentes;Extraire du cahier des charges les grandeurs pertinentes;4
-PSI;An4.C1.SF2;Traiter des données de mesures et en extraire les caractéristiques statistiques;Traiter des données de mesures et en extraire les caractéristiques statistiques;4
-PSI;An4.C1.SF3;Exploiter et interpréter les résultats d’un calcul ou d’une simulation;Exploiter et interpréter les résultats d’un calcul ou d’une simulation;4
-PSI;An4.C2;Quantification des écarts;Quantification des écarts;4
-PSI;An4.C2.SF1;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées;Quantifier des écarts entre des valeurs attendues et des valeurs mesurées;4
-PSI;An4.C2.SF2;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation;4
-PSI;An4.C2.SF3;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation;Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation;4
-PSI;An4.C3;Interprétation des écarts obtenus;Interprétation des écarts obtenus;4
-PSI;An4.C3.SF1;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges;4
-PSI;An4.C3.SF2;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation;4
-PSI;An4.C3.SF3;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges;Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges;4
-PSI;An4.C3.SF4;Rechercher et proposer des causes aux écarts constatés;Rechercher et proposer des causes aux écarts constatés;4
-PCSI;An5.C1;Grandeurs utilisées (unités du système international, homogénéité des grandeurs);Grandeurs utilisées ;1
-PCSI;An5.C1.SF1;Utiliser des symboles et des unités adéquates;Utiliser des symboles et des unités adéquates;1
-PCSI;An5.C1.SF2;Vérifier l’homogénéité des résultats;Vérifier l’homogénéité des résultats;1
-PSI;An5.C2;Ordres de grandeur;Ordres de grandeur;4
-PSI;An5.C2.SF1;Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation;Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation;4
-PSI;An5.C2.SF2;Critiquer les résultats issus d’une mesure ou d’une simulation;Critiquer les résultats issus d’une mesure ou d’une simulation;4
-PSI;An5.C2.SF3;Identifier des valeurs erronées;Identifier des valeurs erronées;4
-PSI;An5.C2.SF4;Valider ou proposer une hypothèse;Valider ou proposer une hypothèse;4
+﻿PCSI;An1.C1;Analyser le cahier des charges (diagramme des exigences, diagramme des cas d’utilisation);CdC (req, uc);1
+PCSI;An1.C2;Analyser l'impact environnemental;Impact environnemental;1
+PCSI;An2.C3;Analuser les frontières de l’étude;Frontière de l’étude;2
+PCSI;An2.C4;Analyser le milieu extérieur;Milieu extérieur;2
+PCSI;An2.C5;Analyser les flux échangés;Flux échangés;2
+PCSI;An3.C1;Analyser l'architecture fonctionnelle et structurelle;Architectures fonctionnelle et structurelle;1
+PCSI;An3.C2;Analyser le diagramme de définition de blocs;Diagrammes de définition de blocs;1
+PCSI;An3.C3;Analyser la chaîne directe;Chaîne directe;1
+PCSI;An3.C4;Analyser le système asservi;Dystème asservi;1
+PCSI;An3.C5;Analyser la commande;Commande;1
+PCSI;An3.C6;Analyser la chaîne d’information et d'énergie;Chaîne d’information et d'énergie;1
+PCSI;An3.C7;Analyser le diagramme de blocs internes;Diagramme de blocs internes;1
+PCSI;An3.C8;Analyser le diagramme paramétrique;Diagramme paramétrique;1
+PCSI;An3.C9;Analyser le système à événements discrets;Systèmes à événements discrets;2
+PCSI;An3.C10;Analyser le diagramme de séquences;Diagramme de séquences;2
+PCSI;An3.C11;Analyser le diagramme d’états;Diagramme d’états;2
+PSI;An3.C12;Analyser la réversibilité d’un constituant dans une chaîne d’énergie;Réversibilité de la chaîne d’énergie;3
+PSI;An3.C13;Analyser la source;Source;3
+PSI;An3.C14;Analyser le modulateur;Modulateur;3
+PSI;An3.C15;Analyser l'actionneur;Actionneur;3
+PSI;An3.C16;Analyser la chaîne de transmission;Chaîne de transmission;3
+PSI;An4.C1;Identifier des écarts;Identification des écarts;4
+PSI;An4.C2;Quantifier des écarts;Quantification des écarts;4
+PSI;An4.C3;Interpréter des écarts obtenus;Interprétation des écarts obtenus;4
+PCSI;An5.C1;Analyser les grandeurs utilisées (unités du système international, homogénéité des grandeurs);Grandeurs utilisées ;1
+PSI;An5.C2;Analyser les ordres de grandeur;Ordres de grandeur;4
 PCSI;Com1.C1;Informations techniques;Informations techniques;2
-PCSI;Com1.C1.SF1;Extraire les informations utiles d’un dossier technique;Extraire les informations utiles d’un dossier technique;2
-PCSI;Com1.C1.SF2;Effectuer une synthèse des informations disponibles dans un dossier technique;Effectuer une synthèse des informations disponibles dans un dossier technique;2
-PCSI;Com1.C1.SF3;Vérifier la nature des informations;Vérifier la nature des informations;2
-PCSI;Com1.C1.SF4;Trier les informations selon des critères;Trier les informations selon des critères;2
-PCSI;Com1.C1.SF5;Distinguer les différents types de documents en fonction de leurs usages;Distinguer les différents types de documents en fonction de leurs usages;2
 PSI;Com1.C2;Schémas cinématique, électrique, hydraulique et pneumatique;Schémas cinématique, électrique, hydraulique et pneumatique;4
-PSI;Com1.C2.SF1;Lire et décoder un schéma;Lire et décoder un schéma;4
 PCSI;Com1.C3;Langage SysML;Langage SysML;2
-PCSI;Com1.C3.SF1;Lire et décoder un diagramme;Lire et décoder un diagramme;2
 PCSI;Com2.C1;Outils de communication;Outils de communication;2
-PCSI;Com2.C1.SF1;Choisir les outils de communication adaptés par rapport à l’interlocuteur;Choisir les outils de communication adaptés par rapport à l’interlocuteur;2
-PCSI;Com2.C1.SF2;Faire preuve d’écoute et confronter des points de vue;Faire preuve d’écoute et confronter des points de vue;2
-PCSI;Com2.C1.SF3;Présenter les étapes de son travail;Présenter les étapes de son travail;2
-PCSI;Com2.C1.SF4;Présenter de manière argumentée une synthèse des résultats;Présenter de manière argumentée une synthèse des résultats;2
-PSI;Com2.C2;Langage technique;Langage technique;4
-PSI;Com2.C2.SF1;Choisir l'outil de description adapté à l'objectif de la communication;Choisir l'outil de description adapté à l'objectif de la communication;4
-PSI;Com2.C2.SF2;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat;Décrire le fonctionnement du système en utilisant un vocabulaire adéquat;4
+PSI;Com2.C2;Communiquer en utilisant un langage technique;Langage technique;4
 PCSI;Com2.C3;Schémas cinématique, électrique;Schémas cinématique, électrique;2
-PCSI;Com2.C3.SF1;Réaliser un schéma cinématique;Réaliser un schéma cinématique;2
-PCSI;Com2.C3.SF2;Réaliser un schéma électrique;Réaliser un schéma électrique;2
-PSI;Con.C1;Architecture fonctionnelle et structurelle;Architecture fonctionnelle et structurelle;4
-PSI;Con.C1.SF1;Proposer une architecture fonctionnelle et les constituants associés;Proposer une architecture fonctionnelle et les constituants associés;4
-PSI;Con.C2;Correction d’un système asservi;Correction d’un système asservi;4
-PSI;Con.C2.SF1;Choisir un type de correcteur adapté;Choisir un type de correcteur adapté;4
-PCSI;Con.C3;Système logique;Système logique;2
-PCSI;Con.C3.SF1;Modifier un programme pour faire évoluer le comportement du système;Modifier un programme pour faire évoluer le comportement du système;2
-PCSI;Con.C4;Systèmes à événements discrets;Systèmes à événements discrets;2
-PCSI;Con.C5;Structures algorithmiques;Structures algorithmiques;2
-PSI;Exp1.C1;Chaîne d’énergie;Chaîne d’énergie;4
-PCSI;Exp1.C1.SF1;Repérer les différents constituants de la chaîne d’énergie;Repérer les différents constituants de la chaîne d’énergie;1
-PCSI;Exp1.C2;Chaîne d’information;Chaîne d’information;1
-PCSI;Exp1.C2.SF1;Repérer les différents constituants de la chaîne d’information;Repérer les différents constituants de la chaîne d’information;1
-PCSI;Exp1.C3;Paramètres influents;Paramètres influents;1
-PSI;Exp1.C3.SF1;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système;4
-PSI;Exp1.C3.SF2;Mettre en évidence l’influence des paramètres sur les performances du système;Mettre en évidence l’influence des paramètres sur les performances du système;4
-PCSI;Exp2.C1;Modèles de comportement d’un système;Modèles de comportement d’un système;2
-PCSI;Exp2.C1.SF1;Prévoir l’allure de la réponse attendue;Prévoir l’allure de la réponse attendue;2
-PCSI;Exp2.C1.SF2;Prévoir l’ordre de grandeur de la mesure;Prévoir l’ordre de grandeur de la mesure;2
-PSI;Exp2.C2;Protocoles expérimentaux;Protocoles expérimentaux;4
-PSI;Exp2.C2.SF1;Choisir les configurations matérielles du système en fonction de l’objectif visé;Choisir les configurations matérielles du système en fonction de l’objectif visé;4
-PSI;Exp2.C2.SF2;Choisir la grandeur physique à mesurer ou justifier son choix;Choisir la grandeur physique à mesurer ou justifier son choix;4
-PSI;Exp2.C2.SF3;Choisir les entrées à imposer pour identifier un modèle de comportement;Choisir les entrées à imposer pour identifier un modèle de comportement;4
-PSI;Exp2.C3;Chaîne d’acquisition;Chaîne d’acquisition;4
-PSI;Exp2.C3.SF1;Justifier la chaîne d’acquisition utilisée;Justifier la chaîne d’acquisition utilisée;4
+PSI;Con.C1;Concevoir l'architecture fonctionnelle et structurelle;Architecture fonctionnelle et structurelle;4
+PSI;Con.C2;Concevoir la correction d’un système asservi;Correction d’un système asservi;4
+PCSI;Con.C3;Concevoir la commande d'un système logique;Système logique;2
+PCSI;Con.C4;Concevoir la commande d'un système à événements discrets;Systèmes à événements discrets;2
+PCSI;Con.C5;Concevoir en utilisant une structure algorithmique;Structures algorithmiques;2
+PSI;Exp1.C1;Repérer les constituants de la chaîne d’énergie;Chaîne d’énergie;4
+PCSI;Exp1.C2;Repérer les constituants de la chaîne d’information;Chaîne d’information;1
+PCSI;Exp1.C3;Repérér et modifier les paramètres influents;Paramètres influents;1
+PCSI;Exp2.C1;Précoir le comportement d’un système;Modèles de comportement d’un système;2
+PSI;Exp2.C2;Définir et mettre en œuvre un protocole expérimental;Protocoles expérimentaux;4
+PSI;Exp2.C3;Mettre en œuvre la chaîne d’acquisition;Chaîne d’acquisition;4
 PSI;Exp2.C4;Filtrage;Filtrage;4
 PSI;Exp2.C5;Échantillonnage;Échantillonnage;4
 PSI;Exp2.C6;Quantification;Quantification;4
-PSI;Exp2.C6.SF1;Prévoir la quantification nécessaire à la précision souhaitée;Prévoir la quantification nécessaire à la précision souhaitée;4
 PSI;Exp3.C1;Règles de sécurité élémentaires;Règles de sécurité élémentaires;4
-PSI;Exp3.C1.SF1;Mettre en oeuvre un système complexe en respectant les règles de sécurité;Mettre en oeuvre un système complexe en respectant les règles de sécurité;4
-PCSI;Exp3.C10;Identification temporelle d’un modèle de comportement;Identification temporelle d’un modèle de comportement;1
-PCSI;Exp3.C10.SF1;Identifier les paramètres caractéristiques d’un modèle du premier ordre ou du deuxième ordre à partir de sa réponse indicielle;Identifier les paramètres caractéristiques d’un modèle du premier ordre ou du deuxième ordre à partir de sa réponse indicielle;1
-PCSI;Exp3.C11;Identification fréquentielle d’un modèle de comportement;Identification fréquentielle d’un modèle de comportement;1
-PCSI;Exp3.C11.SF1;Identifier les paramètres caractéristiques d’un modèle de comportement à partir de sa réponse fréquentielle ;Identifier les paramètres caractéristiques d’un modèle de comportement à partir de sa réponse fréquentielle ;1
-PCSI;Exp3.C11.SF2;Associer un modèle de comportement (premier ordre, deuxième ordre, intégrateur, gain) à partir de sa réponse fréquentielle;Associer un modèle de comportement (premier ordre, deuxième ordre, intégrateur, gain) à partir de sa réponse fréquentielle;1
-PSI;Exp3.C2;Chaîne d'acquisition;Chaîne d'acquisition;4
-PSI;Exp3.C2.SF1;Mettre en oeuvre la chaîne d'acquisition;Mettre en oeuvre la chaîne d'acquisition;4
+PSI;Exp3.C2;Justifier la chaîne d'acquisition;Chaîne d'acquisition;4
 PSI;Exp3.C3;Fréquence d’échantillonnage;Fréquence d’échantillonnage;4
-PSI;Exp3.C3.SF1;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées;Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées;4
 PSI;Exp3.C4;Paramètres de configuration du système;Paramètres de configuration du système;4
-PSI;Exp3.C4.SF1;Régler les paramètres de fonctionnement d’un système;Régler les paramètres de fonctionnement d’un système;4
 PSI;Exp3.C5;Réversibilité de la chaîne d’énergie;Réversibilité de la chaîne d’énergie;4
-PSI;Exp3.C5.SF1;Mesurer les grandeurs d’effort et de flux;Mesurer les grandeurs d’effort et de flux;4
 PSI;Exp3.C6;Source, modulateur, actionneur, chaîne de transmission;Source, modulateur, actionneur, chaîne de transmission;4
-PSI;Exp3.C6.SF1;Quantifier les pertes dans les constituants d'une chaîne d'énergie;Quantifier les pertes dans les constituants d'une chaîne d'énergie;4
 PSI;Exp3.C7;Routines, procédures ;Routines, procédures ;4
-PSI;Exp3.C7.SF1;Générer un programme et l’implanter dans le système cible;Générer un programme et l’implanter dans le système cible;4
-PSI;Exp3.C7.SF2;Réaliser une intégration et une dérivation sous une forme numérique (somme et différence);Réaliser une intégration et une dérivation sous une forme numérique (somme et différence);4
 PSI;Exp3.C8;Systèmes logiques à événements discrets;Systèmes logiques à événements discrets;4
 PCSI;Exp3.C9;Modèles de comportement;Modèles de comportement;2
-PCSI;Exp3.C9.SF1;Extraire les grandeurs désirées et les traiter;Extraire les grandeurs désirées et les traiter;2
+PCSI;Exp3.C10;Réaliser l'identification temporelle d’un modèle de comportement;Identification temporelle d’un modèle de comportement;1
+PCSI;Exp3.C11;Réaliser l'identification fréquentielle d’un modèle de comportement;Identification fréquentielle d’un modèle de comportement;1
 PCSI;Mod1.C1;Caractéristiques des grandeurs physiques (nature physique, caractéristiques fréquentielles, caractéristiques temporelles);Caractéristiques des grandeurs physiques;2
-PCSI;Mod1.C1.SF1;Qualifier les grandeurs d’entrée et de sortie d’un système isolé;Qualifier les grandeurs d’entrée et de sortie d’un système isolé;2
-PCSI;Mod1.C1.SF2;Identifier la nature (grandeur effort, grandeur flux);Identifier la nature (grandeur effort, grandeur flux);2
-PCSI;Mod1.C1.SF3;Décrire l’évolution des grandeurs;Décrire l’évolution des grandeurs;2
-PCSI;Mod1.C1.SF4;Qualifier la nature des matières, quantifier les volumes et les masses;Qualifier la nature des matières, quantifier les volumes et les masses;2
 PCSI;Mod1.C2;Flux de matière;Flux de matière;2
-PCSI;Mod1.C2.SF2;Identifier la nature de l’information et la nature du signal;Identifier la nature de l’information et la nature du signal;2
 PCSI;Mod1.C3;Flux d’information;Flux d’information;2
 PSI;Mod1.C4;Énergie;Énergie;3
-PSI;Mod1.C4.SF1;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance;Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance;3
 PSI;Mod1.C5;Puissance;Puissance;3
-PSI;Mod1.C5.SF1;Identifier les pertes d’énergie ;Identifier les pertes d’énergie ;3
-PSI;Mod1.C5.SF2;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide;Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide;3
-PSI;Mod1.C5.SF3;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides;Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides;3
 PSI;Mod1.C6;Rendement;Rendement;3
-PSI;Mod1.C6.SF1;Évaluer le rendement d’une chaîne d’énergie en régime permanent;Évaluer le rendement d’une chaîne d’énergie en régime permanent;3
 PSI;Mod2.C1;Chaîne d’énergie et d'information;Chaîne d’énergie et d'information;4
-PSI;Mod2.C1.SF1;Choisir un modèle adapté à l’objectif;Choisir un modèle adapté à l’objectif;4
-PCSI;Mod2.C1.SF2;Construire un modèle multiphysique simple;Construire un modèle multiphysique simple;2
-PCSI;Mod2.C1.SF3;Définir les paramètres du modèle;Définir les paramètres du modèle;2
-PSI;Mod2.C1.SF4;Associer un modèle à une source d’énergie;Associer un modèle à une source d’énergie;3
-PSI;Mod2.C1.SF5;Associer un modèle aux composants d’une chaîne d’énergie;Associer un modèle aux composants d’une chaîne d’énergie;3
-PSI;Mod2.C1.SF6;Associer un modèle aux composants d’une chaîne d’information;Associer un modèle aux composants d’une chaîne d’information;3
+PCSI;Mod2.C2;Systèmes linéaires continus et invariants - Modélisation par équations différentielles;SLCI - Modélisation par équations différentielles;1
+PCSI;Mod2.C3;Systèmes linéaires continus et invariants - Calcul symbolique;SLCI - Calcul symbolique;1
+PCSI;Mod2.C4;Systèmes linéaires continus et invariants - Fonction de transfert, gain, ordre, classe, pôles et zéros;SLCI - Fonction de transfert, gain, ordre, classe, pôles et zéros;1
+PCSI;Mod2.C6;Signaux canoniques d’entrée (impulsion, échelon, rampe, signaux sinusoïdaux);Signaux canoniques d’entrée;1
+PCSI;Mod2.C7;Schéma-bloc (fonction de transfert en chaîne directe, fonction de transfert en boucle ouverte et en boucle fermée);Schéma-bloc (chaine directe, FTBO, FTBF);1
+PSI;Mod2.C8;Linéarisation des systèmes non linéaires;Linéarisation des systèmes non linéaires;3
+PCSI;Mod2.C9;Modèles de comportement;Modèles de comportement;1
 PCSI;Mod2.C10;Solide indéformable (définition, référentiel, repère équivalence solide/référentiel degrés de liberté, vecteur- itesse angulaire de deux référentiels en mouvement l’un par rapport à l’autre);Solide indéformable ;1
-PCSI;Mod2.C10.SF1;Paramétrer les mouvements d’un solide indéformable;Paramétrer les mouvements d’un solide indéformable;1
-PCSI;Mod2.C10.SF2;Associer un repère à un solide;Associer un repère à un solide;1
-PCSI;Mod2.C10.SF3;Identifier les degrés de liberté d’un solide par rapport à un autre solide;Identifier les degrés de liberté d’un solide par rapport à un autre solide;1
 PCSI;Mod2.C11;Modélisation plane;Modélisation plane;2
-PCSI;Mod2.C11.SF1;Préciser et justifier les conditions et les limites de la modélisation plane;Préciser et justifier les conditions et les limites de la modélisation plane;2
 PCSI;Mod2.C12;Torseur cinématique;Torseur cinématique;2
-PCSI;Mod2.C12.SF1;Déterminer le torseur cinématique d’un solide par rapport à un autre solide;Déterminer le torseur cinématique d’un solide par rapport à un autre solide;2
 PSI;Mod2.C13;Centre d'inertie;Centre d'inertie;3
 PSI;Mod2.C14;Opérateur d'inertie;Opérateur d'inertie;3
 PSI;Mod2.C15;Matrice d'inertie;Matrice d'inertie;3
 PSI;Mod2.C16;Torseur cinétique;Torseur cinétique;3
 PSI;Mod2.C17;Torseur dynamique;Torseur dynamique;3
-PSI;Mod2.C17.SF1;Déterminer le torseur dynamique d’un solide, ou d’un ensemble de solides, par rapport à un autre solide;Déterminer le torseur dynamique;3
 PSI;Mod2.C18;Énergie cinétique;Énergie cinétique;3
-PSI;Mod2.C18.SF1;Déterminer l’énergie cinétique d’un solide, ou d’un ensemble de solides, dans son mouvement par rapport à un autre solide;Déterminer l’énergie cinétique;3
 PCSI;Mod2.C19;Actions mécaniques;Actions mécaniques;2
-PCSI;Mod2.C19.SF1;Associer un modèle à une action mécanique;Associer un modèle à une action mécanique;2
-PCSI;Mod2.C19.SF2;Déterminer la relation entre le modèle local et le modèle global;Déterminer la relation entre le modèle local et le modèle global;2
-PCSI;Mod2.C2;Systèmes linéaires continus et invariants - Modélisation par équations différentielles;SLCI - Modélisation par équations différentielles;1
-PCSI;Mod2.C2.SF1;Déterminer les fonctions de transfert à partir d’équations physiques (modèle de connaissance);Déterminer les fonctions de transfert à partir d’équations physiques;1
 PCSI;Mod2.C20;Modélisation locale, actions à distance et de contact;Modélisation locale, actions à distance et de contact;2
 PCSI;Mod2.C21;Modélisation globale, torseur associé;Modélisation globale, torseur associé;2
 PCSI;Mod2.C22;Lois de Coulomb;Lois de Coulomb;2
 PCSI;Mod2.C23;Adhérence et glissement;Adhérence et glissement;2
 PCSI;Mod2.C24;Résistance au roulement et au pivotement;Résistance au roulement et au pivotement;2
 PCSI;Mod2.C25;Liaisons;Liaisons;2
-PCSI;Mod2.C25.SF1;Proposer une modélisation des liaisons avec une définition précise de leurs caractéristiques géométriques;Proposer une modélisation des liaisons avec une définition précise de leurs caractéristiques géométriques;2
-PCSI;Mod2.C25.SF2;Associer le paramétrage au modèle retenu;Associer le paramétrage au modèle retenu;2
-PCSI;Mod2.C25.SF3;Associer à chaque liaison son torseur cinématique;Associer à chaque liaison son torseur cinématique;2
-PCSI;Mod2.C25.SF4;Associer à chaque liaison son torseur d’actions mécaniques transmissibles;Associer à chaque liaison son torseur d’actions mécaniques transmissibles;2
 PCSI;Mod2.C26;Géométrie des contacts entre deux solides;Géométrie des contacts entre deux solides;2
 PCSI;Mod2.C27;Définition du contact ponctuel entre deux solides : roulement, pivotement, glissement, condition cinématique de maintien du contact;Définition du contact ponctuel entre deux solides;2
 PCSI;Mod2.C28;Définition d’une liaison;Définition d’une liaison;2
 PCSI;Mod2.C29;Liaisons normalisées entre solides, caractéristiques géométriques et repères d’expression privilégiés;Liaisons normalisées entre solides, caractéristiques géométriques et repères d’expression privilégiés;2
-PCSI;Mod2.C3;Systèmes linéaires continus et invariants - Calcul symbolique;SLCI - Calcul symbolique;1
 PCSI;Mod2.C30;Torseur cinématique des liaisons normalisées;Torseur cinématique des liaisons normalisées;2
 PCSI;Mod2.C31;Torseur des actions mécaniques transmissibles dans les liaisons normalisées;Torseur des actions mécaniques transmissibles dans les liaisons normalisées;2
 PCSI;Mod2.C32;Associations de liaisons en série et en parallèle;Associations de liaisons en série et en parallèle;2
 PCSI;Mod2.C33;Liaisons cinématiquement équivalentes;Liaisons cinématiquement équivalentes;2
 PSI;Mod2.C34;Chaînes de solides;Chaînes de solides;4
-PSI;Mod2.C34.SF1;Déterminer les conditions géométriques associées à l’hyperstatisme;Déterminer les conditions géométriques associées à l’hyperstatisme;4
 PSI;Mod2.C35;Degré de mobilité du modèle;Degré de mobilité du modèle;4
 PSI;Mod2.C36;Degré d’hyperstatisme du modèle;Degré d’hyperstatisme du modèle;4
 PCSI;Mod2.C37;Systèmes logiques;Systèmes logiques;2
-PCSI;Mod2.C37.SF2;Exprimer un fonctionnement par des équations logiques;Exprimer un fonctionnement par des équations logiques;2
 PCSI;Mod2.C38;Codage de l’information;Codage de l’information;2
-PCSI;Mod2.C38.SF1;Coder une information;Coder une information;2
 PCSI;Mod2.C39;Binaire naturel, binaire réfléchi;Binaire naturel, binaire réfléchi;2
-PCSI;Mod2.C4;Systèmes linéaires continus et invariants - Fonction de transfert, gain, ordre, classe, pôles et zéros;SLCI - Fonction de transfert, gain, ordre, classe, pôles et zéros;1
 PCSI;Mod2.C40;Représentation hexadécimale;Représentation hexadécimale;2
 PCSI;Mod2.C41;Table de vérité;Table de vérité;2
 PCSI;Mod2.C42;Opérateurs logiques fondamentaux (ET, OU, NON);Opérateurs logiques fondamentaux (ET, OU, NON);2
 PCSI;Mod2.C43;Systèmes à événements discrets;Systèmes à événements discrets;2
-PCSI;Mod2.C43.SF1;Représenter tout ou partie de l’évolution temporelle;Représenter tout ou partie de l’évolution temporelle;2
 PCSI;Mod2.C44;Chronogramme;Chronogramme;2
 PCSI;Mod2.C45;Structures algorithmiques : variables, boucles, conditions, transitions conditionnelles;Structures algorithmiques;2
-PCSI;Mod2.C45.SF1;Décrire et compléter un algorithme représenté sous forme graphique;Décrire et compléter un algorithme représenté sous forme graphique;2
-PCSI;Mod2.C6;Signaux canoniques d’entrée (impulsion, échelon, rampe, signaux sinusoïdaux);Signaux canoniques d’entrée;1
-PCSI;Mod2.C6.SF1;Caractériser les signaux canoniques d’entrée;Caractériser les signaux canoniques d’entrée;1
-PCSI;Mod2.C7;Schéma-bloc (fonction de transfert en chaîne directe, fonction de transfert en boucle ouverte et en boucle fermée);Schéma-bloc (chaine directe, FTBO, FTBF);1
-PCSI;Mod2.C7.SF1;Analyser ou établir le schéma-bloc du système;Analyser ou établir le schéma-blocs du système;1
-PCSI;Mod2.C7.SF2;Déterminer les fonctions de transfert;Déterminer les fonctions de transfert;1
-PSI;Mod2.C8;Linéarisation des systèmes non linéaires;Linéarisation des systèmes non linéaires;3
-PSI;Mod2.C8.SF1;Linéariser le modèle autour d’un point de fonctionnement;Linéariser le modèle autour d’un point de fonctionnement;3
-PCSI;Mod2.C9;Modèles de comportement;Modèles de comportement;1
-PCSI;Mod2.C9.SF1;Renseigner les paramètres caractéristiques d’un modèle de comportement (premier ordre, deuxième ordre, dérivateur, intégrateur, gain, retard);Renseigner les paramètres caractéristiques d’un modèle de comportement;1
 PSI;Mod3.C1;Point de fonctionnement et non-linéarités (hystérésis, saturation, seuil);Point de fonctionnement et non-linéarités;3
-PSI;Mod3.C1.SF1;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation;Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation;3
 PSI;Mod3.C2;Pôles dominants et réduction de l’ordre du modèle : principe,  justification;Pôles dominants et réduction de l’ordre du modèle : principe,  justification;3
-PSI;Mod3.C2.SF1;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système;Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système;3
 PSI;Mod3.C3;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle;4
-PSI;Mod3.C3.SF1;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes ;4
-PSI;Mod3.C3.SF2;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;4
 PSI;Mod3.C4;Grandeurs influentes d’un modèle;Grandeurs influentes d’un modèle;4
-PSI;Mod3.C4.SF1;Déterminer les grandeurs influentes ;Déterminer les grandeurs influentes ;4
-PSI;Mod3.C4.SF2;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées;4
 PSI;Res1.C1;Chaînes de solides;Chaînes de solides;3
-PSI;Res1.C1.SF1;Proposer une démarche permettant la détermination de la loi de mouvement;Proposer une démarche permettant la détermination de la loi de mouvement;3
 PSI;Res1.C2;Principe fondamental de la dynamique;Principe fondamental de la dynamique;3
-PSI;Res1.C2.SF1;Proposer une méthode permettant la détermination d’une inconnue de liaison;Proposer une méthode permettant la détermination d’une inconnue de liaison;3
 PSI;Res1.C3;Théorème de l’énergie cinétique;Théorème de l’énergie cinétique;3
-PSI;Res1.C3.SF1;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre;Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre;3
 PSI;Res1.C4;Correction;Correction;3
-PSI;Res1.C4.SF1;Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase;Proposer la démarche de réglage d’un correcteur;3
 PCSI;Res2.C1;Réponses temporelle et fréquentielle :;Réponses temporelle et fréquentielle :;1
-PCSI;Res2.C1.SF1;Déterminer la réponse temporelle;Déterminer la réponse temporelle;1
-PCSI;Res2.C1.SF2;Déterminer la réponse fréquentielle;Déterminer la réponse fréquentielle;1
-PCSI;Res2.C1.SF3;Tracer le diagramme asymptotique de Bode;Tracer le diagramme asymptotique de Bode;1
-PSI;Res2.C10;Précision des SLCI : erreur en régime permanent;Précision des SLCI : erreur en régime permanent;3
-PSI;Res2.C10.SF1;Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation);Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation);3
-PSI;Res2.C11;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;3
-PSI;Res2.C11.SF1;Relier la précision aux caractéristiques fréquentielles;Relier la précision aux caractéristiques fréquentielles;3
-PCSI;Res2.C12;Loi entrée – sortie géométrique;Loi entrée – sortie géométrique;2
-PCSI;Res2.C12.SF1;Déterminer la loi entrée - sortie géométrique d’une chaîne cinématique;Déterminer la loi entrée - sortie géométrique d’une chaîne cinématique;2
-PCSI;Res2.C13;Dérivée temporelle d’un vecteur par rapport à un référentiel;Dérivée temporelle d’un vecteur par rapport à un référentiel;2
-PCSI;Res2.C14;Relation entre les dérivées temporelles d’un vecteur par rapport à deux référentiels distincts;Relation entre les dérivées temporelles d’un vecteur par rapport à deux référentiels distincts;2
-PCSI;Res2.C15;Loi entrée – sortie cinématique;Loi entrée – sortie cinématique;2
-PCSI;Res2.C15.SF1;Déterminer les relations de fermeture de la chaîne cinématique;Déterminer les relations de fermeture de la chaîne cinématique;2
-PCSI;Res2.C15.SF2;Déterminer la loi entrée - sortie cinématique d’une chaîne cinématique;Déterminer la loi entrée - sortie cinématique d’une chaîne cinématique;2
-PSI;Res2.C15.SF3;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme;Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme;4
-PCSI;Res2.C16;Composition des vitesses angulaires;Composition des vitesses angulaires;2
-PCSI;Res2.C17;Composition des vitesses;Composition des vitesses;2
-PCSI;Res2.C18;Principe fondamental de la statique;Principe fondamental de la statique;2
-PCSI;Res2.C18.SF1;Déterminer le calcul complet des inconnues de liaison;Déterminer le calcul complet des inconnues de liaison;2
-PCSI;Res2.C19;Équilibre d’un solide, d’un ensemble de solides;Équilibre d’un solide, d’un ensemble de solides;2
 PCSI;Res2.C2;Systèmes du 1er et du 2e ordre;Systèmes du 1er et du 2e ordre;1
-PCSI;Res2.C20;Théorème des actions réciproques;Théorème des actions réciproques;2
-PCSI;Res2.C21;Modèles avec frottement : arcboutement;Modèles avec frottement : arcboutement;2
-PCSI;Res2.C21.SF1;Déterminer la valeur des paramètres conduisant à des positions d'équilibre (par exemple l'arc-boutement);Déterminer la valeur des paramètres conduisant à des positions d'équilibre;2
-PSI;Res2.C22;Principe fondamental de la dynamique;Principe fondamental de la dynamique;3
-PSI;Res2.C22.SF1;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé;Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé;3
-PSI;Res2.C22.SF2;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;3
-PSI;Res2.C23;Conditions d’équilibrage statique et dynamique;Conditions d’équilibrage statique et dynamique;3
-PSI;Res2.C24;Inertie équivalente;Inertie équivalente;4
-PSI;Res2.C25;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance;4
-PSI;Res2.C25.SF1;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus;4
 PCSI;Res2.C3;Intégrateur;Intégrateur;1
 PSI;Res2.C4;Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB);Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB);3
 PSI;Res2.C5;Stabilité des SLCI :équation caractéristique;Stabilité des SLCI :équation caractéristique;3
-PSI;Res2.C5.SF1;Analyser la stabilité d’un système à partir de l’équation caractéristique;Analyser la stabilité d’un système à partir de l’équation caractéristique;3
 PSI;Res2.C6;Stabilité des SLCI : position des pôles dans le plan complexe;Stabilité des SLCI : position des pôles dans le plan complexe;3
-PSI;Res2.C6.SF1;Déterminer les paramètres permettant d’assurer la stabilité du système;Déterminer les paramètres permettant d’assurer la stabilité du système;3
 PSI;Res2.C7;Stabilité des SLCI : marges de stabilité (de gain et de phase);Stabilité des SLCI : marges de stabilité (de gain et de phase);3
-PSI;Res2.C7.SF1;Relier la stabilité aux caractéristiques fréquentielles;Relier la stabilité aux caractéristiques fréquentielles;3
 PCSI;Res2.C8;Rapidité des SLCI : Temps de réponse à 5 %;Rapidité des SLCI : Temps de réponse à 5 %;1
-PCSI;Res2.C8.SF1;Prévoir les performances en termes de rapidité;Prévoir les performances en termes de rapidité;1
 PCSI;Res2.C9;Rapidité des SLCI : Bande passante;Rapidité des SLCI : Bande passante;1
-PCSI;Res2.C9.SF1;Relier la rapidité aux caractéristiques fréquentielles;Relier la rapidité aux caractéristiques fréquentielles;1
+PSI;Res2.C10;Précision des SLCI : erreur en régime permanent;Précision des SLCI : erreur en régime permanent;3
+PSI;Res2.C11;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte;3
+PCSI;Res2.C12;Loi entrée – sortie géométrique;Loi entrée – sortie géométrique;2
+PCSI;Res2.C13;Dérivée temporelle d’un vecteur par rapport à un référentiel;Dérivée temporelle d’un vecteur par rapport à un référentiel;2
+PCSI;Res2.C14;Relation entre les dérivées temporelles d’un vecteur par rapport à deux référentiels distincts;Relation entre les dérivées temporelles d’un vecteur par rapport à deux référentiels distincts;2
+PCSI;Res2.C15;Loi entrée – sortie cinématique;Loi entrée – sortie cinématique;2
+PCSI;Res2.C16;Composition des vitesses angulaires;Composition des vitesses angulaires;2
+PCSI;Res2.C17;Composition des vitesses;Composition des vitesses;2
+PCSI;Res2.C18;Principe fondamental de la statique;Principe fondamental de la statique;2
+PCSI;Res2.C19;Équilibre d’un solide, d’un ensemble de solides;Équilibre d’un solide, d’un ensemble de solides;2
+PCSI;Res2.C20;Théorème des actions réciproques;Théorème des actions réciproques;2
+PCSI;Res2.C21;Modèles avec frottement : arcboutement;Modèles avec frottement : arcboutement;2
+PSI;Res2.C22;Principe fondamental de la dynamique;Principe fondamental de la dynamique;3
+PSI;Res2.C23;Conditions d’équilibrage statique et dynamique;Conditions d’équilibrage statique et dynamique;3
+PSI;Res2.C24;Inertie équivalente;Inertie équivalente;4
+PSI;Res2.C25;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance;Théorème de l’énergie cinétique ou théorème de l’énergie/puissance;4
 PCSI;Res3.C1;Paramètres de résolution numérique : durée de calcul, pas de calcul;Paramètres de résolution numérique;2
-PCSI;Res3.C1.SF1;Choisir les valeurs des paramètres de la résolution numérique;Choisir les valeurs des paramètres de la résolution numérique;2
 PCSI;Res3.C2;Grandeurs simulées;Grandeurs simulées;2
-PCSI;Res3.C2.SF1;Choisir les grandeurs physiques tracées;Choisir les grandeurs physiques tracées;2
 PSI;Res3.C3;Variabilité des paramètres du modèle de simulation;Variabilité des paramètres du modèle de simulation;4
-PSI;Res3.C3.SF1;Choisir les paramètres de simulation;Choisir les paramètres de simulation;4
-PSI;Res3.C3.SF2;Faire varier un paramètre et comparer les courbes obtenues;Faire varier un paramètre et comparer les courbes obtenues;4
