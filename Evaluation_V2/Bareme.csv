@@ -1,0 +1,301 @@
+Classe	Id	Long	Semestre	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Q11	Q12	Q13	Q14	Q15	Q16	Q17	Q18	Q19	Q20	Q21	Q22	Q23	Q24	Q25	Q26	Q27	Q28	Q29	Q30	Q31	Q32	Q33
+PCSI	An1.C1	Cahier des charges (diagramme des exigences, diagramme des cas d’utilisation)	1																																	
+PCSI	An1.C1.SF1	Décrire le besoin	1																																	
+PCSI	An1.C1.SF2	Traduire un besoin fonctionnel en exigences	1																																	
+PCSI	An1.C1.SF3	Présenter la fonction globale	1																																	
+PCSI	An1.C1.SF4	Définir les domaines d’application, les critères technico-économiques	1																																	
+PCSI	An1.C1.SF5	Identifier les contraintes	1																																	
+PCSI	An1.C1.SF6	Identifier et caractériser les fonctions	1																																	
+PCSI	An1.C1.SF7	Qualifier et quantifier les exigences (critère, niveau)	1																																	
+PCSI	An1.C2	Impact environnemental	1																																	
+PCSI	An1.C2.SF1	Évaluer l’impact environnemental (matériaux, énergies, nuisances)	1																																	
+PCSI	An2.C3	Frontière de l’étude	2																																	
+PCSI	An2.C3.SF1	Isoler un système et justifier l’isolement	2																																	
+PCSI	An2.C4	Milieu extérieur	2																																	
+PCSI	An2.C4.SF1	Définir les éléments influents du milieu extérieur	2																																	
+PCSI	An2.C5	Flux échangés	2																																	
+PCSI	An2.C5.SF1	Identifier la nature des flux échangés (matière, énergie, information) traversant la frontière d’étude	2																																	
+PCSI	An3.C1.SF6	Différencier régulation et poursuite	1																																	
+PCSI	An3.C10	Diagramme de séquences	2																																	
+PCSI	An3.C11	Diagramme d’états	2																																	
+PCSI	An3.C6	Chaîne d’information et d'énergie	1																																	
+PCSI	An3.C6.SF1	Identifier et décrire la chaîne d’information et la chaîne d'énergie du système	1																																	
+PCSI	An3.C6.SF2	Identifier les liens entre la chaîne d’énergie et la chaîne d'information	1																																	
+PCSI	An3.C6.SF3	Identifier les constituants de la chaîne d'information réalisant les fonctions acquérir, coder, communiquer, mémoriser, restituer, traiter	1																																	
+PCSI	An3.C6.SF4	Identifier les constituants de la chaîne d'énergie réalisant les fonctions agir, alimenter, convertir, oduler, transmettre, stocker	1																																	
+PCSI	An3.C7	Diagramme de blocs internes	1																																	
+PCSI	An3.C8	Diagramme paramétrique	1																																	
+PCSI	An3.C9	Systèmes à événements discrets	2																																	
+PCSI	An3.C9.SF1	Interpréter tout ou partie de l’évolution temporelle d’un système	2																																	
+PCSI	An5.C1	Grandeurs utilisées (unités du système international, homogénéité des grandeurs)	1																																	
+PCSI	An5.C1.SF1	Utiliser des symboles et des unités adéquates	1																																	
+PCSI	An5.C1.SF2	Vérifier l’homogénéité des résultats	1																																	
+PCSI	Com1.C1	Informations techniques	2																																	
+PCSI	Com1.C1.SF1	Extraire les informations utiles d’un dossier technique	2																																	
+PCSI	Com1.C1.SF2	Effectuer une synthèse des informations disponibles dans un dossier technique	2																																	
+PCSI	Com1.C1.SF3	Vérifier la nature des informations	2																																	
+PCSI	Com1.C1.SF4	Trier les informations selon des critères	2																																	
+PCSI	Com1.C1.SF5	Distinguer les différents types de documents en fonction de leurs usages	2																																	
+PCSI	Com1.C3	Langage SysML	2																																	
+PCSI	Com1.C3.SF1	Lire et décoder un diagramme	2																																	
+PCSI	Com2.C1	Outils de communication	2																																	
+PCSI	Com2.C1.SF1	Choisir les outils de communication adaptés par rapport à l’interlocuteur	2																																	
+PCSI	Com2.C1.SF2	Faire preuve d’écoute et confronter des points de vue	2																																	
+PCSI	Com2.C1.SF3	Présenter les étapes de son travail	2																																	
+PCSI	Com2.C1.SF4	Présenter de manière argumentée une synthèse des résultats	2																																	
+PCSI	Com2.C3	Schémas cinématique, électrique	2																																	
+PCSI	Com2.C3.SF1	Réaliser un schéma cinématique	2																																	
+PCSI	Com2.C3.SF2	Réaliser un schéma électrique	2																																	
+PCSI	Con.C3	Système logique	2																																	
+PCSI	Con.C3.SF1	Modifier un programme pour faire évoluer le comportement du système	2																																	
+PCSI	Con.C4	Systèmes à événements discrets	2																																	
+PCSI	Con.C5	Structures algorithmiques	2																																	
+PCSI	Exp1.C1.SF1	Repérer les différents constituants de la chaîne d’énergie	1																																	
+PCSI	Exp1.C2	Chaîne d’information	1																																	
+PCSI	Exp1.C2.SF1	Repérer les différents constituants de la chaîne d’information	1																																	
+PCSI	Exp1.C3	Paramètres influents	1																																	
+PCSI	Exp2.C1	Modèles de comportement d’un système	2																																	
+PCSI	Exp2.C1.SF1	Prévoir l’allure de la réponse attendue	2																																	
+PCSI	Exp2.C1.SF2	Prévoir l’ordre de grandeur de la mesure	2																																	
+PCSI	Exp3.C10	Identification temporelle d’un modèle de comportement	1																																	
+PCSI	Exp3.C10.SF1	Identifier les paramètres caractéristiques d’un modèle du premier ordre ou du deuxième ordre à partir de sa réponse indicielle	1																																	
+PCSI	Exp3.C11	Identification fréquentielle d’un modèle de comportement	1																																	
+PCSI	Exp3.C11.SF1	Identifier les paramètres caractéristiques d’un modèle de comportement à partir de sa réponse fréquentielle 	1																																	
+PCSI	Exp3.C11.SF2	Associer un modèle de comportement (premier ordre, deuxième ordre, intégrateur, gain) à partir de sa réponse fréquentielle	1																																	
+PCSI	Exp3.C9	Modèles de comportement	2																																	
+PCSI	Exp3.C9.SF1	Extraire les grandeurs désirées et les traiter	2																																	
+PCSI	Mod1.C1	Caractéristiques des grandeurs physiques (nature physique, caractéristiques fréquentielles, caractéristiques temporelles)	2																																	
+PCSI	Mod1.C1.SF1	Qualifier les grandeurs d’entrée et de sortie d’un système isolé	2																																	
+PCSI	Mod1.C1.SF2	Identifier la nature (grandeur effort, grandeur flux)	2																																	
+PCSI	Mod1.C1.SF3	Décrire l’évolution des grandeurs	2																																	
+PCSI	Mod1.C1.SF4	Qualifier la nature des matières, quantifier les volumes et les masses	2																																	
+PCSI	Mod1.C2	Flux de matière	2																																	
+PCSI	Mod1.C2.SF2	Identifier la nature de l’information et la nature du signal	2																																	
+PCSI	Mod1.C3	Flux d’information	2																																	
+PCSI	Mod2.C1.SF2	Construire un modèle multiphysique simple	2																																	
+PCSI	Mod2.C1.SF3	Définir les paramètres du modèle	2																																	
+PCSI	Mod2.C10	Solide indéformable (définition, référentiel, repère équivalence solide/référentiel degrés de liberté, vecteur- itesse angulaire de deux référentiels en mouvement l’un par rapport à l’autre)	1																																	
+PCSI	Mod2.C10.SF1	Paramétrer les mouvements d’un solide indéformable	1																																	
+PCSI	Mod2.C10.SF2	Associer un repère à un solide	1																																	
+PCSI	Mod2.C10.SF3	Identifier les degrés de liberté d’un solide par rapport à un autre solide	1																																	
+PCSI	Mod2.C11	Modélisation plane	2																																	
+PCSI	Mod2.C11.SF1	Préciser et justifier les conditions et les limites de la modélisation plane	2																																	
+PCSI	Mod2.C12	Torseur cinématique	2																																	
+PCSI	Mod2.C12.SF1	Déterminer le torseur cinématique d’un solide par rapport à un autre solide	2																																	
+PCSI	Mod2.C19	Actions mécaniques	2																																	
+PCSI	Mod2.C19.SF1	Associer un modèle à une action mécanique	2																																	
+PCSI	Mod2.C19.SF2	Déterminer la relation entre le modèle local et le modèle global	2																																	
+PCSI	Mod2.C2	Systèmes linéaires continus et invariants - Modélisation par équations différentielles	1																																	
+PCSI	Mod2.C2.SF1	Déterminer les fonctions de transfert à partir d’équations physiques (modèle de connaissance)	1																																	
+PCSI	Mod2.C20	Modélisation locale, actions à distance et de contact	2																																	
+PCSI	Mod2.C21	Modélisation globale, torseur associé	2																																	
+PCSI	Mod2.C22	Lois de Coulomb	2																																	
+PCSI	Mod2.C23	Adhérence et glissement	2																																	
+PCSI	Mod2.C24	Résistance au roulement et au pivotement	2																																	
+PCSI	Mod2.C25	Liaisons	2																																	
+PCSI	Mod2.C25.SF1	Proposer une modélisation des liaisons avec une définition précise de leurs caractéristiques géométriques	2																																	
+PCSI	Mod2.C25.SF2	Associer le paramétrage au modèle retenu	2																																	
+PCSI	Mod2.C25.SF3	Associer à chaque liaison son torseur cinématique	2																																	
+PCSI	Mod2.C25.SF4	Associer à chaque liaison son torseur d’actions mécaniques transmissibles	2																																	
+PCSI	Mod2.C26	Géométrie des contacts entre deux solides	2																																	
+PCSI	Mod2.C27	Définition du contact ponctuel entre deux solides : roulement, pivotement, glissement, condition cinématique de maintien du contact	2																																	
+PCSI	Mod2.C28	Définition d’une liaison	2																																	
+PCSI	Mod2.C29	Liaisons normalisées entre solides, caractéristiques géométriques et repères d’expression privilégiés	2																																	
+PCSI	Mod2.C3	Systèmes linéaires continus et invariants - Calcul symbolique	1																																	
+PCSI	Mod2.C30	Torseur cinématique des liaisons normalisées	2																																	
+PCSI	Mod2.C31	Torseur des actions mécaniques transmissibles dans les liaisons normalisées	2																																	
+PCSI	Mod2.C32	Associations de liaisons en série et en parallèle	2																																	
+PCSI	Mod2.C33	Liaisons cinématiquement équivalentes	2																																	
+PCSI	Mod2.C37	Systèmes logiques	2																																	
+PCSI	Mod2.C37.SF2	Exprimer un fonctionnement par des équations logiques	2																																	
+PCSI	Mod2.C38	Codage de l’information	2																																	
+PCSI	Mod2.C38.SF1	Coder une information	2																																	
+PCSI	Mod2.C39	Binaire naturel, binaire réfléchi	2																																	
+PCSI	Mod2.C4	Systèmes linéaires continus et invariants - Fonction de transfert, gain, ordre, classe, pôles et zéros	1																																	
+PCSI	Mod2.C40	Représentation hexadécimale	2																																	
+PCSI	Mod2.C41	Table de vérité	2																																	
+PCSI	Mod2.C42	Opérateurs logiques fondamentaux (ET, OU, NON)	2																																	
+PCSI	Mod2.C43	Systèmes à événements discrets	2																																	
+PCSI	Mod2.C43.SF1	Représenter tout ou partie de l’évolution temporelle	2																																	
+PCSI	Mod2.C44	Chronogramme	2																																	
+PCSI	Mod2.C45	Structures algorithmiques : variables, boucles, conditions, transitions conditionnelles	2																																	
+PCSI	Mod2.C45.SF1	Décrire et compléter un algorithme représenté sous forme graphique	2																																	
+PCSI	Mod2.C6	Signaux canoniques d’entrée (impulsion, échelon, rampe, signaux sinusoïdaux)	1																																	
+PCSI	Mod2.C6.SF1	Caractériser les signaux canoniques d’entrée	1																																	
+PCSI	Mod2.C7	Schéma-bloc (fonction de transfert en chaîne directe, fonction de transfert en boucle ouverte et en boucle fermée)	1																																	
+PCSI	Mod2.C7.SF1	Analyser ou établir le schéma-bloc du système	1																																	
+PCSI	Mod2.C7.SF2	Déterminer les fonctions de transfert	1																																	
+PCSI	Mod2.C9	Modèles de comportement	1																																	
+PCSI	Mod2.C9.SF1	Renseigner les paramètres caractéristiques d’un modèle de comportement (premier ordre, deuxième ordre, dérivateur, intégrateur, gain, retard)	1																																	
+PCSI	Res2.C1	Réponses temporelle et fréquentielle :	1																																	
+PCSI	Res2.C1.SF1	Déterminer la réponse temporelle	1																																	
+PCSI	Res2.C1.SF2	Déterminer la réponse fréquentielle	1																																	
+PCSI	Res2.C1.SF3	Tracer le diagramme asymptotique de Bode	1																																	
+PCSI	Res2.C12	Loi entrée – sortie géométrique	2																																	
+PCSI	Res2.C12.SF1	Déterminer la loi entrée - sortie géométrique d’une chaîne cinématique	2																																	
+PCSI	Res2.C13	Dérivée temporelle d’un vecteur par rapport à un référentiel	2																																	
+PCSI	Res2.C14	Relation entre les dérivées temporelles d’un vecteur par rapport à deux référentiels distincts	2																																	
+PCSI	Res2.C15	Loi entrée – sortie cinématique	2																																	
+PCSI	Res2.C15.SF1	Déterminer les relations de fermeture de la chaîne cinématique	2																																	
+PCSI	Res2.C15.SF2	Déterminer la loi entrée - sortie cinématique d’une chaîne cinématique	2																																	
+PCSI	Res2.C16	Composition des vitesses angulaires	2																																	
+PCSI	Res2.C17	Composition des vitesses	2																																	
+PCSI	Res2.C18	Principe fondamental de la statique	2																																	
+PCSI	Res2.C18.SF1	Déterminer le calcul complet des inconnues de liaison	2																																	
+PCSI	Res2.C19	Équilibre d’un solide, d’un ensemble de solides	2																																	
+PCSI	Res2.C2	Systèmes du 1er et du 2e ordre	1																																	
+PCSI	Res2.C20	Théorème des actions réciproques	2																																	
+PCSI	Res2.C21	Modèles avec frottement : arcboutement	2																																	
+PCSI	Res2.C21.SF1	Déterminer la valeur des paramètres conduisant à des positions d'équilibre (par exemple l'arc-boutement)	2																																	
+PCSI	Res2.C3	Intégrateur	1																																	
+PCSI	Res2.C8	Rapidité des SLCI : Temps de réponse à 5 %	1																																	
+PCSI	Res2.C8.SF1	Prévoir les performances en termes de rapidité	1																																	
+PCSI	Res2.C9	Rapidité des SLCI : Bande passante	1																																	
+PCSI	Res2.C9.SF1	Relier la rapidité aux caractéristiques fréquentielles	1																																	
+PCSI	Res3.C1	Paramètres de résolution numérique : durée de calcul, pas de calcul	2																																	
+PCSI	Res3.C1.SF1	Choisir les valeurs des paramètres de la résolution numérique	2																																	
+PCSI	Res3.C2	Grandeurs simulées	2																																	
+PCSI	Res3.C2.SF1	Choisir les grandeurs physiques tracées	2																																	
+PSI	An3.C1	Architectures fonctionnelle et structurelle	1																																	
+PSI	An3.C1.SF1	Analyser les architectures fonctionnelle et structurelle	1																																	
+PSI	An3.C1.SF2	Identifier les fonctions des différents constituants	1																																	
+PSI	An3.C1.SF3	Repérer les constituants dédiés aux fonctions d’un système	1																																	
+PSI	An3.C1.SF4	Identifier la structure d'un système asservi : chaîne directe, capteur, commande, consigne, comparateur, correcteur	1																																	
+PSI	An3.C1.SF5	Identifier et positionner les perturbations	1																																	
+PSI	An3.C1.SF7	Justifier le choix des constituants dédiés aux fonctions d’un système	4																																	
+PSI	An3.C12	Réversibilité de la chaîne d’énergie	3																																	
+PSI	An3.C12.SF1	Analyser la réversibilité d’un constituant dans une chaîne d’énergie	3																																	
+PSI	An3.C13	Source	3																																	
+PSI	An3.C14	Modulateur	3																																	
+PSI	An3.C15	Actionneur	3																																	
+PSI	An3.C16	Chaîne de transmission	3																																	
+PSI	An3.C2	Diagrammes de définition de blocs	1																																	
+PSI	An3.C3	Chaîne directe	1																																	
+PSI	An3.C4	Dystème asservi	1																																	
+PSI	An3.C5	Commande	1																																	
+PSI	An3.C6.SF5	Vérifier l’homogénéité et la compatibilité des flux entre les différents constituants	4																																	
+PSI	An3.C6.SF6	Identifier la nature et les caractéristiques des flux échangés	4																																	
+PSI	An3.C6.SF7	Identifier et interpréter les modèles des constituants du système	4																																	
+PSI	An4.C1	Identification des écarts	4																																	
+PSI	An4.C1.SF1	Extraire du cahier des charges les grandeurs pertinentes	4																																	
+PSI	An4.C1.SF2	Traiter des données de mesures et en extraire les caractéristiques statistiques	4																																	
+PSI	An4.C1.SF3	Exploiter et interpréter les résultats d’un calcul ou d’une simulation	4																																	
+PSI	An4.C2	Quantification des écarts	4																																	
+PSI	An4.C2.SF1	Quantifier des écarts entre des valeurs attendues et des valeurs mesurées	4																																	
+PSI	An4.C2.SF2	Quantifier des écarts entre des valeurs attendues et des valeurs obtenues par simulation	4																																	
+PSI	An4.C2.SF3	Quantifier des écarts entre des valeurs mesurées et des valeurs obtenues par simulation	4																																	
+PSI	An4.C3	Interprétation des écarts obtenus	4																																	
+PSI	An4.C3.SF1	Vérifier la cohérence des résultats d’expérimentation avec les valeurs souhaitées du cahier des charges	4																																	
+PSI	An4.C3.SF2	Vérifier la cohérence du modèle choisi avec des résultats d’expérimentation	4																																	
+PSI	An4.C3.SF3	Vérifier la cohérence du modèle choisi avec les valeurs souhaitées du cahier des charges	4																																	
+PSI	An4.C3.SF4	Rechercher et proposer des causes aux écarts constatés	4																																	
+PSI	An5.C2	Ordres de grandeur	4																																	
+PSI	An5.C2.SF1	Prévoir l’ordre de grandeur et l’évolution de la mesure ou de la simulation	4																																	
+PSI	An5.C2.SF2	Critiquer les résultats issus d’une mesure ou d’une simulation	4																																	
+PSI	An5.C2.SF3	Identifier des valeurs erronées	4																																	
+PSI	An5.C2.SF4	Valider ou proposer une hypothèse	4																																	
+PSI	Com1.C2	Schémas cinématique, électrique, hydraulique et pneumatique	4																																	
+PSI	Com1.C2.SF1	Lire et décoder un schéma	4																																	
+PSI	Com2.C2	Langage technique	4																																	
+PSI	Com2.C2.SF1	Choisir l'outil de description adapté à l'objectif de la communication	4																																	
+PSI	Com2.C2.SF2	Décrire le fonctionnement du système en utilisant un vocabulaire adéquat	4																																	
+PSI	Con.C1	Architecture fonctionnelle et structurelle	4																																	
+PSI	Con.C1.SF1	Proposer une architecture fonctionnelle et les constituants associés	4																																	
+PSI	Con.C2	Correction d’un système asservi	4																																	
+PSI	Con.C2.SF1	Choisir un type de correcteur adapté	4																																	
+PSI	Exp1.C1	Chaîne d’énergie	4																																	
+PSI	Exp1.C3.SF1	Régler les paramètres de fonctionnement d’un système	4																																	
+PSI	Exp1.C3.SF2	Mettre en évidence l’influence des paramètres sur les performances du système	4																																	
+PSI	Exp2.C2	Protocoles expérimentaux	4																																	
+PSI	Exp2.C2.SF1	Choisir les configurations matérielles du système en fonction de l’objectif visé	4																																	
+PSI	Exp2.C2.SF2	Choisir la grandeur physique à mesurer ou justifier son choix	4																																	
+PSI	Exp2.C2.SF3	Choisir les entrées à imposer pour identifier un modèle de comportement	4																																	
+PSI	Exp2.C3	Chaîne d’acquisition	4																																	
+PSI	Exp2.C3.SF1	Justifier la chaîne d’acquisition utilisée	4																																	
+PSI	Exp2.C4	Filtrage	4																																	
+PSI	Exp2.C5	Échantillonnage	4																																	
+PSI	Exp2.C6	Quantification	4																																	
+PSI	Exp2.C6.SF1	Prévoir la quantification nécessaire à la précision souhaitée	4																																	
+PSI	Exp3.C1	Règles de sécurité élémentaires	4																																	
+PSI	Exp3.C1.SF1	Mettre en oeuvre un système complexe en respectant les règles de sécurité	4																																	
+PSI	Exp3.C2	Chaîne d'acquisition	4																																	
+PSI	Exp3.C2.SF1	Mettre en oeuvre la chaîne d'acquisition	4																																	
+PSI	Exp3.C3	Fréquence d’échantillonnage	4																																	
+PSI	Exp3.C3.SF1	Appréhender l’influence de la fréquence d’échantillonnage sur les mesures effectuées	4																																	
+PSI	Exp3.C4	Paramètres de configuration du système	4																																	
+PSI	Exp3.C4.SF1	Régler les paramètres de fonctionnement d’un système	4																																	
+PSI	Exp3.C5	Réversibilité de la chaîne d’énergie	4																																	
+PSI	Exp3.C5.SF1	Mesurer les grandeurs d’effort et de flux	4																																	
+PSI	Exp3.C6	Source, modulateur, actionneur, chaîne de transmission	4																																	
+PSI	Exp3.C6.SF1	Quantifier les pertes dans les constituants d'une chaîne d'énergie	4																																	
+PSI	Exp3.C7	Routines, procédures 	4																																	
+PSI	Exp3.C7.SF1	Générer un programme et l’implanter dans le système cible	4																																	
+PSI	Exp3.C7.SF2	Réaliser une intégration et une dérivation sous une forme numérique (somme et différence)	4																																	
+PSI	Exp3.C8	Systèmes logiques à événements discrets	4																																	
+PSI	Mod1.C4	Énergie	3																																	
+PSI	Mod1.C4.SF1	Associer les grandeurs physiques aux échanges d’énergie et à la transmission de puissance	3																																	
+PSI	Mod1.C5	Puissance	3																																	
+PSI	Mod1.C5.SF1	Identifier les pertes d’énergie 	3																																	
+PSI	Mod1.C5.SF2	Déterminer la puissance des actions mécaniques extérieures à un solide ou à un ensemble de solides, dans son mouvement rapport à un autre solide	3																																	
+PSI	Mod1.C5.SF3	Déterminer la puissance des actions mécaniques intérieures à un ensemble de solides	3																																	
+PSI	Mod1.C6	Rendement	3																																	
+PSI	Mod1.C6.SF1	Évaluer le rendement d’une chaîne d’énergie en régime permanent	3																																	
+PSI	Mod2.C1	Chaîne d’énergie et d'information	4																																	
+PSI	Mod2.C1.SF1	Choisir un modèle adapté à l’objectif	4																																	
+PSI	Mod2.C1.SF4	Associer un modèle à une source d’énergie	3																																	
+PSI	Mod2.C1.SF5	Associer un modèle aux composants d’une chaîne d’énergie	3																																	
+PSI	Mod2.C1.SF6	Associer un modèle aux composants d’une chaîne d’information	3																																	
+PSI	Mod2.C13	Centre d'inertie	3																																	
+PSI	Mod2.C14	Opérateur d'inertie	3																																	
+PSI	Mod2.C15	Matrice d'inertie	3																																	
+PSI	Mod2.C16	Torseur cinétique	3																																	
+PSI	Mod2.C17	Torseur dynamique	3																																	
+PSI	Mod2.C17.SF1	Déterminer le torseur dynamique d’un solide, ou d’un ensemble de solides, par rapport à un autre solide	3																																	
+PSI	Mod2.C18	Énergie cinétique	3																																	
+PSI	Mod2.C18.SF1	Déterminer l’énergie cinétique d’un solide, ou d’un ensemble de solides, dans son mouvement par rapport à un autre solide	3																																	
+PSI	Mod2.C34	Chaînes de solides	4																																	
+PSI	Mod2.C34.SF1	Déterminer les conditions géométriques associées à l’hyperstatisme	4																																	
+PSI	Mod2.C35	Degré de mobilité du modèle	4																																	
+PSI	Mod2.C36	Degré d’hyperstatisme du modèle	4																																	
+PSI	Mod2.C8	Linéarisation des systèmes non linéaires	3																																	
+PSI	Mod2.C8.SF1	Linéariser le modèle autour d’un point de fonctionnement	3																																	
+PSI	Mod3.C1	Point de fonctionnement et non-linéarités (hystérésis, saturation, seuil)	3																																	
+PSI	Mod3.C1.SF1	Vérifier la cohérence du modèle choisi avec les résultats d’expérimentation	3																																	
+PSI	Mod3.C2	Pôles dominants et réduction de l’ordre du modèle : principe,  justification	3																																	
+PSI	Mod3.C2.SF1	Réduire l’ordre de la fonction de transfert selon l’objectif visé, à partir des pôles dominants qui déterminent la dynamique asymptotique du système	3																																	
+PSI	Mod3.C3	Grandeurs influentes d’un modèle	4																																	
+PSI	Mod3.C3.SF1	Déterminer les grandeurs influentes 	4																																	
+PSI	Mod3.C3.SF2	Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées	4																																	
+PSI	Mod3.C4	Grandeurs influentes d’un modèle	4																																	
+PSI	Mod3.C4.SF1	Déterminer les grandeurs influentes 	4																																	
+PSI	Mod3.C4.SF2	Modifier les paramètres et enrichir le modèle pour minimiser l’écart entre les résultats simulés et les réponses mesurées	4																																	
+PSI	Res1.C1	Chaînes de solides	3																																	
+PSI	Res1.C1.SF1	Proposer une démarche permettant la détermination de la loi de mouvement	3																																	
+PSI	Res1.C2	Principe fondamental de la dynamique	3																																	
+PSI	Res1.C2.SF1	Proposer une méthode permettant la détermination d’une inconnue de liaison	3																																	
+PSI	Res1.C3	Théorème de l’énergie cinétique	3																																	
+PSI	Res1.C3.SF1	Choisir une méthode pour déterminer la valeur des paramètres conduisant à des positions d'équilibre	3																																	
+PSI	Res1.C4	Correction	3																																	
+PSI	Res1.C4.SF1	Proposer la démarche de réglage d’un correcteur proportionnel, proportionnel intégral et à avance de phase	3																																	
+PSI	Res2.C10	Précision des SLCI : erreur en régime permanent	3																																	
+PSI	Res2.C10.SF1	Déterminer l’erreur en régime permanent vis-à-vis d’une entrée en échelon ou en rampe (consigne ou perturbation)	3																																	
+PSI	Res2.C11	Précision des SLCI : influence de la classe de la fonction de transfert en boucle ouverte	3																																	
+PSI	Res2.C11.SF1	Relier la précision aux caractéristiques fréquentielles	3																																	
+PSI	Res2.C15.SF3	Résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme	4																																	
+PSI	Res2.C22	Principe fondamental de la dynamique	3																																	
+PSI	Res2.C22.SF1	Déterminer les inconnues de liaison ou les efforts extérieurs spécifiés dans le cas où le mouvement est imposé	3																																	
+PSI	Res2.C22.SF2	Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus	3																																	
+PSI	Res2.C23	Conditions d’équilibrage statique et dynamique	3																																	
+PSI	Res2.C24	Inertie équivalente	4																																	
+PSI	Res2.C25	Théorème de l’énergie cinétique ou théorème de l’énergie/puissance	4																																	
+PSI	Res2.C25.SF1	Déterminer la loi du mouvement sous forme d'équations différentielles dans le cas où les efforts extérieurs sont connus	4																																	
+PSI	Res2.C4	Stabilité des SLCI : définition entrée bornée - sortie bornée (EB-SB)	3																																	
+PSI	Res2.C5	Stabilité des SLCI :équation caractéristique	3																																	
+PSI	Res2.C5.SF1	Analyser la stabilité d’un système à partir de l’équation caractéristique	3																																	
+PSI	Res2.C6	Stabilité des SLCI : position des pôles dans le plan complexe	3																																	
+PSI	Res2.C6.SF1	Déterminer les paramètres permettant d’assurer la stabilité du système	3																																	
+PSI	Res2.C7	Stabilité des SLCI : marges de stabilité (de gain et de phase)	3																																	
+PSI	Res2.C7.SF1	Relier la stabilité aux caractéristiques fréquentielles	3																																	
+PSI	Res3.C3	Variabilité des paramètres du modèle de simulation	4																																	
+PSI	Res3.C3.SF1	Choisir les paramètres de simulation	4																																	
+PSI	Res3.C3.SF2	Faire varier un paramètre et comparer les courbes obtenues	4																																	
