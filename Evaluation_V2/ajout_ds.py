@@ -15,56 +15,34 @@ import os
 import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-file_csv = "Classeur1.csv"
+file_csv = "ClasseurV2.csv"
 bdd = "BDD_Evaluation.db"
 num_ds = 1
 annee = 2018
 
 import os
 
-def lire_fichier(file):
+def lire_notes(file):
+    """ Lire le fichier de notes sous la forme 
+    IdEleve, Q1, Q2, Q3, ..., commentaire"""
+    
     fid = open(file,'r', encoding='utf-8-sig')
     
-    # Premiere ligne numéro de questions
-    ligne = fid.readline()
-    ligne = ligne.split(";")
-    nb_questions = int(ligne[0])
-    
-    # Seconde ligne : bareme
-    ligne = fid.readline()
-    ligne = ligne.split(";")
-    ligne = ligne[1:nb_questions+1]
-    bareme = [float(i.replace(",",".")) for i in ligne]
-    
-    # Troisième ligne : poids 
-    ligne = fid.readline()
-    ligne = ligne.split(";")
-    ligne = ligne[1:nb_questions+1]
-    poids = [float(i.replace(",",".")) for i in ligne]
-    
-    
-    # Quatrième ligne poids/20 de la question ; on saute. 
-    ligne = fid.readline()
-    
-    # Cinquième ligne compétences
-    ligne = fid.readline()
-    ligne = ligne.split(";")
-    competences = ligne[1:nb_questions+1]
-    
-    
-    # Ensuite, on récupère les notes
+    # On récupère les notes
     data = fid.readlines()
     fid.close()
     notes = []
-    for ligne in data : 
+    for ligne in data :
         ligne = ligne.split(";")
-        commentaire = ligne[nb_questions+1]
-        ligne = ligne[:nb_questions+1]
-        ligne = [(i.replace(",",".")) for i in ligne]
-        ligne.append(commentaire)
-        notes.append(ligne)
+        id_eleve = ligne[0]
+        commentaire = ligne[-1]
+        ligne = ligne[1:-1]
+        questions= [(i.replace(",",".")) for i in ligne]
+        
+        eleve=[id_eleve,questions,commentaire]
+        notes.append(eleve)
     
-    return nb_questions, bareme, poids, notes, competences
+    return notes
 
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
 
@@ -420,13 +398,14 @@ def concatenation_pdf():
 ####     
 promo = 2018
 num_ds = 1
-"""
-# Lecture du fichier de notes
-nb_questions, bareme, poids, notes, competences = lire_fichier(file_csv)    
 
+# Lecture du fichier de notes
+notes_classe = lire_notes(file_csv)    
+
+"""
 # Remplissage de la BDD
 remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
-"""
+
 # Bilan des notes par élves
 notes = bilan_ds(num_ds,bdd,promo)
 
@@ -451,6 +430,8 @@ moy = moyenne_classe(bilan_classe)
 
 # Génération des bilans individuels
 generation_bilan(notes,bilan_ts_el,bilan_classe,moy)
+"""
+
 """
 # Concaténuation des bilans
 concatenation_pdf()
