@@ -16,15 +16,18 @@ import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 file_csv = "ClasseurV2.csv"
+file_bareme = "Bareme.csv"
 bdd = "BDD_Evaluation.db"
 num_ds = 1
 annee = 2018
 
-import os
 
 def lire_notes(file):
     """ Lire le fichier de notes sous la forme 
-    IdEleve, Q1, Q2, Q3, ..., commentaire"""
+    IdEleve, Q1, Q2, Q3, ..., commentaire
+    Retourne une liste de listes de la forme 
+    [Id,[q1,q2,...],com]
+    """
     
     fid = open(file,'r', encoding='utf-8-sig')
     
@@ -51,6 +54,31 @@ def lire_notes(file):
         notes.append(eleve)
     
     return notes
+
+def lire_bareme(file):
+    """ Lire le fichier de barème"""
+    
+    # On récupère les infos du barème
+    # Les deux premières lignes sont inutiles. 
+    fid = open(file,'r', encoding='utf-8-sig')
+    fid.readline()
+    fid.readline()
+    data = fid.readlines()
+    fid.close()
+    
+    bareme = []
+    competence= []
+    for ligne in data :
+        ligne = ligne.strip()
+        ligne = ligne.split(";")
+        # On supprime la première et la troisième colonne
+        del ligne[2]
+        del ligne[0]
+        bareme.append(ligne)
+        A CONTINUER
+
+    # Transposer une liste : 
+    #list(map(list, zip(*baremeh)))
 
 
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
@@ -80,6 +108,9 @@ def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
             c.execute(req)
     conn.commit()
     conn.close()
+
+
+
 
 def bilan_ds(num_ds,bdd,promo):
     # On récupère le num de chaque élève
@@ -410,7 +441,7 @@ num_ds = 1
 
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
-
+bareme = lire_bareme(file_bareme)
 """
 # Remplissage de la BDD
 remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
