@@ -33,16 +33,25 @@ def lire_notes(file):
     fid.close()
     notes = []
     for ligne in data :
+        ligne = ligne.strip()
         ligne = ligne.split(";")
         id_eleve = ligne[0]
         commentaire = ligne[-1]
         ligne = ligne[1:-1]
         questions= [(i.replace(",",".")) for i in ligne]
         
+        # typage des notes et des question non évaluées
+        for i in range(len(questions)): 
+            if questions[i]=="" or questions[i]=="n":
+                questions[i] = "n"
+            else :
+                questions[i]=float(questions[i])
+            
         eleve=[id_eleve,questions,commentaire]
         notes.append(eleve)
     
     return notes
+
 
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
 
