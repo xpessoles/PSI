@@ -59,24 +59,40 @@ def lire_bareme(file):
     """ Lire le fichier de barème"""
     
     # On récupère les infos du barème
-    # Les deux premières lignes sont inutiles. 
+    
     fid = open(file,'r', encoding='utf-8-sig')
-    fid.readline()
-    fid.readline()
+    fid.readline() # La premiere ligne est inutile.
+    bareme_q=fid.readline() # La seconde ligne contient le bareme par question
     data = fid.readlines()
     fid.close()
+    nb_ques=0
+    bareme_comp = []
     
-    bareme = []
-    competence= []
     for ligne in data :
+        competence= []
         ligne = ligne.strip()
         ligne = ligne.split(";")
         # On supprime la première et la troisième colonne
         del ligne[2]
         del ligne[0]
-        bareme.append(ligne)
-        A CONTINUER
-
+        competence.append(ligne[0])
+        for i in range(1,len(ligne)):
+            if ligne[i]!="0":
+                competence.append([i,float(ligne[i])])
+        if len(competence)>1:
+            bareme_comp.append(competence)
+            print(competence)
+        
+        nb_ques=len(ligne)-1
+      
+        
+    bareme_q = bareme_q.strip()
+    bareme_q = bareme_q.split(";")
+    bareme_q = bareme_q[3:]
+    bareme_q = [float(x) for x in bareme_q]
+    print(bareme_q)
+    
+    return bareme
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
 
