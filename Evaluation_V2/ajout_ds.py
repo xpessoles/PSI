@@ -112,20 +112,41 @@ def lire_bareme(file):
             poids = q[1]
             c = [comp,poids]
             bareme_final[num_q].append(c)
-        
+    """    
     #On met les poids du bareme en %
     for i in range(len(bareme_final)) :
         poids = bareme_final[i][1]
         liste_comp=bareme_final[i][3:]
         for j in range(len(liste_comp)):
             bareme_final[i][j+3][1]=round(bareme_final[i][j+3][1]/poids,2)
+    """
     
-    print(bareme_final)
+    #print(bareme_final)
     return bareme_final
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
 
 
+
+
+promo = 2018
+num_ds = 1
+
+# Lecture du fichier de notes
+notes_classe = lire_notes(file_csv)    
+bareme = lire_bareme(file_bareme)
+
+# Calcul des notes par élève et par compétence.
+
+
+
+
+
+
+
+
+
+"""
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
 
     conn = sqlite3.connect(bdd)
@@ -479,14 +500,8 @@ def concatenation_pdf():
         writer.write(fileobj)
     
     
-
+"""
 ####     
-promo = 2018
-num_ds = 1
-
-# Lecture du fichier de notes
-notes_classe = lire_notes(file_csv)    
-bareme = lire_bareme(file_bareme)
 """
 # Remplissage de la BDD
 remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd)
