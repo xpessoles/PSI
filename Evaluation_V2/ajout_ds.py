@@ -15,7 +15,7 @@ import os
 import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-file_csv = "ClasseurV2.csv"
+file_csv = "Classeur1.csv"
 file_bareme = "Bareme.csv"
 bdd = "BDD_Evaluation.db"
 num_ds = 1
@@ -45,6 +45,7 @@ def lire_notes(file):
         
         # typage des notes et des question non évaluées
         for i in range(len(questions)): 
+        
             if questions[i]=="" or questions[i]=="n":
                 questions[i] = "n"
             else :
@@ -63,6 +64,7 @@ def lire_bareme(file):
     fid = open(file,'r', encoding='utf-8-sig')
     fid.readline() # La premiere ligne est inutile.
     bareme_q=fid.readline() # La seconde ligne contient le bareme par question
+    total_q=fid.readline() # La troisième ligne donne le nombre de points alloués à la question
     data = fid.readlines()
     fid.close()
     nb_ques=0
@@ -81,7 +83,7 @@ def lire_bareme(file):
                 competence.append([i,float(ligne[i])])
         if len(competence)>1:
             bareme.append(competence)
-            print(competence)
+            
         
         nb_ques=len(ligne)-1
       
@@ -90,9 +92,36 @@ def lire_bareme(file):
     bareme_q = bareme_q.split(";")
     bareme_q = bareme_q[3:]
     bareme_q = [float(x) for x in bareme_q]
-    print(bareme_q)
     
-    return bareme
+    total_q = total_q.strip()
+    total_q = total_q.split(";")
+    total_q = total_q[3:]
+    total_q = [float(x) for x in total_q]
+    
+    # Bareme final : 
+    # [num_q, poids, nb_points [[comp1, %1],[comp2,%2]]...]
+    bareme_final=[]
+    for i in range(len(bareme_q)):
+        bareme_final.append([i+1,bareme_q[i],total_q[i]])
+    
+    for ligne in bareme:
+        comp = ligne[0]
+        quest = ligne[1:]
+        for q in quest :
+            num_q = q[0]-1 #Numérotation python
+            poids = q[1]
+            c = [comp,poids]
+            bareme_final[num_q].append(c)
+        
+    #On met les poids du bareme en %
+    for i in range(len(bareme_final)) :
+        poids = bareme_final[i][1]
+        liste_comp=bareme_final[i][3:]
+        for j in range(len(liste_comp)):
+            bareme_final[i][j+3][1]=round(bareme_final[i][j+3][1]/poids,2)
+    
+    print(bareme_final)
+    return bareme_final
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
 
