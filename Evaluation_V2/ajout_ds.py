@@ -66,7 +66,7 @@ def lire_bareme(file):
     data = fid.readlines()
     fid.close()
     nb_ques=0
-    bareme_comp = []
+    bareme = []
     
     for ligne in data :
         competence= []
@@ -80,7 +80,7 @@ def lire_bareme(file):
             if ligne[i]!="0":
                 competence.append([i,float(ligne[i])])
         if len(competence)>1:
-            bareme_comp.append(competence)
+            bareme.append(competence)
             print(competence)
         
         nb_ques=len(ligne)-1
