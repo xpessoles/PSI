@@ -86,6 +86,16 @@ def lire_bareme(file):
             
         
         nb_ques=len(ligne)-1
+    
+    # BAREME comp : comp, poids DS
+    bareme_comp=[]
+    for ligne in bareme :
+        comp = ligne[0]
+        ligne = ligne[1:]
+        q=0
+        for l in ligne : 
+           q=q+l[1]
+        bareme_comp.append([comp,q])
       
         
     bareme_q = bareme_q.strip()
@@ -104,14 +114,19 @@ def lire_bareme(file):
     for i in range(len(bareme_q)):
         bareme_final.append([i+1,bareme_q[i],total_q[i]])
     
+    # Ajout des compétences par question
     for ligne in bareme:
         comp = ligne[0]
         quest = ligne[1:]
+        cc = []
         for q in quest :
             num_q = q[0]-1 #Numérotation python
             poids = q[1]
             c = [comp,poids]
-            bareme_final[num_q].append(c)
+            cc.append(c)
+        bareme_final[num_q].append(cc)
+        
+    #print(bareme_final)
     """    
     #On met les poids du bareme en %
     for i in range(len(bareme_final)) :
@@ -121,26 +136,64 @@ def lire_bareme(file):
             bareme_final[i][j+3][1]=round(bareme_final[i][j+3][1]/poids,2)
     """
     
-    for b in bareme_final :
-        print(b)
+    #for b in bareme_final:
+    #for b in bareme_comp:
+    #    print(b)
     #print(bareme_final)
-    return bareme_final
+    return bareme_final,bareme_comp
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
 
 
-
-
+def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
+    notes = notes_eleve[1]
+    
+    pts_eleve = 0
+    total_pts = 0
+    
+    notes_comp = []
+    
+    for i in range(len(bareme)):
+        comp = bareme[i][3]
+        n = notes[i]
+        poids = bareme[i][1]
+        
+        if n=='n':
+            n=0
+        note_q  = n/bareme[i][2]*poids
+        pts_eleve += note_q
+        total_pts += poids
+        
+        #print(comp)
+        for c in comp :
+            note_c = c[1]/poids
+            notes_comp.append([c[0],round(note_c*note_q,0)])
+    
+    for nn in notes_comp :
+        print(nn)
+        
+    
+    print(round(pts_eleve,2),total_pts)
+    return notes_comp
+    
 promo = 2018
 num_ds = 1
 
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
-bareme = lire_bareme(file_bareme)
+bareme,bareme_comp = lire_bareme(file_bareme)
 
+"""
+for notes_eleve in notes_classe : 
+    calcul_note_eleve(notes_eleve,bareme,bareme)
+"""
+n_comp = calcul_note_eleve(notes_classe[0],bareme,bareme)
 # Calcul des notes par élève et par compétence.
 
+"""
+[ideleve,note,rang,['comp',%]
 
+"""
 
 
 
