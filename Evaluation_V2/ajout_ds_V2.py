@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
+
 __author__ = "Xavier Pessoles"
 
 """
@@ -14,6 +15,7 @@ import matplotlib.pyplot as plt
 import os
 import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
+
 
 file_csv = "Classeur1.csv"
 file_bareme = "Bareme.csv"
@@ -148,6 +150,7 @@ def lire_bareme(file):
 def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
     id_eleve = notes_eleve[0]
     notes = notes_eleve[1]
+    comment = notes_eleve[2]
     
     pts_eleve = 0
     total_pts = 0
@@ -189,27 +192,185 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         dico_comp[clef]=round(dico_comp[clef]/dico_comp_ini[clef],2)
     
     
-    return [id_eleve,round(pts_eleve*20/total_pts,3),dico_comp]
+        
+    return [int(id_eleve),round(pts_eleve*20/total_pts,3),notes,dico_comp,comment]
+    
+def stat_ds(bilan_ds,a,b):
+    """
+    Calcul de la moyenne, des rangs, de l'écart type.
+    notes corrigées avec note = note_brute*a+b
+    """
+    id_note =[]
+    notes_brutes = []
+    # On récupère les id et les notes.
+    for bilan_eleve in bilan_ds :
+        id_note.append(bilan_eleve[0:2])
+        notes_brutes.append(bilan_eleve[1])
+        
+    # On fait le classement
+    for i in range(len(id_note)):
+        id_note[i][0],id_note[i][1] = id_note[i][1],id_note[i][0] 
+    
+    id_note.sort()
+    id_note.reverse()
+    for i in range(len(id_note)):
+        id_note[i]= [id_note[i][1],id_note[i][0],i+1]
+        
+    id_note.sort()
+    
+    # Fin du classement id_note contient [[id_el,note,class],...]
+    
+    
+    moyenne_classe = sum(notes_brutes)/len(notes_brutes)
+    # On ajoute le classement au bilan des DS
+    for i in range(len(bilan_eleve)):
+        if bilan_ds[i][0]==id_note[i][0]:
+            bilan_ds[i].insert(2,id_note[i][2])
+        else : 
+            print("Les ID ne correspondent pas")
+    
+    # On modfie la note en appliquant le correctif
+    for i in range(len(bilan_eleve)):
+        bilan_ds[i][1]=a*bilan_ds[i][1]+b
+    
+    notes_eleves = [a*x+b for x in notes_brutes]
+    # Bilan ds a été modifié en place. On n'est pas obligé de le retourner
+    return moyenne_classe*a+b,notes_eleves
+    
+def creation_histogramme(bilan):
+    # il faut que la derniere valeur de chaque élément du bilan soit la moyenne harmonisée
+    bilan.sort()
+    
+    plt.hist(bilan, range = (0, 20), bins = 2, color = 'gray',edgecolor = 'black', histtype='bar', rwidth=0.8)
+    #, color = 'yellow',edgecolor = 'red')
+    
+    plt.xlabel('Notes')
+    plt.ylabel('Nombre')
+    plt.title('Histogramme des notes')
+    plt.savefig("histo.pdf")
+
+    
+def ecriture_notes_tex(bilan_eleve,moyenne_classe):
+    """
+    Ecriture des notes  pour un seul élève.
+    """
+    
+    
+    id_el = bilan_eleve[0]
+    notes = bilan_eleve[3]
+    # On compte le nombre de lignes de notes :
+    nb_ques = len(notes)
+    nb_lignes = nb_ques//4+1
+
+    #file_el = file+str(el)+".tex"
+    file_el = "f1.tex"
+    # fid = open(file_el,'w')
+    fid = codecs.open(file_el, "w", "utf-8")
+    
+    
+    
+    # ===== EN TETE ELEVE ====
+    
+    fid.write("\\begin{minipage}[c]{.45\\linewidth} \n")
+    
+    fid.write("\\Large \\textbf{\\textsf{"+bilan_el[4].upper()+" "+bilan_el[5]+"}} \n \n")  
+    
+    fid.write(" \\normalsize Note harmonisée "+str(round(bilan_el[7],2))+"/20 \n \n")
+    fid.write("Rang "+str(bilan_el[3])+"\n \n")
+    fid.write("Note brute "+str(round(bilan_el[6],2))+"/20 \n \n")
+    
+    fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"/20 \n \n")
+    
+    fid.write("Commentaires : \n")
+    fid.write(notes[0][5]+" \n")
+    fid.write("\\end{minipage}\\hfill \n")
+    fid.write("\\begin{minipage}[c]{.45\\linewidth}  \n")
+    fid.write("\\begin{center}\n")
+    fid.write("\\includegraphics[width=.8\\linewidth]{../histo.pdf} \n")
+    fid.write("\\end{center}\n")
+    
+    fid.write("\\end{minipage}\n")
+    
+    
+
+    
+    # ===== NOTES PAR QUESTIONS =====
+    # On ajoute les notes par questions
+    fid.write("\\footnotesize \n")
+    fid.write("\\begin{center} \n")
+    fid.write("\\begin{tabular}{|c|c|c|c||c|c|c|c||c|c|c|c||c|c|c|c|} \n")
+    fid.write("\\hline \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} \\\ \n")
+    fid.write("\\hline \n")
+    fid.write("\\hline \n")
+    for i in range (0,nb_lignes):
+        c1 = i
+        c2 = nb_lignes+i
+        c3 = 2*nb_lignes+i
+        c4 = 3*nb_lignes+i
+        ligne = ""
+        
+        # 1 : num, 3 : note, 6 : comp, 4 : note/5
+        ligne = ligne+str(notes[c1][1])+" & "+str(notes[c1][3])+" & "+str(notes[c1][6])+" & "+str(notes[c1][4])
+        ligne = ligne+" & "+str(notes[c2][1])+" & "+str(notes[c2][3])+" & "+str(notes[c2][6])+" & "+str(notes[c2][4])
+        ligne = ligne+" & "+str(notes[c3][1])+" & "+str(notes[c3][3])+" & "+str(notes[c3][6])+" & "+str(notes[c3][4])
+        if c4 < nb_ques :
+            ligne = ligne+" & "+str(notes[c4][1])+" & "+str(notes[c4][3])+" & "+str(notes[c4][6])+" & "+str(notes[c4][4])+" \\\ \\hline "
+        else : 
+            ligne = ligne+" & "+" & "+" & "+" & "+" \\\ \\hline \n"
+        fid.write(ligne)
+        fid.write('\n')
+        
+    #fid.write("\\hline \n")
+    fid.write("\\end{tabular} \n")
+    fid.write("\\end{center} \n")
+    fid.write("\\normalsize \n \n")
+    # ===== FIN NOTES PAR QUESTIONS =====
+    
+    # ===== NOTES PAR COMPETENCES =====
+    fid.write("\\footnotesize \n")
+    fid.write("\\begin{center} \n")
+    fid.write("\\begin{tabular}{|p{.7\linewidth}|c|} \n")
+    fid.write("\\hline \n")
+    ch = "Compétences  & Taux \\\ \\hline \\hline \n"
+    
+    fid.write(ch)
+    
+    
+    for i in range(len(comp_el)):
+        code_comp = comp_el[i][0]
+        nom_comp  = comp_el[i][3]
+        taux =  comp_el[i][1]/comp_el[i][2]*100
+        taux = int(taux)
+        ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " \\% \\\ \\hline \n"
+        fid.write(ligne)
+    
+    fid.write("\\end{tabular} \n")
+    fid.write("\\end{center} \n")
+    fid.write("\\normalsize \n \n")
+    
+    
+    fid.close()   
+    
     
 promo = 2018
 num_ds = 1
 
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
+# Lecture du bareme
 bareme,bareme_comp = lire_bareme(file_bareme)
 
-"""
+bilan_ds=[]
+# PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
 for notes_eleve in notes_classe : 
-    calcul_note_eleve(notes_eleve,bareme,bareme)
-"""
-result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp)
+    result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
+    bilan_ds.append(result_eleve)
 
-"""
-[ideleve,note,rang,['comp',%]
+moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,1)
 
-"""
+# Création de l'histogramme
+creation_histogramme(notes_eleves)
 
-
-
-
-
+# Ecriture des fichiers élèves
+    
+    
