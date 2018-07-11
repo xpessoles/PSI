@@ -146,6 +146,7 @@ def lire_bareme(file):
 
 
 def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
+    id_eleve = notes_eleve[0]
     notes = notes_eleve[1]
     
     pts_eleve = 0
@@ -169,12 +170,26 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
             note_c = c[1]/poids
             notes_comp.append([c[0],round(note_c*note_q,0)])
     
-    for nn in notes_comp :
-        print(nn)
-        
     
-    print(round(pts_eleve,2),total_pts)
-    return notes_comp
+    dico_comp_ini = dict(bareme_comp) 
+    dico_comp = dict(bareme_comp) 
+    
+    #On vide le dictionnaire
+    for clef in dico_comp :
+        dico_comp[clef]=0
+        
+    #On remplit le dictionnaire
+    for nc in notes_comp:
+        clef = nc[0]
+        val = nc[1]
+        dico_comp[clef]=dico_comp[clef]+val
+    
+    # On met les valeurs du dico en pourcentage de réussite
+    for clef in dico_comp:
+        dico_comp[clef]=round(dico_comp[clef]/dico_comp_ini[clef],2)
+    
+    
+    return [id_eleve,round(pts_eleve*20/total_pts,3),dico_comp]
     
 promo = 2018
 num_ds = 1
@@ -187,8 +202,7 @@ bareme,bareme_comp = lire_bareme(file_bareme)
 for notes_eleve in notes_classe : 
     calcul_note_eleve(notes_eleve,bareme,bareme)
 """
-n_comp = calcul_note_eleve(notes_classe[0],bareme,bareme)
-# Calcul des notes par élève et par compétence.
+result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp)
 
 """
 [ideleve,note,rang,['comp',%]
