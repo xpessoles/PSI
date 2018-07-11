@@ -88,7 +88,7 @@ def lire_bareme(file):
             
         
         nb_ques=len(ligne)-1
-    
+
     # BAREME comp : comp, poids DS
     bareme_comp=[]
     for ligne in bareme :
@@ -99,7 +99,7 @@ def lire_bareme(file):
            q=q+l[1]
         bareme_comp.append([comp,q])
       
-        
+    
     bareme_q = bareme_q.strip()
     bareme_q = bareme_q.split(";")
     bareme_q = bareme_q[3:]
@@ -138,11 +138,22 @@ def lire_bareme(file):
             bareme_final[i][j+3][1]=round(bareme_final[i][j+3][1]/poids,2)
     """
     
+    
+    # Besoin du bareme question,comp
+    quest_comp=[]
+    for q in bareme_final:
+        num = q[0]
+        cp = q[3:]
+        comp = []
+        for c in cp :
+            comp.append(c[0][0])
+        quest_comp.append([num,comp])
+    
     #for b in bareme_final:
     #for b in bareme_comp:
     #    print(b)
     #print(bareme_final)
-    return bareme_final,bareme_comp
+    return bareme_final,bareme_comp,quest_comp
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
 
@@ -250,17 +261,31 @@ def creation_histogramme(bilan):
     plt.savefig("histo.pdf")
 
     
-def ecriture_notes_tex(bilan_eleve,moyenne_classe):
+def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,file_bdd):
     """
     Ecriture des notes  pour un seul élève.
     """
     
-    
     id_el = bilan_eleve[0]
+    note_eleve = bilan_eleve[1]
+    rang_eleve = bilan_eleve[2]
     notes = bilan_eleve[3]
     # On compte le nombre de lignes de notes :
     nb_ques = len(notes)
     nb_lignes = nb_ques//4+1
+    
+    # On cherche le nom et le prénom
+    conn = sqlite3.connect(bdd)
+    c = conn.cursor()
+    req = "SELECT nom,prenom FROM eleves WHERE id_eleve="+str(id_el)
+    c.execute(req)
+    tab = c.fetchall()
+    conn.commit()
+    conn.close()
+    print(tab)
+    nom,prenom = tab[0][0],tab[0][1]
+    
+    
 
     #file_el = file+str(el)+".tex"
     file_el = "f1.tex"
@@ -269,20 +294,21 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe):
     
     
     
+    
     # ===== EN TETE ELEVE ====
     
     fid.write("\\begin{minipage}[c]{.45\\linewidth} \n")
     
-    fid.write("\\Large \\textbf{\\textsf{"+bilan_el[4].upper()+" "+bilan_el[5]+"}} \n \n")  
+    fid.write("\\Large \\textbf{\\textsf{"+nom.upper()+" "+prenom+"}} \n \n")  
     
-    fid.write(" \\normalsize Note harmonisée "+str(round(bilan_el[7],2))+"/20 \n \n")
-    fid.write("Rang "+str(bilan_el[3])+"\n \n")
-    fid.write("Note brute "+str(round(bilan_el[6],2))+"/20 \n \n")
+    fid.write(" \\normalsize Note harmonisée "+str(round(note_eleve,2))+"/20 \n \n")
+    fid.write("Rang "+str(rang_eleve)+"\n \n")
+    #fid.write("Note brute "+str(round(bilan_el[1],2))+"/20 \n \n")
     
-    fid.write("Moyenne classe harmonisée "+str(round(moy[1],2))+"/20 \n \n")
+    fid.write("Moyenne classe harmonisée "+str(round(moyenne_classe,2))+"/20 \n \n")
     
     fid.write("Commentaires : \n")
-    fid.write(notes[0][5]+" \n")
+    fid.write(bilan_eleve[5]+" \n")
     fid.write("\\end{minipage}\\hfill \n")
     fid.write("\\begin{minipage}[c]{.45\\linewidth}  \n")
     fid.write("\\begin{center}\n")
@@ -309,12 +335,38 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe):
         c4 = 3*nb_lignes+i
         ligne = ""
         
-        # 1 : num, 3 : note, 6 : comp, 4 : note/5
-        ligne = ligne+str(notes[c1][1])+" & "+str(notes[c1][3])+" & "+str(notes[c1][6])+" & "+str(notes[c1][4])
-        ligne = ligne+" & "+str(notes[c2][1])+" & "+str(notes[c2][3])+" & "+str(notes[c2][6])+" & "+str(notes[c2][4])
-        ligne = ligne+" & "+str(notes[c3][1])+" & "+str(notes[c3][3])+" & "+str(notes[c3][6])+" & "+str(notes[c3][4])
+        cp1 = quest_comp[c1][1]
+        comp1 = cp1[0]
+        if len(cp1)>1:
+            for c in cp1[1:]:
+                comp1+=", "+c
+        
+        cp2 = quest_comp[c2][1]
+        comp2 = cp2[0]
+        if len(cp2)>1:
+            for c in cp2[1:]:
+                comp2+=", "+c
+                
+        cp3 = quest_comp[c3][1]
+        comp3 = cp3[0]
+        if len(cp3)>1:
+            for c in cp3[1:]:
+                comp3+=", "+c
+        
+        
+        ligne = ligne+str(c1+1)+" & "+str(bareme[c1][1])+" & "+comp1+" & "+str(notes[c1])
+        ligne = ligne+" & "+str(c2+1)+" & "+str(bareme[c2][1])+" & "+comp2+" & "+str(notes[c2])
+        ligne = ligne+" & "+str(c3+1)+" & "+str(bareme[c3][1])+" & "+comp3+" & "+str(notes[c3])
+        
+        
         if c4 < nb_ques :
-            ligne = ligne+" & "+str(notes[c4][1])+" & "+str(notes[c4][3])+" & "+str(notes[c4][6])+" & "+str(notes[c4][4])+" \\\ \\hline "
+            cp4 = quest_comp[c4][1]
+            comp4 = cp4[0]
+            if len(cp4)>1:
+                for c in cp4[1:]:
+                    comp4+=", "+c
+        
+            ligne = ligne+" & "+str(c4+1)+" & "+str(bareme[c4][1])+" & "+comp4+" & "+str(notes[c4])+" \\\ \\hline "
         else : 
             ligne = ligne+" & "+" & "+" & "+" & "+" \\\ \\hline \n"
         fid.write(ligne)
@@ -336,6 +388,25 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe):
     fid.write(ch)
     
     
+    dico = bilan_eleve[4]
+    
+    for clef in dico :
+        id_comp = clef
+        taux = dico[clef]*100
+        # On cherche le nom court de la competence
+        conn = sqlite3.connect(bdd)
+        c = conn.cursor()
+        req = "SELECT nom_court FROM table_competences WHERE id_competence='"+str(id_comp)+"'"
+        
+        c.execute(req)
+        tab = c.fetchall()
+        conn.commit()
+        conn.close()
+        nom_court = tab[0][0]
+        
+        ligne = id_comp + " -- " + nom_court + "&" + str(taux) + " \\% \\\ \\hline \n"
+    
+    """
     for i in range(len(comp_el)):
         code_comp = comp_el[i][0]
         nom_comp  = comp_el[i][3]
@@ -343,6 +414,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe):
         taux = int(taux)
         ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " \\% \\\ \\hline \n"
         fid.write(ligne)
+    """
     
     fid.write("\\end{tabular} \n")
     fid.write("\\end{center} \n")
@@ -358,7 +430,7 @@ num_ds = 1
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
 # Lecture du bareme
-bareme,bareme_comp = lire_bareme(file_bareme)
+bareme,bareme_comp,quest_comp = lire_bareme(file_bareme)
 
 bilan_ds=[]
 # PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
@@ -372,5 +444,6 @@ moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,1)
 creation_histogramme(notes_eleves)
 
 # Ecriture des fichiers élèves
-    
+bilan_eleve = bilan_ds[0]
+ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,bdd)
     

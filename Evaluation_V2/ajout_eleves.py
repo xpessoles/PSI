@@ -13,7 +13,6 @@ import sqlite3
 
 file_csv = "Eleve.csv"
 bdd = "BDD_Evaluation.db"
-
 def lire_fichier(file,bdd):
     fid = open(file,'r', encoding='utf-8-sig')
     conn = sqlite3.connect(bdd)
