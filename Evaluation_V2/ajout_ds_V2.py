@@ -324,7 +324,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,file_b
     # On ajoute les notes par questions
     fid.write("\\footnotesize \n")
     fid.write("\\begin{center} \n")
-    fid.write("\\begin{tabular}{|c|c|c|c||c|c|c|c||c|c|c|c||c|c|c|c|} \n")
+    fid.write("\\begin{tabular}{|c|c|m{1cm}|c||c|c|m{1cm}|c||c|c|m{1cm}|c||c|c|m{1cm}|c|} \n")
     fid.write("\\hline \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} \\\ \n")
     fid.write("\\hline \n")
     fid.write("\\hline \n")
