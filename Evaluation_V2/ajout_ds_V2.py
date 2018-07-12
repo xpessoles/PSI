@@ -405,16 +405,9 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,file_b
         nom_court = tab[0][0]
         
         ligne = id_comp + " -- " + nom_court + "&" + str(taux) + " \\% \\\ \\hline \n"
-    
-    """
-    for i in range(len(comp_el)):
-        code_comp = comp_el[i][0]
-        nom_comp  = comp_el[i][3]
-        taux =  comp_el[i][1]/comp_el[i][2]*100
-        taux = int(taux)
-        ligne = code_comp + " -- " + nom_comp + "&" + str(taux) + " \\% \\\ \\hline \n"
-        fid.write(ligne)
-    """
+        fid.write(ligne)    
+        
+
     
     fid.write("\\end{tabular} \n")
     fid.write("\\end{center} \n")
