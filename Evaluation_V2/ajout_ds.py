@@ -146,7 +146,7 @@ bareme = lire_bareme(file_bareme)
 
 
 
-"""
+
 def remplir_bdd(num_ds,annee,competences,nb_questions, bareme, poids, notes,bdd):
 
     conn = sqlite3.connect(bdd)
