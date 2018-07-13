@@ -289,7 +289,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     # On met la note dans la base
     conn = sqlite3.connect(bdd)
     c = conn.cursor()
-    req = 'INSERT INTO ds (id_eleve,promo,ds,note) VALUES ('+str(id_el)+'","'+str(promo)+'","'+str(num_ds)+'","'+str(note_eleve)+')'
+    req = 'INSERT INTO ds (id_eleve,promo,ds,note) VALUES ('+str(id_el)+','+str(promo)+','+str(num_ds)+','+str(note_eleve)+')'
     
     c.execute(req)
     conn.commit()
@@ -407,14 +407,53 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         conn = sqlite3.connect(bdd)
         c = conn.cursor()
         req = "SELECT nom_court FROM table_competences WHERE id_competence='"+str(id_comp)+"'"
-        
         c.execute(req)
         tab = c.fetchall()
         conn.commit()
         conn.close()
         nom_court = tab[0][0]
         
-        ligne = id_comp + " -- " + nom_court + "&" + str(taux) + " \\% \\\ \\hline \n"
+        # On cherche si la compétence a déjà été évaluée
+        
+        conn = sqlite3.connect(bdd)
+        c = conn.cursor()
+        req = "SELECT reussite FROM eleve_competences WHERE id_competence='"+str(id_comp)+"' AND id_eleve="+str(id_el)+' AND promo='+str(promo)
+        c.execute(req)
+        tab = c.fetchall()
+        conn.commit()
+        conn.close()
+        
+        indic = "(=)"
+        
+        # Compétence jamais évaluée
+        if len(tab)==0:
+            indic = "(=)"
+            conn = sqlite3.connect(bdd)
+            c = conn.cursor()
+            
+            req = 'INSERT INTO eleve_competences (id_eleve,promo,id_competence,reussite) VALUES ('+str(id_el)+',' +str(promo)+',"' +id_comp+'",' +str(taux)+' )'
+            c.execute(req)
+            conn.commit()
+            conn.close()
+            
+        else : # COMPETENCE DEJA EVALUEE
+        
+            old_taux = tab[0][0]
+            if old_taux > taux : # 
+                indic = " ($\\searrow$ "+str(old_taux)+"\\,\\%)"
+            elif old_taux < taux : #progres
+                indic = " ($\\nearrow$ "+str(old_taux)+"\\,\\%)"
+            conn = sqlite3.connect(bdd)
+            c = conn.cursor()
+            req = 'UPDATE eleve_competences SET reussite='+str(taux)+',reussite_old='+str(old_taux)+' WHERE id_eleve='+str(id_el)+" AND promo="+str(promo) 
+            c.execute(req)
+            c.execute(req)
+            conn.commit()
+            conn.close()
+        
+        
+        
+        ligne = id_comp + " -- " + nom_court + "&" + str(taux) +" \\%" + indic +"\\\ \\hline \n"
         fid.write(ligne)    
         
 
