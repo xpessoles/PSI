@@ -168,8 +168,11 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
     
     notes_comp = []
     
+    #### DEBUT A REVOIR, NOTE COMP
     for i in range(len(bareme)):
-        comp = bareme[i][3]
+        print(bareme[i])
+        comp = bareme[i][3:]
+        print(comp)
         n = notes[i]
         poids = bareme[i][1]
         
@@ -182,9 +185,11 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         #print(comp)
         for c in comp :
             note_c = c[1]/poids
-            notes_comp.append([c[0],round(note_c*note_q,0)])
+            nnn = round(note_c*note_q,0)
+            print(c,poids,note_c,note_q,nnn)
+            notes_comp.append([c[0],nnn])
     
-    
+    #~FIN A REVOIR NOTE COMP
     dico_comp_ini = dict(bareme_comp) 
     dico_comp = dict(bareme_comp) 
     
@@ -197,7 +202,8 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         clef = nc[0]
         val = nc[1]
         dico_comp[clef]=dico_comp[clef]+val
-    
+        
+        
     # On met les valeurs du dico en pourcentage de réussite
     for clef in dico_comp:
         dico_comp[clef]=round(dico_comp[clef]/dico_comp_ini[clef],2)
