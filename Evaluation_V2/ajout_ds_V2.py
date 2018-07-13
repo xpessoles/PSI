@@ -261,9 +261,10 @@ def creation_histogramme(bilan):
     plt.savefig("histo.pdf")
 
     
-def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,file_bdd):
+def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,file_bdd):
     """
     Ecriture des notes  pour un seul élève.
+    Remplissage des bdd competences et ds. 
     """
     
     id_el = bilan_eleve[0]
@@ -282,8 +283,17 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,file_b
     tab = c.fetchall()
     conn.commit()
     conn.close()
-    print(tab)
     nom,prenom = tab[0][0],tab[0][1]
+    
+    
+    # On met la note dans la base
+    conn = sqlite3.connect(bdd)
+    c = conn.cursor()
+    req = 'INSERT INTO ds (id_eleve,promo,ds,note) VALUES ('+str(id_el)+'","'+str(promo)+'","'+str(num_ds)+'","'+str(note_eleve)+')'
+    
+    c.execute(req)
+    conn.commit()
+    conn.close()
     
     
 
@@ -438,5 +448,5 @@ creation_histogramme(notes_eleves)
 
 # Ecriture des fichiers élèves
 bilan_eleve = bilan_ds[0]
-ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,bdd)
+ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
     
