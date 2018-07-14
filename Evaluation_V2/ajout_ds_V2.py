@@ -88,7 +88,7 @@ def lire_bareme(file):
             
         
         nb_ques=len(ligne)-1
-
+    
     # BAREME comp : comp, poids DS
     bareme_comp=[]
     for ligne in bareme :
@@ -109,24 +109,23 @@ def lire_bareme(file):
     total_q = total_q.split(";")
     total_q = total_q[3:]
     total_q = [float(x) for x in total_q]
-    
+        
     # Bareme final : 
     # [num_q, poids, nb_points [[comp1, %1],[comp2,%2]]...]
     bareme_final=[]
     for i in range(len(bareme_q)):
         bareme_final.append([i+1,bareme_q[i],total_q[i]])
-    
+
     # Ajout des compétences par question
     for ligne in bareme:
         comp = ligne[0]
         quest = ligne[1:]
-        cc = []
+    
         for q in quest :
             num_q = q[0]-1 #Numérotation python
             poids = q[1]
             c = [comp,poids]
-            cc.append(c)
-        bareme_final[num_q].append(cc)
+            bareme_final[num_q].append(c)
         
     #print(bareme_final)
     """    
@@ -170,9 +169,9 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
     
     #### DEBUT A REVOIR, NOTE COMP
     for i in range(len(bareme)):
-        print(bareme[i])
+        #print(bareme[i])
         comp = bareme[i][3:]
-        print(comp)
+        #print(comp)
         n = notes[i]
         poids = bareme[i][1]
         
@@ -186,7 +185,7 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         for c in comp :
             note_c = c[1]/poids
             nnn = round(note_c*note_q,0)
-            print(c,poids,note_c,note_q,nnn)
+            #print(c,poids,note_c,note_q,nnn)
             notes_comp.append([c[0],nnn])
     
     #~FIN A REVOIR NOTE COMP
@@ -473,7 +472,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     
     
 promo = 2018
-num_ds = 1
+num_ds = 2
 
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
@@ -494,4 +493,3 @@ creation_histogramme(notes_eleves)
 # Ecriture des fichiers élèves
 bilan_eleve = bilan_ds[0]
 ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
-    
