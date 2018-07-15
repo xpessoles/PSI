@@ -17,11 +17,10 @@ import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 
-file_csv = "Classeur1.csv"
-file_bareme = "Bareme.csv"
+file_csv = "Classeurc.csv"
+file_bareme = "Baremec.csv"
 bdd = "BDD_Evaluation.db"
-num_ds = 1
-annee = 2018
+
 
 
 def lire_notes(file):
@@ -145,13 +144,14 @@ def lire_bareme(file):
         cp = q[3:]
         comp = []
         for c in cp :
-            comp.append(c[0][0])
+            comp.append(c[0])
         quest_comp.append([num,comp])
     
     #for b in bareme_final:
     #for b in bareme_comp:
     #    print(b)
     #print(bareme_final)
+    
     return bareme_final,bareme_comp,quest_comp
     # Transposer une liste : 
     #list(map(list, zip(*baremeh)))
@@ -166,7 +166,9 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
     total_pts = 0
     
     notes_comp = []
-    
+    print(bareme)
+    print(bareme[0][3:])
+    print('\n')
     #### DEBUT A REVOIR, NOTE COMP
     for i in range(len(bareme)):
         #print(bareme[i])
@@ -188,6 +190,7 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
             #print(c,poids,note_c,note_q,nnn)
             notes_comp.append([c[0],nnn])
     
+    print(notes_comp)
     #~FIN A REVOIR NOTE COMP
     dico_comp_ini = dict(bareme_comp) 
     dico_comp = dict(bareme_comp) 
@@ -343,13 +346,14 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     fid.write("\\hline \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} & \\textbf{Qu} & \\textbf{Coef} & \\textbf{Comp} & \\textbf{/5} \\\ \n")
     fid.write("\\hline \n")
     fid.write("\\hline \n")
+    
     for i in range (0,nb_lignes):
         c1 = i
         c2 = nb_lignes+i
         c3 = 2*nb_lignes+i
         c4 = 3*nb_lignes+i
         ligne = ""
-        
+        print(c1,c2,c3,c4)
         cp1 = quest_comp[c1][1]
         comp1 = cp1[0]
         if len(cp1)>1:
@@ -361,18 +365,25 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         if len(cp2)>1:
             for c in cp2[1:]:
                 comp2+=", "+c
-                
-        cp3 = quest_comp[c3][1]
-        comp3 = cp3[0]
-        if len(cp3)>1:
-            for c in cp3[1:]:
-                comp3+=", "+c
         
+
+        flag = True
+        try :
+            cp3 = quest_comp[c3][1]
+            comp3 = cp3[0]
+            if len(cp3)>1:
+                for c in cp3[1:]:
+                    comp3+=", "+c
+        except IndexError :
+            flag = False 
+            
         
         ligne = ligne+str(c1+1)+" & "+str(bareme[c1][1])+" & "+comp1+" & "+str(notes[c1])
         ligne = ligne+" & "+str(c2+1)+" & "+str(bareme[c2][1])+" & "+comp2+" & "+str(notes[c2])
-        ligne = ligne+" & "+str(c3+1)+" & "+str(bareme[c3][1])+" & "+comp3+" & "+str(notes[c3])
-        
+        if flag : 
+            ligne = ligne+" & "+str(c3+1)+" & "+str(bareme[c3][1])+" & "+comp3+" & "+str(notes[c3])
+        else : 
+            ligne = ligne+" & & & &"
         
         if c4 < nb_ques :
             cp4 = quest_comp[c4][1]
@@ -458,7 +469,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         
         
         
-        ligne = id_comp + " -- " + nom_court + "&" + str(taux) +" \\%" + indic +"\\\ \\hline \n"
+        ligne = id_comp + " -- " + nom_court + "&" + str(round(taux,2)) +" \\%" + indic +"\\\ \\hline \n"
         fid.write(ligne)    
         
 
@@ -470,9 +481,16 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     
     fid.close()   
     
+
+conn = sqlite3.connect(bdd)
+c = conn.cursor()
+c.execute("DELETE FROM ds")
+c.execute("DELETE FROM eleve_competences")
+conn.commit()
+conn.close()
     
 promo = 2018
-num_ds = 2
+num_ds = 1
 
 # Lecture du fichier de notes
 notes_classe = lire_notes(file_csv)    
@@ -481,9 +499,14 @@ bareme,bareme_comp,quest_comp = lire_bareme(file_bareme)
 
 bilan_ds=[]
 # PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
+"""
 for notes_eleve in notes_classe : 
     result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
     bilan_ds.append(result_eleve)
+"""
+
+result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
+
 
 moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,1)
 
