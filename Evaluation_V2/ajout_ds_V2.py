@@ -182,12 +182,12 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         note_q  = n/bareme[i][2]*poids
         pts_eleve += note_q
         total_pts += poids
-        
+        print(">>>",i,note_q,n,bareme[i][2],"\n")
         #print(comp)
         for c in comp :
             note_c = c[1]/poids
             nnn = round(note_c*note_q,0)
-            #print(c,poids,note_c,note_q,nnn)
+            print(c,poids,"notec",note_c,note_q,nnn)
             notes_comp.append([c[0],nnn])
     
     print(notes_comp)
