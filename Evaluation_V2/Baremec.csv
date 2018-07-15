@@ -1,0 +1,8 @@
+﻿Année;Id;Long;Q1;Q2;Q3;Q4;Q5
+Année;Id;Long;1;9;3;4;5
+Année;Id;Long;5;5;5;5;5
+PCSI;An1.C1;Analyser le cahier des charges (diagramme des exigences, diagramme des cas d’utilisation);1;0;0;0;0
+PCSI;An1.C2;Analyser l'impact environnemental;0;2;0;0;0
+PCSI;An2.C3;Analuser les frontières de l’étude;0;0;3;0;0
+PCSI;An2.C4;Analyser le milieu extérieur;0;0;0;4;0
+PCSI;An2.C5;Analyser les flux échangés;0;7;0;0;5
