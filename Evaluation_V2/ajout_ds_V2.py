@@ -438,6 +438,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         conn.close()
         
         print(req,tab)
+        print(os.getcwd())
         indic = "(=)"
         
         # Compétence jamais évaluée
