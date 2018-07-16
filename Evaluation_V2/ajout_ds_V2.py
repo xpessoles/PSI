@@ -166,14 +166,11 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
     total_pts = 0
     
     notes_comp = []
-    print(bareme)
-    print(bareme[0][3:])
-    print('\n')
-    #### DEBUT A REVOIR, NOTE COMP
+   
+   
     for i in range(len(bareme)):
-        #print(bareme[i])
         comp = bareme[i][3:]
-        #print(comp)
+        
         n = notes[i]
         poids = bareme[i][1]
         
@@ -182,16 +179,17 @@ def calcul_note_eleve(notes_eleve,bareme,bareme_comp):
         note_q  = n/bareme[i][2]*poids
         pts_eleve += note_q
         total_pts += poids
-        print(">>>",i,note_q,n,bareme[i][2],"\n")
-        #print(comp)
+   
         for c in comp :
-            note_c = c[1]/poids
+            """note_c = c[1]/poids
             nnn = round(note_c*note_q,0)
-            print(c,poids,"notec",note_c,note_q,nnn)
-            notes_comp.append([c[0],nnn])
+            """
+            nc = n/bareme[i][2]*c[1]
+            notes_comp.append([c[0],nc])
     
-    print(notes_comp)
+   
     #~FIN A REVOIR NOTE COMP
+    
     dico_comp_ini = dict(bareme_comp) 
     dico_comp = dict(bareme_comp) 
     
@@ -353,7 +351,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         c3 = 2*nb_lignes+i
         c4 = 3*nb_lignes+i
         ligne = ""
-        print(c1,c2,c3,c4)
+        
         cp1 = quest_comp[c1][1]
         comp1 = cp1[0]
         if len(cp1)>1:
@@ -439,6 +437,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         conn.commit()
         conn.close()
         
+        print(req,tab)
         indic = "(=)"
         
         # Compétence jamais évaluée
@@ -455,6 +454,7 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         else : # COMPETENCE DEJA EVALUEE
         
             old_taux = tab[0][0]
+            
             if old_taux > taux : # 
                 indic = " ($\\searrow$ "+str(old_taux)+"\\,\\%)"
             elif old_taux < taux : #progres
@@ -499,14 +499,12 @@ bareme,bareme_comp,quest_comp = lire_bareme(file_bareme)
 
 bilan_ds=[]
 # PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
-"""
+
 for notes_eleve in notes_classe : 
     result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
     bilan_ds.append(result_eleve)
-"""
 
-result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
-
+# result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
 
 moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,1)
 
