@@ -236,16 +236,15 @@ def stat_ds(bilan_ds,a,b):
     id_note.sort()
     
     # Fin du classement id_note contient [[id_el,note,class],...]
-    
-    
+
     moyenne_classe = sum(notes_brutes)/len(notes_brutes)
     # On ajoute le classement au bilan des DS
-    for i in range(len(bilan_eleve)):
+    for i in range(len(bilan_ds)):
         if bilan_ds[i][0]==id_note[i][0]:
             bilan_ds[i].insert(2,id_note[i][2])
         else : 
             print("Les ID ne correspondent pas")
-    
+            
     # On modfie la note en appliquant le correctif
     for i in range(len(bilan_eleve)):
         bilan_ds[i][1]=a*bilan_ds[i][1]+b
@@ -258,12 +257,14 @@ def creation_histogramme(bilan):
     # il faut que la derniere valeur de chaque élément du bilan soit la moyenne harmonisée
     bilan.sort()
     
-    plt.hist(bilan, range = (0, 20), bins = 2, color = 'gray',edgecolor = 'black', histtype='bar', rwidth=0.8)
+    #plt.hist(bilan, range = (0, 20), bins = 2, color = 'gray',edgecolor = 'black', histtype='bar', rwidth=0.8)
     #, color = 'yellow',edgecolor = 'red')
-    
+    plt.plot(bilan,'r.')
+    plt.grid()
+    plt.axis([-1,len(bilan),0,20])
     plt.xlabel('Notes')
     plt.ylabel('Nombre')
-    plt.title('Histogramme des notes')
+    plt.title('Répartition des notes')
     plt.savefig("histo.pdf")
 
     
@@ -481,11 +482,12 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
 
 
 def generation_bilan(bilan_ds,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd):
-    for i in range(len(bilan_ds)):
-        print("eleve ",i+1)
+    for i in range(4,len(bilan_ds)):
         bilan_eleve=bilan_ds[i]
+        print("eleve ",i+1)
+
         ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
-        #os.system("pdflatex FicheDS.tex")
+        os.system("pdflatex FicheDS.tex")
         ff = i
         if ff<10 :
             ff = str(0)+str(ff)
@@ -516,45 +518,46 @@ def concatenation_pdf():
 
 #os.chdir("FicheDS")
 
-import time
-deb = time.clock()
-
-conn = sqlite3.connect(bdd)
-c = conn.cursor()
-c.execute("DELETE FROM ds")
-#c.execute("DELETE FROM eleve_competences")
-conn.commit()
-conn.close()
- 
-promo = 2018
-num_ds = 1
-
-# Lecture du fichier de notes
-notes_classe = lire_notes(file_csv)    
-# Lecture du bareme
-bareme,bareme_comp,quest_comp = lire_bareme(file_bareme)
-
-bilan_ds=[]
-# PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
-
-for notes_eleve in notes_classe : 
-    result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
-    bilan_ds.append(result_eleve)
-
-for b in bilan_ds : 
-    print(len(b))
-# result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
-
-moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,0)
-
-# Création de l'histogramme
-creation_histogramme(notes_eleves)
-
-# Ecriture des fichiers élèves
-#bilan_eleve = bilan_ds[0]
-#ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
-
-generation_bilan(bilan_ds,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
-#concatenation_pdf()
-
-print(time.clock()-deb)
+def go():
+    import time
+    deb = time.clock()
+    
+    conn = sqlite3.connect(bdd)
+    c = conn.cursor()
+    c.execute("DELETE FROM ds")
+    #c.execute("DELETE FROM eleve_competences")
+    conn.commit()
+    conn.close()
+    
+    promo = 2018
+    num_ds = 1
+    
+    # Lecture du fichier de notes
+    notes_classe = lire_notes(file_csv)    
+    # Lecture du bareme
+    bareme,bareme_comp,quest_comp = lire_bareme(file_bareme)
+    
+    bilan_ds=[]
+    # PAR DS un bilan [id,note/20, notes_q, dico_comp,commentaire]
+    
+    for notes_eleve in notes_classe : 
+        result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
+        bilan_ds.append(result_eleve)
+    
+    # result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
+    
+    
+    moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,0)
+    
+    
+    # Création de l'histogramme
+    creation_histogramme(notes_eleves)
+    
+    # Ecriture des fichiers élèves
+    #bilan_eleve = bilan_ds[0]
+    #ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+    
+    generation_bilan(bilan_ds,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+    concatenation_pdf()
+    
+    print(time.clock()-deb)
