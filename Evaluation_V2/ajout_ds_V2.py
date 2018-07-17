@@ -17,8 +17,8 @@ import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 
-file_csv = "Classeurc.csv"
-file_bareme = "Baremec.csv"
+file_csv = "Classeur1.csv"
+file_bareme = "Bareme.csv"
 bdd = "BDD_Evaluation.db"
 
 
@@ -126,7 +126,7 @@ def lire_bareme(file):
             c = [comp,poids]
             bareme_final[num_q].append(c)
         
-    #print(bareme_final)
+    
     """    
     #On met les poids du bareme en %
     for i in range(len(bareme_final)) :
@@ -272,7 +272,6 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     Ecriture des notes  pour un seul élève.
     Remplissage des bdd competences et ds. 
     """
-    
     id_el = bilan_eleve[0]
     note_eleve = bilan_eleve[1]
     rang_eleve = bilan_eleve[2]
@@ -437,39 +436,35 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
         conn.commit()
         conn.close()
         
-        print(req,tab)
-        print(os.getcwd())
+        
         indic = "(=)"
         
         # Compétence jamais évaluée
         if len(tab)==0:
+
             indic = "(=)"
             conn = sqlite3.connect(bdd)
             c = conn.cursor()
             
-            req = 'INSERT INTO eleve_competences (id_eleve,promo,id_competence,reussite) VALUES ('+str(id_el)+',' +str(promo)+',"' +id_comp+'",' +str(taux)+' )'
+            req = 'INSERT INTO eleve_competences (id_eleve,promo,id_competence,reussite) VALUES ('+str(id_el)+',' +str(promo)+',"' +id_comp+'",' +str(round(taux,2))+' )'
             c.execute(req)
             conn.commit()
             conn.close()
             
         else : # COMPETENCE DEJA EVALUEE
-        
-            old_taux = tab[0][0]
-            
+            old_taux = round(tab[0][0])
+
             if old_taux > taux : # 
                 indic = " ($\\searrow$ "+str(old_taux)+"\\,\\%)"
             elif old_taux < taux : #progres
                 indic = " ($\\nearrow$ "+str(old_taux)+"\\,\\%)"
             conn = sqlite3.connect(bdd)
             c = conn.cursor()
-            req = 'UPDATE eleve_competences SET reussite='+str(taux)+',reussite_old='+str(old_taux)+' WHERE id_eleve='+str(id_el)+" AND promo="+str(promo) 
-            c.execute(req)
+            req = 'UPDATE eleve_competences SET reussite='+str(round(taux))+',reussite_old='+str(round(old_taux))+' WHERE id_eleve='+str(id_el)+" AND promo="+str(promo)+' AND id_competence="'+id_comp+'"' 
             c.execute(req)
             conn.commit()
             conn.close()
-        
-        
-        
+            
         ligne = id_comp + " -- " + nom_court + "&" + str(round(taux,2)) +" \\%" + indic +"\\\ \\hline \n"
         fid.write(ligne)    
         
@@ -483,13 +478,54 @@ def ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds
     fid.close()   
     
 
+
+
+def generation_bilan(bilan_ds,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd):
+    for i in range(len(bilan_ds)):
+        print("eleve ",i+1)
+        bilan_eleve=bilan_ds[i]
+        ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+        #os.system("pdflatex FicheDS.tex")
+        ff = i
+        if ff<10 :
+            ff = str(0)+str(ff)
+        fichier = ""+str(ff)+".pdf"
+        shutil.copyfile("FicheDS.pdf",fichier)
+    
+
+def concatenation_pdf():
+    #os.chdir("FicheDS")
+    liste_pdf = []
+    liste = os.listdir()
+    for f in liste : 
+        if "pdf" in f :
+            liste_pdf.append(f)
+    liste_pdf=liste_pdf[0:-1]
+    
+    input_streams = []
+    for input_file in liste_pdf:
+        input_streams.append(open(input_file, 'rb'))
+    writer = PdfFileWriter()
+    for reader in map(PdfFileReader, input_streams):
+        for n in range(reader.getNumPages()):
+                writer.addPage(reader.getPage(n))
+    
+    with open("BILAN.pdf", 'wb') as fileobj:
+        writer.write(fileobj)
+
+
+#os.chdir("FicheDS")
+
+import time
+deb = time.clock()
+
 conn = sqlite3.connect(bdd)
 c = conn.cursor()
 c.execute("DELETE FROM ds")
-c.execute("DELETE FROM eleve_competences")
+#c.execute("DELETE FROM eleve_competences")
 conn.commit()
 conn.close()
-    
+ 
 promo = 2018
 num_ds = 1
 
@@ -505,13 +541,20 @@ for notes_eleve in notes_classe :
     result_eleve = calcul_note_eleve(notes_eleve,bareme,bareme_comp)
     bilan_ds.append(result_eleve)
 
+for b in bilan_ds : 
+    print(len(b))
 # result_eleve = calcul_note_eleve(notes_classe[0],bareme,bareme_comp) 
 
-moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,1)
+moyenne_classe,notes_eleves = stat_ds(bilan_ds,1,0)
 
 # Création de l'histogramme
 creation_histogramme(notes_eleves)
 
 # Ecriture des fichiers élèves
-bilan_eleve = bilan_ds[0]
-ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+#bilan_eleve = bilan_ds[0]
+#ecriture_notes_tex(bilan_eleve,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+
+generation_bilan(bilan_ds,moyenne_classe,bareme,quest_comp,promo,num_ds,bdd)
+#concatenation_pdf()
+
+print(time.clock()-deb)
