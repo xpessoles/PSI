@@ -10,7 +10,8 @@ _*
 
 *.db
 
-Evaluation/BDD_Evaluation.db
+Evaluation_V2/*.db
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
