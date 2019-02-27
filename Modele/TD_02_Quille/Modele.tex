@@ -1,0 +1,142 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Résolutions de problèmes de statique : PFS 3D},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{style/new_style}
+\input{style/macros_SII}
+\usepackage{multicol}
+\usepackage{siunitx}
+%\usepackage{picins}
+\fichetrue
+%\fichefalse
+
+\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\newif\ifnormal
+\normaltrue
+%\normalfalse
+
+\newif\ifdifficile
+\difficilefalse
+%\difficiletrue
+
+\newif\iftdifficile
+\tdifficilefalse
+%\tdifficiletrue
+
+% -------------------------------------
+% Déclaration des titres
+% -------------------------------------
+
+\def\classe{\textsf{PSI$\star$ -- MP}}
+\def\xxnumpartie{Cycle 06}
+\def\xxpartie{Modéliser le comportement des systèmes mécaniques dans le but d'établir une loi de comportement ou de déterminer des actions mécaniques en utilisant les méthodes énergétiques}
+
+\def\xxnumchapitre{Chapitre 1 \vspace{.2cm}}
+\def\xxchapitre{\hspace{.12cm} Approche énergétique}
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{19}%16
+
+\def\xxonglet{\textsf{Cycle 06}}
+
+\def\xxactivite{TD 02}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+
+\def\xxtitreexo{Quille pendulaire \ifnormal $\star$ \else \fi \iftdifficile $\star\star\star$ \else \fi }
+\def\xxsourceexo{\hspace{.2cm} \footnotesize{Concours Commun Mines Ponts 2014}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+}}
+
+\def\xxfigures{
+\includegraphics[width=.75\textwidth]{images/fig_00}
+}%figues de la page de garde
+\def\xxpied{%
+Cycle 06 -- Modélisation mécanique -- Énergétique\\% afin de valider leurs performances.\\
+Chapitre 1 -- \xxactivite%
+}
+
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{4.5cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\ifprof
+%\begin{multicols}{2}
+\else
+\begin{multicols}{2}
+\fi
+
+\section{Titre 1}
+\subsection{Titre 1.1}
+\begin{corrige}
+\end{corrige}
+
+\subsection{Titre 1.2}
+\begin{obj}
+\end{obj}
+\subsubsection{Titre 1.2.1}
+\begin{warn}
+\end{warn}
+\subsubsection{Titre 1.2.2}
+\section{Titre 2}
+\begin{demo}
+\end{demo}
+
+\begin{exemple}
+
+\end{exemple}
+
+\begin{methode}
+\end{methode}
+
+\begin{resultat}
+\end{resultat}
+
+\begin{defi}
+\end{defi}
+
+\end{multicols}
+
+
+\end{document}
+
+\subparagraph{}\textit{}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/img_04}
+%\textit{}
+\end{center}
+
