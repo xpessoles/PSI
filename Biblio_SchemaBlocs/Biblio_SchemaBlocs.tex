@@ -102,6 +102,203 @@ $$c_m(t)=k_t i(t)$$
 
 \includestandalone{images/Schema2entrees_2F_R}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
+\footnotesize
+\begin{center}
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbBloc[3]{b0}{$A_1$}{E}
+    \sbRelier[$Q(p)$]{E}{b0}
+
+
+\sbComp{c1}{b0}
+    \sbRelier{b0}{c1}
+
+\sbBloc[1]{b1}{$A_2$}{c1}
+    \sbRelier{c1}{b1}
+    
+\sbBloc[3]{b11}{$A_3$}{b1}
+    \sbRelier[$\Sigma(p)$]{b1}{b11}
+
+
+\sbComph{c2}{b11}
+    \sbRelier{b11}{c2}
+
+\sbBloc{b2}{$A_4$}{c2}
+    \sbRelier{c2}{b2}
+    
+
+\sbSortie[4]{S}{b2}
+    \sbRelier{b2}{S}
+    \sbNomLien[0.8]{S}{$X(p)$}
+  
+\sbRenvoi{b2-S}{c1}{}
+
+\draw [latex-] (c2) --++ (0,1) node[left] {$F_R(p)$};
+
+\end{tikzpicture}
+\end{center}
+\normalsize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotesize
+\begin{center}
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbBloc[3]{b1}{$H_1$}{E}
+    \sbRelier[$Q(p)$]{E}{b1}
+
+
+\sbComph{c1}{b1}
+    \sbRelier{b1}{c1}
+  
+\sbBloc{b2}{$H_2$}{c1}
+    \sbRelier{c1}{b2}
+
+\sbSortie{S}{b2}
+    \sbRelier{b2}{S}
+    \sbNomLien[0.8]{S}{$X(p)$}
+
+%\sbBloc[3]{b11}{$A_3$}{b1}
+%    \sbRelier[$\Sigma(p)$]{b1}{b11}
+%
+%
+%\sbSumh{c2}{b11}
+%    \sbRelier{b11}{c2}
+%
+%\sbBloc{b2}{$A_4$}{c2}
+%    \sbRelier{c2}{b2}
+%    
+%
+%\sbSortie[4]{S}{b2}
+%    \sbRelier{b2}{S}
+%    \sbNomLien[0.8]{S}{$X(p)$}
+%  
+%\sbRenvoi{b2-S}{c1}{}
+%
+\draw [latex-] (c1) --++ (0,1) node[left] {$F_R(p)$};
+
+\end{tikzpicture}
+\end{center}
+\normalsize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\footnotesize
+\begin{center}
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbBloc[3]{b0}{$A_1 A_2 A_3$}{E}
+    \sbRelier[$Q(p)$]{E}{b0}
+
+\sbComph{c2}{b0}
+    \sbRelier{b0}{c2}
+    
+\sbComp{c1}{c2}
+    \sbRelier{c2}{c1}
+
+\sbBloc{b1}{$A_4$}{c1}
+    \sbRelier{c1}{b1}
+    
+
+\sbSortie[4]{S}{b1}
+    \sbRelier{b1}{S}
+    \sbNomLien[0.8]{S}{$X(p)$}
+      
+      
+\sbDecaleNoeudy[4]{S}{U}
+\sbDecaleNoeudx[-2]{U}{U2}
+\sbBlocr{r1}{$A_2 A_3$}{U2}
+
+
+\sbRelieryx{b1-S}{r1}
+\sbRelierxy{r1}{c1}
+
+
+%    
+%\sbBloc[3]{b11}{$A_3$}{b1}
+%    \sbRelier[$\Sigma(p)$]{b1}{b11}
+%
+%
+%\sbComph{c2}{b11}
+%    \sbRelier{b11}{c2}
+%
+%\sbBloc{b2}{$A_4$}{c2}
+%    \sbRelier{c2}{b2}
+%    
+%
+%\sbRenvoi{b2-S}{c1}{}
+
+\draw [latex-] (c2) --++ (0,1) node[left] {$F_R(p)$};
+
+\end{tikzpicture}
+\end{center}
+\normalsize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotesize
+\begin{center}
+\begin{tikzpicture}[scale=0.75, every node/.style={transform shape}]
+\sbEntree{E}
+
+\sbBloc[3]{b0}{$K'_C$}{E}
+    \sbRelier[$\Theta_c(p)$]{E}{b0}
+
+
+\sbComp[5]{c1}{b0}
+    \sbRelier[$V_c(p)$]{b0}{c1}
+
+\sbBloc[1]{b1}{$C(p)$}{c1}
+    \sbRelier{c1}{b1}
+    
+\sbBloc[2.5]{b2}{$H_{\text{SV}}$}{b1}
+    \sbRelier[$V(p)$]{b1}{b2}
+
+\sbBloc[2.5]{b3}{$H_{1}$}{b2}
+    \sbRelier[$Q(p)$]{b2}{b3}
+    
+\sbComph[3.5]{c2}{b3}
+    \sbRelier{b3}{c2}
+
+\sbBloc[1]{b4}{$H_2$}{c2}
+    \sbRelier{c2}{b4}
+    
+\sbBloc[2.5]{b5}{$H_{\text{CIN}}$}{b4}
+    \sbRelier[$X(p)$]{b4}{b5}
+
+\sbSortie[2]{S}{b5}
+    \sbRelier{b5}{S}
+    \sbNomLien[0.8]{S}{$\Theta(p)$}
+  
+
+\sbDecaleNoeudy[4]{b3}{U}
+\sbBlocr{r1}{$K_C$}{U}
+
+\sbRelieryx{b5-S}{r1}
+\sbRelierxy[$V_m(p)$]{r1}{c1}
+
+%\sbRenvoi{b2-S}{c1}{}
+
+\draw [latex-] (c2) --++ (0,1) node[left] {$F_R(p)$};
+
+\end{tikzpicture}
+\end{center}
+
+\normalsize
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ùù
+
+
+
+
+
 \end{document}
 
 
