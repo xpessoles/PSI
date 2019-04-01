@@ -18,6 +18,8 @@
 \courstrue
 %\coursfalse
 
+\usepackage{style/schemabloc}
+
 
 
 % -------------------------------------
@@ -294,6 +296,54 @@ $$c_m(t)=k_t i(t)$$
 \normalsize
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ùù
+
+
+\footnotesize
+
+\begin{tikzpicture}
+\sbEntree{E}
+
+\sbComp{c1}{E}
+    \sbRelier[$\dot{Z}(p)$]{E}{c1}
+
+\sbBloc{b1}{$C(p)$}{c1}
+    \sbRelier{c1}{b1}
+
+\sbBloc{b2}{$H_S(p)$}{b1}
+    \sbRelier{b1}{b2}
+    
+\sbComp[6]{c2}{b2}
+  \sbRelier[$F_{\text{éq}}(p)$]{b2}{c2}
+
+\sbBloc{b3}{$H_Z(p)$}{c2}
+    \sbRelier{c2}{b3}
+
+\sbBloc{b4}{$\dfrac{1}{p}$}{b3}
+    \sbRelier{b3}{b4}
+%\sbBloc{b2}{$H_2(p)$}{c2}
+  %  \sbRelier{c2}{b2}
+    
+
+\sbSortie[4]{S}{b4}
+    \sbRelier{b4}{S}
+    \sbNomLien[0.8]{S}{$S(p)$}
+
+\sbDecaleNoeudy[4]{b4}{n1} 
+\sbDecaleNoeudx[-2]{n1}{n2} 
+
+\sbBlocr{r}{$\lambda_a$}{n2} 
+\sbRelieryx{b4-S}{r}
+\sbRelierxy{r}{c2}
+
+\sbDecaleNoeudx[4]{b4}{n3} 
+\sbDecaleNoeudy[-.4]{n3}{n4} 
+\sbRenvoi[6]{n4}{c1}{}
+
+%\draw [latex-] (c2) --++ (0,1) node[left] {$\text{Pert}(p)$};
+
+\end{tikzpicture}
+
+\normalsize
 
 
 
