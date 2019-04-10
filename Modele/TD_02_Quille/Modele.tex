@@ -5,8 +5,7 @@
 
 \input{style/new_style}
 \input{style/macros_SII}
-\usepackage{multicol}
-\usepackage{siunitx}
+
 %\usepackage{picins}
 
 \fichetrue
@@ -53,11 +52,18 @@
 \def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
 \def\xxtete{Sciences Industrielles de l'Ingénieur}
 
+\def\xxpied{%
+Cycle 06 -- Modélisation mécanique -- Énergétique\\% afin de valider leurs performances.\\
+Chapitre 1 -- \xxactivite%
+}
+
+\def\xxonglet{\textsf{Cycle 06}}
+
 \def\xxposongletx{2}
 \def\xxposonglettext{1.45}
 \def\xxposonglety{19}%16
 
-\def\xxonglet{\textsf{Cycle 06}}
+
 
 \def\xxactivite{TD 02}
 \def\xxauteur{\textsl{Xavier Pessoles}}
@@ -74,10 +80,6 @@
 \def\xxfigures{
 \includegraphics[width=.75\textwidth]{images/fig_00}
 }%figues de la page de garde
-\def\xxpied{%
-Cycle 06 -- Modélisation mécanique -- Énergétique\\% afin de valider leurs performances.\\
-Chapitre 1 -- \xxactivite%
-}
 
 
 \setcounter{secnumdepth}{5}
