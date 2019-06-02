@@ -210,12 +210,209 @@ On peut donc valider les valeurs données par le constructeur.
 \subparagraph{}%16
 \subparagraph{}%17
 \subparagraph{}%18
+On cherche $\vectv{G_4}{4}{1}$. On a $\vect{OG_4}=\vect{OA}+\vect{AB}+\vect{BC}+\vect{CG_4}$ $=l_0\vect{y_0}+l_1\vect{y_1}+l_2\vect{y_2}+l_2'\vect{y_2'}+l_3\vect{y_3}+\lambda(t)\vect{z_3}+b_4\vect{z_4}$.
+On a $\alpha_1=\dfrac{\pi}{4}$ et $\alpha_2=-\dfrac{\pi}{4}$.
+
+On a donc $\vectv{G_4}{4}{1}= \left[\dfrac{\dd \vect{OG_4}}{\dd t}\right]_{\rep{0}} $ 
+
+$= 
+\left[\dfrac{\dd l_0\vect{y_0}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_1\vect{y_1}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_2\vect{y_2}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_2'\vect{y_2'}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_3\vect{y_3}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd \lambda(t)\vect{z_3}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd b_4\vect{z_4}}{\dd t}\right]_{\rep{0}}$
+
+$= 
+\vect{0}+
+\vect{0}+
+l_2\left[\dfrac{\dd \vect{y_2}}{\dd t}\right]_{\rep{0}}+
+l_2'\left[\dfrac{\dd \vect{y_2'}}{\dd t}\right]_{\rep{0}}+
+l_3\left[\dfrac{\dd \vect{y_3}}{\dd t}\right]_{\rep{0}}+
+\lambda(t)\left[\dfrac{\dd \vect{z_3}}{\dd t}\right]_{\rep{0}}+
+\dot{\lambda}(t)\left[\dfrac{\dd \vect{z_3}}{\dd t}\right]_{\rep{0}}+
+b_4\left[\dfrac{\dd \vect{z_4}}{\dd t}\right]_{\rep{0}}$
+
+$= 
+l_2\left[ \vecto{2}{0} \wedge \vect{y_2} \right]+
+l_2'\left[ \vecto{2'}{0} \wedge \vect{y_2'} \right]+
+l_3\left[ \vecto{3}{0} \wedge \vect{y_3} \right]+
+\lambda(t)\left[ \vecto{3}{0} \wedge \vect{z_3} \right]+
+\dot{\lambda}(t)\vect{z_3}+
+b_4\left[ \vecto{4}{0} \wedge \vect{z_4} \right]$. 
+
+$= 
+l_2\left[ \dot{\theta}_{21}\vect{z_2} \wedge \vect{y_2} \right]+
+l_2'\left[ \dot{\theta}_{21}\vect{z_2} \wedge \vect{y_2'} \right]+
+l_3\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{y_3} \right]+
+\lambda(t)\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{z_3} \right]+
+\dot{\lambda}(t)\vect{z_3}+
+b_4\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{z_3} \right]$. 
+
+$= 
+-l_2 \dot{\theta}_{21}\vect{x_2} 
+-l_2'\dot{\theta}_{21}\cos \alpha_2\vect{x_2}+
+l_3\left[ \dot{\theta}_{21}\vect{z_2}\wedge \vect{y_3}-\dot{\theta}_{32}\vect{x_3}  \right]+
+\lambda(t) \dot{\theta}_{21}\sin \alpha_2\vect{x_2} +
+\dot{\lambda}(t)\vect{z_3}+ b_4\dot{\theta}_{21}\sin \alpha_2\vect{x_2}$. 
+
+
+Par ailleurs, 
+$\vect{z_2}\wedge \vect{y_3}=\vect{z_2}\wedge \left( \cos \theta_{32} \vect{y_2'} -\sin \theta_{32} \vect{x_2'}  \right)$
+$= \cos \theta_{32} \vect{z_2}\wedge  \vect{y_2'} -\sin \theta_{32} \vect{z_2}\wedge\vect{x_2'}  $
+$= -\cos \theta_{32} \cos \alpha_2 \vect{x_2'} -\sin \theta_{32} \vect{y_2}  $.
+
+Au final, on a 
+
+$\vectv{G_4}{4}{1}=
+-l_2 \dot{\theta}_{21}\vect{x_2} 
+-l_2'\dot{\theta}_{21}\cos \alpha_2\vect{x_2}+
+l_3\left[ \dot{\theta}_{21}\left(-\cos \theta_{32} \cos \alpha_2 \vect{x_2'} -\sin \theta_{32} \vect{y_2}  \right)-\dot{\theta}_{32}\vect{x_3}  \right]+
+\lambda(t) \dot{\theta}_{21}\sin \alpha_2\vect{x_2} +
+\dot{\lambda}(t)\vect{z_3}+ b_4\dot{\theta}_{21}\sin \alpha_2\vect{x_2}$.
+
+
+En tenant compte de l'hypothèse $\dot{\theta}_{21}=0$, on a : $\vectv{G_4}{4}{1}=
+-\dot{\theta}_{32}l_3\vect{x_3}  + \dot{\lambda}(t)\vect{z_3}$.
+
+
 \subparagraph{}%19
+En utilisant l'évolution de $\dot{\theta}_{32}$, on peut déterminer le déplacement angulaire effectué en traçant l'aire sous la courbe :
+$\theta_{32}=\dfrac{1}{2}\left( 1+0,5\right)\times 0,075 =\SI{0,056}{rad}\simeq 3^{\text{o}}$.
+
+Cet angle étant faible, on peut donc considérer que $\forall t \cos \left(\theta_{32}(t)\right)\simeq 1$ et $\sin\left(\theta_{32}(t)\right)\simeq 0$.
+
 \subparagraph{}%20
+
+On donne $J_4$ le moment d'inertie du bras 4 autour de l'axe $\axe{G_4}{z_4}$.
+
+\textbf{Méthode}
+\begin{enumerate}
+\item Expression de $\vectmd{B}{4}{1}\cdot\vect{z_4} = \left( \vectmd{G_4}{4}{1} + \vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4}$.
+\item Calcul de $\vectmd{G_4}{4}{1}$.
+\end{enumerate}
+
+$\vectmd{G_4}{4}{1} \cdot\vect{z_4} = \left[ \dfrac{\dd \vectmc{G_4}{4}{1}}{\dd t} \right]_{\rep{0}}\cdot\vect{z_4}$
+
+On a $\vectmc{G_4}{4}{1} =\inertie{G_4}{4} \vecto{4}{1}$ avec $\vecto{4}{1}=\underbrace{\vecto{4}{3}}_{\vect{0}}+\vecto{3}{2}+\vecto{2}{1} =\dot{\theta}_{32} \vect{z_3}+\underbrace{\dot{\theta}_{21}}_{0} \vect{z_2}=\dot{\theta}_{32} \vect{z_4}$. Au vu des éléments d'inertie proposés, on a donc 
+$\vectmc{G_4}{4}{1}=J_4\dot{\theta}_{32} \vect{z_4}$.
+
+De plus, $ \left[ \dfrac{ \dd \vect{z_4}}{\dd t} \right]_{\rep{0}} = \vect{0} $. 
+En conséquences, $\dfrac{\dd \vectmc{G_4}{4}{1}}{\dd t} \cdot\vect{z_4} = J_4\ddot{\theta}_{32}$.
+
+Par ailleurs, $\vectg{G_4}{4}{1}= \left[\dfrac{\dd \vectv{G_4}{4}{1}}{\dd t} \right]_{\rep{0}}=\left[\dfrac{\dd \left( -\dot{\theta}_{32}l_3\vect{x_3}  + \dot{\lambda}(t)\vect{z_3} \right)}{\dd t} \right]_{\rep{0}}$
+$= -\ddot{\theta}_{32}l_3\vect{x_3} -\dot{\theta}_{32}l_3    \left(\dot{\theta}_{32} \vect{z_3}\wedge \vect{x_3} \right)  + \ddot{\lambda}(t)\vect{z_3}  $
+
+$= -\ddot{\theta}_{32}l_3\vect{x_3} -l_3   \dot{\theta}_{32}^2  \vect{y_3} + \ddot{\lambda}(t)\vect{z_3}  $.
+
+$\left(\vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4} = 
+\left(\vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4} $
+
+$= m_4\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3} -l_3   \dot{\theta}_{32}^2  \vect{y_3} + \ddot{\lambda}(t)\vect{z_3} \right) \right)\cdot \vect{z_4}$
+
+$= m_4\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)  + \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right) + \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(\ddot{\lambda}(t)\vect{z_3}\right) \right) \cdot \vect{z_4}$
+
+$= m_4\left(\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right) \right) \cdot \vect{z_4} 
+ + \left(\left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right)\right) \cdot \vect{z_4}
+  +\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(\ddot{\lambda}(t)\vect{z_3}\right) \right) \cdot \vect{z_4}\right)$
+  
+$= m_4\left(\left( \vect{z_4} \wedge  \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right)  \right) \cdot  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)
+ + \left(\vect{z_4} \wedge \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right)  \right) \cdot \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right)
+  +\left( \vect{z_4} \wedge \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \right) \cdot   \left(\ddot{\lambda}(t)\vect{z_3}\right) \right)$
+  
+  $= m_4\left(\left( \vect{z_4} \wedge  l_3 \vect{y_3}  \right) \cdot  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)   \right)$
+
+  $= \ddot{\theta}_{32}l_3^2 m_4 $.
+  
+  Au final,  $\vectmd{B}{4}{1}\cdot\vect{z_4} = J_4 \ddot{\theta}_{32}+\ddot{\theta}_{32}l_3^2 m_4 $.
+
+
 \subparagraph{}%21
+
 \subparagraph{}%22
+
 \subparagraph{}%23
 
+\section{Définition et analyse de la chaine d’asservissement du robot esclave}
+\begin{obj}
+Définir le régulateur de la chaine d’asservissement du robot esclave, analyser ses performances vis-à-vis
+des perturbations en se limitant à celles dues aux couples de frottement sec et compléter la chaine
+d’asservissement par la compensation de ces efforts.
+\end{obj}
+
+\subsection{Calcul d’un correcteur et analyse partielle des performances de la chaine d’asservissement}
+\begin{obj}
+Déterminer un correcteur pour la chaine d’asservissement de la position angulaire des articulations.
+Afin d’aboutir à une démarche générale (indépendante d’une articulation particulière), la loi de commande
+sera paramétrée par le moment d’inertie équivalent de l’articulation considérée.
+\end{obj}
+
+\subparagraph{}%24
+En exprimant l'équation différentielle proposée dans le domaine de Laplace, on a 
+$J_{\text{eq}} p^2{Q}_j(p)=C_j(p)+C_{\text{ext}}(p)$.
+En utilisant le schéma-blocs, on a $Q_j(p)=\left(C_{\text{ext}}(p)+C_{\text{j}}(p)\right)T(p)$. 
+Par analogie, on a donc $T(p)=\dfrac{1}{J_{\text{eq}}p^2}$.
+
+On considère que $C_{\text{ext}}(p)=0$.  On peut alors exprimer 
+$F_j(p)= \dfrac{\dfrac{K_1T(p)}{1+T(p)K_2 p} }{1+\dfrac{K_1T(p)}{1+T(p)K_2 p}}$
+$= \dfrac{\dfrac{K_1T(p)}{1+T(p)K_2 p} }{1+\dfrac{K_1T(p)}{1+T(p)K_2 p}}$
+$= \dfrac{K_1T(p) }{1+T(p)K_2 p+K_1T(p)}$
+$= \dfrac{K_1\dfrac{1}{J_{\text{eq}}p^2}}{1+\dfrac{1}{J_{\text{eq}}p^2}K_2 p+K_1\dfrac{1}{J_{\text{eq}}p^2}}$
+$= \dfrac{K_1}{J_{\text{eq}}p^2+K_2 p+K_1}$
+$= \dfrac{1}{\dfrac{J_{\text{eq}}}{K_1}p^2+\dfrac{K_2}{K_1}p+1}$.
+
+On a donc $\dfrac{1}{\omega_0^2}=\dfrac{J_{\text{eq}}}{K_1}$ et $\dfrac{2\xi}{\omega_0}=\dfrac{K_2}{K_1}$. On a donc $K_1=J_{\text{eq}}\omega_0^2$ et $K_2=\dfrac{2\xi K_1}{\omega_0}=2\xi J_{\text{eq}}\omega_0$.
+
+\subparagraph{}%25
+On a $C_j(p)=-\left(K_1+K_2 p\right) Q_j(p)$ et $Q_j(p)=\left(C_j(p)+C_{\text{ext}}(p)\right)T(p)$.  On a donc  
+
+$Q_j(p)=\left(-\left(K_1+K_2 p\right) Q_j(p)+C_{\text{ext}}(p)\right)T(p)$
+$\Leftrightarrow \left(1-\left(K_1+K_2 p\right)T(p) \right)Q_j(p)=C_{\text{ext}}(p)$
+$\Leftrightarrow \dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{1}{1-\left(K_1+K_2 p\right)T(p) }$.
+
+En utilisant les valeurs déterminées précédemment, on a donc $D(p)=\dfrac{1}{1-\left(J_{\text{eq}}\omega_0^2+2\xi J_{\text{eq}}\omega_0 p\right)\dfrac{1}{J_{\text{eq}}p^2} }$
+
+$=\dfrac{p^2}{p^2-2\xi\omega_0 p-\omega_0^2 }$.
+
+On a $C_{\text{ext}}(p)=\dfrac{C_{\text{ext} 0}}{p}$. En conséquence, 
+$\lim\limits_{t\to +\infty} \varepsilon(t) = \lim\limits_{p\to 0} p\varepsilon(p)$.
+Par ailleurs,  $\varepsilon(p)=-Q_j(p)=-D(p)C_{\text{ext}}(p)$.
+
+On a alors $\lim\limits_{t\to +\infty} \varepsilon(t) = \lim\limits_{p\to 0} -pD(p)C_{\text{ext}}(p)= \lim\limits_{p\to 0} -p\dfrac{p^2}{p^2-2\xi\omega_0 p-\omega_0^2 }\dfrac{C_{\text{ext} 0}}{p}$
+$= \lim\limits_{p\to 0} -\dfrac{C_{\text{ext} 0}p^2}{p^2-2\xi\omega_0 p-\omega_0^2 }  = -C_{\text{ext} 0}$.
+\textbf{Conclure.}
+
+
+\subsection{Amélioration des performances par compensation du couple de perturbation}
+\begin{obj}
+Améliorer les performances de la loi de commande vis-à-vis des couples perturbateurs extérieurs.
+\end{obj}
+
+\subparagraph{}%26
+On note $A(p)$, $B(p)$ et $C(p)$ les trois fonctions de transfert des trois blocs recherchés. 
+
+
+On a d'une part $Q_j(p)=A(p)\left(C_j(p)+C_{\text{ext}}(p)\right)$ 
+
+$S(p)=Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)$
+
+$\hat{C}_{\text{ext}}(p)=C(p)S(p)$ soit 
+$\hat{C}_{\text{ext}}(p)=C(p)\left(Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)\right)$
+
+\subparagraph{}%27
+
+\subparagraph{}%28
+
+\subparagraph{}%29
+
+
+\section{Analyse des performances vis-à-vis des mouvements respiratoires}
+\begin{obj}
+Quantifier le niveau de performance de la loi de commande déterminée en considérant la consigne
+correspondant aux mouvements physiologiques. Une amélioration de la loi de commande est ensuite
+envisagée sous la forme d’une anticipation sur la consigne pour améliorer les performances.
+\end{obj}
 \end{document}
 
 \subparagraph{}\textit{}
