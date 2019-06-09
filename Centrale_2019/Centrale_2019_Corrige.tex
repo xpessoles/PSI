@@ -389,15 +389,19 @@ $= \lim\limits_{p\to 0} -\dfrac{C_{\text{ext} 0}p^2}{p^2-2\xi\omega_0 p-\omega_0
 Améliorer les performances de la loi de commande vis-à-vis des couples perturbateurs extérieurs.
 \end{obj}
 
+\begin{center}
+\includegraphics[width=.4\linewidth]{images/fig_04}
+\end{center}
+
 \subparagraph{}%26
 On note $A(p)$, $B(p)$ et $C(p)$ les trois fonctions de transfert des trois blocs recherchés. 
 
 
-On a d'une part $Q_j(p)=A(p)\left(C_j(p)+C_{\text{ext}}(p)\right)$ 
-
+On a : $Q_j(p)=A(p)\left(C_j(p)+C_{\text{ext}}(p)\right)$, 
 $S(p)=Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)$
+et  $\hat{C}_{\text{ext}}(p)=C(p)S(p)$.
 
-$\hat{C}_{\text{ext}}(p)=C(p)S(p)$ soit 
+ soit 
 
 $\hat{C}_{\text{ext}}(p)=C(p)\left(Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)\right)$
 
@@ -416,11 +420,46 @@ Quantifier le niveau de performance de la loi de commande déterminée en consid
 correspondant aux mouvements physiologiques. Une amélioration de la loi de commande est ensuite
 envisagée sous la forme d’une anticipation sur la consigne pour améliorer les performances.
 \end{obj}
+
+
+\subparagraph{}\textit{}%30
+\subparagraph{}\textit{}%31
+
+\subparagraph{}\textit{}%32
+%% $K_a(p)$ = ??
+
+On a $Q_j(p) = C_j(p) T(p)= \left( Q_j^{\star}(p) K_a(p) + C_u(p) \right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + C_u(p) \right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + \left( \varepsilon(p) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + \left( \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+
+%$Q_j(p) = \left( Q_j^{\star}(p) K_a(p) + \left( \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+
+$\Leftrightarrow Q_j(p) = 
+\left(
+    Q_j^{\star}(p) K_a(p) + 
+    \left( 
+        \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) 
+    \right)
+\right) T(p)$
+
+$\Leftrightarrow Q_j(p) = 
+    T(p)Q_j^{\star}(p) K_a(p) + 
+    T(p)\left( 
+        \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) 
+    \right) $
+
+$\Leftrightarrow Q_j(p) = 
+    T(p)Q_j^{\star}(p) K_a(p) + 
+        T(p)K_1 Q_j^{\star}(p) -T(p)K_1  Q_j(p)   - T(p)K_2 p Q_j(p) 
+     $
+
+$\Leftrightarrow Q_j(p)\left(1     +T(p)K_1     + T(p)K_2 p\right)= 
+      Q_j^{\star}(p)T(p) \left(  K_a(p)     +K_1 \right)     $
+
+On a donc $F(p)=\dfrac{Q_j(p)}{Q_j^{\star}(p)}=\dfrac{ K_a(p) +K_1}{1+T(p)K_1 + T(p)K_2 p}$.
+
 \end{document}
-
-\subparagraph{}\textit{}
-
-
 \begin{center}
 \includegraphics[width=\linewidth]{images/img_04}
 %\textit{}
