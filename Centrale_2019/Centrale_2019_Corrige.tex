@@ -91,11 +91,11 @@ de la loi de commande pour assurer le déplacement du robot avec le niveau de pr
 \begin{obj}
 Proposer un algorithme permettant de mettre en évidence les propriétés des mouvements respiratoires.
 \end{obj}
-\subparagraph{}
+\subparagraph{} %Q1
 En première approximation, on peut dire que ce signal est périodique, de période \SI{4,8}{s}. La valeur maximale est de \SI{5}{mm} et la valeur minimale est de \SI{-2,5}{s}.
-Si on avait à la modéliser par un signal sinusoïdal on aurait $e(t)=3,75 \sin\dfrac{2\pi}{4,8} t + 1,25$.
+Si on avait à la modéliser par un signal sinusoïdal on aurait $e(t)=3,75 \sin\left(\dfrac{2\pi}{4,8} t\right) + 1,25$.
 
-\subparagraph{}
+\subparagraph{} %Q2
 D'après la définition, 
 $\hat{S}\left( f_n\right)= \dfrac{1}{N_f} \sum \limits_{k=0}^{N_f-1} s\left[kT_e\right] \text{e}^{-i 2 \pi f_nT_e k}$
 
@@ -112,7 +112,7 @@ $= \dfrac{1}{N_f} \left(
  On a donc $l_k\left(f_n\right)=\dfrac{1}{N_f}\text{e}^{-i 2 \pi f_nT_e k}$.
  
 
-\subparagraph{}
+\subparagraph{} %Q3
 
 On a $L_n = \begin{pmatrix}  l_0 f_n  & l_1 f_n & l_2 f_n & \ldots & l_{N-1} f_n\end{pmatrix}$.
 Par ailleurs, 
@@ -131,11 +131,11 @@ s[0]  \\ s[T_e] \\ s[2T_e] \\ \vdots \\ s\left[\left(N-1\right)T_e\right] \\   \
 
 
 
-\subparagraph{}
+\subparagraph{} %Q4
 
-\subparagraph{}
+\subparagraph{} %Q5
 
-\subparagraph{}
+\subparagraph{} %Q6
 
 \subsection{Cahiers des charges partiel de la chaîne d'asservissement en position du robot esclave}
 
@@ -146,8 +146,12 @@ esclave et vérifier le cahier des charges associé.
 
 \subparagraph{}	
 
-D'une part, $H(p)=\dfrac{\varepsilon (p)}{Z^*(p)}$ et d'autre part, $F(p)=\dfrac{Z (p)}{Z^*(p)}$. Enfin, $\varepsilon(p)=Z^*(p)-Z(p)$. On a donc $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)Z^*(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)}$. On a donc  $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)} \Leftrightarrow $ $H(p)=1 - F(p)= \dfrac{p^2+2\xi\omega_0 p }{p^2+2\xi\omega_0 p + \omega_0^2}$.
+D'une part, $H(p)=\dfrac{\varepsilon (p)}{Z^*(p)}$ et d'autre part, $F(p)=\dfrac{Z (p)}{Z^*(p)}$. Enfin, $\varepsilon(p)=Z^*(p)-Z(p)$. On a donc $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)Z^*(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)}$. On a donc  $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)} \Leftrightarrow $ $H(p)=1 - F(p)= p\dfrac{p+2\xi\omega_0  }{p^2+2\xi\omega_0 p + \omega_0^2}$.
 
+\vspace{1cm}
+Supposons que  $z_2(t)=A_2\sin \left(\omega_2 t + \Phi_2 \right)$. De plus, $\varepsilon_2(t)=\varepsilon_2 \sin \left( \omega_2 t + \Theta_2 \right)$. On a donc, $\varepsilon_2 = || H\left( i\omega_2\right)|| A_2$, $\Phi_2 - \Theta_2 = \arg \left(H\left(i\omega_2\right)\right)$.
+
+Remarque : il aurait sûrement été préférable de préciser ici au candidat qu'on a $z_n(t)=A_n\sin \left(2\pi f_n t + \Phi_n \right)=A_n\sin \left(\omega_n t + \Phi_n \right)$.
 
 \subparagraph{}	
 
