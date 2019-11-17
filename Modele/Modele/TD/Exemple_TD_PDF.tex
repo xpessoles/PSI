@@ -1,0 +1,44 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Résolutions de problèmes de statique : PFS 3D},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{style/new_style}
+\input{style/macros_SII}
+\input{style/Cycle_04_Entete}
+\livretfalse
+
+
+\usepackage[font={small}]{caption}
+
+\usepackage{tikz}
+\usepackage{schemabloc}
+%\usepackage{rpcinematik}
+\usepackage{bodegraph}
+\usetikzlibrary{calc}
+%\RequirePackage{pgf}
+%\RequirePackage{pgfplots}
+%\usetikzlibrary{babel}
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.7cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+\newcommand{\td}{Exemple_TD}
+% Sujet
+\normaltrue
+\fichetrue \proffalse \tdtrue \coursfalse \collefalse
+\graphicspath{{style/png/}{images/}}
+\input{\td.tex}
+\newpage
+
+%
+%% Corrigé
+\def\xxYongletGarde{.7cm}
+\newpage
+\fichetrue \proftrue \tdtrue \coursfalse \collefalse
+\graphicspath{{style/png/}{images/}}
+\newpage \input{\td.tex}
+
+\end{document}
