@@ -1,0 +1,53 @@
+=>PYTHONTEX#py#default#defaultverb#0#verbatim#####64#
+pdflatex --shell-escape -synctex=1 -interaction=nonstopmode %.tex
+|pythontex %.tex|pdflatex --shell-escape -synctex=1
+-interaction=nonstopmode %.tex
+=>PYTHONTEX#py#default#defaultverb#1#v#####81#
+ def IntRectDroite(f:function, a:float, b:float, n:int) -> float : 
+=>PYTHONTEX#py#default#defaultverb#2#verbatim#####84#
+def foo(x):
+    print(x)
+
+foo("Pyverbatim n'interprète pas le code")
+=>PYTHONTEX#py#default#default#0#c#####93#
+bar1 ='Coucou'
+=>PYTHONTEX#py#default#default#1#b#####95#
+bar2 ='Salut'; print (bar2);
+=>PYTHONTEX#py#default#default#2#i#####97#
+bar1
+=>PYTHONTEX#py#default#default#3#i#####97#
+bar2
+=>PYTHONTEX#py#default#default#4#code#####101#
+import numpy as np
+import matplotlib.pyplot as plt
+plt.plot(np.linspace(0,4),np.sin(np.linspace(0,1)))
+plt.savefig('toto.pdf')
+=>PYTHONTEX#pycon#default#default#0#console#####111#
+a=1
+b=2
+print(a,b)
+=>PYTHONTEX:SETTINGS#
+version=0.17
+outputdir=pythontex-files-Modele_Info
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|

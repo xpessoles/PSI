@@ -1,0 +1,461 @@
+\pagestyle{empty}
+
+
+%%%%%%%% PAGE DE GARDE COURS
+\ifcours
+% ==== BANDEAU DES TITRES ==== 
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+\draw[anchor=west] (-2cm,-8cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-8cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{Cycle \xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\Large\sffamily\textsc{\textbf{\xxpartie}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+% ==== FIN BANDEAU DES TITRES ==== 
+
+
+% ==== ONGLET 
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+	  minimum height = 3cm,] at (18.3cm,0) {};
+\node at (17.7cm,0) {\rotatebox{90}{\textbf{\Large\color{ocre}{\classe}}}};
+%{};
+\end{tikzpicture}
+% ==== FIN ONGLET 
+
+
+\vspace{3.5cm}
+
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-6cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{2cm}
+\begin{center}
+\LARGE\sffamily\textsc{\color{ocre}\textbf{\xxactivite}}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{15cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\noindent \Large\sffamily\textsc{\textbf{Chapitre \xxnumpartie\,-- \xxnumchapitre}}
+
+\Large\sffamily\textsc{\textbf{\xxnomchapitre}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\sffamily\textsc{\textbf{\xxdate}}
+\vspace{.5cm}
+
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}  };
+\end{tikzpicture}
+\vfill
+
+\begin{flushright}
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\xxfigures
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.6\linewidth}
+\startcontents
+%\printcontents{}{1}{}
+\printcontents{}{1}{}
+\end{minipage}
+\end{flushright}
+
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (4.5cm,-.7cm) node {
+\begin{minipage}[c]{.2\linewidth}
+\begin{flushright}
+\includegraphics[width=2cm]{logoCC}
+\end{flushright}
+\end{minipage}
+\begin{minipage}[c]{.2\linewidth}
+\textsl{\xxauteur} \\
+\textsl{\classe}
+\end{minipage}
+ };
+\end{tikzpicture}
+
+\newpage
+\pagestyle{fancy}
+
+%\newpage
+%\pagestyle{fancy}
+
+\else
+\fi
+%% FIN PAGE DE GARDE DES COURS
+
+%%%%%%%% PAGE DE GARDE TD
+\iftd
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-2.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-2.25cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{Cycle \xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textsc{\textbf{\xxpartie} \\} 
+
+\vspace{.2cm}
+
+\normalsize\sffamily\textsc{\textbf{Chapitre \xxnumchapitre -- TD}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+% BANDEAU EXO
+\iflivret % SI LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+%\draw[anchor=west] (-2cm,-3.3cm) node {\huge\sffamily\bfseries\color{black} %
+\draw[anchor=west] (-2cm,-5cm) node {\huge\sffamily\bfseries\color{black} %
+\vspace{10cm}
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+%\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+\else % ELSE NOT LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-4.5cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite \xxnumactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+%\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+
+\fi
+
+\else   % FIN IF TD
+\fi
+
+
+%%%%%%%% PAGE DE GARDE FICHE
+\iffiche
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-2.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-2.25cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{Cycle \xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+%\large\sffamily\textsc{\textbf{\xxpartie} \\} 
+
+\vspace{.2cm}
+
+%\normalsize\sffamily\textsc{\textbf{Chapitre \xxnumchapitre -- TP \xxnumactivite}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+\iflivret
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+	  minimum height = 2.5cm,] at (18.5cm,1.1cm) {};
+\node at (17.9cm,1.1cm) {\rotatebox{90}{\textsf{\textbf{\large\color{ocre}{\classe}}}}};
+%{};
+\end{tikzpicture}
+\else
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+%	  minimum height = 2.5cm,] at (18.5cm,1.1cm) {};
+	  minimum height = 2.5cm,] at (18.6cm,0cm) {};
+\node at (18cm,0cm) {\rotatebox{90}{\textsf{\textbf{\large\color{ocre}{\classe}}}}};
+%{};
+\end{tikzpicture}
+
+\fi
+
+\else
+\fi
+
+
+%%%%%%%% PAGE DE GARDE TP
+\ifTP
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-2.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-2.25cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{Cycle \xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textsc{\textbf{\xxpartie} \\} 
+
+\vspace{.2cm}
+
+\normalsize\sffamily\textsc{\textbf{Chapitre \xxnumchapitre  \xxnumactivite}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+% BANDEAU EXO
+\iflivret % SI LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-3.3cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+\else % ELSE NOT LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-4.5cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite \xxnumactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\ifcorrige
+\else
+%\vspace{-1cm}
+\xxcompetences
+\fi
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+
+\fi
+
+\else   % FIN IF TP
+\fi
+
+
+%%%%%%%% PAGE DE GARDE DS
+\ifDS
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-2.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-2.25cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{Cycle \xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textsc{\textbf{\xxpartie} \\} 
+
+\vspace{.2cm}
+
+\normalsize\sffamily\textsc{\textbf{DS \xxnumactivite}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+% BANDEAU EXO
+\iflivret % SI LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-3.3cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+%\xxcompetences
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+\else % ELSE NOT LIVRET
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-4.5cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite \xxnumactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+%\ifcorrige
+%\else
+%\vspace{-1cm}
+%\xxcompetences
+%\fi
+\end{titrechapitre}
+\end{minipage}};
+\end{tikzpicture}
+
+\fi
+
+\else   % FIN IF DS
+\fi
+
+
