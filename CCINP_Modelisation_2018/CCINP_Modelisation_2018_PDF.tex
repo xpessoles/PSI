@@ -1,0 +1,47 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Conception de la commande des systèmes asservis},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{style/new_style}
+\input{style/macros_SII}
+\input{style/Cycle_04_Entete}
+\livretfalse
+
+
+\usepackage[font={small}]{caption}
+
+\usepackage{tikz}
+\usepackage{schemabloc}
+%\usepackage{rpcinematik}
+\usepackage{bodegraph}
+\usetikzlibrary{calc}
+%\RequirePackage{pgf}
+%\RequirePackage{pgfplots}
+%\usetikzlibrary{babel}
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.7cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+\newcommand{\td}{CCINP_Modelisation_2018}
+% Sujet
+\normaltrue
+\fichetrue \proffalse \tdtrue \coursfalse \collefalse
+\graphicspath{{style/png/}{images/}}
+\input{\td.tex}
+%
+%% Colle
+%\fichetrue \proffalse \tdtrue \coursfalse \colletrue
+%\graphicspath{{style/png/}{images/}}
+%\newpage \input{\td.tex}
+%
+%% Corrigé
+\def\xxYongletGarde{.7cm}
+\newpage
+\fichetrue \proftrue \tdtrue \coursfalse \collefalse
+\graphicspath{{style/png/}{images/}}
+%\newpage \input{\td.tex}
+
+\end{document}
