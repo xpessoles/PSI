@@ -13,7 +13,7 @@ import sqlite3
 
 file_csv = "Competences_PCSI_PSI.csv"
 #bdd = "BDD_Evaluation.db"
-bdd = "BDD_TEST.db"
+bdd = "PSI_2020_2021.db"
 
 def lire_fichier(file,bdd):
     fid = open(file,'r', encoding='utf-8-sig')

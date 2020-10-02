@@ -11,8 +11,8 @@ nom, prenom, date de naissance, adresse mail
 
 import sqlite3
 
-file_csv = "Eleve.csv"
-bdd = "BDD_TEST.db"
+file_csv = "PSI_ETOILE_2020_2021.csv"
+bdd = "PSI_2020_2021.db"
 def lire_fichier(file,bdd):
     fid = open(file,'r', encoding='utf-8-sig')
     conn = sqlite3.connect(bdd)
