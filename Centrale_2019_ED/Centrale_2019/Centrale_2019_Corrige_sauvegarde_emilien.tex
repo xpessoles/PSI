@@ -1,0 +1,1133 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Centrale Supelec 2018},
+    pdfauthor={UPSTI}]{hyperref}
+
+\input{style/new_style}
+\input{style/macros_SII}
+\input{style/programHeadings}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage{schemabloc}
+%\usepackage{picins}
+\fichetrue
+%\fichefalse
+
+\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+% -------------------------------------
+% Déclaration des titres
+% -------------------------------------
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+
+\def\classe{\textsf{UPSTI}}
+\def\xxnumpartie{CCS 2019}
+\def\xxpartie{Chirurgie mini-invasive robotisée avec
+stabilisation des mouvements physiologiques}
+
+\def\xxnumchapitre{Concours Centrale Supelec}%Révision 1 \vspace{.2cm}}
+\def\xxchapitre{PSI 2019}
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{16}%16
+
+\def\xxonglet{\textsf{CCS 2019}}
+
+\def\xxactivite{Corrigé}
+\def\xxauteur{\textsl{UPSTI}}
+
+
+\def\xxtitreexo{Chirurgie mini-invasive robotisée avec
+stabilisation des mouvements physiologiques}
+\def\xxsourceexo{\hspace{.2cm} \footnotesize{Concours Centrale Supelec PSI 2019}}
+
+\def\xxcompetences{%
+\textsl{%
+%\textbf{Savoirs et compétences :}\\
+}}
+
+\def\xxfigures{
+\includegraphics[width=.55\textwidth]{images/fig_00}
+}%figues de la page de garde
+
+\def\xxpied{%
+Chirurgie mini-invasive robotisée\\
+Concours Centrale Supelec -- PSI 2019%
+}
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+\usepackage{bm}
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{4.5cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\section{Analyse des propriétés des signaux physiologiques}
+
+\begin{obj}
+Analyser les propriétés des signaux physiologiques et en déduire des éléments du cahier des charges
+de la loi de commande pour assurer le déplacement du robot avec le niveau de précision requis.
+\end{obj}
+
+
+\subsection{Analyse des propriétés des signaux des mouvements physiologiques}
+
+\begin{obj}
+Proposer un algorithme permettant de mettre en évidence les propriétés des mouvements respiratoires.
+\end{obj}
+\subparagraph{} ~\\ %Q1 --
+
+%\textbf{Proposition 1}
+%
+%En première approximation, on peut dire que ce signal est périodique, de période \SI{4,8}{s}. La valeur maximale est de \SI{5}{mm} et la valeur minimale est de \SI{-2,5}{mm} soit une amplitude de .
+%Si on avait à la modéliser par un signal sinusoïdal on aurait $e(t)=3,75 \sin\left(\dfrac{2\pi}{4,8} t\right) + 1,25$.
+%
+%\textbf{Proposition 2}
+Le signal semble presque periodique même si les amplitudes des déplacements ne sont pas exactement les mêmes.
+L'amplitude maximale obtenue est d'environ $\dfrac{5+2,3}{2}=\SI{3,65}{mm}$ et l'amplitude minimale obtenue est d'environ : $\dfrac{4+2}{2}=\SI{3}{mm}$. 
+La période des oscillation est d'environ $
+T\approx\dfrac{41-4}{9}\approx \SI{4,1}{s}$. 
+Soit une pulsation de $\omega\approx \SI{1,53}{rad.s^{-1}}$.
+
+
+\subparagraph{} %Q2 --
+D'après la définition, 
+$\hat{S}\left( f_n\right)= \dfrac{1}{N_f} \sum \limits_{k=0}^{N_f-1} s\left[kT_e\right] \text{e}^{-i 2 \pi f_nT_e k}$
+
+$= \dfrac{1}{N_f} \left(
+ s\left[0 T_e\right] \text{e}^{-i 2 \pi f_nT_e 0} + 
+ s\left[T_e\right] \text{e}^{-i 2 \pi f_nT_e } + ... 
+ s\left[\left( N_f-1\right)T_e\right] \text{e}^{-i 2 \pi f_nT_e \left( N_f-1\right)}\right)$
+
+$= \dfrac{1}{N_f} \left(
+ s\left[0\right] + 
+ s\left[T_e\right] \text{e}^{-i 2 \pi f_nT_e } + ... 
+ s\left[\left( N_f-1\right)T_e\right] \text{e}^{-i 2 \pi f_nT_e \left( N_f-1\right)}\right)$.
+ 
+ On a donc $l_k\left(f_n\right)=\dfrac{1}{N_f}\text{e}^{-i 2 \pi f_nT_e k}$.
+ 
+
+\subparagraph{} %Q3 --
+
+On a $L_n = \begin{pmatrix}  l_0 f_n  & l_1 f_n & l_2 f_n & \ldots & l_{N-1} f_n\end{pmatrix}$.
+Par ailleurs, 
+$S_p = 
+\begin{pmatrix} \hat{S}\left( 0\right) \\ \hat{S}\left( f_1\right) \\ \hat{S}\left( f_2\right)  \\ \vdots \\ \hat{S}\left( f_{N-1}\right) \end{pmatrix} 
+=
+\begin{pmatrix} 
+L_0 V_s \\
+L_1 V_s \\
+L_2 V_s \\
+\vdots \\
+ L_{N-1} V_s\end{pmatrix}$.
+
+On a donc $ L_{k} V_s =\begin{pmatrix}  l_0 f_k  & l_1 f_k & l_2 f_k & \ldots & l_{N-1} f_k\end{pmatrix} \begin{pmatrix}
+s[0]  \\ s[T_e] \\ s[2T_e] \\ \vdots \\ s\left[\left(N-1\right)T_e\right] \\   \end{pmatrix} = \sum  \limits_{i=0}^{N-1} l_i f_k s\left[i T_e\right]$.
+
+
+Ainsi la matrice $M$ est composé de toutes les lignes $L_n$ pour $n\in  \llbracket 0,N_f-1\rrbracket$.
+La matrice $M$ aura donc pour forme : 
+
+$
+M=\dfrac{1}{N_f}
+\left(
+\begin{array}{cccc}
+1 & 1 & \ldots & 1 \\ 
+1 & e^{-i2\pi f_1T_e} & \ldots & e^{-i2\pi f_{1}T_e(N-1)} \\ 
+\vdots & e^{-i2\pi f_nT_e} & \ldots & e^{-i2\pi f_{n}T_e(N-1)} \\ 
+1 & e^{-i2\pi f_{N_f-1}T_e} & \ldots & e^{-i2\pi f_{N_f-1}T_e(N-1)} \\ 
+\end{array} 
+\right)
+$.
+
+
+
+\subparagraph{} %Q4 --
+De la question précédente, on peut exprimer le terme $a_{n,m}$  : 
+
+$a_{n,m}=\dfrac{1}{N_f}e^{-i2\pi f_{n}T_em}$.
+
+
+\subparagraph{} %Q5 --
+
+En posant 
+$
+X=-i2\pi
+\left(
+\begin{array}{c}
+0\\
+f_1\\
+f_2\\
+\vdots\\
+f_{N_f-1}
+\end{array}
+\right)
+\cdot
+\left(
+\begin{array}{ccccc}
+0& T_e & 2T_e &\ldots & (N-1)T_e
+\end{array}
+\right)
+=-i2\pi E_f\cdot t_k
+$, on obtient bien, $
+M=\dfrac{1}{N_f}\exp(X)$.
+
+\subparagraph{} %Q6 --
+\begin{py}
+\begin{python}
+import numpy as np
+def calculSpectre(Signal,Nf,fmax,Te):
+    Vs=np.transpose([np.array(Signal)])
+    Ef=np.transpose([np.linspace(0,fmax,Nf)])
+    tk=np.array([range(len(Signal))])*Te
+    X=np.dot(Ef,tk)*(-1j*2*np.pi)
+    M=1/Nf*np.exp(X)
+    Sp=np.dot(M,Vs)
+    An=abs(Sp)
+    return An
+\end{python}
+\end{py}
+
+\subsection{Cahiers des charges partiel de la chaîne d'asservissement en position du robot esclave}
+
+\begin{obj}
+Déterminer une valeur numérique pour la bande passante de l’asservissement en position du robot
+esclave et vérifier le cahier des charges associé.
+\end{obj}
+
+\subparagraph{}	 %% Q7 --
+
+D'une part, $H(p)=\dfrac{\varepsilon (p)}{Z^*(p)}$ et d'autre part, $F(p)=\dfrac{Z (p)}{Z^*(p)}$. Enfin, $\varepsilon(p)=Z^*(p)-Z(p)$. On a donc $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)Z^*(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)}$. On a donc  $\varepsilon(p)=\dfrac{\varepsilon(p)}{H(p)} - F(p)\dfrac{\varepsilon(p)}{H(p)} \Leftrightarrow $ $H(p)=1 - F(p)= p\dfrac{p+2\xi\omega_0  }{p^2+2\xi\omega_0 p + \omega_0^2}$.
+
+
+En mettant cette fonction de transfert sous forme canonique, on  obtient : 
+$
+H(p)=\dfrac{2\xi\cdot p}{\omega_0}\dfrac{1+\dfrac{p}{2\xi\omega_0}}{1+\dfrac{2\xi}{\omega_0}p+\dfrac{p^2}{\omega_0^2}}
+$.
+
+\begin{itemize}
+\item Le module de cette fonction de transfert en remplaçant $p$ par $i\omega$ représente le rapport des amplitudes en régime permanent vis-à-vis d'une entrée $z^*(t)$ sinusoïdale : 
+$
+\dfrac{\varepsilon_2}{A_2}=\Vert H(i\omega_2)\Vert
+$.
+\item L'argument de cette fonction de transfert en remplaçant $p$ par $i\omega$ représente le déphasage en régime permanent vis-à-vis d'une entrée $z^*(t)$ sinusoïdale : 
+$
+\Theta_2-\Phi_2=\arg\left(H(i\omega_2)\right)
+$.
+\end{itemize}
+
+Ainsi on a : 
+$
+\left\{
+\begin{array}{c}
+\varepsilon_2=A_2\cdot \Vert H(i\omega_2)\Vert\\
+\\
+\Theta_2=\arg\left(H(i\omega_2)\right)+\Phi_2
+\end{array}
+\right.
+$.
+
+
+%Supposons que  $z_2(t)=A_2\sin \left(\omega_2 t + \Phi_2 \right)$. De plus, $\varepsilon_2(t)=\varepsilon_2 \sin \left( \omega_2 t + \Theta_2 \right)$. On a donc, $\varepsilon_2 = || H\left( i\omega_2\right)|| A_2$, $\Phi_2 - \Theta_2 = \arg \left(H\left(i\omega_2\right)\right)$.
+
+
+
+
+
+
+
+\begin{remarque}
+Il est peut être souhaitable de préciser avant la question aux candidats qu'on a $z_n(t)=A_n\sin \left(2\pi f_n t + \Phi_n \right)=A_n\sin \left(\omega_n t + \Phi_n \right)$. 
+\end{remarque}
+
+\subparagraph{}	 %%Q8 --
+%Lorsque $\omega << \omega_0$, $\left|\left|  \dfrac{1}{p^2+2\xi\omega_0 p + \omega_0^2} \right|\right|$ tend vers 0. Calculons $\left|\left|  \left( j \omega \right) ^2+2\xi\omega_0  \omega j  \right|\right| =\sqrt{4\xi^2\omega_0^2 \omega^2 + \omega^2} =\omega \sqrt{4\xi^2\omega_0^2  + 1}$. 
+%
+%On a donc $|| H\left( i\omega\right)|| \simeq K\omega $ avec $K=\sqrt{4\xi^2\omega_0^2  + 1}$ lorsque $\omega << \omega_0$.
+%
+%\textcolor{red}{A VERIFIER Au final, $\varepsilon_2 \simeq \omega_2 \sqrt{4\xi^2\omega_0^2  + 1} A_2\sin \left(\omega_2 t + \Phi_2 \right) $.}
+En considérant de faibles pulsations telles que $\omega\ll \omega_0$, on peut effectuer l'approximation : 
+$\Vert H(i\cdot \omega)\Vert\approx\dfrac{2\xi\omega}{\omega_0}$.
+On obtient donc bien : $\Vert H(i\omega)\Vert\approx K\cdot \omega $  avec $K=\dfrac{2\xi}{\omega_0}$.
+
+
+\subparagraph{}	
+D'après l'exigence 1.3.3, $\dfrac{\varepsilon_2}{A_2}<10^{-2}$, on obtient alors la relation suivante : $
+\dfrac{\varepsilon_2}{A_2}\approx \dfrac{2\xi\omega_2}{\omega_0}<10^{-2}$.  
+Ce qui donne $\omega_0>200\xi\omega_2\approx \SI{603}{rad.s^{-1}}$
+
+L'exigence 1.2 du cahier des charges concernant l'asservissement en position, et donc la fonction de transfert $F(p)$, impose une bande passante (que l'on suppose à $\SI{0}{dB}$), inférieure à $\SI{30}{rad.s^{-1}}$. $F(p)$ est une fonction de transfert du second ordre de gain 1 et la bande passante à $\SI{0}{dB}$ est de l'ordre de $\omega_0\approx \SI{600}{rad.s^{-1}}$. \textbf{Le cahier des charges est donc bien respecté.}
+
+
+% Piste 2 Calculons $\omega_{BP}$ tel que $||F\left(j\omega_{BP}\right)|| = 0$ : 
+%$\left|\left|F\left(j\omega\right)\right|\right|$ 
+%$=\left|\left| \dfrac{\omega_0^2}{\omega_0^2-\omega^2+2\xi\omega_0\omega j} \right|\right|$
+
+% $=\left|\left| 
+% \dfrac{
+% \omega_0^2 \left(\omega_0^2-\omega^2-2\xi\omega_0\omega j \right)
+% }{
+% \left( \omega_0^2-\omega^2+2\xi\omega_0\omega j\right) \left(\omega_0^2-\omega^2-2\xi\omega_0\omega j\right)}  % \right|\right|$
+% $=\left|\left| 
+% \dfrac{
+% \omega_0^2 \left(\omega_0^2-\omega^2-2\xi\omega_0\omega j \right)
+% }{
+%  \left(\omega_0^2-\omega^2\right)^2 +4\xi^2\omega_0^2\omega^2 
+% }  \right|\right|$
+
+% Piste 1Supposons que $\dfrac{\varepsilon_2}{A_2} < 10^{-2}$ (exigence 1.3.2), on a alors $  \sqrt{4\xi^2\omega_0^2  + 1} \sin \left(\omega_2 t + \Phi_2 \right) < 10^{-2} $ 
+% $\Rightarrow  \sqrt{4\omega_0^2  + 1} \sin \left(\omega_2 t + \Phi_2 \right) < 10^{-2} $.
+
+\begin{remarque}
+La question devrait peut être reformulée car la formation de la question : << En considérant $\varepsilon_2$, déterminer (...) >> manque de clarté. 
+\end{remarque}
+
+
+\section{Analyse géométrique et élaboration du modèle dynamique du robot esclave}
+
+\begin{obj}
+Vérifier la capabilité du robot esclave à respecter le cahier des charges et déterminer le modèle dynamique
+d’un des axes du robot esclave utilisé pour dimensionner sa commande.
+\end{obj}
+
+\subsection{Vérification de la capabilité du robot esclave}
+\begin{obj}
+Vérifier la capacité du robot esclave à respecter l’exigence de précision 1.3.3 et dimensionner les
+capteurs installés sur le robot en conséquence.
+\end{obj}
+
+
+\subparagraph{}%10	
+
+D'après le cahier des charges $\varepsilon_r<1\%$ (exigence 1.3.3). 
+D'après la figure 4, la variation maximale des déplacement est de $\SI{7,5}{mm}$. Il faudrait donc une résolution de $s_{\text{max}}=\SI{75}{\mu m}$
+
+
+%\textcolor{red}{XP : Je ne vois pas comment déterminer la résolution à partir de la courbe. Pb de l'exigence 1.2.1 avec la précision de $\SI{10}{\mu m}$.}
+
+\subparagraph{}%11 --
+On a $\lambda(t)=\lambda_0 + \dfrac{p}{2\pi} \theta_{83}(t)$. 
+En conséquences, $\vect{BD}=\vect{BC}+\vect{CD}=l_3\vect{y_3}+\lambda(t)\vect{z_3}+l_4\vect{z_4}
+=l_3\vect{y_3}+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83}(t) \right)\vect{z_3}+l_4\vect{z_3}$.
+
+
+\subparagraph{}%12
+%En projetant $\vect{BD}$ dans la base $\base{x_2'}{y_2'}{z_2'}$, on a 
+% $\vect{BD}=l_3\vect{y_3}+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} \right)\vect{z_3}+l_4\vect{z_3}$
+% $ =l_3\left( \cos \theta_{32} \vect{x_2'} + \sin\theta_{32} \vect{y_2'}  \right)+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)\vect{z_2'}$.
+
+% Avec l'hypothèse que $\theta_{32}$ reste petit, on a  $\vect{BD}=l_3\left(  \vect{x_2'} + \theta_{32} \vect{y_2'}  \right)+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)\vect{z_2'}$.
+
+%  Ainsi, $\left(x_D,y_D,z_D\right)=
+%\left( l_3,l_3 \theta_{32}, \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)$.
+
+En projetant $\vect{BD}$ dans la base $\base{x_2'}{y_2'}{z_2'}$, on a 
+ $\vect{BD}=l_3\vect{y_3}+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} \right)\vect{z_3}+l_4\vect{z_3}$
+ 
+ $ =l_3\left( \cos \theta_{32} \vect{y_2'} - \sin\theta_{32} \vect{x_2'}  \right)+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)\vect{z_2'}$.
+ 
+ Avec l'hypothèse que $\theta_{32}$ reste petit, on a  $\vect{BD}=l_3\left(  \vect{y_2'} - \theta_{32} \vect{x_2'}  \right)+\left( \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)\vect{z_2'}$.
+  Ainsi,
+  
+  $\left(x_D,y_D,z_D\right)=
+\left(-l_3 \theta_{32},l_3, \lambda_0 + \dfrac{p}{2\pi} \theta_{83} +l_4\right)$.
+
+\subparagraph{}%13 --
+
+Soit, $s_D=3\sqrt{s_X^2+s_Y^2+s_Z^2}$. Par calcul différentiel :  
+
+$
+\left\{
+\begin{array}{c}
+dx_D=-l_3d\theta_{32}\\
+dy_D=0\\
+dz_D=\dfrac{p}{2\pi}d\theta_{83}
+\end{array}
+\right.
+\quad
+\Rightarrow
+\quad
+\left\{
+\begin{array}{c}
+s_X=\Delta x_D=l_3\Delta \theta_{32}=l_3 s_{\text{capteur}}\\
+s_Y=\Delta y_D=0\\
+s_Z=\Delta z_D=\dfrac{p}{2\pi}\Delta \theta_{83}=\dfrac{p}{2\pi}s_{\text{capteur}}
+\end{array}
+\right.
+$.
+
+
+Ainsi,$
+s_D=3\cdot s_{\text{capteur}}\sqrt{l_3^2+\dfrac{p^2}{4\pi^2}}
+$.
+Le cahier des charges impose la relation suivante, 
+$
+s_{\text{capteur}}<\dfrac{\SI{75}{\mu m}}{3\sqrt{l_3^2+\dfrac{p^2}{4\pi^2}}}
+$.
+
+L'application numérique donne pour résolution maximale afin de respecter le cahier des charge :  $s_{\text{capteur}}= \SI{2,72e-5}{\mu m}$.
+
+
+\subsection{Détermination et vérification du modèle dynamique du robot esclave}
+\begin{obj}
+Déterminer le modèle dynamique du robot esclave en vue de l’élaboration de sa commande.
+\end{obj}
+
+\subparagraph{}%14 --
+On se place en régime permanent. Le rendement peut s'exprimer par 
+$\eta_9 =\dfrac{C_{73}\dot{\theta}_{32}}{C_{m2}\dot{\theta}_{72}}=\dfrac{C_{73}}{C_{m2}}r_9$. 
+On a donc, en régime permanent, $\vect{C_{73}}=C_{73}\vect{z'_2}=C_{m2}\dfrac{\eta_9}{r_9}\vect{z'_2}$.
+
+\begin{remarque}
+Il serait sûrement nécessaire de préciser avant la questions que le résultat attendu est en régime permanent.
+\end{remarque}
+
+
+
+\subparagraph{}%15 --
+Au vu du tracé expérimental de $C_{73}$ en fonction de $C_{m2}$, on peut réaliser une linéarisation sur l'intervalle $[0,10]$ et $C_{73}\simeq 3 C_{m2}$. 
+D'après les données constructeur, on a $C_{73}=C_{m2}\dfrac{\eta_9}{r_9}=C_{m2}\dfrac{0,78}{0,25}=\SI{3,12}{Nm}$.
+
+On peut donc valider les valeurs données par le constructeur.
+\subsection{Élaboration du modèle dynamique d’un axe du robot esclave}
+
+
+\subparagraph{}%16 --
+\begin{center}
+\includegraphics[width=\textwidth]{images/fig_02}
+\end{center}
+
+\begin{remarque}
+En ajoutant l'hypothèse en début de partie II.B.1, l'action de 7 sur 3 est modélisée par un couple. Dans ce cas, le résultat attendu est peut-être 1 inconnue entre 7 et 3.
+\end{remarque}
+%
+%\begin{center}
+%\includegraphics[width=0.8\textwidth]{images/graphe_structure_complet.jpg}
+%\end{center}
+\subparagraph{}%17
+On cherche à déterminer le couple $C_{m2}$ à fournir sur l'arbre 7. L'arbre 7 est en rotation autour de l'axe $\axe{N}{z_2'}$. Il entraîne l'ensemble $\left\{3+8+4+5\right\}$ en rotation autour de l'axe $\axe{B}{z_2'}$.
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/fig_05}
+\end{center}
+
+On propose donc les isolements et des théorèmes associés suivants : 
+\begin{itemize}
+\item isolement de $\left\{3+8+4+5\right\}$ : théorème du moment dynamique en projection sur $\left(B,\overrightarrow{z}_2'\right)$ qui permet de relier l'action de 7 sur 3 aux paramètres de mouvement de l'ensemble $\left\{3+8+4+5\right\}$ qui représente dans le cas particulier du mouvement souhaité la même classe d'équivalence;
+\item isolement de $7$ : théorème du moment dynamique selon $\left(N,\overrightarrow{z}_2'\right)$ qui revient à un théorème du moment statique car l'inertie de 7 est négligeable. Cela permet de relier $C_{m2}$ à l'action de 3 sur 7.
+\end{itemize}
+Cet ordonnancement des isolements permet de ne pas faire apparaître les inconnues dans les liaisons pivot entre 2 et 7 ainsi qu'entre 7 et 3. 
+\subparagraph{}%18 --
+On cherche $\vectv{G_4}{4}{1}$. On a $\vect{OG_4}=\vect{OA}+\vect{AB}+\vect{BC}+\vect{CG_4}$ $=l_0\vect{y_0}+l_1\vect{y_1}+l_2\vect{y_2}+l_2'\vect{y_2'}+l_3\vect{y_3}+\lambda(t)\vect{z_3}+b_4\vect{z_4}$.
+On a $\alpha_1=\dfrac{\pi}{4}$ et $\alpha_2=-\dfrac{\pi}{4}$.
+
+On a donc $\vectv{G_4}{4}{1}= \left[\dfrac{\dd \vect{OG_4}}{\dd t}\right]_{\rep{0}} $ 
+
+$= 
+\left[\dfrac{\dd l_0\vect{y_0}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_1\vect{y_1}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_2\vect{y_2}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_2'\vect{y_2'}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd l_3\vect{y_3}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd \lambda(t)\vect{z_3}}{\dd t}\right]_{\rep{0}}+
+\left[\dfrac{\dd b_4\vect{z_4}}{\dd t}\right]_{\rep{0}}$
+
+$= 
+\vect{0}+
+\vect{0}+
+l_2\left[\dfrac{\dd \vect{y_2}}{\dd t}\right]_{\rep{0}}+
+l_2'\left[\dfrac{\dd \vect{y_2'}}{\dd t}\right]_{\rep{0}}+
+l_3\left[\dfrac{\dd \vect{y_3}}{\dd t}\right]_{\rep{0}}+
+\lambda(t)\left[\dfrac{\dd \vect{z_3}}{\dd t}\right]_{\rep{0}}+
+\dot{\lambda}(t)\left[\dfrac{\dd \vect{z_3}}{\dd t}\right]_{\rep{0}}+
+b_4\left[\dfrac{\dd \vect{z_4}}{\dd t}\right]_{\rep{0}}$
+
+$= 
+l_2\left[ \vecto{2}{0} \wedge \vect{y_2} \right]+
+l_2'\left[ \vecto{2'}{0} \wedge \vect{y_2'} \right]+
+l_3\left[ \vecto{3}{0} \wedge \vect{y_3} \right]+
+\lambda(t)\left[ \vecto{3}{0} \wedge \vect{z_3} \right]+
+\dot{\lambda}(t)\vect{z_3}+
+b_4\left[ \vecto{4}{0} \wedge \vect{z_4} \right]$. 
+
+$= 
+l_2\left[ \dot{\theta}_{21}\vect{z_2} \wedge \vect{y_2} \right]+
+l_2'\left[ \dot{\theta}_{21}\vect{z_2} \wedge \vect{y_2'} \right]+
+l_3\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{y_3} \right]+
+\lambda(t)\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{z_3} \right]+
+\dot{\lambda}(t)\vect{z_3}+
+b_4\left[ \left(\dot{\theta}_{21}\vect{z_2}+\dot{\theta}_{32}\vect{z_3} \right) \wedge \vect{z_3} \right]$. 
+
+Or $\dot{\theta}_{21}=0$. On a donc :
+$\vectv{G_4}{4}{1}= 
+l_3\left(\dot{\theta}_{32}\vect{z_3} \wedge \vect{y_3} \right)+
+\dot{\lambda}(t)\vect{z_3} =
+-\dot{\theta}_{32}l_3\vect{x_3}  + \dot{\lambda}(t)\vect{z_3}$.
+
+%
+%$= 
+%-l_2 \dot{\theta}_{21}\vect{x_2} 
+%-l_2'\dot{\theta}_{21}\cos \alpha_2\vect{x_2}+
+%l_3\left[ \dot{\theta}_{21}\vect{z_2}\wedge \vect{y_3}-\dot{\theta}_{32}\vect{x_3}  \right]+
+%\lambda(t) \dot{\theta}_{21}\sin \alpha_2\vect{x_2} +
+%\dot{\lambda}(t)\vect{z_3}+ b_4\dot{\theta}_{21}\sin \alpha_2\vect{x_2}$. 
+%
+%
+%Par ailleurs, 
+%$\vect{z_2}\wedge \vect{y_3}=\vect{z_2}\wedge \left( \cos \theta_{32} \vect{y_2'} -\sin \theta_{32} \vect{x_2'}  \right)$
+%$= \cos \theta_{32} \vect{z_2}\wedge  \vect{y_2'} -\sin \theta_{32} \vect{z_2}\wedge\vect{x_2'}  $
+%$= -\cos \theta_{32} \cos \alpha_2 \vect{x_2'} -\sin \theta_{32} \vect{y_2}  $.
+%
+%Au final, on a 
+%
+%$\vectv{G_4}{4}{1}=
+%-l_2 \dot{\theta}_{21}\vect{x_2} 
+%-l_2'\dot{\theta}_{21}\cos \alpha_2\vect{x_2}+
+%l_3\left[ \dot{\theta}_{21}\left(-\cos \theta_{32} \cos \alpha_2 \vect{x_2'} -\sin \theta_{32} \vect{y_2}  \right)-\dot{\theta}_{32}\vect{x_3}  \right]+
+%\lambda(t) \dot{\theta}_{21}\sin \alpha_2\vect{x_2} +
+%\dot{\lambda}(t)\vect{z_3}+ b_4\dot{\theta}_{21}\sin \alpha_2\vect{x_2}$.
+%
+
+%En tenant compte de l'hypothèse $\dot{\theta}_{21}=0$, on a : $\vectv{G_4}{4}{1}=
+%-\dot{\theta}_{32}l_3\vect{x_3}  + \dot{\lambda}(t)\vect{z_3}$.
+
+
+\subparagraph{}%19 --
+En utilisant l'évolution de $\dot{\theta}_{32}$, on peut déterminer le déplacement angulaire effectué en traçant l'aire sous la courbe :
+$\theta_{32}=\dfrac{1}{2}\left( 1+0,5\right)\times 0,075 =\SI{0,056}{rad}\simeq 3^{\text{o}}$.
+
+Cet angle étant faible, on peut donc considérer que $\forall t \cos \left(\theta_{32}(t)\right)\simeq 1$ et $\sin\left(\theta_{32}(t)\right)\simeq 0$.
+
+\subparagraph{}%20 -- 
+
+On donne $J_4$ le moment d'inertie du bras 4 autour de l'axe $\axe{G_4}{z_4}$.
+
+\textbf{Méthode}
+\begin{enumerate}
+\item Expression de $\vectmd{B}{4}{1}\cdot\vect{z_4} = \left( \vectmd{G_4}{4}{1} + \vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4}$.
+\item Calcul de $\vectmd{G_4}{4}{1}$.
+\end{enumerate}
+
+$\vectmd{G_4}{4}{1} \cdot\vect{z_4} = \left[ \dfrac{\dd \vectmc{G_4}{4}{1}}{\dd t} \right]_{\rep{0}}\cdot\vect{z_4}
+=\left[ \dfrac{\dd \vectmc{G_4}{4}{1}\cdot \vect{z_4}}{\dd t} \right]-\vectmc{G_4}{4}{1}\cdot\left[ \dfrac{\dd \vect{z_4}}{\dd t} \right]_{\rep{0}}$
+
+
+
+On a $\vectmc{G_4}{4}{1} =\inertie{G_4}{4} \vecto{4}{1}$ avec $\vecto{4}{1}=\underbrace{\vecto{4}{3}}_{\vect{0}}+\vecto{3}{2}+\vecto{2}{1} =\dot{\theta}_{32} \vect{z_3}+\underbrace{\dot{\theta}_{21}}_{0} \vect{z_2}=\dot{\theta}_{32} \vect{z_4}$.
+
+Donc,
+$\vectmc{G_4}{4}{1}\cdot\vect{z_4}=J_4\dot{\theta}_{32} $.
+
+De plus, $ \left[ \dfrac{ \dd \vect{z_4}}{\dd t} \right]_{\rep{0}} = \vect{0} $. 
+En conséquences, $\vectmd{G_4}{4}{1} \cdot\vect{z_4}  = J_4\ddot{\theta}_{32}$.
+
+Par ailleurs, $\vectg{G_4}{4}{1}= \left[\dfrac{\dd \vectv{G_4}{4}{1}}{\dd t} \right]_{\rep{0}}=\left[\dfrac{\dd \left( -\dot{\theta}_{32}l_3\vect{x_3}  + \dot{\lambda}(t)\vect{z_3} \right)}{\dd t} \right]_{\rep{0}}$
+$= -\ddot{\theta}_{32}l_3\vect{x_3} -\dot{\theta}_{32}l_3    \left(\dot{\theta}_{32} \vect{z_3}\wedge \vect{x_3} \right)  + \ddot{\lambda}(t)\vect{z_3}  $
+
+$= -\ddot{\theta}_{32}l_3\vect{x_3} -l_3   \dot{\theta}_{32}^2  \vect{y_3} + \ddot{\lambda}(t)\vect{z_3}  $.
+
+$\left(\vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4} = 
+m_4\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3} -l_3   \dot{\theta}_{32}^2  \vect{y_3} + \ddot{\lambda}(t)\vect{z_3} \right) \right)\cdot \vect{z_{4,3}}$
+
+Par simplification avec les propriétés du produit mixte et du produit vectoriel,
+
+$
+\left(\vect{BG_4}\wedge m_4 \vectg{G_4}{4}{1}\right)\cdot\vect{z_4} =
+m_4\left( \left(l_3 \vect{y_3} \right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3} \right) \right)\cdot \vect{z_{4,3}}
+=m_4\cdot l_3^2\ddot{\theta}_{32}
+$
+
+
+  Au final,  $\vectmd{B}{4}{1}\cdot\vect{z_4} = J_4 \ddot{\theta}_{32}+\ddot{\theta}_{32}l_3^2 m_4 $.
+  
+
+
+
+%
+%$= m_4\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)  + \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right) + \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(\ddot{\lambda}(t)\vect{z_3}\right) \right) \cdot \vect{z_4}$
+%
+%$= m_4\left(\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right) \right) \cdot \vect{z_4} 
+% + \left(\left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right)\right) \cdot \vect{z_4}
+%  +\left( \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \wedge  \left(\ddot{\lambda}(t)\vect{z_3}\right) \right) \cdot \vect{z_4}\right)$
+%  
+%$= m_4\left(\left( \vect{z_4} \wedge  \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right)  \right) \cdot  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)
+% + \left(\vect{z_4} \wedge \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right)  \right) \cdot \left(-l_3   \dot{\theta}_{32}^2  \vect{y_3}\right)
+%  +\left( \vect{z_4} \wedge \left(l_3 \vect{y_3} + \lambda(t) \vect{z_3}+ b_4 \vect{z_4}\right) \right) \cdot   \left(\ddot{\lambda}(t)\vect{z_3}\right) \right)$
+%  
+%  $= m_4\left(\left( \vect{z_4} \wedge  l_3 \vect{y_3}  \right) \cdot  \left(-\ddot{\theta}_{32}l_3\vect{x_3}\right)   \right)$
+%
+%  $= \ddot{\theta}_{32}l_3^2 m_4 $.
+  
+
+
+
+\subparagraph{}%21 --
+
+
+Par analogie avec la question précédente, on a $\vectmd{B}{3}{1}\cdot\vect{z_4}= J_3\ddot{\theta}_{32}+\ddot{\theta}_{32}a_3^2 m_3$.
+
+En conséquence,  $\vectmd{B}{3+4+5+8}{1}\cdot\vect{z_4} = \left(J_3+J_4+a_3^2 m_3  +l_3^2 m_4\right) \ddot{\theta}_{32}$.
+
+\begin{remarque}
+On fait l'hypothèse ici que l'action de 3 sur 7 ou du réducteur sur 7 est bien modélisée par une action mécanique de type couple comme le suggère l'énoncé.
+\end{remarque}
+
+
+
+\textbf{On isole l'ensemble $\{3,4,5,8\}$.}
+
+
+\begin{itemize}
+\item On réalise le bilan des actions mécaniques extérieures. 
+\begin{itemize}
+\item Action de la pesanteur sur 3 (\textbf{attention, le schéma cinématique de l'énoncé est donné dans une configuration particulière; la pesanteur crée bien un moment en $B$ suivant  $\vect{z_0}$}) :
+
+$\vectm{B}{\text{pes}}{3}\cdot \vect{z_4} $ $ =\left(\vect{BG_3}\wedge \left(-m_3g \vect{z_0}\right) \right)\vect{z_4}$ 
+$ =\left(\left( a_3\vect{y_3} + b_3\vect{z_3}  \right)\wedge \left(-m_3g \vect{z_0}\right)\right)\vect{z_4}$
+$ =\left( a_3\vect{y_4} \wedge \left(-m_3g \vect{z_0}\right)\right)\vect{z_4}$
+$ =\left( \vect{z_4} \wedge a_3\vect{y_4}\right)\cdot  \left(-m_3g \vect{z_0}\right)$
+$ = a_3 m_3g \left( \vect{x_3}\cdot \vect{z_0} \right)$
+$ = a_3 m_3g \left(  \cos\theta_{32} \vect{x_2'} +\sin\theta_{32} \vect{y_2'} \right)\cdot \vect{z_0} $.
+
+On utilise les hypothèses de linéarisation vues précédemment et on a 
+$\vectm{B}{\text{pes}}{3}\cdot \vect{z_4}= a_3 m_3g \vect{x_2'} \cdot \vect{z_0} $ 
+$= a_3 m_3g \vect{x_2} \cdot \vect{z_0} $
+$= a_3 m_3g \left( \cos \theta_{21} \vect{x_1} +\sin \theta_{21} \vect{y_1} \right)\cdot \vect{z_0} $
+$= a_3 m_3g \left( \cos \theta_{21} \vect{x_0} +\sin \theta_{21}  \left( \cos \alpha_1 \vect{y_0} + \sin \alpha_1 \vect{z_0} \right) \right)\cdot \vect{z_0} $
+$= a_3 m_3g \sin \theta_{21}   \sin \alpha_1  $. En faisant l'application numérique, on a donc 
+$\vectm{B}{\text{pes}}{3}\cdot \vect{z_4}= a_3 m_3g  \dfrac{\sqrt{2}}{2} \dfrac{\sqrt{3}}{2}$.
+
+\item Action de la pesanteur sur 4 : 
+$\vectm{B}{\text{pes}}{4}\cdot \vect{z_4} $ $ =\left(\vect{BG_4}\wedge \left(-m_4g \vect{z_0}\right) \right)\vect{z_4}$ 
+
+$ =\left(\left(l_3\vect{y_3} + \lambda(t) \vect{z_3} + b_4\vect{z_4} \right)\wedge \left(-m_4g \vect{z_0}\right) \right)\vect{z_4}$. 
+
+\textbf{Pour Emilien }
+$
+\left(\vect{BG_4}\wedge \left(-m_4g \vect{z_0}\right) \right)\vect{z_{4,3}}
+=\overrightarrow{z_3}\wedge l_3\overrightarrow{y_3}\cdot \left(-m_4\cdot g\cdot \overrightarrow{z_0}\right)=m_4l_3g\overrightarrow{x_3}\cdot \overrightarrow{z_0}
+$.
+
+Or,
+$\overrightarrow{x_3}=\cos\theta_{32}\overrightarrow{x}_{2,2'}+\sin\theta_{32}\overrightarrow{y}_{2'}$
+avec $\cos\theta_{32}\approx 1$ et $\sin\theta_{32}\approx 0$.
+
+ Donc, 
+ $\overrightarrow{x_3}\cdot \overrightarrow{z}$ 
+ $=\left(\cos\theta_{21}\overrightarrow{x}_{1,0}+\sin\theta_{21}\overrightarrow{y_1}\right)\cdot \overrightarrow{z_0}$  $=\sin\theta_{21}\sin\alpha_1=\dfrac{\sqrt{6}}{4}$.
+ On obtient alors, $\vectm{B}{\text{pes}}{4}\cdot \vect{z_4} = l_3 m_4g  \dfrac{\sqrt{6}}{4}$.
+
+
+
+%$ = a_3 m_3g \left(  \cos\theta_{32} \vect{x_2} +\sin\theta_{32} \left(\cos\alpha_{2} \vect{y_2} +\sin\alpha_{2} \vect{z_2}\right) \right)\cdot \vect{z_0} $
+
+%$ = a_3 m_3g \left(  \cos\theta_{32} \left( \cos \theta_{21} \vect{x_1} +\sin \theta_{21} \vect{y_1} \right) +\sin\theta_{32} \left(\cos\alpha_{2} \left( \cos \theta_{21} \vect{y_1} -\sin \theta_{21} \vect{x_1} \right) +\sin\alpha_{2} \vect{z_1}\right) \right)\cdot \vect{z_0} $
+
+%$ = a_3 m_3g \left(  \cos\theta_{32} \left( \cos \theta_{21} \vect{x_0} +\sin \theta_{21} \left( \cos \alpha_1 \vect{y_0} + \sin \alpha_1 \vect{z_0} \right) \right) +\sin\theta_{32} \left(\cos\alpha_{2} \left( \cos \theta_{21} \left( \cos \alpha_1 \vect{y_0} + \sin \alpha_1 \vect{z_0} \right)  -\sin \theta_{21} \vect{x_0} \right) +\sin\alpha_{2}  \left( \cos \alpha_1 \vect{z_0} - \sin \alpha_1 \vect{y_0} \right)  \right) \right)\cdot \vect{z_0} $
+
+%$ = a_3 m_3g \left(  \cos\theta_{32} \left( \sin \theta_{21} \left(  \sin \alpha_1 \vect{z_0} \right) \right) +
+%\sin\theta_{32} \left(\cos\alpha_{2} \left( \cos \theta_{21} \left( \sin \alpha_1 \vect{z_0} \right)  \right) +\sin\alpha_{2}  %\left( \cos \alpha_1 \vect{z_0}  \right)  \right) \right)\cdot \vect{z_0} $. 
+
+\item $\vectm{B}{2}{3}\cdot \vect{z_0}=0$.
+\item $\vectm{B}{7}{3}\cdot \vect{z_4}=C_{73}$ (Indication du sujet).
+\end{itemize}
+\item En appliquant le théorème du moment dynamique en $B$ en projection sur $\vect{z}$ on a donc 
+$ C_{73} =  \left(J_3+J_4\right) \ddot{\theta}_{32}+\ddot{\theta}_{32}\left( a_3^2 m_3  +l_3^2 m_4  \right) + g  \dfrac{\sqrt{6}}{4} \left( a_3 m_3 + l_3 m_4\right) $.
+\end{itemize}
+
+\begin{remarque}
+Il semblerait que ce qui est attendu soit d'utiliser ${C_{73}}=C_{m2}\dfrac{\eta_9}{r_9}$, mais cette relation avait été établie en régime permanent ce qui n'est plus le cas. Continuons avec cette << hypothèse >>.
+\end{remarque}
+
+
+$ C_{m2}\dfrac{\eta_9}{r_9}=  \left(J_3+J_4  + a_3^2 m_3  +l_3^2 m_4 \right) \ddot{\theta}_{32} + g  \sin \theta_{21}   \sin \alpha_1 \left( a_3 m_3 + l_3 m_4\right) $.
+
+Par identification, on a donc :
+\begin{itemize}
+\item $J_{eq} = J_3+J_4  + a_3^2 m_3  +l_3^2 m_4$;
+\item $A  =\dfrac{\eta_9}{r_9}$;
+\item $C_r(t)=-g  \sin \theta_{21}   \sin \alpha_1 \left( a_3 m_3 + l_3 m_4\right) $.
+\end{itemize}
+
+
+
+Par identification, on a donc :
+\begin{itemize}
+\item $J_{eq} = J_3+J_4  + a_3^2 m_3  +l_3^2 m_4$;
+\item $A  =\dfrac{\eta_9}{r_9}$;
+\item $C_r(t)=-g  \dfrac{\sqrt{6}}{4} \left( a_3 m_3 + l_3 m_4\right) $.
+\end{itemize}
+\begin{remarque}
+$J_{eq}$ dépend aussi de $a_3$ et $m_3$, il faudrait ajouter cette précision dans la liste des constantes contenues dans l'expression.
+\end{remarque}
+
+%
+% \textbf{On isole l'ensemble $\{7\}$.}
+%\begin{itemize}
+%\item On réalise le bilan des actions mécaniques extérieures. 
+%\begin{itemize}
+%\item La pesanteur ne crée pas de moment en $B$ suivant  $\vect{z_0}$.
+%\item $\vectm{N}{2}{7}\cdot \vect{z_0}=C_{m2}$.
+%\item \textbf{On fait l'hypothèse que $\vectm{B}{3}{7}\cdot \vect{z_0}=-C_{73}$.} \textcolor{red}{XP C'est du n'importe quoi....}.
+%\end{itemize}
+%\item En appliquant le théorème du moment dynamique en $B$ en projection sur $\vect{z}$ (l'inertie de 7 est négligée) on a donc $ C_{m2} - C_{73} =  0$. \textcolor{red}{XP Ce qui est n'importe quoi parce qu'on a vu qu'il y avait un pb de rendement, mais le rendement en dynamique....}.
+%\end{itemize}
+%
+%\textcolor{red}{XP Peut être que le résultat attendu est le suivant (mais ce serait pas terrible)}.
+%
+%$ C_{m2}\dfrac{\eta_9}{r_9}=  \left(J_3+J_4\right) \ddot{\theta}_{32}+\ddot{\theta}_{32}\left( a_3^2 m_3  +l_3^2 m_4  \right)$.
+
+\subparagraph{}%22 --
+
+\begin{itemize}
+\item \textbf{Méthode 1 : }
+D'après l'expression donnée, on a $C_r(t)=J_{eq}\ddot{\theta}_{32}(t)-A C_{m2}(t)$.
+Lorsque la vitesse est constante, on a donc $C_r(t)=-A C_{m2}(t)$ avec $C_{m2}(t)=-\SI{53,25}{Nm}$ et 
+$C_r(t)= \dfrac{0,78}{0,25} \cdot  53,25  = \SI{166,14}{Nm}$.   
+
+
+À accélération constante, $\ddot{\theta}_{32} = \dfrac{0,075}{0,25}=\SI{0,3}{rad.s^{-2}}$. On a donc 
+$J_{eq}=\dfrac{C_r(t)+A C_{m2}(t)}{\ddot{\theta}_{32}(t)}$
+$=\dfrac{C_r(t)-A 51,25}{0,3}$ 
+$=\dfrac{166,14  -51,25\dfrac{0,78}{0,25}}{0,3}$
+$=\SI{20,8}{kg.m^2}$. 
+
+\item \textbf{Méthode 2 : }
+soit,
+\begin{itemize}
+\item $C^{a}_{m2}=C_{m2}(t)\approx-\SI{51,2}{Nm}$ pour $t\in\left[0;0,25\right]$ ;
+\item $C^{b}_{m2}=C_{m2}(t)\approx-\SI{53}{Nm}$ pour $t\in\left[0,25;0,75\right]$ ;
+\item $C^{b}_{m2}=C_{m2}(t)\approx-\SI{55}{Nm}$ pour $t\in\left[0,75;1\right]$ ;
+\item $\ddot{\theta}_{32}(t)=\ddot{\theta}_{32a}=\dfrac{0,075}{0,25}=\SI{0,3}{rad. s^{-2}}$ pour $t\in \left[0;0,25\right]$
+\end{itemize}
+
+On obtient alors 3 équations : 
+$
+\left\{
+\begin{array}{l}
+(a) \quad J_{eq}\ddot{\theta}_{32a}=A\cdot C^{a}_{m2}+C_r(t) \\
+(b) \quad 0=A\cdot C^{b}_{m2}+C_r(t)\\
+(c) \quad -J_{eq}\ddot{\theta}_{32a}=A\cdot C^{c}_{m2}+C_r(t)\\
+\end{array}
+\right.
+$.
+
+En combinant les équations : 
+\begin{itemize}
+\item $(b) \rightarrow C_r(t)=-A\cdot  C^{b}_{m2}=-\dfrac{\eta_9}{r_9}C^{b}_{m2}\approx \SI{-165.67}{Nm}$;
+\item $(a)-(c)\rightarrow 2 J_{eq} \ddot{\theta}_{32a}=A\cdot \left(C^{a}_{m2}-C^{c}_{m2}\right)$.
+\end{itemize}
+
+On obtient alors, $
+J_{eq}=\dfrac{A\cdot \left(C^{a}_{m2}-C^{c}_{m2}\right)}{2\ddot{\theta}_{32a}} \approx \SI{19,76}{kg.m^2}$.
+
+\end{itemize}
+
+
+
+
+
+\subparagraph{}%23 --
+
+En faisant l'application numérique à partir des données de l'énoncé, on trouve : 
+$
+\left\{
+\begin{array}{c}
+J_{\text{eqth}}=\SI{18,1}{kg m^2}\\
+C_{\text{rth}}=-\SI{85,57}{N m}
+\end{array}
+\right.
+$.
+
+Le moment d'inertie équivalent trouvé expérimentalement est supérieur au moment d'inertie théorique avec un écart de l'ordre de $10\%$ probablement du aux hypothèse concernant l'utilisation rendement.
+
+Le couple résistant théorique est deux fois inférieur au couple résistant réel. L'hypothèse concernant l'utilisation du rendement permettrait probablement d'expliquer ces écarts. De plus les liaisons ont été supposée parfaite ici et le couple résistant théorique ne dépend que l'action de la pesanteur. Il faudrait prendre en compte les frottements secs et visqueux. 
+
+\section{Définition et analyse de la chaîne d’asservissement du robot esclave}
+\begin{obj}
+Définir le régulateur de la chaîne d’asservissement du robot esclave, analyser ses performances vis-à-vis
+des perturbations en se limitant à celles dues aux couples de frottement sec et compléter la chaîne
+d’asservissement par la compensation de ces efforts.
+\end{obj}
+
+\subsection{Calcul d’un correcteur et analyse partielle des performances de la chaîne d’asservissement}
+\begin{obj}
+Déterminer un correcteur pour la chaîne d’asservissement de la position angulaire des articulations.
+Afin d’aboutir à une démarche générale (indépendante d’une articulation particulière), la loi de commande
+sera paramétrée par le moment d’inertie équivalent de l’articulation considérée.
+\end{obj}
+
+\subparagraph{}%24 --
+En exprimant l'équation différentielle proposée dans le domaine de Laplace, on a 
+$J_{\text{eq}} p^2{Q}_j(p)=C_j(p)+C_{\text{ext}}(p)$.
+En utilisant le schéma-blocs, on a $Q_j(p)=\left(C_{\text{ext}}(p)+C_{\text{j}}(p)\right)T(p)$. 
+Par analogie, on a donc $T(p)=\dfrac{1}{J_{\text{eq}}p^2}$.
+
+On considère que $C_{\text{ext}}(p)=0$.  On peut alors exprimer 
+$F_j(p)= \dfrac{\dfrac{K_1T(p)}{1+T(p)K_2 p} }{1+\dfrac{K_1T(p)}{1+T(p)K_2 p}}$
+$= \dfrac{\dfrac{K_1T(p)}{1+T(p)K_2 p} }{1+\dfrac{K_1T(p)}{1+T(p)K_2 p}}$
+$= \dfrac{K_1T(p) }{1+T(p)K_2 p+K_1T(p)}$
+$= \dfrac{K_1\dfrac{1}{J_{\text{eq}}p^2}}{1+\dfrac{1}{J_{\text{eq}}p^2}K_2 p+K_1\dfrac{1}{J_{\text{eq}}p^2}}$
+$= \dfrac{K_1}{J_{\text{eq}}p^2+K_2 p+K_1}$
+$= \dfrac{1}{\dfrac{J_{\text{eq}}}{K_1}p^2+\dfrac{K_2}{K_1}p+1}$.
+
+On a donc $\dfrac{1}{\omega_0^2}=\dfrac{J_{\text{eq}}}{K_1}$ et $\dfrac{2\xi}{\omega_0}=\dfrac{K_2}{K_1}$. On a donc $K_1=J_{\text{eq}}\omega_0^2$ et $K_2=\dfrac{2\xi K_1}{\omega_0}=2\xi J_{\text{eq}}\omega_0$.
+
+\subparagraph{}%25 --
+On imagine ici qu'il faut considérer que $Q*_j(p)=0$.
+
+On a $C_j(p)=-\left(K_1+K_2 p\right) Q_j(p)$ et $Q_j(p)=\left(C_j(p)+C_{\text{ext}}(p)\right)T(p)$.  On a donc  
+
+%$Q_j(p)=\left(-\left(K_1+K_2 p\right) Q_j(p)+C_{\text{ext}}(p)\right)T(p)$
+%$\Leftrightarrow \left(1-\left(K_1+K_2 p\right)T(p) \right)Q_j(p)=C_{\text{ext}}(p)$
+%$\Leftrightarrow \dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{1}{1-\left(K_1+K_2 p\right)T(p) }$.
+
+
+$Q_j(p)=\left(-\left(K_1+K_2 p\right) Q_j(p)+C_{\text{ext}}(p)\right)T(p)$
+$\Leftrightarrow \left(1+\left(K_1+K_2 p\right)T(p) \right)Q_j(p)=C_{\text{ext}}(p)\cdot T(p)$
+$\Leftrightarrow \dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{T(p)}{1+\left(K_1+K_2 p\right)T(p) }$.
+
+En utilisant les valeurs déterminées précédemment, on a donc $D(p)=\dfrac{\dfrac{1}{J_{eq}p^2}}{1+\left(J_{\text{eq}}\omega_0^2+2\xi J_{\text{eq}}\omega_0 p\right)\dfrac{1}{J_{\text{eq}}p^2} }$
+
+$=\dfrac{1}{J_{eq}p^2+2\xi J_{\text{eq}}\omega_0 p+J_{eq}\omega_0^2}=\dfrac{\dfrac{1}{J_{eq}\omega_0^2}}{\dfrac{p^2}{\omega_0^2}+\dfrac{2\xi}{\omega_0}p+1}$.
+
+On a $C_{\text{ext}}(p)=\dfrac{C_{\text{ext} 0}}{p}$. En conséquence, 
+$\lim\limits_{t\to +\infty} \varepsilon(t) = \lim\limits_{p\to 0} p\varepsilon(p)$.
+Par ailleurs,  $\varepsilon(p)=-Q_j(p)=-D(p)C_{\text{ext}}(p)$.
+
+On a alors $\lim\limits_{t\to +\infty} \varepsilon(t) = \lim\limits_{p\to 0} -pD(p)C_{\text{ext}}(p)= \lim\limits_{p\to 0} -p\dfrac{\dfrac{1}{J_{eq}\omega_0^2}}{\dfrac{p^2}{\omega_0^2}+\dfrac{2\xi}{\omega_0}p+1}\cdot \dfrac{C_{ext0}}{p}$
+$=  -\dfrac{C_{\text{ext} 0}}{J_{eq}\omega_0^2}$.
+
+\textbf{Conclusion :} l'erreur ici n'est pas nulle et elle dépend de l'inertie, de la pulsation propre $\omega_0$ et de l'amplitude de la perturbation. 
+
+
+\subsection{Amélioration des performances par compensation du couple de perturbation}
+\begin{obj}
+Améliorer les performances de la loi de commande vis-à-vis des couples perturbateurs extérieurs.
+\end{obj}
+
+%\begin{center}
+%\includegraphics[width=.4\linewidth]{images/fig_04}
+%\end{center}
+
+\subparagraph{}%26 --
+%On note $A(p)$, $B(p)$ et $C(p)$ les trois fonctions de transfert des trois blocs recherchés. 
+%
+%
+%On a : $Q_j(p)=A(p)\left(C_j(p)+C_{\text{ext}}(p)\right)$, 
+%$S(p)=Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)$
+%et  $\hat{C}_{\text{ext}}(p)=C(p)S(p)$.
+%
+% soit 
+%
+%$\hat{C}_{\text{ext}}(p)=C(p)\left(Q_j(p)-B(p)\left( C_j(p)+\hat{C}_{\text{ext}}(p) \right)\right)$
+%
+%$\Leftrightarrow \hat{C}_{\text{ext}}(p) \left(1+ C(p)B(p)\right)=C(p)\left(Q_j(p)-C(p)B(p) \right)$
+
+\begin{remarque}
+Il semblerait qu'il manque une information concernant le schéma bloc. Il faudrait sans doute ajouter $\hat{Q}_j(p)$. Cela donnerait la figure suivante.
+\end{remarque}
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{images/DR_B_corrige.pdf}
+\end{center}
+
+En permutant les blocs $T(p)$ et $K(p)$ qui sont en série on obtient la forme souhaitée.
+\subparagraph{}%27 --
+
+En manipulant le schéma bloc on peut obtenir : 
+
+\begin{center}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\textwidth]{images/DR_B_corrige2.pdf}
+&
+\includegraphics[width=0.5\textwidth]{images/DR_B_corrige3.pdf}
+\end{tabular}
+\end{center}
+
+\subparagraph{}%28
+
+\begin{remarque}
+On peut hésiter entre prendre la structure de la partie III.A (Méthode A) ou donner un $K(p)$ équivalent sous la forme d'un correcteur P.D. (Méthode B).
+\end{remarque}
+
+%\begin{minipage}[t]{0.4\textwidth}
+\begin{multicols}{2}
+\textbf{Méthode A :}
+Ainsi en manipulant le schéma bloc on obtient : 
+
+\begin{center}
+%\begin{large}
+\begin{tikzpicture}
+\sbEntree{E0}
+\sbComp[4]{c2}{E0}
+\sbRelier[$C_{\text{ext}}(p)$]{E0}{c2}
+\sbBloc[1]{b2}{$K'_1$}{c2}
+\sbRelier{c2}{b2}
+\sbBloc[3]{b4}{$T(p)$}{b2}
+\sbRelier[]{b2}{b4}
+\sbSortie[4]{S}{b4}
+\sbRelier[\^{C}$_{\text{ext}}(p)$]{b4}{S}
+\sbDecaleNoeudy[4]{S}{v}
+\sbBlocr[4]{b10}{$1+\frac{K'_2\cdot p}{K'_1}$}{v}
+%\sbBlocr[4]{b10}{$1+\frac{K_'2\cdot p}{K'_1}$}{v}
+\sbRelieryx{b4-S}{b10}
+\sbRelierxy[]{b10}{c2}
+\end{tikzpicture}
+%\end{large}
+\end{center}
+
+La fonction de transfert en boucle fermée est donnée par : 
+
+$
+H_{BF}(p)=\dfrac{\dfrac{K'_1}{J_{eq}p^2}}{1+\dfrac{K'_1}{J_{eq}p^2}\left(1+\dfrac{K'_2}{K'_1}p\right)}$
+
+$=
+\dfrac{K'_1}{J_{eq}\cdot p^2+K'_2\cdot p+K'_1}=\dfrac{1}{1+\dfrac{K'_2}{K'_1}p+\dfrac{J_{eq}}{K'_1}p^2}
+$
+
+
+%\end{minipage}
+%\vline
+%\begin{minipage}[t]{0.4\textwidth}
+
+\vfill\null
+\columnbreak 
+
+\textbf{Méthode B :}
+
+Ainsi en manipulant le schéma bloc on obtient : 
+
+\begin{center}
+%\begin{large}
+\begin{tikzpicture}
+\sbEntree{E0}
+\sbComp[4]{c2}{E0}
+\sbRelier[$C_{\text{ext}}(p)$]{E0}{c2}
+\sbBloc[1]{b2}{$K'_1+K'_2\cdot p$}{c2}
+\sbRelier{c2}{b2}
+\sbBloc[3]{b4}{$T(p)$}{b2}
+\sbRelier[]{b2}{b4}
+\sbSortie[4]{S}{b4}
+\sbRelier[\^{C}$_{\text{ext}}(p)$]{b4}{S}
+\sbDecaleNoeudy[4]{S}{v}
+\sbBlocr[4]{b10}{$1$}{v}
+%\sbBlocr[4]{b10}{$1+\frac{K_'2\cdot p}{K'_1}$}{v}
+\sbRelieryx{b4-S}{b10}
+\sbRelierxy[]{b10}{c2}
+\end{tikzpicture}
+%\end{large}
+\end{center}
+
+La fonction de transfert en boucle fermée est donnée par : 
+
+$
+H_{BF}(p)=\dfrac{\dfrac{K'_1+K'_2\cdot p}{J_{eq}p^2}}{1+\dfrac{K'_1+K'_2\cdot p}{J_{eq}p^2}}$
+$ =\dfrac{K'_1+K'_2\cdot p}{J_{eq}\cdot p^2+K'_2\cdot p+K'_1}$
+$=\dfrac{1+\dfrac{K'_2}{K'_1}p}{1+\dfrac{K'_2}{K'_1}p+\dfrac{J_{eq}}{K'_1}p^2}$.
+
+%\end{minipage}
+\end{multicols}
+Par identification, pour les deux méthodes et avec ce qu'impose la cahier des charges.
+
+$
+\left\{
+\begin{array}{c}
+\omega'_0=\sqrt{\dfrac{K'_1}{J_{eq}}}=5\omega_0\\
+\\
+\xi=\dfrac{\omega'_0}{2}\dfrac{K'_2}{K'_1}=\dfrac{1}{2}\sqrt{\dfrac{K'_1}{J_{eq}}}\dfrac{K'_2}{K'_1}=1
+\end{array}
+\right.
+$. 
+On obtient alors,
+$
+\left\{
+\begin{array}{c}
+K'_1=25\cdot J_{eq}\cdot \omega_0^2\\
+\\
+K'_2=2\sqrt{K'_1\cdot J_{eq}}=10\cdot J_{eq}\cdot \omega_0
+\end{array}
+\right.
+$.
+
+\textbf{La fonction de transfert en boucle ouverte est de classe 2 ainsi l'erreur statique est nulle. }
+
+\subparagraph{}%29
+
+Notons $H_{28}(p)$ la fonction de transfert déterminée à la question 28 :  $
+H_{28}(p)=\dfrac{\text{\^{C}}_{\text{ext}}(p)}{C_{\text{ext}}(p)}=\dfrac{K(p)\cdot T(p)}{1+K(p)\cdot T(p)}$.
+
+Avec $Q^*_j(p)=0$, $
+C_j(p)=\text{\~{C}}_j(p)-\text{\^{C}}_{ext}(p)=-\left(K_1+K_2\cdot p\right)Q_j(p)-H_{28}(p)C_{\text{ext}}(p)\\
+$.
+
+D'après la lecture du schéma bloc : 
+
+$Q_j(p)=T(p)\left(C_j(p)+C_{\text{ext}}(p)\right)=T(p)\left(-\left(K_1+K_2\cdot p\right)Q_j(p)+\left(1-H_{28}(p)\right)C_{\text{ext}}(p)\right) $
+$ \Leftrightarrow 
+Q_j(p)\left(1+T(p)\left(K_1+K_2\cdot p\right)\right)=C_{\text{ext}}(p)T(p)\left(1-H_{28}(p)\right)$.
+
+On trouve donc : $
+\dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{T(p)}{\left(1+K(p)\cdot T(p)\right)\left(1+T(p)\left(K_1+K_2\cdot p\right)\right)}
+$.
+
+Avec $K(p)=K'_1+K'_2\cdot p$ et $T(p)=\dfrac{1}{J_{eq}p^2}$,
+$
+\dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{J_{eq}p^2}{\left(J_{eq}p^2+K'_1+K'_2\cdot p\right)\left(J_{eq}p^2+K_1+K_2\cdot p\right)}
+$.
+
+D'après les questions 24 et 27,
+$
+\dfrac{Q_j(p)}{C_{\text{ext}}(p)}=\dfrac{\dfrac{p^2}{J_{eq}}}{\left(p+\omega'_0\right)^2\left(p+\omega_0\right)^2}
+$.
+
+
+
+\begin{itemize}
+\item \textbf{Stabilité : } on remarque que les pôles de la FTBF sont à partie réelles strictement négatives ($-\omega_0$ et $-\omega'_0$) ce qui \textbf{est une condition nécessaire et suffisante de stabilité.}
+\item \textbf{Précision : } soit $\varepsilon(p)$ $=-Q_j(p)$ $=-\dfrac{\dfrac{p^2}{J_{eq}}}{\left(p+\omega'_0\right)^2\left(p+\omega_0\right)^2}C_{\text{ext}}(p)$. En considérant $C_{\text{ext}}$ comme une constante, $C_{\text{ext}}(p)=\dfrac{C_0}{p}$. 
+L'erreur statique vis-à-vis d'une perturbation constante est donnée par :
+$\varepsilon_s= \lim_{p\rightarrow0} p\varepsilon(p)$ $= \lim_{p\rightarrow0}\left[-\dfrac{\dfrac{C_0\cdot p^2}{J_{eq}}}{\left(p+\omega'_0\right)^2\left(p+\omega_0\right)^2}\right]=0
+$.
+
+\textbf{L'erreur statique vis-à-vis d'une perturbation constante est bien nulle.}
+\end{itemize}
+
+
+
+
+
+\section{Analyse des performances vis-à-vis des mouvements respiratoires}
+\begin{obj}
+Quantifier le niveau de performance de la loi de commande déterminée en considérant la consigne
+correspondant aux mouvements physiologiques. Une amélioration de la loi de commande est ensuite
+envisagée sous la forme d’une anticipation sur la consigne pour améliorer les performances.
+\end{obj}
+
+
+\subparagraph{}\textit{}%30
+Pour un signal périodique en entrée d'amplitude $B$, l'écart sera un signal périodique d'amplitude $0,066\cdot B\cdot \omega_i$, avec $i=\left\{1,2\right\}$ et $\omega_i=2\pi f_i$ ($f_1=0,24Hz$ et $f_2=0,48Hz$).
+On note $\varepsilon_0$ l'amplitude de l'écart en régime permanent.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+$f_i$ & $f_1$ & $f_2$ \\ 
+\hline 
+$\varepsilon_0$  & $0,066\cdot 2\pi f_1$ & $0,066\cdot 2\pi f_2$ \\ 
+\hline 
+Application numérique sur $\dfrac{\varepsilon_0}{B}$ & \SI{9,95e-2}{} & \SI{19,91e-2}{} \\ 
+\hline 
+\end{tabular} 
+\end{center}
+ 
+Ces valeurs ne sont pas conformes au cahier des charges car l'exigence 5.2.2 impose : $\dfrac{\varepsilon_j}{B_j}<10^{-2}$.
+
+
+
+\subparagraph{}\textit{}%31
+
+
+\begin{itemize}
+\item \textbf{Expression temporelle du couple idéal $c_j(t)$ : }
+d'après le schéma bloc dans le domaine de Laplace : $C_j(p)=\dfrac{Q_j(p)}{T(p)}=J_{eq}p^2Q_j(p)$, en repassant dans le domaine temporel : 
+$
+c_j(t)=J_{eq}\dfrac{\dd ^2q_j(t)}{\dd t^2}=J_{eq}\dfrac{\dd ^2q^*_j(t)}{\dd t^2}
+$;
+\item \textbf{Expression temporelle du couple idéal $c_u(t)$ : }
+d'après le schéma bloc dans le domaine de Laplace : $C_u(p)=K_1\cdot (Q^*_j(p)-Q_j(p))-K_2\cdot p\cdot Q_j(p)=-K_2\cdot p\cdot Q^*_j(p)$, en repassant dans le domaine temporel : 
+$
+c_u(t)=-K_{2}\dfrac{\dd q^*_j(t)}{\dd t}$;
+\item au niveau du comparateur on lit : $c_a(t)=c_j(t)-c_u(t)$, ainsi $c_a(t)=J_{eq}\dfrac{\dd ^2q^*_j(t)}{\dd t^2}+K_{2}\dfrac{\dd q^*_j(t)}{\dd t}$.
+\end{itemize}
+\subparagraph{}\textit{}%32
+
+
+\begin{itemize}
+\item \textbf{Détermination de $K_a(p)$ :} on en déduit de la question précédente (en supposant les conditions initiales nulles) : $K_a(p)=\dfrac{C_a(p)}{Q^*_j(p)}=J_{eq}\cdot p^2+K_2\cdot p$.
+\item \textbf{Détermination de $F(p)$ :}
+\end{itemize}
+
+On a $Q_j(p) = C_j(p) T(p)= \left( Q_j^{\star}(p) K_a(p) + C_u(p) \right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + C_u(p) \right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + \left( \varepsilon(p) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+$= \left( Q_j^{\star}(p) K_a(p) + \left( \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+
+%$Q_j(p) = \left( Q_j^{\star}(p) K_a(p) + \left( \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) \right)\right) T(p)$
+
+$\Leftrightarrow Q_j(p) = 
+\left(
+    Q_j^{\star}(p) K_a(p) + 
+    \left( 
+        \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) 
+    \right)
+\right) T(p)$
+
+$\Leftrightarrow Q_j(p) = 
+    T(p)Q_j^{\star}(p) K_a(p) + 
+    T(p)\left( 
+        \left(Q_j^{\star}(p) - Q_j(p) \right) K_1 - K_2 p Q_j(p) 
+    \right) $
+
+$\Leftrightarrow Q_j(p) = 
+    T(p)Q_j^{\star}(p) K_a(p) + 
+        T(p)K_1 Q_j^{\star}(p) -T(p)K_1  Q_j(p)   - T(p)K_2 p Q_j(p) 
+     $
+
+$\Leftrightarrow Q_j(p)\left(1     +T(p)K_1     + T(p)K_2 p\right)= 
+      Q_j^{\star}(p)T(p) \left(  K_a(p)     +K_1 \right)     $
+
+On a donc $F(p)=\dfrac{Q_j(p)}{Q_j^{\star}(p)}=\dfrac{\left(K_a(p) +K_1\right)T(p)}{1+T(p)K_1 + T(p)K_2 p}$.
+En factorisant par $T(p)$ au numérateur et au dénominateur puis en remplaçant $T(p)$ par $\dfrac{1}{J_{eq}p^2}$ et $K_a(p)=J_{eq}\cdot p^2+K_2\cdot p$, on obtient $
+F(p)=\dfrac{J_{eq}p^2+K_1+K_2\cdot p}{J_{eq}p^2+K_1+K_2\cdot p}=1
+$.
+
+Ainsi quelle que soit la forme de l'entrée, $Q^*_j(p)=Q_j(p)$ et donc l'erreur est nulle en particulier vis-à-vis de signaux de consigne sinusoïdaux.
+
+\subparagraph{}\textit{}%33
+En reprenant le résultat de la question 31 qui permet d'exprimer $c_a(t)$ dans le domaine temporel, on obtient, $
+c_a(t)=J_{eq}\dfrac{\dd ^2\delta q^*_j(t)}{\dd t^2}+K_{2}\dfrac{\dd \delta q^*_j(t)}{\dd t}$
+$=-J_{eq}\omega_1^2B_1\sin\left(\omega_1t+\theta_1\right)+K_2\omega_2B_2\cos\left(\omega_2t+\theta_2\right)
+$.
+
+\subparagraph{}\textit{}%34
+
+
+
+\begin{itemize}
+\item Sur la figure 18, on peut juger des performances liées aux exigences 1.2 (<< Asservissement au point de fonctionnement >>) :
+\begin{itemize}
+\item \textbf{Précision :} La précision obtenue est optimale. La position angulaire obtenue est confondu à la consigne en régime permanent ce qui se traduira par un écart en régime permanent inférieur à $10\mu m$.
+\item \textbf{Rapidité : } le temps de réponse à $5\%$ est la durée entre l'instant de l'échelon et l'instant au delà duquel la position est comprise entre $\pm 5\%$ de la valeur finale et qui correspond ici à la durée au delà de laquelle la position est comprise entre $\SI{0,57}{\mu m}$ et $\SI{0,63}{\mu m}$. Sur la figure 18, on relève approximativement $\SI{0,15}{s}<\SI{0,2}{s}$ comme l'exige l'exigence 1.2.2.  
+\end{itemize}
+\item Sur la figure 19, on peut juger des performances liées aux exigences 1.3 (<<~Suivi des mouvements physiologiques~>>). 
+\begin{itemize}
+\item le signal de consigne possède une fréquence d'environ $\SI{0,5}{Hz}$ et une amplitude de consigne $\SI{0,34}{rad}$. 
+\item l'erreur relatif est égale en amplitude à environ $\dfrac{75\times 10^{-6}}{0,34}\approx 2,2\times 10^{-4}<10^{-2}$ ce qui est bien conforme au cahier des charges.
+\end{itemize}
+\end{itemize}
+
+\end{document}
+
+
+
+
