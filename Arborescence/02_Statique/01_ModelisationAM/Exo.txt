@@ -1,0 +1,9 @@
+\titre
+\auteur
+\source
+\competences
+
+% option de compil : 
+% type : TD, application, activation, colle
+% gestion du compteur
+
