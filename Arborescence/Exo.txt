@@ -2,6 +2,7 @@
 \auteur
 \source
 \competences
+\difficulté
 
 % option de compil : 
 % type : TD, application, activation, colle
