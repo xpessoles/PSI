@@ -1,0 +1,160 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Hyperstatisme},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+    
+\input{style/new_style}
+\input{style/macros_SII}
+\usepackage{multicol}
+\usepackage{siunitx}
+%\usepackage{picins}
+\fichetrue
+%\fichefalse
+
+\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+
+\def\classe{\textsf{PSI$\star$}}
+\def\xxnumpartie{Cycle xx}
+\def\xxpartie{Préparation aux épreuves orales}
+
+\def\xxnumchapitre{Filière PSI \vspace{.2cm}}
+\def\xxchapitre{\hspace{.12cm} }
+
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+
+\def\xxactivite{TD}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+
+\def\xxtitreexo{RobotMaxPID}
+\def\xxsourceexo{\hspace{.2cm} \footnotesize{Laboratoire de PSI}}
+
+
+  
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+%\def\xxonglet{Part. 1 -- Ch. 3}
+\def\xxonglet{\textsf{Cycle xx}}
+
+\def\xxactivite{TD}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+\def\xxcompetences{%
+\vspace{-.5cm}
+\footnotesize{
+\textsl{%
+%\textbf{Savoirs et compétences :}\\
+%\vspace{-.2cm}
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item \textit{Mod2.C34} : chaînes de solides;
+%\item \textit{Mod2.C34} : degré de mobilité du modèle;
+%\item \textit{Mod2.C34} : degré d’hyperstatisme du modèle;
+%\item \textit{Mod2.C34.SF1} : déterminer les conditions géométriques associées à l’hyperstatisme;
+%\item \textit{Mod2.C34} : résoudre le système associé à la fermeture cinématique et en déduire le degré de mobilité et d’hyperstatisme.
+%\end{itemize}
+}}}
+
+
+\def\xxfigures{
+%\includegraphics[width=.8\textwidth]{images/fig_01}
+}%figues de la page de garde
+
+
+\def\xxpied{%
+Préparation aux oraux\\%dans le but de déterminer les contraintes géométriques dans les mécanismes\\% afin de valider leurs performances.\\
+%Chapitre 2 -- \xxactivite%
+}
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{4.5cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\begin{multicols}{2}
+\subsection*{Maxpid}
+\setcounter{exo}{0}
+
+\textbf{Ouvrir le modèle Solidworks Maxpid.SLDASM.}
+
+\subparagraph{}\textit{Réaliser le graphe des liaisons associé au mécanisme en précisant l'ensemble des actions mécaniques s'exerçant sur le système dans le modèle Méca 3D.} 
+
+\subparagraph{}\textit{Initier un calcul mécanique et justifier la page \textbf{Analyse du mécanisme} : 
+\begin{itemize}
+\item nombre de cycles indépendants;
+\item nombre d'équations et d'inconnues cinématiques;
+\item nombre de pièces;
+\item nombre d'équations statiques et d'inconnues statiques;
+\item mobilité et hyperstatisme.
+\end{itemize}}
+
+
+\subsection*{Étude géométrique}
+\subparagraph{}\textit{Déterminer le nombre de tours réalisé par la vis pour un quart de tour du bras.}
+
+\subparagraph{}\textit{Tracer la loi entrée-sortie géométrique (position angulaire du bras en fonction de la position angulaire de la vis.}
+
+
+\subsection*{Étude cinématique}
+
+On souhaite que le bras se déplace d'un quart de tour en 1 seconde, en faisant l'hypothèse que la vitesse est constante pendant tout le mouvement. 
+
+\subparagraph{}\textit{Tracer la vitesse de vis en fonction du temps. Quelle sera la vitesse maximale de la vis.}
+
+\subparagraph{}\textit{En imposant sa vitesse maximale à la vis, quelle sera la vitesse maximale du bras ?}
+
+\subparagraph{}\textit{Déterminer alors combien de temps le bras mettra pour faire un quart de tour ?}
+
+
+\subsection*{Étude statique}
+
+\subparagraph{}\textit{Quel couple doit fournir le moteur pour réaliser un quart de tour de bras quand le maxpid est à plat ?}
+\subparagraph{}\textit{Quel couple doit fournir le moteur pour réaliser un quart de tour de bras quand le maxpid est couché ?}
+
+\subparagraph{}\textit{Donner l'influence du nombre de masses en bout de bras sur le couple moteur pour un quart de tour du bras.}
+
+
+\subsection*{Étude dynamique}
+
+\subparagraph{}\textit{Déterminer pour quel ensemble l'énergie cinétique est prépondérante lorsque le bras fait un quart de tour.}
+
+\end{multicols}
+
+\end{document}
+
+\subparagraph{}\textit{}
+\ifprof
+\begin{corrige}~\\
+\end{corrige}
+\else
+\fi
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/img_04}
+%\textit{}
+
+
+\end{center}
+
